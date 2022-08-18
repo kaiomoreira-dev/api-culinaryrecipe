@@ -9,6 +9,7 @@
   },
   "scripts": {},
   "devDependencies": {
+    "eslint": "^8.22.0",
     "typescript": "^4.7.4"
   }
 }
