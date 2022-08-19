@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm";
 
+import { CreateRecipe1660942928513 } from "./migrations/1660942928513-CreateRecipe";
+
 const dataSource = new DataSource({
   type: "postgres",
   port: 5432,
@@ -13,7 +15,7 @@ const dataSource = new DataSource({
   // importar entidades ex: [Recipes]
   entities: [],
   // importar migrations ex: [CreateRecipes102348998]
-  migrations: [],
+  migrations: [CreateRecipe1660942928513],
 });
 
 export function createConnection(host = "database"): Promise<DataSource> {
