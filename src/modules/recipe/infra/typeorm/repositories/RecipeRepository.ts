@@ -44,15 +44,13 @@ export class RecipeRepository implements IRecipeRepository {
 
         return recipe;
     }
-    list(): Promise<Recipe[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Recipe[]> {
+        return this.repository.find();
     }
     findRecipeById(id: string): Promise<Recipe> {
-        throw new Error("Method not implemented.");
+        return this.repository.findOneBy({ id });
     }
-    findRecipeByDifficulty(difficulty: string): Promise<Recipe> {
-        throw new Error("Method not implemented.");
-    }
+
     updateRecipeById(id: string): Promise<Recipe> {
         throw new Error("Method not implemented.");
     }
