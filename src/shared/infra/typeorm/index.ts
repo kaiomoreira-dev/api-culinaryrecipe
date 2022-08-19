@@ -9,7 +9,10 @@ const dataSource = new DataSource({
     process.env.NODE_ENV === "test"
       ? "culinary_recipes_test"
       : "culinary_recipes",
+
+  // importar entidades ex: [Recipes]
   entities: [],
+  // importar migrations ex: [CreateRecipes102348998]
   migrations: [],
 });
 
