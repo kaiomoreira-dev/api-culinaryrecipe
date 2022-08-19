@@ -50,7 +50,9 @@ export class RecipeRepository implements IRecipeRepository {
     findRecipeById(id: string): Promise<Recipe> {
         return this.repository.findOneBy({ id });
     }
-
+    async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
+        return this.repository.find({ where: { difficulty } });
+    }
     updateRecipeById(id: string): Promise<Recipe> {
         throw new Error("Method not implemented.");
     }
