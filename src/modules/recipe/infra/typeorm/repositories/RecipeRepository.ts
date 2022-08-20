@@ -53,7 +53,7 @@ export class RecipeRepository implements IRecipeRepository {
     async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
         return this.repository.find({ where: { difficulty } });
     }
-    async updateRecipeById(id: string, time: number): Promise<Recipe> {
+    async updateRecipeTimeById(id: string, time: number): Promise<Recipe> {
         await this.repository
             .createQueryBuilder()
             .update()
