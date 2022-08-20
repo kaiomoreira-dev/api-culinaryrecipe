@@ -19,7 +19,7 @@ const dataSource = new DataSource({
   migrations: [CreateRecipe1660942928513],
 });
 
-export function createConnection(host = "database"): Promise<DataSource> {
+export function createConnection(host = "localhost"): Promise<DataSource> {
   return dataSource.setOptions({ host }).initialize();
 }
 
