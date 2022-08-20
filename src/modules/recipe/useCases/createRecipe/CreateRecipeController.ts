@@ -18,7 +18,7 @@ export class CreateRecipeController {
 
         const createRecipeUseCase = container.resolve(CreateRecipeUseCase);
 
-        const recipe = createRecipeUseCase.execute({
+        const recipe = await createRecipeUseCase.execute({
             name,
             description,
             ingredients,
