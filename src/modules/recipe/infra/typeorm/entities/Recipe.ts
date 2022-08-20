@@ -1,4 +1,5 @@
 import {
+    Column,
     CreateDateColumn,
     Entity,
     PrimaryColumn,
@@ -9,22 +10,30 @@ import { v4 as uuidv4 } from "uuid";
 @Entity("recipes")
 export class Recipe {
     @PrimaryColumn()
-    id: string;
+    id?: string;
 
+    @Column()
     name: string;
 
+    @Column()
     description: string;
 
-    ingredients: string[];
+    @Column()
+    ingredients: string;
 
+    @Column()
     time: number;
 
+    @Column()
     difficulty: string;
 
+    @Column()
     dish_type: string;
 
+    @Column()
     additional_features: string;
 
+    @Column()
     total_guests: number;
 
     @CreateDateColumn()
@@ -32,7 +41,10 @@ export class Recipe {
 
     @UpdateDateColumn()
     updated_at: Date;
+
     constructor() {
-        this.id = uuidv4();
+        if (!this.id) {
+            this.id = uuidv4();
+        }
     }
 }
