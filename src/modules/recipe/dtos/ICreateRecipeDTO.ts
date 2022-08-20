@@ -1,5 +1,5 @@
 export interface ICreateRecipeDTO {
-    id: string;
+    id?: string;
     name: string;
     description: string;
     ingredients: string[];
@@ -8,6 +8,6 @@ export interface ICreateRecipeDTO {
     dish_type: string;
     additional_features: string;
     total_guests: number;
-    created_at: Date;
-    updated_at: Date;
+    created_at?: Date;
+    updated_at?: Date;
 }
