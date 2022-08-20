@@ -11,7 +11,7 @@ const dataSource = new DataSource({
   database:
     process.env.NODE_ENV === "test"
       ? "culinary_recipes_test"
-      : "culinary-recipes",
+      : "culinary_recipes",
 
   // importar entidades ex: [Recipes]
   entities: [Recipe],

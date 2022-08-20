@@ -10,7 +10,7 @@ services:
       environment:
         - POSTGRES_USER=docker
         - POSTGRES_PASSWORD=receitasecreta
-        - POSTGRES_DB=culinary-recipes
+        - POSTGRES_DB=culinary_recipes
       volumes:
         - pgdata:/data/postgres
     
