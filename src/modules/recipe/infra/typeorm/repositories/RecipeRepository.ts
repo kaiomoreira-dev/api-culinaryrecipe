@@ -65,7 +65,7 @@ export class RecipeRepository implements IRecipeRepository {
 
         return recipe;
     }
-    deleteRecipeById(id: string): Promise<Recipe> {
-        throw new Error("Method not implemented.");
+    async deleteRecipeById(id: string): Promise<void> {
+        await this.repository.delete({ id });
     }
 }
