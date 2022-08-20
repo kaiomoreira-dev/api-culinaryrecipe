@@ -2,6 +2,6 @@ import { Router } from "express";
 
 import { recipeRoutes } from "./recipe.routes";
 
-export const router = Router();
+export const routes = Router();
 
-router.use("/recipe", recipeRoutes);
+routes.use("/recipe", recipeRoutes);
