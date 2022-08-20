@@ -53,8 +53,17 @@ export class RecipeRepository implements IRecipeRepository {
     async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
         return this.repository.find({ where: { difficulty } });
     }
-    updateRecipeById(id: string): Promise<Recipe> {
-        throw new Error("Method not implemented.");
+    async updateRecipeById(id: string, time: number): Promise<Recipe> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .where("id = :id", { id })
+            .set({ time })
+            .execute();
+
+        const recipe = await this.repository.findOneBy({ id });
+
+        return recipe;
     }
     deleteRecipeById(id: string): Promise<Recipe> {
         throw new Error("Method not implemented.");
