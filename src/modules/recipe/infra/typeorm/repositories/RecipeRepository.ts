@@ -7,7 +7,7 @@ import dataSource from "@shared/infra/typeorm";
 import { Recipe } from "../entities/Recipe";
 
 export class RecipeRepository implements IRecipeRepository {
-    repository: Repository<Recipe>;
+    private repository: Repository<Recipe>;
 
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
@@ -36,7 +36,7 @@ export class RecipeRepository implements IRecipeRepository {
             total_guests,
         });
 
-        this.repository.save(recipe);
+        await this.repository.save(recipe);
 
         return recipe;
     }
