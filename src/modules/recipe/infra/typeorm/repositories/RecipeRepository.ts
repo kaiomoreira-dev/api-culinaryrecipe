@@ -18,26 +18,22 @@ export class RecipeRepository implements IRecipeRepository {
         description,
         name,
         additional_features,
-        created_at,
         difficulty,
         dish_type,
         ingredients,
         time,
         total_guests,
-        updated_at,
     }: ICreateRecipeDTO): Promise<Recipe> {
         const recipe = this.repository.create({
             id,
             description,
             name,
             additional_features,
-            created_at,
             difficulty,
             dish_type,
             ingredients,
             time,
             total_guests,
-            updated_at,
         });
 
         this.repository.save(recipe);
