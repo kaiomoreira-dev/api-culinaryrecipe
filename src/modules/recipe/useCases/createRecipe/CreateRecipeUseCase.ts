@@ -11,7 +11,6 @@ export class CreateRecipeUseCase {
     ) {}
 
     async execute({
-        id,
         name,
         description,
         ingredients,
@@ -21,8 +20,7 @@ export class CreateRecipeUseCase {
         time,
         total_guests,
     }: ICreateRecipeDTO): Promise<Recipe> {
-        const recipe = this.recipeRepository.create({
-            id,
+        const recipe = await this.recipeRepository.create({
             name,
             description,
             ingredients,
