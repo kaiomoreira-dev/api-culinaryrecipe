@@ -2,18 +2,6 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateRecipe1660942928513 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    // id;
-    // name;
-    // description;
-    // ingredients;
-    // time;
-    // difficulty;
-    // dish_type;
-    // additional_features;
-    // total_guests;
-    // created_at;
-    // updated_at;
-
     await queryRunner.createTable(
       new Table({
         name: "recipes",
@@ -34,12 +22,10 @@ export class CreateRecipe1660942928513 implements MigrationInterface {
           {
             name: "ingredients",
             type: "varchar",
-            isArray: true,
           },
           {
             name: "time",
-            type: "timestamp",
-            default: "now()",
+            type: "numeric",
           },
           {
             name: "difficulty",
