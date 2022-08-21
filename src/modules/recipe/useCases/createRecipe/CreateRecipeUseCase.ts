@@ -49,9 +49,12 @@ export class CreateRecipeUseCase {
         // enviando Ingredient para o array addIngredients
         // sem utilizar async!!
         for (const name of ingredientsFormatString) {
+            // busca ingredient pelo nome
             const foundIngredient =
                 await this.ingredientRepository.findIngredientByName(name);
 
+            // recebe Ingredient buscado pelo nome para
+            // o array de Ingredient[]
             addIngredients = [foundIngredient];
         }
 
