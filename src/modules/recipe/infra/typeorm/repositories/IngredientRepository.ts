@@ -13,8 +13,28 @@ export class IngredientRepository implements IIngredientRepository {
         this.repository = dataSource.getRepository(Ingredient);
     }
 
-    create(data: ICreateIngredientsDTO): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async create({
+        id,
+        description,
+        name,
+        unity,
+        weight,
+        animal,
+        color,
+    }: ICreateIngredientsDTO): Promise<Ingredient> {
+        const ingredient = this.repository.create({
+            id,
+            description,
+            name,
+            unity,
+            weight,
+            animal,
+            color,
+        });
+
+        await this.repository.save(ingredient);
+
+        return ingredient;
     }
     list(): Promise<Ingredient[]> {
         throw new Error("Method not implemented.");
