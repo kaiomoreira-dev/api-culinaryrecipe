@@ -5,6 +5,7 @@ import {
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 @Entity("ingredients")
 export class Ingredient {
@@ -34,4 +35,10 @@ export class Ingredient {
 
     @UpdateDateColumn()
     updated_at: string;
+
+    constructor() {
+        if (!this.id) {
+            this.id = uuidv4();
+        }
+    }
 }
