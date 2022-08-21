@@ -4,7 +4,7 @@ import { IIngredientRepository } from "@modules/recipe/repositories/IIngredientR
 import { inject, injectable } from "tsyringe";
 
 @injectable()
-export class CreateIngredient {
+export class CreateIngredientUseCase {
     constructor(
         @inject("IngredientRepository")
         private ingredientRepository: IIngredientRepository
