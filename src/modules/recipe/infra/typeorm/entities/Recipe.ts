@@ -36,6 +36,9 @@ export class Recipe {
     @Column()
     total_guests: number;
 
+    @Column()
+    author: string;
+
     @CreateDateColumn()
     created_at: Date;
 

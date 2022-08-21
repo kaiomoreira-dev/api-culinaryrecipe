@@ -8,4 +8,5 @@ export interface ICreateRecipeDTO {
     dish_type: string;
     additional_features: string;
     total_guests: number;
+    author: string;
 }

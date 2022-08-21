@@ -43,6 +43,10 @@ export class CreateRecipe1660942928513 implements MigrationInterface {
             name: "total_guests",
             type: "numeric",
           },
+          {
+            name: "author",
+            type: "varchar",
+          },
 
           {
             name: "created_at",
