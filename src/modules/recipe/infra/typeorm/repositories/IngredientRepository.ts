@@ -42,8 +42,8 @@ export class IngredientRepository implements IIngredientRepository {
     async findAllIngredientsByAnimal(animal: string): Promise<Ingredient[]> {
         return this.repository.find({ where: { animal } });
     }
-    findIgredientById(id: string): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async findIngredientById(id: string): Promise<Ingredient> {
+        return this.repository.findOneBy({ id });
     }
     findAllIngredientsByName(name: string): Promise<Ingredient[]> {
         throw new Error("Method not implemented.");

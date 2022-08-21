@@ -5,7 +5,7 @@ export interface IIngredientRepository {
     create(data: ICreateIngredientsDTO): Promise<Ingredient>;
     list(): Promise<Ingredient[]>;
     findAllIngredientsByAnimal(animal: string): Promise<Ingredient[]>;
-    findIgredientById(id: string): Promise<Ingredient>;
+    findIngredientById(id: string): Promise<Ingredient>;
     findAllIngredientsByName(name: string): Promise<Ingredient[]>;
     updateAnimalById(id: string): Promise<Ingredient>;
     deleteIngredientById(id: string): Promise<Ingredient>;
