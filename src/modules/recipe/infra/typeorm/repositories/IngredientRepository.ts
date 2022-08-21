@@ -1,4 +1,4 @@
-import { ICreateIngredientsDTO } from "@modules/recipe/dtos/ICreateIngredientsDTO";
+import { ICreateIngredientDTO } from "@modules/recipe/dtos/ICreateIngredientDTO";
 import { IIngredientRepository } from "@modules/recipe/repositories/IIngredientRepository";
 import { Repository } from "typeorm";
 
@@ -21,7 +21,7 @@ export class IngredientRepository implements IIngredientRepository {
         weight,
         animal,
         color,
-    }: ICreateIngredientsDTO): Promise<Ingredient> {
+    }: ICreateIngredientDTO): Promise<Ingredient> {
         const ingredient = this.repository.create({
             id,
             description,
