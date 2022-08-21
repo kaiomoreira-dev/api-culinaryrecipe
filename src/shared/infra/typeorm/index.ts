@@ -1,3 +1,4 @@
+import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
 import { DataSource } from "typeorm";
 
@@ -15,7 +16,7 @@ const dataSource = new DataSource({
       : "culinary_recipes",
 
   // importar entidades ex: [Recipes]
-  entities: [Recipe],
+  entities: [Recipe, Ingredient],
   // importar migrations ex: [CreateRecipes102348998]
   migrations: [CreateRecipe1660942928513, CreateIngredient1661028123973],
 });
