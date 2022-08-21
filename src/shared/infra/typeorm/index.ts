@@ -6,6 +6,7 @@ import { CreateRecipe1660942928513 } from "./migrations/1660942928513-CreateReci
 import { CreateIngredient1661028123973 } from "./migrations/1661028123973-CreateIngredient";
 import { CreateRecipesIngredients1661042649597 } from "./migrations/1661042649597-CreateRecipesIngredients";
 import { AlterAnimalColorIsNullAbleTrue1661049819867 } from "./migrations/1661049819867-AlterAnimalColorIsNullAbleTrue";
+import { AlterRecipeRemoveIngredient1661092158623 } from "./migrations/1661092158623-AlterRecipeRemoveIngredient";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -25,6 +26,7 @@ const dataSource = new DataSource({
     CreateIngredient1661028123973,
     CreateRecipesIngredients1661042649597,
     AlterAnimalColorIsNullAbleTrue1661049819867,
+    AlterRecipeRemoveIngredient1661092158623,
   ],
 });
 
