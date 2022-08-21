@@ -28,7 +28,6 @@ export class Recipe {
         joinColumns: [{ name: "recipe_id" }],
         inverseJoinColumns: [{ name: "ingredient_id" }],
     })
-    @Column()
     ingredients: Ingredient;
 
     @Column()
