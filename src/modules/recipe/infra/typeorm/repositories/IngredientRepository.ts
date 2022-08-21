@@ -39,14 +39,14 @@ export class IngredientRepository implements IIngredientRepository {
     async list(): Promise<Ingredient[]> {
         return this.repository.find();
     }
-    async findAllIngredientsByAnimal(animal: string): Promise<Ingredient[]> {
-        return this.repository.find({ where: { animal } });
+    async findIngredientByAnimal(animal: string): Promise<Ingredient> {
+        return this.repository.findOneBy({ animal });
     }
     async findIngredientById(id: string): Promise<Ingredient> {
         return this.repository.findOneBy({ id });
     }
-    async findAllIngredientsByName(name: string): Promise<Ingredient[]> {
-        return this.repository.find({ where: { name } });
+    async findIngredientByName(name: string): Promise<Ingredient> {
+        return this.repository.findOneBy({ name });
     }
     async updateAnimalById(id: string, animal: string): Promise<Ingredient> {
         await this.repository
