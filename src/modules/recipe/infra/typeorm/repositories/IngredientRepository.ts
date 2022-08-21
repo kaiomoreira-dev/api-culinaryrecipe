@@ -58,7 +58,11 @@ export class IngredientRepository implements IIngredientRepository {
 
         return this.repository.findOneBy({ id });
     }
-    deleteIngredientById(id: string): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async deleteIngredientById(id: string): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .delete()
+            .where({ id })
+            .execute();
     }
 }
