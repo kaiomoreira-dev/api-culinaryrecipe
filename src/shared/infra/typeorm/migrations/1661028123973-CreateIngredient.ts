@@ -2,16 +2,6 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateIngredient1661028123973 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    // id?:string;
-    // description:string;
-    // name:string;
-    // weight: number;
-    // unity:number;
-    // animal?:string;
-    // color?:string;
-    // created_at: string;
-    // updated_at: string;
-
     await queryRunner.createTable(
       new Table({
         name: "ingredients",
