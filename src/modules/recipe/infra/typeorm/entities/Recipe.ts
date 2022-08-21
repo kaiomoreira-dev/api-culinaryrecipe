@@ -28,7 +28,7 @@ export class Recipe {
         joinColumns: [{ name: "recipe_id" }],
         inverseJoinColumns: [{ name: "ingredient_id" }],
     })
-    ingredients: Ingredient[];
+    ingredients?: Ingredient[];
 
     @Column()
     time: number;
