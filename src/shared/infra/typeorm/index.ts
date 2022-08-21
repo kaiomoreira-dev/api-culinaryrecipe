@@ -5,6 +5,7 @@ import { DataSource } from "typeorm";
 import { CreateRecipe1660942928513 } from "./migrations/1660942928513-CreateRecipe";
 import { CreateIngredient1661028123973 } from "./migrations/1661028123973-CreateIngredient";
 import { CreateRecipesIngredients1661042649597 } from "./migrations/1661042649597-CreateRecipesIngredients";
+import { AlterAnimalColor1661049112974 } from "./migrations/1661049112974-AlterAnimalColor";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -23,6 +24,7 @@ const dataSource = new DataSource({
     CreateRecipe1660942928513,
     CreateIngredient1661028123973,
     CreateRecipesIngredients1661042649597,
+    AlterAnimalColor1661049112974,
   ],
 });
 
