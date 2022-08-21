@@ -8,4 +8,10 @@ export class ListIngredientUseCase {
         @inject("IngredientRepository")
         private ingredientRepository: IIngredientRepository
     ) {}
+
+    async execute(): Promise<Ingredient[]> {
+        const ingredients = await this.ingredientRepository.list();
+
+        return ingredients;
+    }
 }
