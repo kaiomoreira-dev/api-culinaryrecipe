@@ -1,8 +1,8 @@
-import { ICreateIngredientsDTO } from "../dtos/ICreateIngredientsDTO";
+import { ICreateIngredientDTO } from "../dtos/ICreateIngredientDTO";
 import { Ingredient } from "../infra/typeorm/entities/Ingredient";
 
 export interface IIngredientRepository {
-    create(data: ICreateIngredientsDTO): Promise<Ingredient>;
+    create(data: ICreateIngredientDTO): Promise<Ingredient>;
     list(): Promise<Ingredient[]>;
     findAllIngredientsByAnimal(animal: string): Promise<Ingredient[]>;
     findIngredientById(id: string): Promise<Ingredient>;
