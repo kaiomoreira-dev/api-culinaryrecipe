@@ -19,16 +19,17 @@ export class CreateRecipeUseCase {
         additional_features,
         time,
         total_guests,
+        author,
     }: ICreateRecipeDTO): Promise<Recipe> {
         const recipe = await this.recipeRepository.create({
             name,
             description,
-            ingredients,
             difficulty,
             dish_type,
             additional_features,
             time,
             total_guests,
+            author,
         });
 
         return recipe;
