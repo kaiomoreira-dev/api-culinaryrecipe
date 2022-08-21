@@ -32,7 +32,7 @@ $ yarn ou npm install
 $ docker-compose up -d
 
 ## criar database de test fin_api_test dentro do postgress
-$ create database culinary-recipes-test
+$ create database culinary_recipes_test
 
 ## Iniciar aplicação
 
