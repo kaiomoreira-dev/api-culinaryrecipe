@@ -2,6 +2,7 @@ import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
 import { DataSource } from "typeorm";
 
 import { CreateRecipe1660942928513 } from "./migrations/1660942928513-CreateRecipe";
+import { CreateIngredient1661028123973 } from "./migrations/1661028123973-CreateIngredient";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -16,7 +17,7 @@ const dataSource = new DataSource({
   // importar entidades ex: [Recipes]
   entities: [Recipe],
   // importar migrations ex: [CreateRecipes102348998]
-  migrations: [CreateRecipe1660942928513],
+  migrations: [CreateRecipe1660942928513, CreateIngredient1661028123973],
 });
 
 export function createConnection(host = "localhost"): Promise<DataSource> {
