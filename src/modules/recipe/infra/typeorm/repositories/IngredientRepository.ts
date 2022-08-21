@@ -48,8 +48,15 @@ export class IngredientRepository implements IIngredientRepository {
     async findAllIngredientsByName(name: string): Promise<Ingredient[]> {
         return this.repository.find({ where: { name } });
     }
-    updateAnimalById(id: string): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async updateAnimalById(id: string, animal: string): Promise<Ingredient> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .where({ id })
+            .set({ animal })
+            .execute();
+
+        return this.repository.findOneBy({ id });
     }
     deleteIngredientById(id: string): Promise<Ingredient> {
         throw new Error("Method not implemented.");
