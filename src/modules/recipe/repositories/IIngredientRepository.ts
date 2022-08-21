@@ -7,6 +7,6 @@ export interface IIngredientRepository {
     findAllIngredientsByAnimal(animal: string): Promise<Ingredient[]>;
     findIngredientById(id: string): Promise<Ingredient>;
     findAllIngredientsByName(name: string): Promise<Ingredient[]>;
-    updateAnimalById(id: string): Promise<Ingredient>;
+    updateAnimalById(id: string, animal: string): Promise<Ingredient>;
     deleteIngredientById(id: string): Promise<Ingredient>;
 }
