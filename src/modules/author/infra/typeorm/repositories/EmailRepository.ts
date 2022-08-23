@@ -12,8 +12,12 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
-    create(data: ICreateEmailDTO): Promise<Email> {
-        throw new Error("Method not implemented.");
+    async create({ id, email }: ICreateEmailDTO): Promise<Email> {
+        const e_mail = this.repository.create({ id, email });
+
+        await this.repository.save(e_mail);
+
+        return e_mail;
     }
     list(): Promise<Email[]> {
         throw new Error("Method not implemented.");
