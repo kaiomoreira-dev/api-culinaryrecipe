@@ -20,4 +20,10 @@ export class Email {
 
     @UpdateDateColumn()
     private updated_at: Date;
+
+    constructor() {
+        if (!this.id) {
+            this.id = uuidv4();
+        }
+    }
 }
