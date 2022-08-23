@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 @Entity("email")
 export class Email {
     @PrimaryColumn()
-    private id: string;
+    private id?: string;
 
     @Column()
     private email: string;
