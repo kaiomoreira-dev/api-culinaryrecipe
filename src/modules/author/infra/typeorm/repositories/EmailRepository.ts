@@ -19,7 +19,7 @@ export class EmailRepository implements IEmailRepository {
 
         return e_mail;
     }
-    list(): Promise<Email[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Email[]> {
+        return this.repository.find();
     }
 }
