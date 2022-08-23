@@ -4,7 +4,7 @@ export class CreateEmail1661287166449 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "email",
+        name: "emails",
         columns: [
           {
             name: "id",
