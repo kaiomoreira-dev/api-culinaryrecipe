@@ -5,6 +5,7 @@ import {
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 @Entity("email")
 export class Email {
@@ -19,6 +20,4 @@ export class Email {
 
     @UpdateDateColumn()
     private updated_at: Date;
-
-    cons;
 }
