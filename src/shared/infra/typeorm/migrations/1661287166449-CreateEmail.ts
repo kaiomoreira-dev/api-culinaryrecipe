@@ -31,6 +31,6 @@ export class CreateEmail1661287166449 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("email");
+    await queryRunner.dropTable("emails");
   }
 }
