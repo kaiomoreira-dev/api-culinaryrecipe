@@ -2,6 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     ManyToOne,
     PrimaryColumn,
     UpdateDateColumn,
@@ -18,10 +19,9 @@ export class Email {
     @Column()
     e_mail: string;
 
-    @ManyToOne(() => Author, (author) => author.emails)
-    author: Author;
-
-    @Column()
+    @ManyToOne(() => Author)
+    @JoinColumn({ name: "author_id" })
+    author?: Author;
     author_id?: string;
 
     @CreateDateColumn()
