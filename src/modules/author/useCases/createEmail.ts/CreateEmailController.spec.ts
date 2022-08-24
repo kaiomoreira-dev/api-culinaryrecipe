@@ -9,13 +9,13 @@ import { createConnection } from "@shared/infra/typeorm";
 let connection: DataSource;
 
 describe("Create Email Controller", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
         connection = await createConnection("localhost");
 
         await connection.runMigrations();
     });
 
-    afterAll(async () => {
+    afterEach(async () => {
         await connection.dropDatabase();
 
         await connection.destroy();
