@@ -11,7 +11,7 @@ export class EmailRepositoryInMemory implements IEmailRepository {
 
         Object.assign(email, {
             id,
-            email,
+            e_mail,
         });
 
         this.repository.push(email);
