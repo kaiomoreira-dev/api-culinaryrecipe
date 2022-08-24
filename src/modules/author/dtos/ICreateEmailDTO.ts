@@ -1,5 +1,5 @@
 export interface ICreateEmailDTO {
     id?: string;
 
-    email: string;
+    e_mail: string;
 }
