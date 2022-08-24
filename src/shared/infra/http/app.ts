@@ -3,9 +3,9 @@ import express, { NextFunction, Request, Response } from "express";
 
 import "dotenv/config";
 
-import "express-async-errors";
-
 import "reflect-metadata";
+
+import "express-async-errors";
 
 import "@shared/container";
 
