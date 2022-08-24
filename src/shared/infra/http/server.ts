@@ -1,9 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createConnection } from "@shared/infra/typeorm";
 
-import "reflect-metadata";
-import "dotenv/config";
-
 import { app } from "./app";
 
 createConnection();
