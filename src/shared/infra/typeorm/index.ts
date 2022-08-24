@@ -1,3 +1,4 @@
+import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import { Email } from "@modules/author/infra/typeorm/entities/Email";
 import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
@@ -9,6 +10,7 @@ import { CreateRecipesIngredients1661042649597 } from "./migrations/166104264959
 import { AlterAnimalColorIsNullAbleTrue1661049819867 } from "./migrations/1661049819867-AlterAnimalColorIsNullAbleTrue";
 import { AlterRecipeRemoveIngredient1661092158623 } from "./migrations/1661092158623-AlterRecipeRemoveIngredient";
 import { CreateEmail1661287166449 } from "./migrations/1661287166449-CreateEmail";
+import { CreateAuthor1661369761866 } from "./migrations/1661369761866-CreateAuthor";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -21,7 +23,7 @@ const dataSource = new DataSource({
       : "culinary_recipes",
 
   // importar entidades ex: [Recipes]
-  entities: [Recipe, Ingredient, Email],
+  entities: [Recipe, Ingredient, Email, Author],
   // importar migrations ex: [CreateRecipes102348998]
   migrations: [
     CreateRecipe1660942928513,
@@ -30,6 +32,7 @@ const dataSource = new DataSource({
     AlterAnimalColorIsNullAbleTrue1661049819867,
     AlterRecipeRemoveIngredient1661092158623,
     CreateEmail1661287166449,
+    CreateAuthor1661369761866,
   ],
 });
 
