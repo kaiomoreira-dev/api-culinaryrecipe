@@ -1,9 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import express, { NextFunction, Request, Response } from "express";
 
-import "@shared/container";
+import "dotenv/config";
 
 import "express-async-errors";
+
+import "reflect-metadata";
+
+import "@shared/container";
 
 import { AppError } from "@shared/errors/AppError";
 import { routes } from "@shared/infra/http/routes";
