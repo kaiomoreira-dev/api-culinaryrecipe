@@ -3,6 +3,9 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinTable,
+    ManyToOne,
+    OneToMany,
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
@@ -20,8 +23,10 @@ export class Author {
     @Column()
     whatsapp: string;
 
+    @OneToMany(() => Recipe, (recipe) => recipe.author)
     recipes: Recipe[];
 
+    @OneToMany(() => Email, (email) => email.author)
     emails: Email[];
 
     @CreateDateColumn()
