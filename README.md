@@ -1,5 +1,5 @@
 ## Descrição
-* Essa aplicação tem como objetivo realizar um CRUD de Receitas culinária. A Receita poderá conter diversos Ingredient como partes que depende de um Produto. E um Author como reponsavel que poderá ter diversos e-mais especificos.
+* Essa aplicação tem como objetivo realizar um CRUD de Receitas culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que poderá ter diversos e-mais especificos para contato.
 
 ### Pré-requisitos
 
