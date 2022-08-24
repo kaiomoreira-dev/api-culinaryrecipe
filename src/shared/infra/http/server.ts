@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+
 import { createConnection } from "@shared/infra/typeorm";
 
 import { app } from "./app";
