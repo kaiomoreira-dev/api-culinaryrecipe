@@ -1,9 +1,12 @@
+import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import {
     Column,
     CreateDateColumn,
     Entity,
     JoinTable,
     ManyToMany,
+    ManyToOne,
+    OneToMany,
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
@@ -45,8 +48,8 @@ export class Recipe {
     @Column()
     total_guests: number;
 
-    @Column()
-    author: string;
+    @ManyToOne(() => Author, (author) => author.recipes)
+    author: Author;
 
     @CreateDateColumn()
     created_at: Date;
