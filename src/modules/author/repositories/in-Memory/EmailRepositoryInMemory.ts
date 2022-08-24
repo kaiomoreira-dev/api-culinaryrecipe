@@ -18,8 +18,8 @@ export class EmailRepositoryInMemory implements IEmailRepository {
 
         return email;
     }
-    list(): Promise<Email[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Email[]> {
+        return this.repository;
     }
     findEmailByE_mail(email: string): Promise<Email> {
         throw new Error("Method not implemented.");
