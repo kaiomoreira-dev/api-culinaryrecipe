@@ -9,13 +9,13 @@ import { createConnection } from "@shared/infra/typeorm";
 let connection: DataSource;
 
 describe("Create Email Controller", () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
         connection = await createConnection("localhost");
 
         await connection.runMigrations();
     });
 
-    afterEach(async () => {
+    afterAll(async () => {
         await connection.dropDatabase();
 
         await connection.destroy();
@@ -30,5 +30,19 @@ describe("Create Email Controller", () => {
         console.log(response.body);
 
         expect(response.status).toEqual(200);
+    });
+
+    it("should not be able to create a new email with same", async () => {
+        await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "test@test.com",
+        });
+
+        const response = await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "test@test.com",
+        });
+
+        expect(response.status).toBe(401);
     });
 });
