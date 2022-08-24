@@ -6,8 +6,17 @@ import { IEmailRepository } from "../IEmailRepository";
 export class EmailRepositoryInMemory implements IEmailRepository {
     private repository: Email[] = [];
 
-    create(data: ICreateEmailDTO): Promise<Email> {
-        throw new Error("Method not implemented.");
+    async create({ id, e_mail }: ICreateEmailDTO): Promise<Email> {
+        const email = new Email();
+
+        Object.assign(email, {
+            id,
+            email,
+        });
+
+        this.repository.push(email);
+
+        return email;
     }
     list(): Promise<Email[]> {
         throw new Error("Method not implemented.");
