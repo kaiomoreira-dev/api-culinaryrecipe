@@ -12,17 +12,16 @@ export class CreateEmailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async execute({ id, email }: ICreateEmailDTO): Promise<Email> {
+    async execute({ id, e_mail }: ICreateEmailDTO): Promise<Email> {
         const emailValidator = await this.emailRepository.findEmailByE_mail(
-            email
+            e_mail
         );
 
         if (emailValidator) {
             throw new AppError("Email is already exists.", 401);
         }
+        const email = await this.emailRepository.create({ id, e_mail });
 
-        const e_mail = await this.emailRepository.create({ id, email });
-
-        return e_mail;
+        return email;
     }
 }

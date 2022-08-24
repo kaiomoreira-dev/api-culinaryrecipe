@@ -7,19 +7,19 @@ import {
 } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
-@Entity("email")
+@Entity("emails")
 export class Email {
     @PrimaryColumn()
-    private id?: string;
+    id?: string;
 
     @Column()
-    private email: string;
+    e_mail: string;
 
     @CreateDateColumn()
-    private created_at: Date;
+    created_at: Date;
 
     @UpdateDateColumn()
-    private updated_at: Date;
+    updated_at: Date;
 
     constructor() {
         if (!this.id) {

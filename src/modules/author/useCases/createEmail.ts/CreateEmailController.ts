@@ -5,12 +5,12 @@ import { CreateEmailUseCase } from "./CreateEmailUseCase";
 
 export class CreateEmailController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { email } = request.body;
+        const { e_mail } = request.body;
 
         const createEmailUseCase = container.resolve(CreateEmailUseCase);
 
-        const e_mail = await createEmailUseCase.execute(email);
+        const email = await createEmailUseCase.execute({ e_mail });
 
-        return response.status(200).json(e_mail);
+        return response.status(200).json(email);
     }
 }
