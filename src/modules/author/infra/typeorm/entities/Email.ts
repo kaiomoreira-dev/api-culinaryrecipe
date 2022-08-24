@@ -21,6 +21,9 @@ export class Email {
     @ManyToOne(() => Author, (author) => author.emails)
     author: Author;
 
+    @Column()
+    author_id?: string;
+
     @CreateDateColumn()
     created_at: Date;
 
