@@ -1,5 +1,5 @@
 ## Descrição
-* Essa aplicação tem como objetivo atender os usuário que poderão criar, buscar, atualizar e deletar uma receita culinária.
+* Essa aplicação tem como objetivo realizar um CRUD de Receitas culinária. A Receita poderá conter diversos Ingredient como partes que depende de um Produto. E um Author como reponsavel que poderá ter diversos e-mais especificos.
 
 ### Pré-requisitos
 
