@@ -1,10 +1,24 @@
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
+import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
+import { inject, injectable } from "tsyringe";
 
 import { IAuthorRepository } from "../IAuthorRepository";
+import { IEmailRepository } from "../IEmailRepository";
 
+@injectable()
 export class AuthorRepositoryInMemory implements IAuthorRepository {
-    create(data: ICreateAuthorDTO): Promise<Author> {
+    repository: Author[] = [];
+
+    constructor(
+        @inject("EmailRepository")
+        private emailRepository: IEmailRepository,
+
+        @inject("RecipeRepository")
+        private recipeRepository: IRecipeRepository
+    ) {}
+
+    async create(data: ICreateAuthorDTO): Promise<Author> {
         throw new Error("Method not implemented.");
     }
     list(): Promise<Author[]> {
