@@ -12,6 +12,7 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
+
     async findRecipeByName(name: string): Promise<Recipe> {
         return this.repository.findOneBy({ name });
     }
