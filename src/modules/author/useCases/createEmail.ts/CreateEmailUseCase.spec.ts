@@ -23,6 +23,8 @@ describe("Create e-mail UseCase", () => {
 
         const e_mail = await createEmailUseCase.execute(email);
 
+        console.log(e_mail);
+
         expect(e_mail).toHaveProperty("id");
     });
 
