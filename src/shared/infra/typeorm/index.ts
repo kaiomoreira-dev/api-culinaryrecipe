@@ -12,6 +12,7 @@ import { AlterRecipeRemoveIngredient1661092158623 } from "./migrations/166109215
 import { CreateEmail1661287166449 } from "./migrations/1661287166449-CreateEmail";
 import { CreateAuthor1661369761866 } from "./migrations/1661369761866-CreateAuthor";
 import { AlterEmailAddAuthorId1661383278848 } from "./migrations/1661383278848-AlterEmailAddAuthorId";
+import { AlterRecipeChangeAuthor1661385979738 } from "./migrations/1661385979738-AlterRecipeChangeAuthor";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -35,6 +36,7 @@ const dataSource = new DataSource({
     CreateEmail1661287166449,
     CreateAuthor1661369761866,
     AlterEmailAddAuthorId1661383278848,
+    AlterRecipeChangeAuthor1661385979738,
   ],
 });
 
