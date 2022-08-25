@@ -5,6 +5,7 @@ import { Repository } from "typeorm";
 import dataSource from "@shared/infra/typeorm";
 
 import { Author } from "../entities/Author";
+import { Email } from "../entities/Email";
 
 export class AuthorRepository implements IAuthorRepository {
     private repository: Repository<Author>;
@@ -35,8 +36,13 @@ export class AuthorRepository implements IAuthorRepository {
     async list(): Promise<Author[]> {
         return this.repository.find();
     }
-    findAuthorByEmail(email: string): Promise<Author> {
-        throw new Error("Method not implemented.");
+    async findAuthorByEmail(e_mail: string): Promise<Author> {
+        const author = this.repository
+            .createQueryBuilder("a")
+            .leftJoinAndSelect("a.emails", "emails")
+            .where("o.e_mail = :e_mail", { e_mail })
+            .getOne();
+        return author;
     }
     findAuthorByName(name: string): Promise<Author> {
         throw new Error("Method not implemented.");
