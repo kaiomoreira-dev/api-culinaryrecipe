@@ -39,11 +39,19 @@ export class CreateAuthorUseCase {
 
         // validando se author existe
         if (authorValidator) {
-            throw new AppError("Email is already exists.", 401);
+            throw new AppError("Author is already exists.", 401);
         }
 
+        // criando author sem emails e recipes
+        const author = await this.authorRepository.create({
+            id,
+            name,
+            whatsapp,
+        });
+
+        //= ====================Email===============
         // arrEmails vazio
-        let arrEmails: Email[] = [];
+        const arrEmails: Email[] = [];
 
         // convertendo emails[] para string[]
         const emailsFormat = emails as unknown as string[];
@@ -56,14 +64,23 @@ export class CreateAuthorUseCase {
             );
             // validando se email existe
             if (!emailValidator) {
+                // deletar author se email nao for valido
+                // await this.authorRepository.deleteAuthorById(author.id);
+
                 throw new AppError("Email not exists.", 404);
             }
             // enviando email existente para arrEmails[]
-            arrEmails = [emailValidator];
-        }
+            arrEmails.push(emailValidator);
 
+            // // atualiza author_id
+            // emailValidator.author_id = author.id;
+
+            // // confirma author_id alterado
+            // await this.emailRepository.create(emailValidator);
+        }
+        //= ====================Recipe===============
         // arrRecipes[] vazio
-        let arrRecipes: Recipe[] = [];
+        const arrRecipes: Recipe[] = [];
 
         // convertendo recipes[] para string[]
         const recipesFormat = recipes as unknown as string[];
@@ -76,20 +93,29 @@ export class CreateAuthorUseCase {
 
             // validando se recipe existe
             if (!recipeValidator) {
+                // deletar author se recipe nao for valido
+                // await this.authorRepository.deleteAuthorById(author.id);
+
                 throw new AppError("Recipe not exists.", 404);
             }
             // enviando recipe existente para arrRecipes[]
-            arrRecipes = [recipeValidator];
+            arrRecipes.push(recipeValidator);
+
+            // // atualiza author_id
+            // recipeValidator.author_id = author.id;
+
+            // // confirma author_id alterado
+            // await this.recipeRepository.create(recipeValidator);
         }
 
-        // criando author
-        const author = await this.authorRepository.create({
-            id,
-            name,
-            whatsapp,
-            emails: arrEmails,
-            recipes: arrRecipes,
-        });
+        // atualiza recipes
+        author.recipes = arrRecipes;
+
+        // atualiza emails
+        author.emails = arrEmails;
+
+        // confirmar emails e recipes adicionado
+        await this.authorRepository.create(author);
 
         return author;
     }
