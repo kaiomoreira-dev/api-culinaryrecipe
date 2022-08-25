@@ -5,6 +5,8 @@ import { IEmailRepository } from "@modules/author/repositories/IEmailRepository"
 import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "@shared/errors/AppError";
+
 @injectable()
 export class CreateAuthorUseCase {
     constructor(
@@ -25,9 +27,11 @@ export class CreateAuthorUseCase {
         emails,
         recipes,
     }: ICreateAuthorDTO): Promise<Author> {
-        const author = await this.authorRepository.findAuthorByName(name);
+        const authorValidator = await this.authorRepository.findAuthorByName(
+            name
+        );
 
-        if (author) {
+        if (authorValidator) {
             throw new AppError("Email is already exists.", 401);
         }
     }
