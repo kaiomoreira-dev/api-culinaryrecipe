@@ -72,11 +72,11 @@ export class CreateAuthorUseCase {
             // enviando email existente para arrEmails[]
             arrEmails.push(emailValidator);
 
-            // // atualiza author_id
-            // emailValidator.author_id = author.id;
+            // atualiza author_id
+            emailValidator.author_id = author.id;
 
-            // // confirma author_id alterado
-            // await this.emailRepository.create(emailValidator);
+            // confirma author_id alterado
+            await this.emailRepository.create(emailValidator);
         }
         //= ====================Recipe===============
         // arrRecipes[] vazio
@@ -101,11 +101,11 @@ export class CreateAuthorUseCase {
             // enviando recipe existente para arrRecipes[]
             arrRecipes.push(recipeValidator);
 
-            // // atualiza author_id
-            // recipeValidator.author_id = author.id;
+            // atualiza author_id
+            recipeValidator.author_id = author.id;
 
-            // // confirma author_id alterado
-            // await this.recipeRepository.create(recipeValidator);
+            // confirma author_id alterado
+            await this.recipeRepository.create(recipeValidator);
         }
 
         // atualiza recipes
