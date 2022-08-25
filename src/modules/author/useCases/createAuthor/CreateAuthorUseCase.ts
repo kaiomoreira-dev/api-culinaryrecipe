@@ -82,7 +82,7 @@ export class CreateAuthorUseCase {
             arrRecipes = [recipeValidator];
         }
 
-        // criando autor com lista de emails e recipes
+        // criando author
         const author = await this.authorRepository.create({
             id,
             name,
