@@ -1,4 +1,6 @@
+import { AuthorRepository } from "@modules/author/infra/typeorm/repositories/AuthorRepository";
 import { EmailRepository } from "@modules/author/infra/typeorm/repositories/EmailRepository";
+import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
 import { IEmailRepository } from "@modules/author/repositories/IEmailRepository";
 import { IngredientRepository } from "@modules/recipe/infra/typeorm/repositories/IngredientRepository";
 import { RecipeRepository } from "@modules/recipe/infra/typeorm/repositories/RecipeRepository";
@@ -19,4 +21,9 @@ container.registerSingleton<IIngredientRepository>(
 container.registerSingleton<IEmailRepository>(
   "EmailRepository",
   EmailRepository
+);
+
+container.registerSingleton<IAuthorRepository>(
+  "AuthorRepository",
+  AuthorRepository
 );
