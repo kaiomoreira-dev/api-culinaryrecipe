@@ -26,7 +26,7 @@ export class CreateRecipeUseCase {
         additional_features,
         time,
         total_guests,
-        author,
+        author_id,
     }: ICreateRecipeDTO): Promise<Recipe> {
         // criando recipe
         const recipe = await this.recipeRepository.create({
@@ -37,7 +37,7 @@ export class CreateRecipeUseCase {
             additional_features,
             time,
             total_guests,
-            author,
+            author_id,
         });
 
         // array vazio de Ingredient

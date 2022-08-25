@@ -3,6 +3,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     JoinTable,
     ManyToMany,
     ManyToOne,
@@ -48,8 +49,10 @@ export class Recipe {
     @Column()
     total_guests: number;
 
-    @ManyToOne(() => Author, (author) => author.recipes)
-    author: Author;
+    @ManyToOne(() => Author)
+    @JoinColumn({ name: "author_id" })
+    author?: Author;
+    author_id?: string;
 
     @CreateDateColumn()
     created_at: Date;

@@ -13,7 +13,7 @@ export class CreateRecipeController {
             dish_type,
             additional_features,
             time,
-            author,
+            author_id,
             total_guests,
         } = request.body;
 
@@ -27,7 +27,7 @@ export class CreateRecipeController {
             dish_type,
             additional_features,
             time,
-            author,
+            author_id,
             total_guests,
         });
 
