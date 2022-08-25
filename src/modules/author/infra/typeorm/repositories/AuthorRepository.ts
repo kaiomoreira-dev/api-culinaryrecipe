@@ -47,7 +47,11 @@ export class AuthorRepository implements IAuthorRepository {
     async findAuthorByName(name: string): Promise<Author> {
         return this.repository.findOneBy({ name });
     }
-    deleteAuthorById(id: string): Promise<Author> {
-        throw new Error("Method not implemented.");
+    async deleteAuthorById(id: string): Promise<void> {
+        await this.repository
+            .createQueryBuilder("a")
+            .delete()
+            .where("a.id = :id", { id })
+            .execute();
     }
 }
