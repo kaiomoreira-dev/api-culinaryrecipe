@@ -6,5 +6,5 @@ export interface IAuthorRepository {
     list(): Promise<Author[]>;
     findAuthorByEmail(e_mail: string): Promise<Author>;
     findAuthorByName(name: string): Promise<Author>;
-    deleteAuthorById(id: string): Promise<Author>;
+    deleteAuthorById(id: string): Promise<void>;
 }
