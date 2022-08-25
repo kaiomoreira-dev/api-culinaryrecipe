@@ -28,7 +28,6 @@ export class CreateRecipeUseCase {
         additional_features,
         time,
         total_guests,
-        author_id,
     }: ICreateRecipeDTO): Promise<Recipe> {
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
@@ -61,7 +60,6 @@ export class CreateRecipeUseCase {
             additional_features,
             time,
             total_guests,
-            author_id,
             ingredients: addIngredients,
         });
 
