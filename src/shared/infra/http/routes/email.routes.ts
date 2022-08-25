@@ -1,5 +1,5 @@
-import { CreateEmailController } from "@modules/author/useCases/createEmail.ts/CreateEmailController";
-import { ListEmailsController } from "@modules/author/useCases/listEmails.ts/ListEmailsController";
+import { CreateEmailController } from "@modules/author/useCases/createEmail/CreateEmailController";
+import { ListEmailsController } from "@modules/author/useCases/listEmails/ListEmailsController";
 import { Router } from "express";
 
 export const emailRoutes = Router();
