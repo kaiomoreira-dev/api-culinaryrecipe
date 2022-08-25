@@ -52,6 +52,8 @@ export class Recipe {
     @ManyToOne(() => Author)
     @JoinColumn({ name: "author_id" })
     author?: Author;
+
+    @Column()
     author_id?: string;
 
     @CreateDateColumn()
