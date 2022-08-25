@@ -13,8 +13,24 @@ export class AuthorRepository implements IAuthorRepository {
         this.repository = dataSource.getRepository(Author);
     }
 
-    create(data: ICreateAuthorDTO): Promise<Author> {
-        throw new Error("Method not implemented.");
+    async create({
+        id,
+        name,
+        whatsapp,
+        emails,
+        recipes,
+    }: ICreateAuthorDTO): Promise<Author> {
+        const author = this.repository.create({
+            id,
+            name,
+            whatsapp,
+            emails,
+            recipes,
+        });
+
+        await this.repository.save(author);
+
+        return author;
     }
     list(): Promise<Author[]> {
         throw new Error("Method not implemented.");
