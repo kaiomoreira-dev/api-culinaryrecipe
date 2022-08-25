@@ -10,6 +10,7 @@ export class AlterRecipeChangeAuthor1661385979738
       new TableColumn({
         name: "author_id",
         type: "uuid",
+        isNullable: true,
       })
     );
   }
@@ -17,7 +18,7 @@ export class AlterRecipeChangeAuthor1661385979738
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.changeColumn(
       "recipes",
-      "author",
+      "author_id",
       new TableColumn({
         name: "author",
         type: "varchar",
