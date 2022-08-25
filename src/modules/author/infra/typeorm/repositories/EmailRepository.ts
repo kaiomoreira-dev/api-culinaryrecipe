@@ -12,11 +12,12 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
+
     async findEmailByE_mail(e_mail: string): Promise<Email> {
         return this.repository.findOneBy({ e_mail });
     }
-    async create({ id, e_mail }: ICreateEmailDTO): Promise<Email> {
-        const email = this.repository.create({ id, e_mail });
+    async create({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
+        const email = this.repository.create({ id, e_mail, author_id });
 
         await this.repository.save(email);
 
