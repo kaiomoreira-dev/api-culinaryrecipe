@@ -71,7 +71,7 @@ export class CreateAuthorUseCase {
                 throw new AppError("Email not exists.", 404);
             }
             // validando se email existe para outro author
-            if (emailValidator.author_id) {
+            if (emailValidator.author_name) {
                 // deletar author se email nao for valido
                 await this.authorRepository.deleteAuthorById(author.id);
 
@@ -81,7 +81,7 @@ export class CreateAuthorUseCase {
             arrEmails.push(emailValidator);
 
             // atualiza author_id
-            emailValidator.author_id = author.id;
+            emailValidator.author_name = author.name;
 
             // confirma author_id alterado
             await this.emailRepository.create(emailValidator);
@@ -108,7 +108,7 @@ export class CreateAuthorUseCase {
                 throw new AppError("Recipe not exists.", 404);
             }
             // validando se existe para outro author
-            if (recipeValidator.author_id) {
+            if (recipeValidator.author_name) {
                 // deletar author se email nao for valido
                 await this.authorRepository.deleteAuthorById(author.id);
 
@@ -118,7 +118,7 @@ export class CreateAuthorUseCase {
             arrRecipes.push(recipeValidator);
 
             // atualiza author_id
-            recipeValidator.author_id = author.id;
+            recipeValidator.author_name = author.name;
 
             // confirma author_id alterado
             await this.recipeRepository.create(recipeValidator);
