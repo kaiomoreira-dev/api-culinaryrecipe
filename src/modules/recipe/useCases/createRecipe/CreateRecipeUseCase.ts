@@ -7,6 +7,8 @@ import { IIngredientRepository } from "@modules/recipe/repositories/IIngredientR
 import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "@shared/errors/AppError";
+
 @injectable()
 export class CreateRecipeUseCase {
     constructor(
@@ -28,18 +30,6 @@ export class CreateRecipeUseCase {
         total_guests,
         author_id,
     }: ICreateRecipeDTO): Promise<Recipe> {
-        // criando recipe
-        const recipe = await this.recipeRepository.create({
-            name,
-            description,
-            difficulty,
-            dish_type,
-            additional_features,
-            time,
-            total_guests,
-            author_id,
-        });
-
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
 
@@ -53,16 +43,27 @@ export class CreateRecipeUseCase {
             const foundIngredient =
                 await this.ingredientRepository.findIngredientByName(name);
 
+            if (!foundIngredient) {
+                throw new AppError("Ingredient not found", 404);
+            }
+
             // recebe Ingredient buscado pelo nome para
             // o array de Ingredient[]
             addIngredients = [foundIngredient];
         }
 
-        // atualizando ingredients em recipe
-        recipe.ingredients = addIngredients;
-
-        // salvando atualizações de ingredients em recipe
-        await this.recipeRepository.create(recipe);
+        // criando recipe
+        const recipe = await this.recipeRepository.create({
+            name,
+            description,
+            difficulty,
+            dish_type,
+            additional_features,
+            time,
+            total_guests,
+            author_id,
+            ingredients: addIngredients,
+        });
 
         return recipe;
     }
