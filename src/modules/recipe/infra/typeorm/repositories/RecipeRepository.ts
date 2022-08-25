@@ -16,8 +16,8 @@ export class RecipeRepository implements IRecipeRepository {
     async findRecipeByName(name: string): Promise<Recipe> {
         return this.repository.findOneBy({ name });
     }
-    async findRecipeByAuthor(author_id: string): Promise<Recipe> {
-        return this.repository.findOneBy({ author_id });
+    async findRecipeByAuthor(author_name: string): Promise<Recipe> {
+        return this.repository.findOneBy({ author_name });
     }
 
     async create({
@@ -30,7 +30,7 @@ export class RecipeRepository implements IRecipeRepository {
         ingredients,
         time,
         total_guests,
-        author_id,
+        author_name,
     }: ICreateRecipeDTO): Promise<Recipe> {
         const recipe = this.repository.create({
             id,
@@ -42,7 +42,7 @@ export class RecipeRepository implements IRecipeRepository {
             ingredients,
             time,
             total_guests,
-            author_id,
+            author_name,
         });
 
         await this.repository.save(recipe);
