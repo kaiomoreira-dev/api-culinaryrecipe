@@ -7,7 +7,6 @@ import {
     JoinTable,
     ManyToMany,
     ManyToOne,
-    OneToMany,
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
@@ -50,11 +49,11 @@ export class Recipe {
     total_guests: number;
 
     @ManyToOne(() => Author)
-    @JoinColumn({ name: "author_id" })
+    @JoinColumn({ name: "author_name", referencedColumnName: "name" })
     author?: Author;
 
     @Column()
-    author_id?: string;
+    author_name?: string;
 
     @CreateDateColumn()
     created_at: Date;
