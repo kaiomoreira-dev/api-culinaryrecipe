@@ -10,8 +10,8 @@ import { CreateRecipesIngredients1661042649597 } from "./migrations/166104264959
 import { AlterAnimalColorIsNullAbleTrue1661049819867 } from "./migrations/1661049819867-AlterAnimalColorIsNullAbleTrue";
 import { AlterRecipeRemoveIngredient1661092158623 } from "./migrations/1661092158623-AlterRecipeRemoveIngredient";
 import { CreateEmail1661287166449 } from "./migrations/1661287166449-CreateEmail";
-import { AlterEmailAddAuthorId1661383278848 } from "./migrations/1661383278848-AlterEmailAddAuthorId";
-import { AlterRecipeChangeAuthor1661385979738 } from "./migrations/1661385979738-AlterRecipeChangeAuthor";
+import { AlterEmailAddAuthorName1661383278848 } from "./migrations/1661383278848-AlterEmailAddAuthorName";
+import { AlterRecipeChangeAuthorForAuthorName1661385979738 } from "./migrations/1661385979738-AlterRecipeChangeAuthorForAuthorName";
 import { CreateAuthor1661395822193 } from "./migrations/1661395822193-CreateAuthor";
 
 const dataSource = new DataSource({
@@ -34,8 +34,8 @@ const dataSource = new DataSource({
     AlterAnimalColorIsNullAbleTrue1661049819867,
     AlterRecipeRemoveIngredient1661092158623,
     CreateEmail1661287166449,
-    AlterEmailAddAuthorId1661383278848,
-    AlterRecipeChangeAuthor1661385979738,
+    AlterEmailAddAuthorName1661383278848,
+    AlterRecipeChangeAuthorForAuthorName1661385979738,
     CreateAuthor1661395822193,
   ],
 });
