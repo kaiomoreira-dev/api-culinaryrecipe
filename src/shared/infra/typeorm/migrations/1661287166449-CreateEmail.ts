@@ -15,6 +15,7 @@ export class CreateEmail1661287166449 implements MigrationInterface {
             name: "e_mail",
             type: "varchar",
           },
+
           {
             name: "created_at",
             type: "timestamp",
