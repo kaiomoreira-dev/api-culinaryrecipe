@@ -16,8 +16,8 @@ export class EmailRepository implements IEmailRepository {
     async findEmailByE_mail(e_mail: string): Promise<Email> {
         return this.repository.findOneBy({ e_mail });
     }
-    async create({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
-        const email = this.repository.create({ id, e_mail, author_id });
+    async create({ id, e_mail, author_name }: ICreateEmailDTO): Promise<Email> {
+        const email = this.repository.create({ id, e_mail, author_name });
 
         await this.repository.save(email);
 
