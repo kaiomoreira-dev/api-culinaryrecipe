@@ -5,7 +5,7 @@ export interface ICreateRecipeDTO {
     name: string;
     description: string;
     ingredients?: Ingredient[];
-    author_id?: string;
+    author_name?: string;
     time: number;
     difficulty: string;
     dish_type: string;
