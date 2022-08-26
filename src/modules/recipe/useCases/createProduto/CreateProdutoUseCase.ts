@@ -16,6 +16,7 @@ export class CreateProdutoUseCase {
         id,
         name,
         description,
+        ingredients,
     }: ICreateProdutoDTO): Promise<Produto> {
         const produtoValidator = await this.produtoRepository.findProdutoByName(
             name
@@ -24,5 +25,14 @@ export class CreateProdutoUseCase {
         if (produtoValidator) {
             throw new AppError("Produto already exists", 401);
         }
+
+        const produto = await this.produtoRepository.create({
+            id,
+            name,
+            description,
+            ingredients,
+        });
+
+        return produto;
     }
 }
