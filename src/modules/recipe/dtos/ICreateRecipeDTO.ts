@@ -7,8 +7,8 @@ export interface ICreateRecipeDTO {
     ingredients?: Ingredient[];
     author_name?: string;
     time: number;
-    difficulty: string;
-    dish_type: string;
+    difficulty: "easy" | "medium" | "hard";
+    dish_type: "appetizer" | "main course" | "dessert";
     additional_features: string;
     total_guests: number;
 }
