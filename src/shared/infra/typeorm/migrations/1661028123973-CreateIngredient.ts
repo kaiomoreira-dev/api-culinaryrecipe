@@ -12,7 +12,7 @@ export class CreateIngredient1661028123973 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "name",
+            name: "produto_name",
             type: "varchar",
           },
           {
