@@ -30,8 +30,8 @@ export class ProdutoRepository implements IProdutoRepository {
         return produto;
     }
 
-    list(): Promise<Produto[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Produto[]> {
+        return this.repository.find();
     }
     findIngredientByProdutoName(produto_name: string): Promise<Produto> {
         throw new Error("Method not implemented.");
