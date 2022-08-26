@@ -12,7 +12,7 @@ export class IngredientRepository implements IIngredientRepository {
     constructor() {
         this.repository = dataSource.getRepository(Ingredient);
     }
-    findAllIngredientByProdutoName(
+    async findAllIngredientByProdutoName(
         produto_name: string
     ): Promise<Ingredient[]> {
         return this.repository
@@ -20,8 +20,20 @@ export class IngredientRepository implements IIngredientRepository {
             .where("produto_name = :produto_name", { produto_name })
             .getMany();
     }
-    updateIngredientById(id: string): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async updateIngredientById(
+        id: string,
+        produto_name?: string,
+        weight?: number,
+        unity?: number
+    ): Promise<Ingredient> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ produto_name, weight, unity })
+            .where("id = :id", { id })
+            .execute();
+
+        return this.repository.findOneBy({ id });
     }
 
     async create({
