@@ -11,10 +11,10 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     private authorRepository: Author[] = [];
 
     constructor(
-        @inject("EmailRepository")
+        @inject("EmailRepositoryInMemory")
         private emailRepository: IEmailRepository,
 
-        @inject("RecipeRepository")
+        @inject("RecipeRepositoryInMemory")
         private recipeRepository: IRecipeRepository
     ) {}
 
@@ -42,8 +42,14 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     async list(): Promise<Author[]> {
         return this.authorRepository;
     }
-    findAuthorByEmail(e_mail: string): Promise<Author> {
-        throw new Error("Method not implemented.");
+    async findAuthorByEmail(e_mail: string): Promise<Author> {
+        const email = await this.emailRepository.findEmailByE_mail(e_mail);
+
+        const author = this.authorRepository.find(
+            (author) => author.name === email.author_name
+        );
+
+        return author;
     }
     findAuthorByName(name: string): Promise<Author> {
         throw new Error("Method not implemented.");
