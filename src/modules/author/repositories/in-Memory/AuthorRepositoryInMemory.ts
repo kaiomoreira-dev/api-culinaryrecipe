@@ -39,8 +39,8 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
 
         return author;
     }
-    list(): Promise<Author[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Author[]> {
+        return this.authorRepository;
     }
     findAuthorByEmail(e_mail: string): Promise<Author> {
         throw new Error("Method not implemented.");
