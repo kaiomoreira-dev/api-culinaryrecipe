@@ -1,6 +1,7 @@
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import { Email } from "@modules/author/infra/typeorm/entities/Email";
 import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
+import { Produto } from "@modules/recipe/infra/typeorm/entities/Produto";
 import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
 import { DataSource } from "typeorm";
 
@@ -25,7 +26,7 @@ const dataSource = new DataSource({
       : "culinary_recipes",
 
   // importar entidades ex: [Recipes]
-  entities: [Recipe, Ingredient, Email, Author],
+  entities: [Recipe, Ingredient, Email, Author, Produto],
   // importar migrations ex: [CreateRecipes102348998]
   migrations: [
     CreateRecipe1660942928513,
