@@ -8,6 +8,8 @@ import { IIngredientRepository } from "@modules/recipe/repositories/IIngredientR
 import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
 import { container } from "tsyringe";
 
+import "@modules/author/repositories/in-Memory";
+
 container.registerSingleton<IRecipeRepository>(
   "RecipeRepository",
   RecipeRepository
