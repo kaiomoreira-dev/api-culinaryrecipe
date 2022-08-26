@@ -2,10 +2,14 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
+
+import { Produto } from "./Produto";
 
 @Entity("ingredients")
 export class Ingredient {
@@ -15,8 +19,12 @@ export class Ingredient {
     @Column()
     description: string;
 
+    @ManyToOne(() => Produto)
+    @JoinColumn({ name: "produto_name", referencedColumnName: "name" })
+    produtos?: Produto;
+
     @Column()
-    name: string;
+    produto_name?: string;
 
     @Column()
     weight: number;
