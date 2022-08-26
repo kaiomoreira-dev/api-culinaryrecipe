@@ -30,11 +30,11 @@ export class CreateRecipeUseCase {
         total_guests,
     }: ICreateRecipeDTO): Promise<Recipe> {
         if (difficulty !== "easy" && "medium" && "hard") {
-            throw new AppError("difficulty incorrect!");
+            throw new AppError("difficulty incorrect!", 401);
         }
 
         if (dish_type !== "appetizer" && "main course" && "dessert") {
-            throw new AppError("dish_type incorrect!");
+            throw new AppError("dish_type incorrect!", 401);
         }
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
