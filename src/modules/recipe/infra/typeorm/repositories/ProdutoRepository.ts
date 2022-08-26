@@ -12,9 +12,24 @@ export class ProdutoRepository implements IProdutoRepository {
     constructor() {
         this.repository = dataSource.getRepository(Produto);
     }
-    create(data: ICreateProdutoDTO): Promise<Produto> {
-        throw new Error("Method not implemented.");
+    async create({
+        id,
+        name,
+        description,
+        ingredients,
+    }: ICreateProdutoDTO): Promise<Produto> {
+        const produto = this.repository.create({
+            id,
+            name,
+            description,
+            ingredients,
+        });
+
+        await this.repository.save(produto);
+
+        return produto;
     }
+
     list(): Promise<Produto[]> {
         throw new Error("Method not implemented.");
     }
