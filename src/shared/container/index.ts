@@ -9,6 +9,8 @@ import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepositor
 import { container } from "tsyringe";
 
 import "@modules/author/repositories/in-Memory";
+import { IProdutoRepository } from "@modules/recipe/repositories/IProdutoRepository";
+import { ProdutoRepository } from "@modules/recipe/infra/typeorm/repositories/ProdutoRepository";
 
 container.registerSingleton<IRecipeRepository>(
   "RecipeRepository",
@@ -28,4 +30,9 @@ container.registerSingleton<IEmailRepository>(
 container.registerSingleton<IAuthorRepository>(
   "AuthorRepository",
   AuthorRepository
+);
+
+container.registerSingleton<IProdutoRepository>(
+  "ProdutoRepository",
+  ProdutoRepository
 );
