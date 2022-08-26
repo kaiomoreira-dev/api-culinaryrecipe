@@ -54,7 +54,11 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     async findAuthorByName(name: string): Promise<Author> {
         return this.authorRepository.find((author) => author.name === name);
     }
-    deleteAuthorById(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteAuthorById(id: string): Promise<void> {
+        const findAuthorIndex = this.authorRepository.findIndex(
+            (author) => author.id === id
+        );
+
+        this.authorRepository.splice(findAuthorIndex, 1);
     }
 }
