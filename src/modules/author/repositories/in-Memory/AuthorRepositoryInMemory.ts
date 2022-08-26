@@ -8,7 +8,7 @@ import { IEmailRepository } from "../IEmailRepository";
 
 @injectable()
 export class AuthorRepositoryInMemory implements IAuthorRepository {
-    repository: Author[] = [];
+    private authorRepository: Author[] = [];
 
     constructor(
         @inject("EmailRepository")
@@ -18,8 +18,26 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
         private recipeRepository: IRecipeRepository
     ) {}
 
-    async create(data: ICreateAuthorDTO): Promise<Author> {
-        throw new Error("Method not implemented.");
+    async create({
+        id,
+        name,
+        whatsapp,
+        emails,
+        recipes,
+    }: ICreateAuthorDTO): Promise<Author> {
+        const author = new Author();
+
+        Object.assign(author, {
+            id,
+            name,
+            whatsapp,
+            emails,
+            recipes,
+        });
+
+        this.authorRepository.push(author);
+
+        return author;
     }
     list(): Promise<Author[]> {
         throw new Error("Method not implemented.");
