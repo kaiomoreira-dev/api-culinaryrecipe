@@ -117,11 +117,13 @@ export class CreateAuthorUseCase {
             // enviando recipe existente para arrRecipes[]
             arrRecipes.push(recipeValidator);
 
-            // atualiza author_id
-            recipeValidator.author_name = author.name;
-
-            // confirma author_id alterado
-            await this.recipeRepository.create(recipeValidator);
+            // metodo para atualizat author_name em receita
+            // usando recipe_id e author_name. Usamos um metodo
+            // pois nao quero alterar o objeto inteiro, somente author_name
+            await this.recipeRepository.updateAuthorNameByRecipeId(
+                recipeValidator.id,
+                author.id
+            );
         }
 
         // atualiza recipes
