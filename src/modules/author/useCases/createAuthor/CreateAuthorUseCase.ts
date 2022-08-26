@@ -114,16 +114,17 @@ export class CreateAuthorUseCase {
 
                 throw new AppError("Recipe already exists.", 401);
             }
-            // enviando recipe existente para arrRecipes[]
-            arrRecipes.push(recipeValidator);
-
             // metodo para atualizat author_name em receita
             // usando recipe_id e author_name. Usamos um metodo
             // pois nao quero alterar o objeto inteiro, somente author_name
-            await this.recipeRepository.updateAuthorNameByRecipeId(
-                recipeValidator.id,
-                author.id
-            );
+            const recipeUpdated =
+                await this.recipeRepository.updateAuthorNameByRecipeId(
+                    recipeValidator.id,
+                    author.name
+                );
+
+            // enviando recipe existente para arrRecipes[]
+            arrRecipes.push(recipeUpdated);
         }
 
         // atualiza recipes
