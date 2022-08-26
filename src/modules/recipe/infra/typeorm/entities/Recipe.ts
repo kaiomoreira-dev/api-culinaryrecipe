@@ -40,7 +40,7 @@ export class Recipe {
     difficulty: "easy" | "medium" | "hard";
 
     @Column()
-    dish_type: string;
+    dish_type: "appetizer" | "main course" | "dessert";
 
     @Column()
     additional_features: string;
