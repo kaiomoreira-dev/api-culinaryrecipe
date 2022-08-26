@@ -12,24 +12,28 @@ export class IngredientRepository implements IIngredientRepository {
     constructor() {
         this.repository = dataSource.getRepository(Ingredient);
     }
+    findAllIngredientByProdutoName(
+        produto_name: string
+    ): Promise<Ingredient[]> {
+        throw new Error("Method not implemented.");
+    }
+    updateIngredientById(id: string): Promise<Ingredient> {
+        throw new Error("Method not implemented.");
+    }
 
     async create({
         id,
         description,
-        name,
+        produto_name,
         unity,
         weight,
-        animal,
-        color,
     }: ICreateIngredientDTO): Promise<Ingredient> {
         const ingredient = this.repository.create({
             id,
             description,
-            name,
+            produto_name,
             unity,
             weight,
-            animal,
-            color,
         });
 
         await this.repository.save(ingredient);
@@ -39,25 +43,13 @@ export class IngredientRepository implements IIngredientRepository {
     async list(): Promise<Ingredient[]> {
         return this.repository.find();
     }
-    async findIngredientByAnimal(animal: string): Promise<Ingredient> {
-        return this.repository.findOneBy({ animal });
-    }
-    async findIngredientById(id: string): Promise<Ingredient> {
-        return this.repository.findOneBy({ id });
-    }
-    async findIngredientByName(name: string): Promise<Ingredient> {
-        return this.repository.findOneBy({ name });
-    }
-    async updateAnimalById(id: string, animal: string): Promise<Ingredient> {
-        await this.repository
-            .createQueryBuilder()
-            .update()
-            .where({ id })
-            .set({ animal })
-            .execute();
 
-        return this.repository.findOneBy({ id });
+    async findIngredientByProdutoName(
+        produto_name: string
+    ): Promise<Ingredient> {
+        return this.repository.findOneBy({ produto_name });
     }
+
     async deleteIngredientById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
