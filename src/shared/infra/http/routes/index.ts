@@ -12,4 +12,4 @@ routes.use("/recipe", recipeRoutes);
 routes.use("/ingredient", ingredientRoutes);
 routes.use("/email", emailRoutes);
 routes.use("/author", authorRoutes);
-routes.use("produto", produtoRoutes);
+routes.use("/produto", produtoRoutes);
