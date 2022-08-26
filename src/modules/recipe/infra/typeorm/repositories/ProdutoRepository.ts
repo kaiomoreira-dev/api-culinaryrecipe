@@ -50,7 +50,12 @@ export class ProdutoRepository implements IProdutoRepository {
 
         return this.repository.findOneBy({ id });
     }
-    deleteProdutoByname(name: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteProdutoByname(name: string): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .delete()
+            .where("name = :name", { name })
+            .from(Produto)
+            .execute();
     }
 }
