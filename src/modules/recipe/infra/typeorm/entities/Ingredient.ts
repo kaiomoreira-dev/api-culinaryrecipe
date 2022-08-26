@@ -24,7 +24,7 @@ export class Ingredient {
     produtos?: Produto;
 
     @Column()
-    produto_name?: string;
+    produto_name: string;
 
     @Column()
     weight: number;
