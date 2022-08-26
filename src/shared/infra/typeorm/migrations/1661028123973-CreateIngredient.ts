@@ -27,14 +27,7 @@ export class CreateIngredient1661028123973 implements MigrationInterface {
             name: "unity",
             type: "numeric",
           },
-          {
-            name: "animal",
-            type: "varchar",
-          },
-          {
-            name: "color",
-            type: "varchar",
-          },
+
           {
             name: "created_at",
             type: "timestamp",
