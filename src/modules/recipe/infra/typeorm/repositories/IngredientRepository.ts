@@ -12,6 +12,7 @@ export class IngredientRepository implements IIngredientRepository {
     constructor() {
         this.repository = dataSource.getRepository(Ingredient);
     }
+
     async findAllIngredientByProdutoName(
         produto_name: string
     ): Promise<Ingredient[]> {
@@ -20,6 +21,7 @@ export class IngredientRepository implements IIngredientRepository {
             .where("produto_name = :produto_name", { produto_name })
             .getMany();
     }
+
     async updateIngredientById(
         id: string,
         produto_name?: string,
