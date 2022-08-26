@@ -15,7 +15,10 @@ export class IngredientRepository implements IIngredientRepository {
     findAllIngredientByProdutoName(
         produto_name: string
     ): Promise<Ingredient[]> {
-        throw new Error("Method not implemented.");
+        return this.repository
+            .createQueryBuilder()
+            .where("produto_name = :produto_name", { produto_name })
+            .getMany();
     }
     updateIngredientById(id: string): Promise<Ingredient> {
         throw new Error("Method not implemented.");
