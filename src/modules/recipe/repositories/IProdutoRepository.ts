@@ -5,10 +5,9 @@ export interface IProdutoRepository {
     create(data: ICreateProdutoDTO): Promise<Produto>;
     list(): Promise<Produto[]>;
 
-    findIngredientByProdutoName(produto_name: string): Promise<Produto>;
-    findAllIngredientByProdutoName(produto_name: string): Promise<Produto[]>;
+    findProdutoByName(name: string): Promise<Produto>;
 
-    updateIngredientById(id: string): Promise<Produto>;
+    updateProdutoByName(name: string): Promise<Produto>;
 
-    deleteIngredientById(id: string): Promise<void>;
+    deleteProdutoByname(name: string): Promise<void>;
 }
