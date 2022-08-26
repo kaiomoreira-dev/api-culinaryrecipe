@@ -37,7 +37,7 @@ export class Recipe {
     time: number;
 
     @Column()
-    difficulty: string;
+    difficulty: "easy" | "medium" | "hard";
 
     @Column()
     dish_type: string;
