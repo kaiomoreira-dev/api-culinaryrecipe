@@ -33,6 +33,9 @@ export class CreateRecipeUseCase {
             throw new AppError("difficulty incorrect!");
         }
 
+        if (dish_type !== "appetizer" && "main course" && "dessert") {
+            throw new AppError("dish_type incorrect!");
+        }
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
 
