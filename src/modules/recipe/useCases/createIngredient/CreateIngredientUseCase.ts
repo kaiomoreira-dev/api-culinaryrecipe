@@ -11,20 +11,16 @@ export class CreateIngredientUseCase {
     ) {}
 
     async execute({
-        name,
+        produto_name,
         description,
         unity,
         weight,
-        animal,
-        color,
     }: ICreateIngredientDTO): Promise<Ingredient> {
         const ingredient = await this.ingredientRepository.create({
-            name,
+            produto_name,
             description,
             unity,
             weight,
-            animal,
-            color,
         });
 
         return ingredient;
