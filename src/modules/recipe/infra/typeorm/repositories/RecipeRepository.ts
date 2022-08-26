@@ -12,6 +12,19 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
+    async updateAuthorNameByRecipeId(
+        id: string,
+        author_name: string
+    ): Promise<Recipe> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ author_name })
+            .where("id = :id", { id })
+            .execute();
+
+        return this.repository.findOneBy({ id });
+    }
 
     async findRecipeByName(name: string): Promise<Recipe> {
         return this.repository.findOneBy({ name });
