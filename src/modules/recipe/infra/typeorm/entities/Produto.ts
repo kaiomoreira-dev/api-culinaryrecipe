@@ -2,11 +2,11 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    JoinColumn,
     OneToMany,
     PrimaryColumn,
     UpdateDateColumn,
 } from "typeorm";
+import { v4 as uuidv4 } from "uuid";
 
 import { Ingredient } from "./Ingredient";
 
@@ -29,4 +29,10 @@ export class Produto {
 
     @UpdateDateColumn()
     updated_at: string;
+
+    constructor() {
+        if (!this.id) {
+            this.id = uuidv4();
+        }
+    }
 }
