@@ -10,4 +10,4 @@ const listProdutosController = new ListProdutosController();
 
 produtoRoutes.post("/", createProdutoController.handle);
 
-produtoRoutes.get("/produto", listProdutosController.handle);
+produtoRoutes.get("/", listProdutosController.handle);
