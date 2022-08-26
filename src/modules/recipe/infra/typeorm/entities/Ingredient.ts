@@ -24,12 +24,6 @@ export class Ingredient {
     @Column()
     unity: number;
 
-    @Column()
-    animal?: string;
-
-    @Column()
-    color?: string;
-
     @CreateDateColumn()
     created_at: string;
 
