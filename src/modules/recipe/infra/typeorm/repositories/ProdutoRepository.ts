@@ -1,5 +1,4 @@
 import { ICreateProdutoDTO } from "@modules/recipe/dtos/ICreateProdutoDTO";
-import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { Produto } from "@modules/recipe/infra/typeorm/entities/Produto";
 import { IProdutoRepository } from "@modules/recipe/repositories/IProdutoRepository";
 import { Repository } from "typeorm";
@@ -33,16 +32,14 @@ export class ProdutoRepository implements IProdutoRepository {
     async list(): Promise<Produto[]> {
         return this.repository.find();
     }
-    findIngredientByProdutoName(produto_name: string): Promise<Produto> {
+
+    findProdutoByName(name: string): Promise<Produto> {
         throw new Error("Method not implemented.");
     }
-    findAllIngredientByProdutoName(produto_name: string): Promise<Produto[]> {
+    updateProdutoByName(name: string): Promise<Produto> {
         throw new Error("Method not implemented.");
     }
-    updateIngredientById(id: string): Promise<Produto> {
-        throw new Error("Method not implemented.");
-    }
-    deleteIngredientById(id: string): Promise<void> {
+    deleteProdutoByname(name: string): Promise<void> {
         throw new Error("Method not implemented.");
     }
 }
