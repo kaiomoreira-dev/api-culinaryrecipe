@@ -7,7 +7,6 @@ import { DataSource } from "typeorm";
 import { CreateRecipe1660942928513 } from "./migrations/1660942928513-CreateRecipe";
 import { CreateIngredient1661028123973 } from "./migrations/1661028123973-CreateIngredient";
 import { CreateRecipesIngredients1661042649597 } from "./migrations/1661042649597-CreateRecipesIngredients";
-import { AlterAnimalColorIsNullAbleTrue1661049819867 } from "./migrations/1661049819867-AlterAnimalColorIsNullAbleTrue";
 import { AlterRecipeRemoveIngredient1661092158623 } from "./migrations/1661092158623-AlterRecipeRemoveIngredient";
 import { CreateEmail1661287166449 } from "./migrations/1661287166449-CreateEmail";
 import { AlterEmailAddAuthorName1661383278848 } from "./migrations/1661383278848-AlterEmailAddAuthorName";
@@ -31,7 +30,6 @@ const dataSource = new DataSource({
     CreateRecipe1660942928513,
     CreateIngredient1661028123973,
     CreateRecipesIngredients1661042649597,
-    AlterAnimalColorIsNullAbleTrue1661049819867,
     AlterRecipeRemoveIngredient1661092158623,
     CreateEmail1661287166449,
     AlterEmailAddAuthorName1661383278848,
