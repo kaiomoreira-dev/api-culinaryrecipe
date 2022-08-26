@@ -4,7 +4,7 @@ import { Email } from "@modules/author/infra/typeorm/entities/Email";
 import { IEmailRepository } from "../IEmailRepository";
 
 export class EmailRepositoryInMemory implements IEmailRepository {
-    private repository: Email[] = [];
+    private emailsRepository: Email[] = [];
 
     async create({ id, e_mail }: ICreateEmailDTO): Promise<Email> {
         const email = new Email();
@@ -14,14 +14,14 @@ export class EmailRepositoryInMemory implements IEmailRepository {
             e_mail,
         });
 
-        this.repository.push(email);
+        this.emailsRepository.push(email);
 
         return email;
     }
     async list(): Promise<Email[]> {
-        return this.repository;
+        return this.emailsRepository;
     }
     async findEmailByE_mail(email: string): Promise<Email> {
-        return this.repository.find((eMail) => eMail.e_mail === email);
+        return this.emailsRepository.find((eMail) => eMail.e_mail === email);
     }
 }
