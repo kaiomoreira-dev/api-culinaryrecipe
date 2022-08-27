@@ -9,7 +9,7 @@ export interface ICreateAuthorDTO {
 
     whatsapp: string;
 
-    emails: Email[];
+    emails?: Email[];
 
-    recipes: Recipe[];
+    recipes?: Recipe[];
 }
