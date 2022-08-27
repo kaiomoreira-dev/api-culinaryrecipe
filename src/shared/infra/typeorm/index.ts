@@ -10,11 +10,11 @@ import { CreateIngredient1661028123973 } from "./migrations/1661028123973-Create
 import { CreateRecipesIngredients1661042649597 } from "./migrations/1661042649597-CreateRecipesIngredients";
 import { AlterRecipeRemoveIngredient1661092158623 } from "./migrations/1661092158623-AlterRecipeRemoveIngredient";
 import { CreateEmail1661287166449 } from "./migrations/1661287166449-CreateEmail";
-import { AlterEmailAddAuthorName1661383278848 } from "./migrations/1661383278848-AlterEmailAddAuthorName";
 import { AlterRecipeChangeAuthorForAuthorName1661385979738 } from "./migrations/1661385979738-AlterRecipeChangeAuthorForAuthorName";
 import { CreateAuthor1661395822193 } from "./migrations/1661395822193-CreateAuthor";
 import { CreateProduto1661479247977 } from "./migrations/1661479247977-CreateProduto";
 import { AlterIngredientsAddFKProdutos1661550373729 } from "./migrations/1661550373729-AlterIngredientsAddFKProdutos";
+import { AlterRecipeAddFKAuthor1661567666428 } from "./migrations/1661567666428-AlterRecipeAddFKAuthor";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -36,7 +36,6 @@ const dataSource = new DataSource({
     CreateRecipesIngredients1661042649597,
     AlterRecipeRemoveIngredient1661092158623,
     CreateEmail1661287166449,
-    AlterEmailAddAuthorName1661383278848,
     AlterRecipeChangeAuthorForAuthorName1661385979738,
     CreateAuthor1661395822193,
     AlterIngredientsAddFKProdutos1661550373729,
