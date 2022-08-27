@@ -8,8 +8,4 @@ export interface ICreateAuthorDTO {
     name: string;
 
     whatsapp: string;
-
-    recipes?: Recipe[];
-
-    emails?: Email[];
 }
