@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 import { ICreateRecipeDTO } from "@modules/recipe/dtos/ICreateRecipeDTO";
@@ -40,6 +41,7 @@ export class CreateRecipeUseCase {
         }
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
+        let countIngredient = 0;
 
         // convertendo Ingredient[] em um array de string[]
         const ingredientsFormatString = ingredients as unknown as string[];
@@ -60,6 +62,11 @@ export class CreateRecipeUseCase {
             // recebe Ingredient buscado pelo nome para
             // o array de Ingredient[]
             addIngredients = [foundIngredient];
+            countIngredient += 1;
+        }
+
+        if (countIngredient < 2) {
+            throw new AppError("Ingredients insufficient!", 401);
         }
 
         // criando recipe
