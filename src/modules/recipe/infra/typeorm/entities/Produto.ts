@@ -2,6 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     OneToMany,
     PrimaryColumn,
     UpdateDateColumn,
@@ -18,7 +19,9 @@ export class Produto {
     @Column()
     name: string;
 
-    @OneToMany(() => Ingredient, (ingredient) => ingredient.produto_name)
+    // one-to-many nos permite receber uma lista de ingredients
+    // que pertencem a produto
+    @OneToMany(() => Ingredient, (ingredient) => ingredient.produto)
     ingredients?: Ingredient[];
 
     @Column()
