@@ -5,6 +5,10 @@ import { inject, injectable } from "tsyringe";
 @injectable()
 export class ListAuthorUseCase {
     constructor(
+        // author tem fk de emails e recipes
+        // mas nao temos instanciamos seu repositorio para inserir,
+        // pois automaticamento com o releacionamento
+        // entre eles a lista são incrementada, ao criar.
         @inject("AuthorRepository")
         private authorRepository: IAuthorRepository
     ) {}
