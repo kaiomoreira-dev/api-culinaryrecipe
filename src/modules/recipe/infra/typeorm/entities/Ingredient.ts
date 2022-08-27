@@ -19,9 +19,9 @@ export class Ingredient {
     @Column()
     description: string;
 
-    @ManyToOne(() => Produto)
+    @ManyToOne(() => Produto, (produto) => produto.ingredients)
     @JoinColumn({ name: "produto_name", referencedColumnName: "name" })
-    produtos?: Produto;
+    produto?: Produto;
 
     @Column()
     produto_name: string;
