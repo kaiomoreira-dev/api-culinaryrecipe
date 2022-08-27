@@ -15,8 +15,8 @@ export class IngredientRepository implements IIngredientRepository {
     async findIngredientByWeight(weight: number): Promise<Ingredient> {
         return this.repository.findOneBy({ weight });
     }
-    findIngredientByUnity(unity: number): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async findIngredientByUnity(unity: number): Promise<Ingredient> {
+        return this.repository.findOneBy({ unity });
     }
 
     async findAllIngredientByProdutoName(
