@@ -12,11 +12,12 @@ export class IngredientRepository implements IIngredientRepository {
     constructor() {
         this.repository = dataSource.getRepository(Ingredient);
     }
-    async findIngredientByWeightAndUnity(
+    async findIngredientByProdutoNameWeightUnity(
+        produto_name: string,
         weight: number,
         unity: number
     ): Promise<Ingredient> {
-        return this.repository.findOneBy({ weight, unity });
+        return this.repository.findOneBy({ weight, unity, produto_name });
     }
     async findAllIngredientByProdutoName(
         produto_name: string
