@@ -31,7 +31,8 @@ export class CreateIngredientUseCase {
             throw new AppError("Produto not found.", 401);
         }
         const ingredientValidator =
-            await this.ingredientRepository.findIngredientByWeightAndUnity(
+            await this.ingredientRepository.findIngredientByProdutoNameWeightUnity(
+                produtoValidator.name,
                 weight,
                 unity
             );
