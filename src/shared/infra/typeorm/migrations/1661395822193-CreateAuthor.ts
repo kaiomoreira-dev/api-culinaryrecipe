@@ -14,6 +14,7 @@ export class CreateAuthor1661395822193 implements MigrationInterface {
           {
             name: "name",
             type: "varchar",
+            isUnique: true,
           },
           {
             name: "whatsapp",
