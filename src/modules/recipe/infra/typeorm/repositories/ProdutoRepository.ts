@@ -5,8 +5,6 @@ import { Repository } from "typeorm";
 
 import dataSource from "@shared/infra/typeorm";
 
-import { Ingredient } from "../entities/Ingredient";
-
 export class ProdutoRepository implements IProdutoRepository {
     private repository: Repository<Produto>;
 
@@ -32,7 +30,10 @@ export class ProdutoRepository implements IProdutoRepository {
     }
 
     async list(): Promise<Produto[]> {
-        return this.repository.find();
+        return this.repository
+            .createQueryBuilder("p")
+            .leftJoinAndSelect("p.ingredients", "ingredients")
+            .getMany();
     }
 
     async findProdutoByName(name: string): Promise<Produto> {
@@ -41,13 +42,12 @@ export class ProdutoRepository implements IProdutoRepository {
     async updateProdutoById(
         id: string,
         name: string,
-        description: string,
-        ingredients: Ingredient[]
+        description: string
     ): Promise<Produto> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ name, description, ingredients })
+            .set({ name, description })
             .where("id = :id", { id })
             .execute();
 
