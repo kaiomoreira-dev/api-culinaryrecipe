@@ -19,6 +19,8 @@ export class Ingredient {
     @Column()
     description: string;
 
+    // relacionamento de many-to-one apontando para produto qual
+    // ingrediente deve pertencer a produto
     @ManyToOne(() => Produto, (produto) => produto.ingredients)
     @JoinColumn({ name: "produto_name", referencedColumnName: "name" })
     produto?: Produto;
