@@ -34,7 +34,12 @@ export class AuthorRepository implements IAuthorRepository {
         return author;
     }
     async list(): Promise<Author[]> {
-        return this.repository.find();
+        // .leftJoinAndSelect("a.emails", "emails")
+
+        return this.repository
+            .createQueryBuilder("a")
+            .leftJoinAndSelect("a.recipes", "recipes")
+            .getMany();
     }
     async findAuthorByEmail(e_mail: string): Promise<Author> {
         const author = this.repository
