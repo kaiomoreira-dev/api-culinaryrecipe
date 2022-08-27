@@ -48,7 +48,7 @@ export class Recipe {
     @Column()
     total_guests: number;
 
-    @ManyToOne(() => Author)
+    @ManyToOne(() => Author, (author) => author.recipes)
     @JoinColumn({ name: "author_name", referencedColumnName: "name" })
     author?: Author;
 
