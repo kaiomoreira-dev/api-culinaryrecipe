@@ -14,6 +14,7 @@ export class CreateRecipeController {
             additional_features,
             time,
             total_guests,
+            author_name,
         } = request.body;
 
         const createRecipeUseCase = container.resolve(CreateRecipeUseCase);
@@ -27,6 +28,7 @@ export class CreateRecipeController {
             additional_features,
             time,
             total_guests,
+            author_name,
         });
 
         return response.status(200).json(recipe);

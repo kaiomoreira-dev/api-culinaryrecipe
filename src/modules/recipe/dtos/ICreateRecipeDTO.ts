@@ -17,7 +17,7 @@ export interface ICreateRecipeDTO {
     name: string;
     description: string;
     ingredients?: Ingredient[];
-    author_name?: string;
+    author_name: string;
     time: number;
     difficulty: Difficulty;
     dish_type: DishType;

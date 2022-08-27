@@ -20,6 +20,7 @@ export class CreateRecipeUseCase {
     ) {}
 
     async execute({
+        id,
         name,
         description,
         ingredients,
@@ -28,6 +29,7 @@ export class CreateRecipeUseCase {
         additional_features,
         time,
         total_guests,
+        author_name,
     }: ICreateRecipeDTO): Promise<Recipe> {
         if (difficulty !== "easy" && "medium" && "hard") {
             throw new AppError("difficulty incorrect!", 401);
@@ -62,6 +64,7 @@ export class CreateRecipeUseCase {
 
         // criando recipe
         const recipe = await this.recipeRepository.create({
+            id,
             name,
             description,
             difficulty,
@@ -70,6 +73,7 @@ export class CreateRecipeUseCase {
             time,
             total_guests,
             ingredients: addIngredients,
+            author_name,
         });
 
         return recipe;
