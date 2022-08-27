@@ -30,6 +30,8 @@ export class ProdutoRepository implements IProdutoRepository {
     }
 
     async list(): Promise<Produto[]> {
+        // criamos leftjoinselect para retornar
+        // todos os produtos com a lista de ingredients
         return this.repository
             .createQueryBuilder("p")
             .leftJoinAndSelect("p.ingredients", "ingredients")
