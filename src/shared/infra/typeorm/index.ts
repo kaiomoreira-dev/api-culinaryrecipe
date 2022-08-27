@@ -14,6 +14,7 @@ import { AlterEmailAddAuthorName1661383278848 } from "./migrations/1661383278848
 import { AlterRecipeChangeAuthorForAuthorName1661385979738 } from "./migrations/1661385979738-AlterRecipeChangeAuthorForAuthorName";
 import { CreateAuthor1661395822193 } from "./migrations/1661395822193-CreateAuthor";
 import { CreateProduto1661479247977 } from "./migrations/1661479247977-CreateProduto";
+import { AlterIngredientsAddFKProdutos1661550373729 } from "./migrations/1661550373729-AlterIngredientsAddFKProdutos";
 
 const dataSource = new DataSource({
   type: "postgres",
@@ -26,10 +27,11 @@ const dataSource = new DataSource({
       : "culinary_recipes",
 
   // importar entidades ex: [Recipes]
-  entities: [Recipe, Ingredient, Email, Author, Produto],
+  entities: [Recipe, Produto, Ingredient, Email, Author],
   // importar migrations ex: [CreateRecipes102348998]
   migrations: [
     CreateRecipe1660942928513,
+    CreateProduto1661479247977,
     CreateIngredient1661028123973,
     CreateRecipesIngredients1661042649597,
     AlterRecipeRemoveIngredient1661092158623,
@@ -37,7 +39,7 @@ const dataSource = new DataSource({
     AlterEmailAddAuthorName1661383278848,
     AlterRecipeChangeAuthorForAuthorName1661385979738,
     CreateAuthor1661395822193,
-    CreateProduto1661479247977,
+    AlterIngredientsAddFKProdutos1661550373729,
   ],
 });
 
