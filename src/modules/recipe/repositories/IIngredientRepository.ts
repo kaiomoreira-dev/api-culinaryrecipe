@@ -8,7 +8,8 @@ export interface IIngredientRepository {
 
     findIngredientByProdutoName(produto_name: string): Promise<Ingredient>;
     findAllIngredientByProdutoName(produto_name: string): Promise<Ingredient[]>;
-    findIngredientByWeightAndUnity(
+    findIngredientByProdutoNameWeightUnity(
+        produto_name: string,
         weight: number,
         unity: number
     ): Promise<Ingredient>;
