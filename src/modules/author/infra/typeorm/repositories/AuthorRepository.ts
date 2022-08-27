@@ -5,7 +5,6 @@ import { Repository } from "typeorm";
 import dataSource from "@shared/infra/typeorm";
 
 import { Author } from "../entities/Author";
-import { Email } from "../entities/Email";
 
 export class AuthorRepository implements IAuthorRepository {
     private repository: Repository<Author>;
@@ -34,11 +33,10 @@ export class AuthorRepository implements IAuthorRepository {
         return author;
     }
     async list(): Promise<Author[]> {
-        // .leftJoinAndSelect("a.emails", "emails")
-
         return this.repository
             .createQueryBuilder("a")
             .leftJoinAndSelect("a.recipes", "recipes")
+            .leftJoinAndSelect("a.emails", "emails")
             .getMany();
     }
     async findAuthorByEmail(e_mail: string): Promise<Author> {
