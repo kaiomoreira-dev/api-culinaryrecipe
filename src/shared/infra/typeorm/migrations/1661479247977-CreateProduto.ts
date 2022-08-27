@@ -15,6 +15,7 @@ export class CreateProduto1661479247977 implements MigrationInterface {
           {
             name: "name",
             type: "varchar",
+            isUnique: true,
           },
           {
             name: "description",
