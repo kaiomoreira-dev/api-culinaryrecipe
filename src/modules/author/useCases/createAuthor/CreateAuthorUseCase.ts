@@ -3,11 +3,7 @@
 /* eslint-disable prefer-const */
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
-import { Email } from "@modules/author/infra/typeorm/entities/Email";
 import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
-import { IEmailRepository } from "@modules/author/repositories/IEmailRepository";
-import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
-import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
 import { inject, injectable } from "tsyringe";
 
 import { AppError } from "@shared/errors/AppError";
