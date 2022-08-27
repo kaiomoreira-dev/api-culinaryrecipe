@@ -1,4 +1,5 @@
 import { ICreateProdutoDTO } from "../dtos/ICreateProdutoDTO";
+import { Ingredient } from "../infra/typeorm/entities/Ingredient";
 import { Produto } from "../infra/typeorm/entities/Produto";
 
 export interface IProdutoRepository {
@@ -7,10 +8,10 @@ export interface IProdutoRepository {
 
     findProdutoByName(name: string): Promise<Produto>;
 
-    updateProdutoByName(
+    updateProdutoById(
         id: string,
-        name: string,
-        description: string
+        name?: string,
+        description?: string
     ): Promise<Produto>;
 
     deleteProdutoByname(name: string): Promise<void>;
