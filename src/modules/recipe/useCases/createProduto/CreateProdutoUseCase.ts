@@ -16,7 +16,6 @@ export class CreateProdutoUseCase {
         id,
         name,
         description,
-        ingredients,
     }: ICreateProdutoDTO): Promise<Produto> {
         const produtoValidator = await this.produtoRepository.findProdutoByName(
             name
@@ -30,7 +29,6 @@ export class CreateProdutoUseCase {
             id,
             name,
             description,
-            ingredients,
         });
 
         return produto;
