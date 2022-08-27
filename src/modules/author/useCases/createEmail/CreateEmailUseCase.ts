@@ -20,6 +20,7 @@ export class CreateEmailUseCase {
         e_mail,
         author_name,
     }: ICreateEmailDTO): Promise<Email> {
+        // criar validação de author em autor
         const authorValidator = await this.authorRepository.findAuthorByName(
             author_name
         );
