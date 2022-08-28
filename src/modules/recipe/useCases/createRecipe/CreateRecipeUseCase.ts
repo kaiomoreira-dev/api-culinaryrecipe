@@ -62,10 +62,9 @@ export class CreateRecipeUseCase {
             // recebe Ingredient buscado pelo nome para
             // o array de Ingredient[]
             addIngredients.push(foundIngredient);
-            countIngredient += 1;
         }
 
-        if (countIngredient < 2) {
+        if (addIngredients.length < 2) {
             throw new AppError("Ingredients insufficient!", 401);
         }
 
