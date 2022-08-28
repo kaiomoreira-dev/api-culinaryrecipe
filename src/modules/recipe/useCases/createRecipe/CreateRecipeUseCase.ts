@@ -61,7 +61,7 @@ export class CreateRecipeUseCase {
 
             // recebe Ingredient buscado pelo nome para
             // o array de Ingredient[]
-            addIngredients = [foundIngredient];
+            addIngredients.push(foundIngredient);
             countIngredient += 1;
         }
 
