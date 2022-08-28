@@ -26,7 +26,7 @@ const dataSource = new DataSource({
       : "culinary_recipes",
 
   // importar entidades ex: [Recipes]
-  entities: [Author, Recipe, Produto, Ingredient, Email],
+  entities: [Recipe, Produto, Author, Ingredient, Email],
   // importar migrations ex: [CreateRecipes102348998]
   migrations: [
     CreateRecipe1661569145708,
