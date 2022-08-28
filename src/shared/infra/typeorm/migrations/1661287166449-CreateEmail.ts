@@ -31,6 +31,16 @@ export class CreateEmail1661287166449 implements MigrationInterface {
             default: "now()",
           },
         ],
+        foreignKeys: [
+          {
+            name: "FKAuthorEmail",
+            referencedTableName: "authors",
+            referencedColumnNames: ["name"],
+            columnNames: ["author_name"],
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+          },
+        ],
       })
     );
   }
