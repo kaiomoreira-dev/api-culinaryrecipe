@@ -10,7 +10,7 @@ import { IRecipeRepository } from "../IRecipeRepository";
 
 @injectable()
 export class RecipeRepositoryInMemory implements IRecipeRepository {
-    repository: Recipe[] = [];
+    reciperepository: Recipe[] = [];
 
     constructor(
         @inject("IngredientRepositoryInMemory")
@@ -44,7 +44,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
             total_guests,
         });
 
-        this.repository;
+        this.reciperepository.push(recipe);
     }
     list(): Promise<Recipe[]> {
         throw new Error("Method not implemented.");
