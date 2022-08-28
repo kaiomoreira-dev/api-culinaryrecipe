@@ -45,6 +45,8 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         });
 
         this.reciperepository.push(recipe);
+
+        return recipe;
     }
     list(): Promise<Recipe[]> {
         throw new Error("Method not implemented.");
