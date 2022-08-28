@@ -6,12 +6,13 @@ import { IEmailRepository } from "../IEmailRepository";
 export class EmailRepositoryInMemory implements IEmailRepository {
     private emailsRepository: Email[] = [];
 
-    async create({ id, e_mail }: ICreateEmailDTO): Promise<Email> {
+    async create({ id, e_mail, author_name }: ICreateEmailDTO): Promise<Email> {
         const email = new Email();
 
         Object.assign(email, {
             id,
             e_mail,
+            author_name,
         });
 
         this.emailsRepository.push(email);
