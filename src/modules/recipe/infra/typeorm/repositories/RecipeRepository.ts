@@ -4,6 +4,7 @@ import { Repository } from "typeorm";
 
 import dataSource from "@shared/infra/typeorm";
 
+import { Ingredient } from "../entities/Ingredient";
 import { Recipe } from "../entities/Recipe";
 
 export class RecipeRepository implements IRecipeRepository {
@@ -11,6 +12,17 @@ export class RecipeRepository implements IRecipeRepository {
 
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
+    }
+    async listAllRecipeByIngredientProdutoName(
+        produto_name: string
+    ): Promise<Recipe[]> {
+        // encontra os ids das recipes que contem o ingrediente buscado
+        const recipeIds = await this.repository
+            .createQueryBuilder("r")
+            .leftJoin("r.ingredients", "i")
+            .where("i.produto_name = :produto_name", { produto_name })
+            .select(["r.id"])
+            .getMany();
     }
     async updateAuthorNameByRecipeId(
         id: string,
