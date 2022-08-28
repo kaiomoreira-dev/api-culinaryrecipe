@@ -12,7 +12,10 @@ import { IRecipeRepository } from "../IRecipeRepository";
 export class RecipeRepositoryInMemory implements IRecipeRepository {
     private repository: Repository<Recipe>;
 
-    constructor() {
+    constructor(
+        @inject("IngredientRepositoryInMemory")
+        private ingredientRepository: IIngredientRepository
+    ) {
         this.repository = dataSource.getRepository(Recipe);
     }
 
