@@ -39,6 +39,16 @@ export class CreateIngredient1661028123973 implements MigrationInterface {
             default: "now()",
           },
         ],
+        foreignKeys: [
+          {
+            name: "FKProdutoIngredient",
+            referencedTableName: "produtos",
+            referencedColumnNames: ["name"],
+            columnNames: ["produto_name"],
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+          },
+        ],
       })
     );
   }
