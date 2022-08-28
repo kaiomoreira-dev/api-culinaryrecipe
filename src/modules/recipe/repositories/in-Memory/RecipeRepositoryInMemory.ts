@@ -10,17 +10,41 @@ import { IRecipeRepository } from "../IRecipeRepository";
 
 @injectable()
 export class RecipeRepositoryInMemory implements IRecipeRepository {
-    private repository: Repository<Recipe>;
+    repository: Recipe[] = [];
 
     constructor(
         @inject("IngredientRepositoryInMemory")
         private ingredientRepository: IIngredientRepository
-    ) {
-        this.repository = dataSource.getRepository(Recipe);
-    }
+    ) {}
 
-    create(data: ICreateRecipeDTO): Promise<Recipe> {
-        throw new Error("Method not implemented.");
+    async create({
+        id,
+        name,
+        description,
+        ingredients,
+        author_name,
+        time,
+        difficulty,
+        dish_type,
+        additional_features,
+        total_guests,
+    }: ICreateRecipeDTO): Promise<Recipe> {
+        const recipe = new Recipe();
+
+        Object.assign(recipe, {
+            id,
+            name,
+            description,
+            ingredients,
+            author_name,
+            time,
+            difficulty,
+            dish_type,
+            additional_features,
+            total_guests,
+        });
+
+        this.repository;
     }
     list(): Promise<Recipe[]> {
         throw new Error("Method not implemented.");
