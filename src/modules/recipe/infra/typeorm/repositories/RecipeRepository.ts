@@ -23,6 +23,15 @@ export class RecipeRepository implements IRecipeRepository {
             .where("i.produto_name = :produto_name", { produto_name })
             .select(["r.id"])
             .getMany();
+
+        // busca as recipes com seus respectivos ids
+        // e passando leftjoinAndSelect p/ retornar tods os ingredients
+        const recipes = await this.repository
+            .createQueryBuilder("r")
+            .leftJoinAndSelect("r.ingredients", "i")
+            .whereInIds(recipeIds)
+            .getMany();
+        return recipes;
     }
     async updateAuthorNameByRecipeId(
         id: string,
