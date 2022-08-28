@@ -41,7 +41,6 @@ export class CreateRecipeUseCase {
         }
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
-        let countIngredient = 0;
 
         // convertendo Ingredient[] em um array de string[]
         const ingredientsFormatString = ingredients as unknown as string[];
