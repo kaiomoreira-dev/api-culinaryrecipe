@@ -48,8 +48,8 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
 
         return recipe;
     }
-    list(): Promise<Recipe[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Recipe[]> {
+        return this.reciperepository;
     }
     listAllRecipeByIngredientProdutoName(
         produto_name: string
