@@ -71,8 +71,8 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         });
         return recipesByProdutoName;
     }
-    findRecipeById(id: string): Promise<Recipe> {
-        throw new Error("Method not implemented.");
+    async findRecipeById(id: string): Promise<Recipe> {
+        return this.reciperepository.find((recipe) => recipe.id === id);
     }
     findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
         throw new Error("Method not implemented.");
