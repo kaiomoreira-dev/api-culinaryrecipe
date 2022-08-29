@@ -14,11 +14,6 @@ import { IRecipeRepository } from "../IRecipeRepository";
 export class RecipeRepositoryInMemory implements IRecipeRepository {
     reciperepository: Recipe[] = [];
 
-    constructor(
-        @inject("IngredientRepositoryInMemory")
-        private ingredientRepository: IIngredientRepository
-    ) {}
-
     async create({
         id,
         name,
