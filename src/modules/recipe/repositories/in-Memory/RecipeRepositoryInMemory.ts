@@ -102,11 +102,17 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
 
         return this.reciperepository[recipeIndex];
     }
-    updateAuthorNameByRecipeId(
+    async updateAuthorNameByRecipeId(
         id: string,
         author_name: string
     ): Promise<Recipe> {
-        throw new Error("Method not implemented.");
+        const recipeIndex = this.reciperepository.findIndex(
+            (recipe) => recipe.id === id
+        );
+
+        this.reciperepository[recipeIndex].author_name = author_name;
+
+        return this.reciperepository[recipeIndex];
     }
     deleteRecipeById(id: string): Promise<void> {
         throw new Error("Method not implemented.");
