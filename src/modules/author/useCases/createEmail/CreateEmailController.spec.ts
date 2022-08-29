@@ -37,8 +37,6 @@ describe("Create e-mail Controller", () => {
             author_name: author.name,
         });
 
-        console.log(response.body);
-
         expect(response.status).toEqual(200);
     });
 
@@ -64,5 +62,15 @@ describe("Create e-mail Controller", () => {
         });
 
         expect(response.status).toBe(401);
+    });
+
+    it("should not be able to create a new email with author name not found", async () => {
+        const response = await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "test@test.com",
+            author_name: faker.name.fullName(),
+        });
+
+        expect(response.status).toBe(404);
     });
 });
