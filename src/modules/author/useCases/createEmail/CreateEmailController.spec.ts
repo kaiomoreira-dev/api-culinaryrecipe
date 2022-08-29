@@ -42,17 +42,27 @@ describe("Create e-mail Controller", () => {
         expect(response.status).toEqual(200);
     });
 
-    // it("should not be able to create a new email with same", async () => {
-    //     await request(app).post("/email").send({
-    //         id: faker.datatype.uuid(),
-    //         e_mail: "test@test.com",
-    //     });
+    it("should not be able to create a new email with same", async () => {
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        });
 
-    //     const response = await request(app).post("/email").send({
-    //         id: faker.datatype.uuid(),
-    //         e_mail: "test@test.com",
-    //     });
+        const author = responseAuthor.body as Author;
 
-    //     expect(response.status).toBe(401);
-    // });
+        await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "test@test.com",
+            author_name: author.name,
+        });
+
+        const response = await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "test@test.com",
+            author_name: author.name,
+        });
+
+        expect(response.status).toBe(401);
+    });
 });
