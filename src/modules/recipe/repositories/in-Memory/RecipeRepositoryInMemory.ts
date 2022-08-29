@@ -114,7 +114,11 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
 
         return this.reciperepository[recipeIndex];
     }
-    deleteRecipeById(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteRecipeById(id: string): Promise<void> {
+        const recipeIndex = this.reciperepository.findIndex(
+            (recipe) => recipe.id === id
+        );
+
+        this.reciperepository.splice(recipeIndex, 1);
     }
 }
