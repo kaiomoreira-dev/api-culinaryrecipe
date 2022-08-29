@@ -1,4 +1,6 @@
+/* eslint-disable prefer-const */
 import { ICreateRecipeDTO } from "@modules/recipe/dtos/ICreateRecipeDTO";
+import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
 import { inject, injectable } from "tsyringe";
 import { Repository } from "typeorm";
@@ -51,10 +53,23 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
     async list(): Promise<Recipe[]> {
         return this.reciperepository;
     }
-    listAllRecipeByIngredientProdutoName(
+    async listAllRecipeByIngredientProdutoName(
         produto_name: string
     ): Promise<Recipe[]> {
-        throw new Error("Method not implemented.");
+        let recipesByProdutoName: Recipe[] = [];
+
+        this.reciperepository.map((recipe) => {
+            const { ingredients } = recipe;
+
+            ingredients.map((ingredient) => {
+                if (ingredient.produto_name === produto_name) {
+                    recipesByProdutoName.push(recipe);
+                }
+                return true;
+            });
+            return true;
+        });
+        return recipesByProdutoName;
     }
     findRecipeById(id: string): Promise<Recipe> {
         throw new Error("Method not implemented.");
