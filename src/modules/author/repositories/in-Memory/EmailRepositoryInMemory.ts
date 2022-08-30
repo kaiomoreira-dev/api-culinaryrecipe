@@ -6,7 +6,7 @@ import { IEmailRepository } from "../IEmailRepository";
 export class EmailRepositoryInMemory implements IEmailRepository {
     private emailsRepository: Email[] = [];
 
-    async deleteEmailByEmail(e_mail: string): Promise<void> {
+    async deleteEmailByE_mail(e_mail: string): Promise<void> {
         const emailIndex = this.emailsRepository.findIndex(
             (email) => email.e_mail === e_mail
         );
