@@ -60,4 +60,37 @@ describe("Update e-mail Controller", () => {
 
         expect(responseUpdateE_mail.status).toBe(404);
     });
+
+    it("should not be able to update e_mail with newE_mail already exists", async () => {
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        });
+
+        const author = responseAuthor.body as Author;
+
+        const responseCreateEmail1 = await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "old1-email@email.com",
+            author_name: author.name,
+        });
+
+        await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: "old2-email@email.com",
+            author_name: author.name,
+        });
+
+        const { e_mail } = responseCreateEmail1.body as Email;
+
+        const oldE_mail = e_mail;
+        const newE_mail = "old2-email@email.com";
+
+        const responseUpdateE_mail = await request(app)
+            .patch("/email/update")
+            .send({ oldE_mail, newE_mail });
+
+        expect(responseUpdateE_mail.status).toBe(401);
+    });
 });
