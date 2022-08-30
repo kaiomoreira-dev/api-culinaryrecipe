@@ -77,7 +77,11 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
 
         return this.repository.find((ingredient) => ingredient.id === id);
     }
-    deleteIngredientById(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteIngredientById(id: string): Promise<void> {
+        const ingredientIndex = this.repository.findIndex(
+            (ingredient) => ingredient.id === id
+        );
+
+        this.repository.splice(ingredientIndex, 1);
     }
 }
