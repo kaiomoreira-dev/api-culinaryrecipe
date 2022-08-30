@@ -19,5 +19,9 @@ export class UpdateEmailByE_mailUseCase {
         if (!emailValidator) {
             throw new AppError("Email not found", 404);
         }
+
+        const email = await this.emailRepository.updateE_mailByE_mail(e_mail);
+
+        return email;
     }
 }
