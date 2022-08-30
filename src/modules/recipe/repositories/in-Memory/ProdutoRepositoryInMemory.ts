@@ -31,12 +31,23 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
     async findProdutoByName(name: string): Promise<Produto> {
         return this.repository.find((produto) => produto.name === name);
     }
-    updateNameDescriptionByName(
+    async updateNameDescriptionByName(
         name: string,
         new_name: string,
-        description: string
+        new_description: string
     ): Promise<Produto> {
-        throw new Error("Method not implemented.");
+        const produtoIndex = this.repository.findIndex(
+            (produto) => produto.name === name
+        );
+
+        this.repository[produtoIndex].name = new_name;
+        this.repository[produtoIndex].description = new_description;
+
+        const prdoutoUpdated = this.repository.find(
+            (produto) => produto.name === new_name
+        );
+
+        return prdoutoUpdated;
     }
     deleteProdutoByname(name: string): Promise<void> {
         throw new Error("Method not implemented.");
