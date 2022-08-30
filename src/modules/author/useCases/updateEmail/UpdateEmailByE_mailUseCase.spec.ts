@@ -4,12 +4,14 @@ import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
+import { UpdateE_mailByE_mailUseCase } from "./UpdateEmailByE_mailUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
 let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
+let updateE_mailByE_mailUseCase: UpdateE_mailByE_mailUseCase;
 
 describe("Update e-mail UseCase", () => {
     beforeEach(() => {
@@ -23,6 +25,10 @@ describe("Update e-mail UseCase", () => {
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,
             authorRepositoryInMemory
+        );
+
+        updateE_mailByE_mailUseCase = new UpdateE_mailByE_mailUseCase(
+            emailRepositoryInMemory
         );
     });
 });
