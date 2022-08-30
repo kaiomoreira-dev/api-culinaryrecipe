@@ -11,7 +11,10 @@ export class UpdateE_mailByE_mailController {
             UpdateE_mailByE_mailUseCase
         );
 
-        const email = updateE_mailByE_mailUseCase.execute(oldE_mail, newE_mail);
+        const email = await updateE_mailByE_mailUseCase.execute(
+            oldE_mail,
+            newE_mail
+        );
 
         return response.status(200).json(email);
     }
