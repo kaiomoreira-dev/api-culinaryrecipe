@@ -9,7 +9,7 @@ import { AppError } from "@shared/errors/AppError";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
-import { UpdateE_mailByE_mailUseCase } from "./UpdateE_mailByE_mailUseCase";
+import { UpdateE_mailByE_mailUseCase } from "./UpdateEmailByE_mailUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;

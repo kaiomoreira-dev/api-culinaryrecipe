@@ -1,7 +1,7 @@
 import e, { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { UpdateE_mailByE_mailUseCase } from "./UpdateE_mailByE_mailUseCase";
+import { UpdateE_mailByE_mailUseCase } from "./UpdateEmailByE_mailUseCase";
 
 export class UpdateE_mailByE_mailController {
     async handle(request: Request, response: Response): Promise<Response> {
