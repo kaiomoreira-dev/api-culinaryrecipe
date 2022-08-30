@@ -10,7 +10,7 @@ export class DeleteEmailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async execute(e_mail: string): Promise<void> {
+    async execute(e_mail: string): Promise<null> {
         const emailValidator = await this.emailRepository.findEmailByE_mail(
             e_mail
         );
@@ -20,5 +20,7 @@ export class DeleteEmailUseCase {
         }
 
         await this.emailRepository.deleteEmailByEmail(e_mail);
+
+        return null;
     }
 }
