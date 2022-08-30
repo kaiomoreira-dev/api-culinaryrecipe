@@ -47,4 +47,14 @@ describe("Find e-mail Controller", () => {
 
         expect(responseFindEmail.status).toBe(200);
     });
+
+    it("should not be able to find email not valid", async () => {
+        const e_mail = "fake-email@faker.com";
+
+        const responseFindEmail = await request(app).get("/email/find").send({
+            e_mail,
+        });
+
+        expect(responseFindEmail.status).toBe(404);
+    });
 });
