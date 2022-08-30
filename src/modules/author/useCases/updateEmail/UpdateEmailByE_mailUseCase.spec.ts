@@ -8,3 +8,5 @@ import { app } from "@shared/infra/http/app";
 import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
+
+describe("Update e-mail UseCase", () => {});
