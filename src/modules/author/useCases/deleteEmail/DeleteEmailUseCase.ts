@@ -9,6 +9,14 @@ export class DeleteEmailUseCase {
     ) {}
 
     async execute(e_mail: string): Promise<void> {
+        const emailValidator = await this.emailRepository.findEmailByE_mail(
+            e_mail
+        );
+
+        if (!emailValidator) {
+            throw new AppError("Email not found", 404);
+        }
+
         await this.emailRepository.deleteEmailByEmail(e_mail);
     }
 }
