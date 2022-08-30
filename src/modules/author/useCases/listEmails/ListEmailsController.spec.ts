@@ -51,8 +51,6 @@ describe("List e-mails Controller", () => {
 
         const response = await request(app).get("/email");
 
-        console.log(response.body);
-
         expect(response.status).toBe(200);
     });
 });
