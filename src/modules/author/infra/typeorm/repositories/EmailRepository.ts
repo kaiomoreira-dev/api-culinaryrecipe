@@ -12,16 +12,12 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
-    async deleteEmailByEmail(e_mail: string): Promise<Email> {
+    async deleteEmailByEmail(e_mail: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
             .where("e_mail = :e_mail", { e_mail })
             .execute();
-
-        const email = this.repository.findOneBy({ e_mail });
-
-        return email;
     }
 
     async findEmailByE_mail(e_mail: string): Promise<Email> {
