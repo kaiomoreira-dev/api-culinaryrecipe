@@ -10,7 +10,7 @@ export interface IProdutoRepository {
     updateNameDescriptionByName(
         name: string,
         new_name: string,
-        description: string
+        new_description: string
     ): Promise<Produto>;
 
     deleteProdutoByname(name: string): Promise<void>;
