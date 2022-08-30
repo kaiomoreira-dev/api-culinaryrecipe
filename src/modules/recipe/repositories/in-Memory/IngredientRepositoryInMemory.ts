@@ -6,8 +6,26 @@ import { IIngredientRepository } from "../IIngredientRepository";
 export class IngredientRepositoryInMemory implements IIngredientRepository {
     repository: Ingredient[] = [];
 
-    create(data: ICreateIngredientDTO): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+    async create({
+        id,
+        produto_name,
+        description,
+        unity,
+        weight,
+    }: ICreateIngredientDTO): Promise<Ingredient> {
+        const ingredient = new Ingredient();
+
+        Object.assign(ingredient, {
+            id,
+            produto_name,
+            description,
+            unity,
+            weight,
+        });
+
+        this.repository.push(ingredient);
+
+        return ingredient;
     }
     list(): Promise<Ingredient[]> {
         throw new Error("Method not implemented.");
