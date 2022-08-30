@@ -49,4 +49,15 @@ describe("Update e-mail Controller", () => {
 
         expect(responseUpdateE_mail.status).toBe(200);
     });
+
+    it("should not be able to update e_mail with oldE_mail invalid", async () => {
+        const oldE_mail = "fake-email@email.com";
+        const newE_mail = "new-email@email.com";
+
+        const responseUpdateE_mail = await request(app)
+            .patch("/email/update")
+            .send({ oldE_mail, newE_mail });
+
+        expect(responseUpdateE_mail.status).toBe(404);
+    });
 });
