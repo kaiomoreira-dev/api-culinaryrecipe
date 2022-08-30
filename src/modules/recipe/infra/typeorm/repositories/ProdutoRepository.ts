@@ -44,12 +44,12 @@ export class ProdutoRepository implements IProdutoRepository {
     async updateNameDescriptionByName(
         name: string,
         new_name: string,
-        description: string
+        new_description: string
     ): Promise<Produto> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ name: new_name, description })
+            .set({ name: new_name, description: new_description })
             .where("name = :name", { name })
             .execute();
 
