@@ -33,4 +33,26 @@ describe("Delete e-mail UseCase", () => {
         );
         deleteEmailUseCase = new DeleteEmailUseCase(emailRepositoryInMemory);
     });
+
+    it("should be able to delete e-mail", async () => {
+        const author: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        };
+
+        const authorCreated = await createAuthorUseCase.execute(author);
+
+        const email: ICreateEmailDTO = {
+            id: faker.datatype.uuid(),
+            e_mail: faker.internet.email(),
+            author_name: authorCreated.name,
+        };
+
+        const { e_mail } = await createEmailUseCase.execute(email);
+
+        const deleteEmail = await deleteEmailUseCase.execute(e_mail);
+
+        expect(deleteEmail).toEqual(null);
+    });
 });
