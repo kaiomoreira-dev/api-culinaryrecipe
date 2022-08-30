@@ -1,6 +1,8 @@
 import { IEmailRepository } from "@modules/author/repositories/IEmailRepository";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "@shared/errors/AppError";
+
 @injectable()
 export class DeleteEmailUseCase {
     constructor(
