@@ -12,8 +12,12 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
-    deleteEmailByEmail(email: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteEmailByEmail(email: string): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .delete()
+            .where("email = :email", { email })
+            .execute();
     }
 
     async findEmailByE_mail(e_mail: string): Promise<Email> {
