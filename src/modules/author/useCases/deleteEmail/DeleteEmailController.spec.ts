@@ -9,4 +9,10 @@ import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
 
-describe("Delete e-mail Controller", () => {});
+describe("Delete e-mail Controller", () => {
+    beforeAll(async () => {
+        connection = await createConnection("localhost");
+
+        await connection.runMigrations();
+    });
+});
