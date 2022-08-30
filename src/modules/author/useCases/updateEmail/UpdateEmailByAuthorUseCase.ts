@@ -9,7 +9,7 @@ export class UpdateEmailByAuthorUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async handle(author_name: string): Promise<Email> {
+    async handle(e_mail: string): Promise<Email> {
         // const emailValidator = await this.emailRepository.findEmailByE_mail()
     }
 }
