@@ -15,4 +15,10 @@ describe("Delete e-mail Controller", () => {
 
         await connection.runMigrations();
     });
+
+    afterAll(async () => {
+        await connection.dropDatabase();
+
+        await connection.destroy();
+    });
 });
