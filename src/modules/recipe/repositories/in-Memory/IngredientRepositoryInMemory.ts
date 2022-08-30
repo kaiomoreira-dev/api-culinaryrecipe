@@ -27,8 +27,8 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
 
         return ingredient;
     }
-    list(): Promise<Ingredient[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Ingredient[]> {
+        return this.repository;
     }
     findIngredientByProdutoName(produto_name: string): Promise<Ingredient> {
         throw new Error("Method not implemented.");
