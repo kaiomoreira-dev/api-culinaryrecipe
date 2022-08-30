@@ -37,10 +37,17 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
             (ingredient) => ingredient.produto_name === produto_name
         );
     }
-    findAllIngredientByProdutoName(
+    async findAllIngredientByProdutoName(
         produto_name: string
     ): Promise<Ingredient[]> {
-        throw new Error("Method not implemented.");
+        const ingredientByProdutoName: Ingredient[] = [];
+        this.repository.map((ingredient) => {
+            if (ingredient.produto_name === produto_name) {
+                ingredientByProdutoName.push(ingredient);
+            }
+            return true;
+        });
+        return ingredientByProdutoName;
     }
     findIngredientByProdutoNameWeightUnity(
         produto_name: string,
