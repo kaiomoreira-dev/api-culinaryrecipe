@@ -7,5 +7,5 @@ export interface IEmailRepository {
     list(): Promise<Email[]>;
 
     findEmailByE_mail(e_mail: string): Promise<Email>;
-    deleteEmailByEmail(e_mail: string): Promise<Email>;
+    deleteEmailByEmail(e_mail: string): Promise<void>;
 }
