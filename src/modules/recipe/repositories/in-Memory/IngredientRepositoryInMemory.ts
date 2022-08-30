@@ -49,12 +49,17 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
         });
         return ingredientByProdutoName;
     }
-    findIngredientByProdutoNameWeightUnity(
+    async findIngredientByProdutoNameWeightUnity(
         produto_name: string,
         weight: number,
         unity: number
     ): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+        return this.repository.find(
+            (ingredient) =>
+                ingredient.produto_name === produto_name &&
+                ingredient.weight === weight &&
+                ingredient.unity === unity
+        );
     }
     updateIngredientById(
         id: string,
