@@ -57,7 +57,7 @@ describe("Find e-mail UseCase", () => {
         expect(foundEmail).toHaveProperty("e_mail");
     });
 
-    it("should not be able to find email not found", async () => {
+    it("should not be able to find email not valid", async () => {
         const fakeEmail = "email-fake@fake.com";
 
         await expect(findEmailUseCase.execute(fakeEmail)).rejects.toEqual(
