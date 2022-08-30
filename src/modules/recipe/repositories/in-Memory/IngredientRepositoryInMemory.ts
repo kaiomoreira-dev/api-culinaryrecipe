@@ -61,13 +61,21 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
                 ingredient.unity === unity
         );
     }
-    updateIngredientById(
+    async updateIngredientById(
         id: string,
         produto_name?: string,
         weight?: number,
         unity?: number
     ): Promise<Ingredient> {
-        throw new Error("Method not implemented.");
+        const ingredientIndex = this.repository.findIndex(
+            (ingredient) => ingredient.id === id
+        );
+
+        this.repository[ingredientIndex].produto_name = produto_name;
+        this.repository[ingredientIndex].weight = weight;
+        this.repository[ingredientIndex].unity = unity;
+
+        return this.repository.find((ingredient) => ingredient.id === id);
     }
     deleteIngredientById(id: string): Promise<void> {
         throw new Error("Method not implemented.");
