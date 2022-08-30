@@ -4,6 +4,8 @@ import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { IIngredientRepository } from "../IIngredientRepository";
 
 export class IngredientRepositoryInMemory implements IIngredientRepository {
+    repository: Ingredient[] = [];
+
     create(data: ICreateIngredientDTO): Promise<Ingredient> {
         throw new Error("Method not implemented.");
     }
