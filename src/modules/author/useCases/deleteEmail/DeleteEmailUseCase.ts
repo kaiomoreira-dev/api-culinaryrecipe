@@ -8,5 +8,7 @@ export class DeleteEmailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async execute(e_mail: string): Promise<void> {}
+    async execute(e_mail: string): Promise<void> {
+        await this.emailRepository.deleteEmailByEmail(e_mail);
+    }
 }
