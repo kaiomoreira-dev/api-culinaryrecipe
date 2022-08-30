@@ -7,4 +7,6 @@ export class DeleteEmailUseCase {
         @inject("EmailRepository")
         private emailRepository: IEmailRepository
     ) {}
+
+    async execute(e_mail: string): Promise<void> {}
 }
