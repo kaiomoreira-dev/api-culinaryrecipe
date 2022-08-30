@@ -20,6 +20,14 @@ export class UpdateE_mailByE_mailUseCase {
             throw new AppError("Email not found", 404);
         }
 
+        const newEmailValidator = await this.emailRepository.findEmailByE_mail(
+            newE_mail
+        );
+
+        if (newEmailValidator) {
+            throw new AppError("Email already exists", 401);
+        }
+
         const oldE_mailFormat = emailValidator.e_mail;
 
         const email = await this.emailRepository.updateE_mailByE_mail(
