@@ -28,8 +28,8 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
     async list(): Promise<Produto[]> {
         return this.repository;
     }
-    findProdutoByName(name: string): Promise<Produto> {
-        throw new Error("Method not implemented.");
+    async findProdutoByName(name: string): Promise<Produto> {
+        return this.repository.find((produto) => produto.name === name);
     }
     updateNameDescriptionByName(
         name: string,
