@@ -2,7 +2,7 @@ import { CreateEmailController } from "@modules/author/useCases/createEmail/Crea
 import { DeleteEmailController } from "@modules/author/useCases/deleteEmail/DeleteEmailController";
 import { FindEmailController } from "@modules/author/useCases/findEmail/FindEmailController";
 import { ListEmailsController } from "@modules/author/useCases/listEmails/ListEmailsController";
-import { UpdateEmailByE_mailController } from "@modules/author/useCases/updateEmail/UpdateEmailByE_mailController";
+import { UpdateE_mailByE_mailController } from "@modules/author/useCases/updateEmail/UpdateE_mailByE_mailController";
 import { Router } from "express";
 
 export const emailRoutes = Router();
@@ -15,7 +15,7 @@ const findEmailController = new FindEmailController();
 
 const deleteEmailController = new DeleteEmailController();
 
-const updateEmailByE_mailController = new UpdateEmailByE_mailController();
+const updateE_mailByE_mailController = new UpdateE_mailByE_mailController();
 
 emailRoutes.post("/", createEmailController.handle);
 
@@ -25,4 +25,4 @@ emailRoutes.get("/find", findEmailController.handle);
 
 emailRoutes.delete("/delete", deleteEmailController.handle);
 
-emailRoutes.patch("/update", updateEmailByE_mailController.handle);
+emailRoutes.patch("/update", updateE_mailByE_mailController.handle);
