@@ -5,7 +5,7 @@ import { inject, injectable } from "tsyringe";
 import { AppError } from "@shared/errors/AppError";
 
 @injectable()
-export class UpdateEmailByE_mailUseCase {
+export class UpdateE_mailByE_mailUseCase {
     constructor(
         @inject("EmailRepository")
         private emailRepository: IEmailRepository
