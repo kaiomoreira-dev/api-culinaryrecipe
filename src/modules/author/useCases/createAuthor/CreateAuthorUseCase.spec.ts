@@ -58,4 +58,23 @@ describe("Create author UseCase", () => {
 
         expect(authorCreated).toHaveProperty("id");
     });
+
+    it("should not be able to create author already exists", async () => {
+        const author1: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: "Kaio Jordan",
+            whatsapp: faker.phone.number(),
+        };
+        await createAuthorUseCase.execute(author1);
+
+        const author2: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: "Kaio Jordan",
+            whatsapp: faker.phone.number(),
+        };
+
+        await expect(createAuthorUseCase.execute(author2)).rejects.toEqual(
+            new AppError("Author is already exists.", 401)
+        );
+    });
 });
