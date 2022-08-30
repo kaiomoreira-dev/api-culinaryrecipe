@@ -12,11 +12,10 @@ export class FindEmailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async execute({ e_mail }: ICreateEmailDTO): Promise<Email> {
+    async execute(e_mail: string): Promise<Email> {
         const emailValidator = await this.emailRepository.findEmailByE_mail(
             e_mail
         );
-
         if (!emailValidator) {
             throw new AppError("Email not found", 404);
         }
