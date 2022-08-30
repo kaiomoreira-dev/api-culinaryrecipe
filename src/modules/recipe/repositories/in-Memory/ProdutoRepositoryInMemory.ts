@@ -49,7 +49,11 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
 
         return prdoutoUpdated;
     }
-    deleteProdutoByname(name: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async deleteProdutoByname(name: string): Promise<void> {
+        const produtoIndex = this.repository.findIndex(
+            (produto) => produto.name === name
+        );
+
+        this.repository.splice(produtoIndex, 1);
     }
 }
