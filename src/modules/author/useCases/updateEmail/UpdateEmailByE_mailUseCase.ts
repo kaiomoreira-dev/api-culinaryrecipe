@@ -11,7 +11,7 @@ export class UpdateEmailByE_mailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async handle(e_mail: string): Promise<Email> {
+    async execute(e_mail: string): Promise<Email> {
         const emailValidator = await this.emailRepository.findEmailByE_mail(
             e_mail
         );
