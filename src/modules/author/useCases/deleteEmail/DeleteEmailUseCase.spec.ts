@@ -55,4 +55,12 @@ describe("Delete e-mail UseCase", () => {
 
         expect(deleteEmail).toEqual(null);
     });
+
+    it("should not be able to delete e-mail with invalid email", async () => {
+        const e_mail = "fake-email@fake.com";
+
+        await expect(deleteEmailUseCase.execute(e_mail)).rejects.toEqual(
+            new AppError("Email not found", 404)
+        );
+    });
 });
