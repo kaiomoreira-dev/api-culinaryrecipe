@@ -25,8 +25,8 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
 
         return produto;
     }
-    list(): Promise<Produto[]> {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Produto[]> {
+        return this.repository;
     }
     findProdutoByName(name: string): Promise<Produto> {
         throw new Error("Method not implemented.");
