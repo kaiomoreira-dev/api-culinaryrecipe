@@ -19,7 +19,7 @@ export class DeleteEmailUseCase {
             throw new AppError("Email not found", 404);
         }
 
-        await this.emailRepository.deleteEmailByEmail(e_mail);
+        await this.emailRepository.deleteEmailByE_mail(e_mail);
 
         return null;
     }
