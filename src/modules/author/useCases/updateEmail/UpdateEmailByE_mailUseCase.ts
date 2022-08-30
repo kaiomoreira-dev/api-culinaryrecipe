@@ -11,16 +11,21 @@ export class UpdateE_mailByE_mailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async execute(e_mail: string): Promise<Email> {
+    async execute(oldE_mail: string, newE_mail: string): Promise<Email> {
         const emailValidator = await this.emailRepository.findEmailByE_mail(
-            e_mail
+            oldE_mail
         );
 
         if (!emailValidator) {
             throw new AppError("Email not found", 404);
         }
 
-        const email = await this.emailRepository.updateE_mailByE_mail(e_mail);
+        const oldE_mailFormat = emailValidator.e_mail;
+
+        const email = await this.emailRepository.updateE_mailByE_mail(
+            oldE_mailFormat,
+            newE_mail
+        );
 
         return email;
     }
