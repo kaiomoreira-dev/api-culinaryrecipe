@@ -14,7 +14,10 @@ export class EmailRepository implements IEmailRepository {
     }
 
     async findEmailByE_mail(e_mail: string): Promise<Email> {
-        return this.repository.findOneBy({ e_mail });
+        return this.repository
+            .createQueryBuilder()
+            .where("e_mail = :e_mail", { e_mail })
+            .getOne();
     }
     async create({ id, e_mail, author_name }: ICreateEmailDTO): Promise<Email> {
         const email = this.repository.create({ id, e_mail, author_name });
