@@ -1,12 +1,14 @@
-import "dotenv/config";
-import { faker } from "@faker-js/faker";
-import { Author } from "@modules/author/infra/typeorm/entities/Author";
-import request from "supertest";
-import { DataSource } from "typeorm";
+import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
+import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
+import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
-import { app } from "@shared/infra/http/app";
-import { createConnection } from "@shared/infra/typeorm";
+import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
+import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 
-let connection: DataSource;
+let emailRepositoryInMemory: EmailRepositoryInMemory;
+let authorRepositoryInMemory: AuthorRepositoryInMemory;
+let recipeRepositoryInMemory: RecipeRepositoryInMemory;
+let createAuthorUseCase: CreateAuthorUseCase;
+let createEmailUseCase: CreateEmailUseCase;
 
 describe("Update e-mail UseCase", () => {});
