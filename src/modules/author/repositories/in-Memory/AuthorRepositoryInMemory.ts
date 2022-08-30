@@ -8,7 +8,7 @@ import { IEmailRepository } from "../IEmailRepository";
 
 @injectable()
 export class AuthorRepositoryInMemory implements IAuthorRepository {
-    private authorRepository: Author[] = [];
+    authorRepository: Author[] = [];
 
     constructor(
         @inject("EmailRepositoryInMemory")
