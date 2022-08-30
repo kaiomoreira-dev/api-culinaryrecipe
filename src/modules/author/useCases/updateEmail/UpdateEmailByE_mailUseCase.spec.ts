@@ -11,4 +11,18 @@ let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 
-describe("Update e-mail UseCase", () => {});
+describe("Update e-mail UseCase", () => {
+    beforeEach(() => {
+        emailRepositoryInMemory = new EmailRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory(
+            emailRepositoryInMemory,
+            recipeRepositoryInMemory
+        );
+        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+        createEmailUseCase = new CreateEmailUseCase(
+            emailRepositoryInMemory,
+            authorRepositoryInMemory
+        );
+    });
+});
