@@ -13,18 +13,14 @@ import { CreateEmailUseCase } from "./CreateEmailUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
-let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 
 describe("Create e-mail UseCase", () => {
     beforeEach(() => {
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,
@@ -49,6 +45,7 @@ describe("Create e-mail UseCase", () => {
 
         const e_mail = await createEmailUseCase.execute(email);
 
+        console.log(authorCreated);
         expect(e_mail).toHaveProperty("id");
     });
 
