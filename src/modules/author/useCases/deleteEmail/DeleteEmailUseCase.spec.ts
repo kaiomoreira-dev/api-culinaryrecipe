@@ -13,7 +13,6 @@ import { DeleteEmailUseCase } from "./DeleteEmailUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
-let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 let deleteEmailUseCase: DeleteEmailUseCase;
@@ -21,11 +20,7 @@ let deleteEmailUseCase: DeleteEmailUseCase;
 describe("Delete e-mail UseCase", () => {
     beforeEach(() => {
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,

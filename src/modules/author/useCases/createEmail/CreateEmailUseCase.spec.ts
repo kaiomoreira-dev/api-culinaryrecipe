@@ -45,7 +45,6 @@ describe("Create e-mail UseCase", () => {
 
         const e_mail = await createEmailUseCase.execute(email);
 
-        console.log(authorCreated);
         expect(e_mail).toHaveProperty("id");
     });
 

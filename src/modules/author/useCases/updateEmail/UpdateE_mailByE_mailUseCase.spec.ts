@@ -13,7 +13,6 @@ import { UpdateE_mailByE_mailUseCase } from "./UpdateEmailByE_mailUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
-let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 let updateE_mailByE_mailUseCase: UpdateE_mailByE_mailUseCase;
@@ -21,11 +20,7 @@ let updateE_mailByE_mailUseCase: UpdateE_mailByE_mailUseCase;
 describe("Update e-mail UseCase", () => {
     beforeEach(() => {
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,

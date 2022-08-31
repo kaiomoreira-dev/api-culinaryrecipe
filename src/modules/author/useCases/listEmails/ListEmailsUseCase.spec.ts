@@ -10,7 +10,6 @@ import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { ListEmailsUseCase } from "./ListEmailsUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
-let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createEmailUseCase: CreateEmailUseCase;
 let listEmailsUseCase: ListEmailsUseCase;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
@@ -19,12 +18,8 @@ let createAuthorUseCase: CreateAuthorUseCase;
 describe("List e-mails UseCase", () => {
     beforeEach(() => {
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
 
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         listEmailsUseCase = new ListEmailsUseCase(emailRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(

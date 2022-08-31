@@ -13,7 +13,6 @@ import { FindEmailUseCase } from "./FindEmailUseCase";
 
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
-let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 let findEmailUseCase: FindEmailUseCase;
@@ -21,11 +20,7 @@ let findEmailUseCase: FindEmailUseCase;
 describe("Find e-mail UseCase", () => {
     beforeEach(() => {
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,
