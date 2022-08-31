@@ -31,4 +31,20 @@ describe("Create author Controller", () => {
 
         expect(responseAuthor.status).toBe(200);
     });
+
+    it("should not be able to create author with name already exists", async () => {
+        await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: faker.phone.number(),
+        });
+
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: faker.phone.number(),
+        });
+
+        expect(responseAuthor.status).toBe(401);
+    });
 });
