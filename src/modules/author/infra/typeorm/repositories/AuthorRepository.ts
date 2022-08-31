@@ -12,6 +12,20 @@ export class AuthorRepository implements IAuthorRepository {
     constructor() {
         this.repository = dataSource.getRepository(Author);
     }
+    async updateNameAndWhatsappByName(
+        name: string,
+        new_name: string,
+        whatsapp: string
+    ): Promise<Author> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ name: new_name, whatsapp })
+            .where("name = :name", { name })
+            .execute();
+
+        return this.repository.findOneBy({ name: new_name });
+    }
 
     async create({
         id,
@@ -42,12 +56,12 @@ export class AuthorRepository implements IAuthorRepository {
     async findAuthorByName(name: string): Promise<Author> {
         return this.repository.findOneBy({ name });
     }
-    async deleteAuthorById(id: string): Promise<void> {
+    async deleteAuthorByName(name: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
             .from(Author)
-            .where("id = :id", { id })
+            .where("name = :name", { name })
             .execute();
     }
 }
