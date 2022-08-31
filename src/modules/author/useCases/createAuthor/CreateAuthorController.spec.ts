@@ -6,3 +6,5 @@ import { DataSource } from "typeorm";
 
 import { app } from "@shared/infra/http/app";
 import { createConnection } from "@shared/infra/typeorm";
+
+let connection: DataSource;
