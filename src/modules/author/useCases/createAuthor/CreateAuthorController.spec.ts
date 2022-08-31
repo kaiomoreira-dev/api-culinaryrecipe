@@ -21,4 +21,14 @@ describe("Create author Controller", () => {
 
         await connection.destroy();
     });
+
+    it("should be able to create author", async () => {
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: faker.phone.number(),
+        });
+
+        expect(responseAuthor.status).toBe(200);
+    });
 });
