@@ -1,12 +1,9 @@
 /* eslint-disable prefer-const */
 import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { Email } from "@modules/author/infra/typeorm/entities/Email";
-import { inject, injectable } from "tsyringe";
 
-import { IAuthorRepository } from "../IAuthorRepository";
 import { IEmailRepository } from "../IEmailRepository";
 
-@injectable()
 export class EmailRepositoryInMemory implements IEmailRepository {
     private emailsRepository: Email[] = [];
 
