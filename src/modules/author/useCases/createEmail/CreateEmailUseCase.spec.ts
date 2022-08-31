@@ -19,7 +19,9 @@ let createEmailUseCase: CreateEmailUseCase;
 
 describe("Create e-mail UseCase", () => {
     beforeEach(() => {
-        emailRepositoryInMemory = new EmailRepositoryInMemory();
+        emailRepositoryInMemory = new EmailRepositoryInMemory(
+            authorRepositoryInMemory
+        );
         recipeRepositoryInMemory = new RecipeRepositoryInMemory();
         authorRepositoryInMemory = new AuthorRepositoryInMemory(
             emailRepositoryInMemory,
