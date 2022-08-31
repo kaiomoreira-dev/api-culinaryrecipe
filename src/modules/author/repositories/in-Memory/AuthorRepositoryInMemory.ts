@@ -1,15 +1,26 @@
 /* eslint-disable no-param-reassign */
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
-import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
-import { inject, injectable } from "tsyringe";
 
 import { IAuthorRepository } from "../IAuthorRepository";
-import { IEmailRepository } from "../IEmailRepository";
 
-@injectable()
 export class AuthorRepositoryInMemory implements IAuthorRepository {
     authorRepository: Author[] = [];
+
+    async updateNameAndWhatsappByName(
+        name: string,
+        new_name: string,
+        whatsapp: string
+    ): Promise<Author> {
+        const authorIndex = this.authorRepository.findIndex(
+            (author) => author.name === name
+        );
+
+        this.authorRepository[authorIndex].name = new_name;
+        this.authorRepository[authorIndex].whatsapp = whatsapp;
+
+        return this.authorRepository.find((author) => author.name === new_name);
+    }
 
     async create({
         id,
@@ -38,9 +49,9 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     async findAuthorByName(name: string): Promise<Author> {
         return this.authorRepository.find((author) => author.name === name);
     }
-    async deleteAuthorById(id: string): Promise<void> {
+    async deleteAuthorByName(name: string): Promise<void> {
         const findAuthorIndex = this.authorRepository.findIndex(
-            (author) => author.id === id
+            (author) => author.name === name
         );
 
         this.authorRepository.splice(findAuthorIndex, 1);
