@@ -1,10 +1,19 @@
+/* eslint-disable prefer-const */
 import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { Email } from "@modules/author/infra/typeorm/entities/Email";
+import { inject, injectable } from "tsyringe";
 
+import { IAuthorRepository } from "../IAuthorRepository";
 import { IEmailRepository } from "../IEmailRepository";
 
+@injectable()
 export class EmailRepositoryInMemory implements IEmailRepository {
     private emailsRepository: Email[] = [];
+
+    constructor(
+        @inject("authorRepositoryInMemory")
+        private authorRepositoryInMemory: IAuthorRepository
+    ) {}
 
     async updateE_mailByE_mail(
         oldE_mail: string,
@@ -41,6 +50,12 @@ export class EmailRepositoryInMemory implements IEmailRepository {
         });
 
         this.emailsRepository.push(email);
+
+        const author = await this.authorRepositoryInMemory.findAuthorByName(
+            author_name
+        );
+
+        author.emails.push(email);
 
         return email;
     }
