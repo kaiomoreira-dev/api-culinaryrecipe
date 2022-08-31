@@ -11,14 +11,6 @@ import { IEmailRepository } from "../IEmailRepository";
 export class AuthorRepositoryInMemory implements IAuthorRepository {
     authorRepository: Author[] = [];
 
-    constructor(
-        @inject("EmailRepositoryInMemory")
-        private emailRepository: IEmailRepository,
-
-        @inject("RecipeRepositoryInMemory")
-        private recipeRepository: IRecipeRepository
-    ) {}
-
     async create({
         id,
         name,
@@ -42,15 +34,6 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     }
     async list(): Promise<Author[]> {
         return this.authorRepository;
-    }
-    async findAuthorByEmail(e_mail: string): Promise<Author> {
-        const email = await this.emailRepository.findEmailByE_mail(e_mail);
-
-        const author = this.authorRepository.find(
-            (author) => author.name === email.author_name
-        );
-
-        return author;
     }
     async findAuthorByName(name: string): Promise<Author> {
         return this.authorRepository.find((author) => author.name === name);
