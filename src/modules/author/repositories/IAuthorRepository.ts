@@ -5,5 +5,10 @@ export interface IAuthorRepository {
     create(data: ICreateAuthorDTO): Promise<Author>;
     list(): Promise<Author[]>;
     findAuthorByName(name: string): Promise<Author>;
-    deleteAuthorById(id: string): Promise<void>;
+    updateNameAndWhatsappByName(
+        name: string,
+        new_name: string,
+        whatsapp: string
+    ): Promise<Author>;
+    deleteAuthorByName(name: string): Promise<void>;
 }
