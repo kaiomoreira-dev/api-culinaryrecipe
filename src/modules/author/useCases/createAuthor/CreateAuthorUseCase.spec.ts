@@ -1,6 +1,5 @@
 import { faker } from "@faker-js/faker";
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
-import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
@@ -29,10 +28,7 @@ describe("Create author UseCase", () => {
     ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
     emailRepositoryInMemory = new EmailRepositoryInMemory();
     recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-    authorRepositoryInMemory = new AuthorRepositoryInMemory(
-        emailRepositoryInMemory,
-        recipeRepositoryInMemory
-    );
+    authorRepositoryInMemory = new AuthorRepositoryInMemory();
     createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
     createEmailUseCase = new CreateEmailUseCase(
         emailRepositoryInMemory,
@@ -50,7 +46,7 @@ describe("Create author UseCase", () => {
     it("should be able to create author", async () => {
         const author: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
-            name: "Kaio Moreira",
+            name: faker.name.fullName(),
             whatsapp: faker.phone.number(),
         };
 
@@ -62,14 +58,14 @@ describe("Create author UseCase", () => {
     it("should not be able to create author already exists", async () => {
         const author1: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
-            name: "Kaio Jordan",
+            name: "Kaio Moreira",
             whatsapp: faker.phone.number(),
         };
         await createAuthorUseCase.execute(author1);
 
         const author2: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
-            name: "Kaio Jordan",
+            name: "Kaio Moreira",
             whatsapp: faker.phone.number(),
         };
 
