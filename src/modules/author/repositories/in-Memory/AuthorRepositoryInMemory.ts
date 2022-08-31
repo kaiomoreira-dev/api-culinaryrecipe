@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
