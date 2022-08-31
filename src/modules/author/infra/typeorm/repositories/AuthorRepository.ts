@@ -39,14 +39,6 @@ export class AuthorRepository implements IAuthorRepository {
             .leftJoinAndSelect("a.emails", "emails")
             .getMany();
     }
-    async findAuthorByEmail(e_mail: string): Promise<Author> {
-        const author = this.repository
-            .createQueryBuilder("a")
-            .leftJoinAndSelect("a.emails", "emails")
-            .where("o.e_mail = :e_mail", { e_mail })
-            .getOne();
-        return author;
-    }
     async findAuthorByName(name: string): Promise<Author> {
         return this.repository.findOneBy({ name });
     }
