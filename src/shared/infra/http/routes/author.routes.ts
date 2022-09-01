@@ -1,4 +1,5 @@
 import { CreateAuthorController } from "@modules/author/useCases/createAuthor/CreateAuthorController";
+import { DeleteAuthorController } from "@modules/author/useCases/deleteAuthor/DeleteAuthorController";
 import { FindAuthorByNameController } from "@modules/author/useCases/findAuthorByName/FindAuthorByNameController";
 import { ListAuthorController } from "@modules/author/useCases/listAuthor/ListAuthorController";
 import { UpdateAuthorController } from "@modules/author/useCases/updateAuthor/UpdateAuthorUseController";
@@ -14,6 +15,8 @@ const findAuthorByNameController = new FindAuthorByNameController();
 
 const updateAuthorController = new UpdateAuthorController();
 
+const deleteAuthorController = new DeleteAuthorController();
+
 authorRoutes.post("/", createAuthorController.handle);
 
 authorRoutes.get("/", listAuthorController.handle);
@@ -21,3 +24,5 @@ authorRoutes.get("/", listAuthorController.handle);
 authorRoutes.get("/find", findAuthorByNameController.handle);
 
 authorRoutes.put("/update", updateAuthorController.handle);
+
+authorRoutes.delete("/delete", deleteAuthorController.handle);
