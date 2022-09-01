@@ -17,4 +17,23 @@ let createAuthorUseCase: CreateAuthorUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
 
-describe("Create recipe UseCase", () => {});
+describe("Create recipe UseCase", () => {
+    beforeEach(() => {
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
+        createRecipeUseCase = new CreateRecipeUseCase(
+            recipeRepositoryInMemory,
+            ingredientRepositoryInMemory
+        );
+        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+        createIngredientUseCase = new CreateIngredientUseCase(
+            ingredientRepositoryInMemory,
+            produtoRepositoryInMemory
+        );
+        createProdutoUseCase = new CreateProdutoUseCase(
+            produtoRepositoryInMemory
+        );
+    });
+});
