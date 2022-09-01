@@ -83,4 +83,28 @@ describe("Update author Controller", () => {
 
         expect(responseAuthorUpdated.status).toBe(401);
     });
+
+    it("should not be able to update author with whatsapp is already exists", async () => {
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio",
+            whatsapp: faker.phone.number(),
+        });
+
+        const { name, whatsapp: whatsapp_exist } =
+            responseAuthor.body as Author;
+
+        const newName = "Kaio dos Santos Moreira";
+        const whatsapp = whatsapp_exist;
+
+        const responseAuthorUpdated = await request(app)
+            .put("/author/update")
+            .send({
+                name,
+                newName,
+                whatsapp,
+            });
+
+        expect(responseAuthorUpdated.status).toBe(401);
+    });
 });
