@@ -47,4 +47,20 @@ describe("Find author UseCase", () => {
             authorRepositoryInMemory
         );
     });
+
+    it("should be able to find author using name", async () => {
+        const author: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        };
+
+        const authorCreated = await createAuthorUseCase.execute(author);
+
+        const findAuthor = await findAuthorByNameUseCase.execute(
+            authorCreated.name
+        );
+
+        expect(findAuthor).toHaveProperty("id");
+    });
 });
