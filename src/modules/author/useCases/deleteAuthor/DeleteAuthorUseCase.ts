@@ -7,4 +7,6 @@ export class DeleteAuthorUseCase {
         @inject("AuthorRepository")
         private authorRepository: IAuthorRepository
     ) {}
+
+    async execute(name: string): Promise<void> {}
 }
