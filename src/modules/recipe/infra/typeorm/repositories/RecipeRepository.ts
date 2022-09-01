@@ -4,7 +4,6 @@ import { Repository } from "typeorm";
 
 import dataSource from "@shared/infra/typeorm";
 
-import { Ingredient } from "../entities/Ingredient";
 import { Recipe } from "../entities/Recipe";
 
 export class RecipeRepository implements IRecipeRepository {
