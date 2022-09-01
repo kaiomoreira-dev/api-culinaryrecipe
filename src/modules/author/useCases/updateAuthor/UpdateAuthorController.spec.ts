@@ -44,4 +44,20 @@ describe("Update author Controller", () => {
 
         expect(responseAuthorUpdated.status).toBe(200);
     });
+
+    it("should not be able to update author using name invalid", async () => {
+        const name = "fake-name";
+        const newName = "Kaio dos Santos Moreira";
+        const whatsapp = "1234567890";
+
+        const responseAuthorUpdated = await request(app)
+            .put("/author/update")
+            .send({
+                name,
+                newName,
+                whatsapp,
+            });
+
+        expect(responseAuthorUpdated.status).toBe(404);
+    });
 });
