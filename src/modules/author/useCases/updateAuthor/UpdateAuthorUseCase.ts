@@ -27,5 +27,9 @@ export class UpdateAuthorUseCase {
         const newNameValidator = await this.authorRepository.findAuthorByName(
             newName
         );
+
+        if (newNameValidator) {
+            throw new AppError("Author name already exists", 401);
+        }
     }
 }
