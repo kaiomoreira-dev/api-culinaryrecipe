@@ -13,12 +13,15 @@ export class AuthorRepository implements IAuthorRepository {
         this.repository = dataSource.getRepository(Author);
     }
     async findAuthorByWhatsapp(whatsapp: string): Promise<Author> {
-        return this.repository.findOneBy({ whatsapp });
+        return this.repository
+            .createQueryBuilder()
+            .where("whatsapp = :whatsapp", { whatsapp })
+            .getOne();
     }
     async updateNameAndWhatsappByName(
         name: string,
-        new_name: string,
-        whatsapp: string
+        new_name?: string,
+        whatsapp?: string
     ): Promise<Author> {
         await this.repository
             .createQueryBuilder()
