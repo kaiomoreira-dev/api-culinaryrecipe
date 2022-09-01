@@ -25,26 +25,27 @@ let createIngredientUseCase: CreateIngredientUseCase;
 let listAuthorUseCase: ListAuthorUseCase;
 
 describe("List authors UseCase", () => {
-    produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
-    ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
-    emailRepositoryInMemory = new EmailRepositoryInMemory();
-    recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-    authorRepositoryInMemory = new AuthorRepositoryInMemory();
-    createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
-    createEmailUseCase = new CreateEmailUseCase(
-        emailRepositoryInMemory,
-        authorRepositoryInMemory
-    );
-    createIngredientUseCase = new CreateIngredientUseCase(
-        ingredientRepositoryInMemory,
-        produtoRepositoryInMemory
-    );
-    createRecipeUseCase = new CreateRecipeUseCase(
-        recipeRepositoryInMemory,
-        ingredientRepositoryInMemory
-    );
-    listAuthorUseCase = new ListAuthorUseCase(authorRepositoryInMemory);
-
+    beforeEach(() => {
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+        emailRepositoryInMemory = new EmailRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+        createEmailUseCase = new CreateEmailUseCase(
+            emailRepositoryInMemory,
+            authorRepositoryInMemory
+        );
+        createIngredientUseCase = new CreateIngredientUseCase(
+            ingredientRepositoryInMemory,
+            produtoRepositoryInMemory
+        );
+        createRecipeUseCase = new CreateRecipeUseCase(
+            recipeRepositoryInMemory,
+            ingredientRepositoryInMemory
+        );
+        listAuthorUseCase = new ListAuthorUseCase(authorRepositoryInMemory);
+    });
     it("should be able to list authors", async () => {
         const author: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
