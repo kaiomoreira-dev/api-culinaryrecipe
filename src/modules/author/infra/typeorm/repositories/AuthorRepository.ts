@@ -1,5 +1,6 @@
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
+import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
 import { Repository } from "typeorm";
 
 import dataSource from "@shared/infra/typeorm";
@@ -54,7 +55,12 @@ export class AuthorRepository implements IAuthorRepository {
             .getMany();
     }
     async findAuthorByName(name: string): Promise<Author> {
-        return this.repository.findOneBy({ name });
+        return this.repository
+            .createQueryBuilder("a")
+            .leftJoinAndSelect("a.recipes", "recipes")
+            .leftJoinAndSelect("a.emails", "emails")
+            .where("name = :name", { name })
+            .getOne();
     }
     async deleteAuthorByName(name: string): Promise<void> {
         await this.repository
