@@ -46,4 +46,20 @@ describe("Create author Controller", () => {
 
         expect(responseAuthor.status).toBe(401);
     });
+
+    it("should not be able to create author with Whatsapp already exists", async () => {
+        await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio",
+            whatsapp: "1785236547",
+        });
+
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Rilary",
+            whatsapp: "1785236547",
+        });
+
+        expect(responseAuthor.status).toBe(401);
+    });
 });
