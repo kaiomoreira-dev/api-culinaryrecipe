@@ -37,4 +37,14 @@ describe("Find author Controller", () => {
 
         expect(responseFindAuthor.status).toBe(200);
     });
+
+    it("should not be able to find author using name invalid", async () => {
+        const name = "fake-name";
+
+        const responseFindAuthor = await request(app).get("/author/find").send({
+            author_name: name,
+        });
+
+        expect(responseFindAuthor.status).toBe(404);
+    });
 });
