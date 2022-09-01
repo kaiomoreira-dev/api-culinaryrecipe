@@ -1,6 +1,5 @@
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
-import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
 import { Repository } from "typeorm";
 
 import dataSource from "@shared/infra/typeorm";
@@ -12,6 +11,9 @@ export class AuthorRepository implements IAuthorRepository {
 
     constructor() {
         this.repository = dataSource.getRepository(Author);
+    }
+    async findAuthorByWhatsapp(whatsapp: string): Promise<Author> {
+        return this.repository.findOneBy({ whatsapp });
     }
     async updateNameAndWhatsappByName(
         name: string,
