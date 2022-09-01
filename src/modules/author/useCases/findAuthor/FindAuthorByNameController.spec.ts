@@ -8,4 +8,10 @@ import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
 
-describe("Find author Controller", () => {});
+describe("Find author Controller", () => {
+    beforeAll(async () => {
+        connection = await createConnection("localhost");
+
+        await connection.runMigrations();
+    });
+});
