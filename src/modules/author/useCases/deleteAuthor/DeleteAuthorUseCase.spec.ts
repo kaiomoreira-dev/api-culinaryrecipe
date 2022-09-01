@@ -18,3 +18,5 @@ let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 let createRecipeUseCase: CreateRecipeUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
+
+describe("Delete author UseCase", () => {});
