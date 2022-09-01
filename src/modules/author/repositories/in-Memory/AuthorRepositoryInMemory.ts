@@ -7,6 +7,12 @@ import { IAuthorRepository } from "../IAuthorRepository";
 export class AuthorRepositoryInMemory implements IAuthorRepository {
     authorRepository: Author[] = [];
 
+    async findAuthorByWhatsapp(whatsapp: string): Promise<Author> {
+        return this.authorRepository.find(
+            (author) => author.whatsapp === whatsapp
+        );
+    }
+
     async updateNameAndWhatsappByName(
         name: string,
         new_name: string,
