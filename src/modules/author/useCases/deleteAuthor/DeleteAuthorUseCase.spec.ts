@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
@@ -8,6 +10,7 @@ import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/Creat
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
+import { DeleteAuthorUseCase } from "./DeleteAuthorUseCase";
 
 let produtoRepositoryInMemory: ProdutoRepositoryInMemory;
 let ingredientRepositoryInMemory: IngredientRepositoryInMemory;
@@ -18,6 +21,7 @@ let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 let createRecipeUseCase: CreateRecipeUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
+let deleteAuthorUseCase: DeleteAuthorUseCase;
 
 describe("Delete author UseCase", () => {
     beforeEach(() => {
