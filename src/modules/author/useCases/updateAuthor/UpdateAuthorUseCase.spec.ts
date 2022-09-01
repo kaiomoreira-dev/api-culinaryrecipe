@@ -45,4 +45,27 @@ describe("Update author UseCase", () => {
         );
         updateAuthorUseCase = new UpdateAuthorUseCase(authorRepositoryInMemory);
     });
+
+    it("should be able to update author using name", async () => {
+        const author: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: "3333336666",
+        };
+
+        const authorCreated = await createAuthorUseCase.execute(author);
+
+        const { name } = authorCreated;
+
+        const newName = "Kaio dos Santos Moreira";
+        const whatsapp = "14998554799";
+
+        const updateAuthor = await updateAuthorUseCase.execute(
+            name,
+            newName,
+            whatsapp
+        );
+
+        expect(updateAuthor).toHaveProperty("id");
+    });
 });
