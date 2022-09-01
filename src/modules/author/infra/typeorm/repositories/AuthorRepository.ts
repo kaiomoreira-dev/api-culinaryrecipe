@@ -59,7 +59,7 @@ export class AuthorRepository implements IAuthorRepository {
             .createQueryBuilder("a")
             .leftJoinAndSelect("a.recipes", "recipes")
             .leftJoinAndSelect("a.emails", "emails")
-            .where("name = :name", { name })
+            .where("a.name = :name", { name })
             .getOne();
     }
     async deleteAuthorByName(name: string): Promise<void> {
