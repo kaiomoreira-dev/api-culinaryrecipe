@@ -45,4 +45,20 @@ describe("Delete author UseCase", () => {
         );
         deleteAuthorUseCase = new DeleteAuthorUseCase(authorRepositoryInMemory);
     });
+
+    it("should be able to delete author using name", async () => {
+        const author: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        };
+
+        const authorCreated = await createAuthorUseCase.execute(author);
+
+        const deleteAuthor = await deleteAuthorUseCase.execute(
+            authorCreated.name
+        );
+
+        expect(deleteAuthor).toBe(null);
+    });
 });
