@@ -8,6 +8,8 @@ import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory
 import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredient/CreateIngredientUseCase";
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
+import { AppError } from "@shared/errors/AppError";
+
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { FindAuthorByNameUseCase } from "./FindAuthorByNameUseCase";
@@ -62,5 +64,13 @@ describe("Find author UseCase", () => {
         );
 
         expect(findAuthor).toHaveProperty("id");
+    });
+
+    it("should not be able to find author using name invalid", async () => {
+        const author_name = "fake-author@fake.com";
+
+        await expect(
+            findAuthorByNameUseCase.execute(author_name)
+        ).rejects.toEqual(new AppError("Author not found", 404));
     });
 });
