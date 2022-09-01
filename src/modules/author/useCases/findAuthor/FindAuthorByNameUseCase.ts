@@ -19,5 +19,7 @@ export class FindAuthorByNameUseCase {
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
         }
+
+        return authorValidator;
     }
 }
