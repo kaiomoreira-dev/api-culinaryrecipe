@@ -10,7 +10,7 @@ export class UpdateAuthorUseCase {
     ) {}
 
     async execute(
-        oldName: string,
+        name: string,
         newName?: string,
         whatsapp?: string
     ): Promise<Author> {}
