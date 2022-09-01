@@ -19,4 +19,25 @@ let createEmailUseCase: CreateEmailUseCase;
 let createRecipeUseCase: CreateRecipeUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 
-describe("Delete author UseCase", () => {});
+describe("Delete author UseCase", () => {
+    beforeEach(() => {
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+        emailRepositoryInMemory = new EmailRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+        createEmailUseCase = new CreateEmailUseCase(
+            emailRepositoryInMemory,
+            authorRepositoryInMemory
+        );
+        createIngredientUseCase = new CreateIngredientUseCase(
+            ingredientRepositoryInMemory,
+            produtoRepositoryInMemory
+        );
+        createRecipeUseCase = new CreateRecipeUseCase(
+            recipeRepositoryInMemory,
+            ingredientRepositoryInMemory
+        );
+    });
+});
