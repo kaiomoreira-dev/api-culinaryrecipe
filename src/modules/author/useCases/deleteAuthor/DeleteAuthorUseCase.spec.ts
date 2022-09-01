@@ -8,6 +8,8 @@ import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory
 import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredient/CreateIngredientUseCase";
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
+import { AppError } from "@shared/errors/AppError";
+
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { DeleteAuthorUseCase } from "./DeleteAuthorUseCase";
@@ -60,5 +62,13 @@ describe("Delete author UseCase", () => {
         );
 
         expect(deleteAuthor).toBe(null);
+    });
+
+    it("should not be able to delete author using name invalid", async () => {
+        const name = "fake-name";
+
+        await expect(deleteAuthorUseCase.execute(name)).rejects.toEqual(
+            new AppError("Author not found", 404)
+        );
     });
 });
