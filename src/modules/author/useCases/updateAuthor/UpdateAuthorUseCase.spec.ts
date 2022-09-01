@@ -8,6 +8,8 @@ import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory
 import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredient/CreateIngredientUseCase";
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
+import { AppError } from "@shared/errors/AppError";
+
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { UpdateAuthorUseCase } from "./UpdateAuthorUseCase";
@@ -67,5 +69,15 @@ describe("Update author UseCase", () => {
         );
 
         expect(updateAuthor).toHaveProperty("id");
+    });
+
+    it("should not be able to update author using name invalid", async () => {
+        const name = "fake-name";
+        const newName = "Kaio dos Santos Moreira";
+        const whatsapp = "14998554799";
+
+        await expect(
+            updateAuthorUseCase.execute(name, newName, whatsapp)
+        ).rejects.toEqual(new AppError("Author not found", 404));
     });
 });
