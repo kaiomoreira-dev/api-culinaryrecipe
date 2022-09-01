@@ -10,8 +10,8 @@ export interface IAuthorRepository {
 
     updateNameAndWhatsappByName(
         name: string,
-        new_name: string,
-        whatsapp: string
+        new_name?: string,
+        whatsapp?: string
     ): Promise<Author>;
 
     deleteAuthorByName(name: string): Promise<void>;
