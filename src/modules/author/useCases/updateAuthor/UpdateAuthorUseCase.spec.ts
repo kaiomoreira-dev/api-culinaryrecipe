@@ -99,4 +99,23 @@ describe("Update author UseCase", () => {
             updateAuthorUseCase.execute(name, newName, whatsapp)
         ).rejects.toEqual(new AppError("Author name already exists", 401));
     });
+
+    it("should not be able to update author with whatsapp is already exists", async () => {
+        const author: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: "3333336666",
+        };
+
+        const authorCreated = await createAuthorUseCase.execute(author);
+
+        const { name } = authorCreated;
+
+        const newName = "Kaio dos Santos Moreira";
+        const whatsapp = "3333336666";
+
+        await expect(
+            updateAuthorUseCase.execute(name, newName, whatsapp)
+        ).rejects.toEqual(new AppError("Author whatsapp already exists", 401));
+    });
 });
