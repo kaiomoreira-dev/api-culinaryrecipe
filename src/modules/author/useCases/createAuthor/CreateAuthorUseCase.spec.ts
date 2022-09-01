@@ -24,24 +24,26 @@ let createRecipeUseCase: CreateRecipeUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 
 describe("Create author UseCase", () => {
-    produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
-    ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
-    emailRepositoryInMemory = new EmailRepositoryInMemory();
-    recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-    authorRepositoryInMemory = new AuthorRepositoryInMemory();
-    createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
-    createEmailUseCase = new CreateEmailUseCase(
-        emailRepositoryInMemory,
-        authorRepositoryInMemory
-    );
-    createIngredientUseCase = new CreateIngredientUseCase(
-        ingredientRepositoryInMemory,
-        produtoRepositoryInMemory
-    );
-    createRecipeUseCase = new CreateRecipeUseCase(
-        recipeRepositoryInMemory,
-        ingredientRepositoryInMemory
-    );
+    beforeEach(() => {
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+        emailRepositoryInMemory = new EmailRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+        createEmailUseCase = new CreateEmailUseCase(
+            emailRepositoryInMemory,
+            authorRepositoryInMemory
+        );
+        createIngredientUseCase = new CreateIngredientUseCase(
+            ingredientRepositoryInMemory,
+            produtoRepositoryInMemory
+        );
+        createRecipeUseCase = new CreateRecipeUseCase(
+            recipeRepositoryInMemory,
+            ingredientRepositoryInMemory
+        );
+    });
 
     it("should be able to create author", async () => {
         const author: ICreateAuthorDTO = {
