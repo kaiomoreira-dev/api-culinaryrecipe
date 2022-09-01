@@ -11,6 +11,7 @@ export class CreateEmailUseCase {
     constructor(
         @inject("EmailRepository")
         private emailRepository: IEmailRepository,
+
         @inject("AuthorRepository")
         private authorRepository: IAuthorRepository
     ) {}
@@ -20,10 +21,10 @@ export class CreateEmailUseCase {
         e_mail,
         author_name,
     }: ICreateEmailDTO): Promise<Email> {
-        // criar validação de author em autor
         const authorValidator = await this.authorRepository.findAuthorByName(
             author_name
         );
+
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
         }
