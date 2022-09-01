@@ -15,13 +15,7 @@ export class CreateAuthorUseCase {
         private authorRepository: IAuthorRepository
     ) {}
 
-    async execute({
-        id,
-        name,
-        whatsapp,
-        emails,
-        recipes,
-    }: ICreateAuthorDTO): Promise<Author> {
+    async execute({ id, name, whatsapp }: ICreateAuthorDTO): Promise<Author> {
         // buscando name de autor
         const authorValidator = await this.authorRepository.findAuthorByName(
             name
@@ -37,8 +31,6 @@ export class CreateAuthorUseCase {
             id,
             name,
             whatsapp,
-            emails,
-            recipes,
         });
 
         return author;
