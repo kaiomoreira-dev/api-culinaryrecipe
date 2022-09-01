@@ -1,5 +1,5 @@
 import { CreateAuthorController } from "@modules/author/useCases/createAuthor/CreateAuthorController";
-import { FindAuthorByNameController } from "@modules/author/useCases/findAuthor/FindAuthorByNameController";
+import { FindAuthorByNameController } from "@modules/author/useCases/findAuthorByName/FindAuthorByNameController";
 import { ListAuthorController } from "@modules/author/useCases/listAuthor/ListAuthorController";
 import { UpdateAuthorController } from "@modules/author/useCases/updateAuthor/UpdateAuthorUseController";
 import { Router } from "express";
