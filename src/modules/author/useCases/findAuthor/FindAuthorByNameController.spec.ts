@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { faker } from "@faker-js/faker";
+import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import request from "supertest";
 import { DataSource } from "typeorm";
 
@@ -19,5 +20,21 @@ describe("Find author Controller", () => {
         await connection.dropDatabase();
 
         await connection.destroy();
+    });
+
+    it("should be able to find author using name", async () => {
+        const responseAuthor = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: faker.phone.number(),
+        });
+
+        const { name } = responseAuthor.body as Author;
+
+        const responseFindAuthor = await request(app).get("/author/find").send({
+            author_name: name,
+        });
+
+        expect(responseFindAuthor.status).toBe(200);
     });
 });
