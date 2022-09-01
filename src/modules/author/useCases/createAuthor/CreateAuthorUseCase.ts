@@ -26,6 +26,13 @@ export class CreateAuthorUseCase {
             throw new AppError("Author is already exists.", 401);
         }
 
+        const whatsappValidator =
+            await this.authorRepository.findAuthorByWhatsapp(whatsapp);
+
+        if (whatsappValidator) {
+            throw new AppError("Whatsapp is already exists.", 401);
+        }
+
         // criando author sem emails e recipes
         const author = await this.authorRepository.create({
             id,
