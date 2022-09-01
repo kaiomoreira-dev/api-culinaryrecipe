@@ -2,6 +2,8 @@ import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "@shared/errors/AppError";
+
 @injectable()
 export class UpdateAuthorUseCase {
     constructor(
@@ -13,5 +15,13 @@ export class UpdateAuthorUseCase {
         name: string,
         newName?: string,
         whatsapp?: string
-    ): Promise<Author> {}
+    ): Promise<Author> {
+        const authorValidator = await this.authorRepository.findAuthorByName(
+            name
+        );
+
+        if (!authorValidator) {
+            throw new AppError("Author not found", 404);
+        }
+    }
 }
