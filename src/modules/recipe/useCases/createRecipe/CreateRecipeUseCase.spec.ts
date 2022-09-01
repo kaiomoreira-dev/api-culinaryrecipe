@@ -16,3 +16,5 @@ let createRecipeUseCase: CreateRecipeUseCase;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
+
+describe("Create recipe UseCase", () => {});
