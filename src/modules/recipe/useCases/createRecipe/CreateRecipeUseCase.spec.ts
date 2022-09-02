@@ -112,8 +112,6 @@ describe("Create recipe UseCase", () => {
             ingredients
         );
 
-        console.log(createRecipe);
-
         expect(createRecipe).toHaveProperty("id");
     });
 });
