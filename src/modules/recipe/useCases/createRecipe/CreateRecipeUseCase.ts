@@ -20,18 +20,20 @@ export class CreateRecipeUseCase {
         private ingredientRepository: IIngredientRepository
     ) {}
 
-    async execute({
-        id,
-        name,
-        description,
-        ingredients,
-        difficulty,
-        dish_type,
-        additional_features,
-        time,
-        total_guests,
-        author_name,
-    }: ICreateRecipeDTO): Promise<Recipe> {
+    async execute(
+        {
+            id,
+            name,
+            description,
+            difficulty,
+            dish_type,
+            additional_features,
+            time,
+            total_guests,
+            author_name,
+        }: ICreateRecipeDTO,
+        ingredients: string[]
+    ): Promise<Recipe> {
         if (difficulty !== "easy" && "medium" && "hard") {
             throw new AppError("difficulty incorrect!", 401);
         }
@@ -42,12 +44,9 @@ export class CreateRecipeUseCase {
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
 
-        // convertendo Ingredient[] em um array de string[]
-        const ingredientsFormatString = ingredients as unknown as string[];
-
         // enviando Ingredient para o array addIngredients
         // sem utilizar async!!
-        for (const name of ingredientsFormatString) {
+        for (const name of ingredients) {
             // busca ingredient pelo nome
             const foundIngredient =
                 await this.ingredientRepository.findIngredientByProdutoName(
