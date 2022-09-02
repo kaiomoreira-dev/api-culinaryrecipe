@@ -1,6 +1,7 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
+import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
 import { ICreateRecipeDTO } from "@modules/recipe/dtos/ICreateRecipeDTO";
 import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
@@ -17,7 +18,10 @@ export class CreateRecipeUseCase {
         private recipeRepository: IRecipeRepository,
 
         @inject("IngredientRepository")
-        private ingredientRepository: IIngredientRepository
+        private ingredientRepository: IIngredientRepository,
+
+        @inject("AuthorRepository")
+        private authorRepository: IAuthorRepository
     ) {}
 
     async execute(
@@ -41,6 +45,17 @@ export class CreateRecipeUseCase {
         if (dish_type !== "appetizer" && "main course" && "dessert") {
             throw new AppError("dish_type incorrect!", 401);
         }
+
+        // buscando name de autor
+        const authorValidator = await this.authorRepository.findAuthorByName(
+            author_name
+        );
+
+        // validando se author existe
+        if (!authorValidator) {
+            throw new AppError("Author not found", 404);
+        }
+
         // array vazio de Ingredient
         let addIngredients: Ingredient[] = [];
 
