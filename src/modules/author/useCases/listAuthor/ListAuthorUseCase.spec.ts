@@ -42,7 +42,8 @@ describe("List authors UseCase", () => {
         );
         createRecipeUseCase = new CreateRecipeUseCase(
             recipeRepositoryInMemory,
-            ingredientRepositoryInMemory
+            ingredientRepositoryInMemory,
+            authorRepositoryInMemory
         );
         listAuthorUseCase = new ListAuthorUseCase(authorRepositoryInMemory);
     });

@@ -43,7 +43,8 @@ describe("Find author UseCase", () => {
         );
         createRecipeUseCase = new CreateRecipeUseCase(
             recipeRepositoryInMemory,
-            ingredientRepositoryInMemory
+            ingredientRepositoryInMemory,
+            authorRepositoryInMemory
         );
         findAuthorByNameUseCase = new FindAuthorByNameUseCase(
             authorRepositoryInMemory

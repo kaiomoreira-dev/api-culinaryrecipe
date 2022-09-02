@@ -43,7 +43,8 @@ describe("Update author UseCase", () => {
         );
         createRecipeUseCase = new CreateRecipeUseCase(
             recipeRepositoryInMemory,
-            ingredientRepositoryInMemory
+            ingredientRepositoryInMemory,
+            authorRepositoryInMemory
         );
         updateAuthorUseCase = new UpdateAuthorUseCase(authorRepositoryInMemory);
     });

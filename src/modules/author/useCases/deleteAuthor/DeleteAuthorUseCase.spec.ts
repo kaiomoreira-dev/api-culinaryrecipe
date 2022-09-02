@@ -43,7 +43,8 @@ describe("Delete author UseCase", () => {
         );
         createRecipeUseCase = new CreateRecipeUseCase(
             recipeRepositoryInMemory,
-            ingredientRepositoryInMemory
+            ingredientRepositoryInMemory,
+            authorRepositoryInMemory
         );
         deleteAuthorUseCase = new DeleteAuthorUseCase(authorRepositoryInMemory);
     });
