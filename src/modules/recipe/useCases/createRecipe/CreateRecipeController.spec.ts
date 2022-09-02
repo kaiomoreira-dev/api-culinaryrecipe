@@ -82,7 +82,6 @@ describe("Create recipe Controller", () => {
                 ingredients: ["Alho", "Coentro"],
                 author_name: "Kaio Moreira",
             });
-        console.log(responseCreateRecipe.body);
 
         expect(responseCreateRecipe.status).toBe(200);
     });
