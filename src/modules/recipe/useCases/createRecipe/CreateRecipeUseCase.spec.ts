@@ -32,7 +32,8 @@ describe("Create recipe UseCase", () => {
         recipeRepositoryInMemory = new RecipeRepositoryInMemory();
         createRecipeUseCase = new CreateRecipeUseCase(
             recipeRepositoryInMemory,
-            ingredientRepositoryInMemory
+            ingredientRepositoryInMemory,
+            authorRepositoryInMemory
         );
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createIngredientUseCase = new CreateIngredientUseCase(
@@ -255,5 +256,67 @@ describe("Create recipe UseCase", () => {
         await expect(
             createRecipeUseCase.execute(recipe, ingredients)
         ).rejects.toEqual(new AppError("dish_type incorrect!", 401));
+    });
+
+    it("should not be able to create a recipe with author_name incorrect", async () => {
+        const produto1: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Alho",
+            description: faker.lorem.paragraphs(),
+        };
+        const produto2: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Cebola",
+            description: faker.lorem.paragraphs(),
+        };
+
+        const createProduto1 = await createProdutoUseCase.execute(produto1);
+
+        const createProduto2 = await createProdutoUseCase.execute(produto2);
+
+        const ingredient1: ICreateIngredientDTO = {
+            id: faker.datatype.uuid(),
+            description: faker.lorem.words(20),
+            produto_name: createProduto1.name,
+            unity: 1,
+            weight: 100,
+        };
+
+        const ingredient2: ICreateIngredientDTO = {
+            id: faker.datatype.uuid(),
+            description: faker.lorem.words(20),
+            produto_name: createProduto2.name,
+            unity: 1,
+            weight: 100,
+        };
+
+        const createIngredient1 = await createIngredientUseCase.execute(
+            ingredient1
+        );
+
+        const createIngredient2 = await createIngredientUseCase.execute(
+            ingredient2
+        );
+
+        const recipe: ICreateRecipeDTO = {
+            id: faker.datatype.uuid(),
+            name: "Receita 1",
+            description: faker.lorem.words(20),
+            additional_features: "cheap dish",
+            difficulty: "easy",
+            dish_type: "appetizer",
+            author_name: "fake-author",
+            time: 20,
+            total_guests: 5,
+        };
+
+        const ingredients: string[] = [
+            createIngredient1.produto_name,
+            createIngredient2.produto_name,
+        ];
+
+        await expect(
+            createRecipeUseCase.execute(recipe, ingredients)
+        ).rejects.toEqual(new AppError("Author not found", 404));
     });
 });
