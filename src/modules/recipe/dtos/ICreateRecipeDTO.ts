@@ -4,7 +4,7 @@ export interface ICreateRecipeDTO {
     id?: string;
     name: string;
     description: string;
-    ingredients?: Ingredient[];
+    ingredients: Ingredient[];
     author_name: string;
     time: number;
     difficulty: "easy" | "medium" | "hard";
