@@ -37,10 +37,10 @@ export class Recipe {
     time: number;
 
     @Column()
-    difficulty: "easy" | "medium" | "hard";
+    difficulty: string;
 
     @Column()
-    dish_type: "appetizer" | "main course" | "dessert";
+    dish_type: string;
 
     @Column()
     additional_features: string;
