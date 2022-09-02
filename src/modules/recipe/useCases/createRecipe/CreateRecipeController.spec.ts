@@ -14,4 +14,10 @@ describe("Create recipe Controller", () => {
 
         await connection.runMigrations();
     });
+
+    afterAll(async () => {
+        await connection.dropDatabase();
+
+        await connection.destroy();
+    });
 });
