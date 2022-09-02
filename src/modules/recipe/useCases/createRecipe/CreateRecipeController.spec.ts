@@ -40,10 +40,7 @@ describe("Create recipe Controller", () => {
                 description: faker.lorem.words(20),
             });
 
-        // const { name: prod1 } = responseCreateProduto1.body as Produto;
-        // const { name: prod2 } = responseCreateProduto2.body as Produto;
-
-        const ingredient1 = await request(app)
+        await request(app)
             .post("/ingredient")
             .send({
                 id: faker.datatype.uuid(),
@@ -52,7 +49,7 @@ describe("Create recipe Controller", () => {
                 unity: 1,
                 weight: 100,
             });
-        const ingredient2 = await request(app)
+        await request(app)
             .post("/ingredient")
             .send({
                 id: faker.datatype.uuid(),
