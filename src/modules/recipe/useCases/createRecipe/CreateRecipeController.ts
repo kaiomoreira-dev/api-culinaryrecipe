@@ -19,17 +19,19 @@ export class CreateRecipeController {
 
         const createRecipeUseCase = container.resolve(CreateRecipeUseCase);
 
-        const recipe = await createRecipeUseCase.execute({
-            name,
-            description,
-            ingredients,
-            difficulty,
-            dish_type,
-            additional_features,
-            time,
-            total_guests,
-            author_name,
-        });
+        const recipe = await createRecipeUseCase.execute(
+            {
+                name,
+                description,
+                difficulty,
+                dish_type,
+                additional_features,
+                time,
+                total_guests,
+                author_name,
+            },
+            ingredients
+        );
 
         return response.status(200).json(recipe);
     }
