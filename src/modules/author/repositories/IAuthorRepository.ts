@@ -5,14 +5,14 @@ export interface IAuthorRepository {
     create(data: ICreateAuthorDTO): Promise<Author>;
     list(): Promise<Author[]>;
 
-    findAuthorById(id: string): Promise<Author>;
+    findAuthorByName(name: string): Promise<Author>;
     findAuthorByWhatsapp(whatsapp: string): Promise<Author>;
 
-    updateNameAndWhatsappByName(
-        name: string,
+    updateNameAndWhatsappById(
+        id: string,
         new_name?: string,
         whatsapp?: string
     ): Promise<Author>;
 
-    deleteAuthorByName(name: string): Promise<void>;
+    deleteAuthorById(id: string): Promise<void>;
 }
