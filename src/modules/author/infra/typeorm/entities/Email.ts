@@ -19,8 +19,8 @@ export class Email {
     @Column()
     e_mail: string;
 
-    @ManyToOne(() => Author)
-    @JoinColumn({ name: "id" })
+    @ManyToOne(() => Author, (author) => author.emails)
+    @JoinColumn({ name: "author_id" })
     author?: Author;
 
     @Column()
