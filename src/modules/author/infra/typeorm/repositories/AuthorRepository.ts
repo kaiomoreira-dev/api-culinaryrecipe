@@ -12,7 +12,7 @@ export class AuthorRepository implements IAuthorRepository {
     constructor() {
         this.repository = dataSource.getRepository(Author);
     }
-    async findAuthorByWhatsapp(whatsapp: string): Promise<Author> {
+    async findByWhatsapp(whatsapp: string): Promise<Author> {
         return this.repository
             .createQueryBuilder()
             .where("whatsapp = :whatsapp", { whatsapp })
