@@ -17,7 +17,7 @@ export class CreateEmailUseCase {
     ) {}
 
     async execute({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
-        const authorValidator = await this.authorRepository.findAuthorByName(
+        const authorValidator = await this.authorRepository.findAuthorById(
             author_id
         );
 
