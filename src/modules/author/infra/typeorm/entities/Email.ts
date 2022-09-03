@@ -20,11 +20,11 @@ export class Email {
     e_mail: string;
 
     @ManyToOne(() => Author)
-    @JoinColumn({ name: "author_name", referencedColumnName: "name" })
+    @JoinColumn({ name: "author_id" })
     author?: Author;
 
     @Column()
-    author_name: string;
+    author_id: string;
 
     @CreateDateColumn()
     created_at: Date;
