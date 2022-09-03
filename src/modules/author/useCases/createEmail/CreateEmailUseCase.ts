@@ -17,9 +17,7 @@ export class CreateEmailUseCase {
     ) {}
 
     async execute({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
-        const authorValidator = await this.authorRepository.findAuthorById(
-            author_id
-        );
+        const authorValidator = await this.authorRepository.findById(author_id);
 
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
