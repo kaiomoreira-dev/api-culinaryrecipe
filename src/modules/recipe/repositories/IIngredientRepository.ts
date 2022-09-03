@@ -6,17 +6,16 @@ export interface IIngredientRepository {
     create(data: ICreateIngredientDTO): Promise<Ingredient>;
     list(): Promise<Ingredient[]>;
 
-    findIngredientByProdutoName(produto_name: string): Promise<Ingredient>;
-    findAllIngredientByProdutoName(produto_name: string): Promise<Ingredient[]>;
-    findIngredientByProdutoNameWeightUnity(
-        produto_name: string,
+    findAllIngredientByProdutoName(produto_id: string): Promise<Ingredient[]>;
+    findIngredientByProdutoIdWeightUnity(
+        produto_id: string,
         weight: number,
         unity: number
     ): Promise<Ingredient>;
 
     updateIngredientById(
         id: string,
-        produto_name?: string,
+        produto_id?: string,
         weight?: number,
         unity?: number
     ): Promise<Ingredient>;
