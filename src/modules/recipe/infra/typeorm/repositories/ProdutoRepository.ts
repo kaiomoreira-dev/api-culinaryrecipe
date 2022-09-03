@@ -41,8 +41,11 @@ export class ProdutoRepository implements IProdutoRepository {
     async findProdutoByName(name: string): Promise<Produto> {
         return this.repository.findOneBy({ name });
     }
-    async updateNameDescriptionByName(
-        name: string,
+    async findProdutoById(id: string): Promise<Produto> {
+        return this.repository.findOneBy({ id });
+    }
+    async updateNameDescriptionById(
+        id: string,
         new_name: string,
         new_description: string
     ): Promise<Produto> {
@@ -50,16 +53,16 @@ export class ProdutoRepository implements IProdutoRepository {
             .createQueryBuilder()
             .update()
             .set({ name: new_name, description: new_description })
-            .where("name = :name", { name })
+            .where("id = :id", { id })
             .execute();
 
         return this.repository.findOneBy({ name: new_name });
     }
-    async deleteProdutoByname(name: string): Promise<void> {
+    async deleteProdutoById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
-            .where("name = :name", { name })
+            .where("id = :id", { id })
             .from(Produto)
             .execute();
     }
