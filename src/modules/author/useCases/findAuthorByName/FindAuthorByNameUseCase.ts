@@ -12,7 +12,7 @@ export class FindAuthorByNameUseCase {
     ) {}
 
     async execute(author_name: string): Promise<Author> {
-        const authorValidator = await this.authorRepository.findAuthorByName(
+        const authorValidator = await this.authorRepository.findByName(
             author_name
         );
 
