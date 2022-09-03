@@ -53,19 +53,22 @@ export class AuthorRepository implements IAuthorRepository {
         return author;
     }
     async list(): Promise<Author[]> {
-        return this.repository
-            .createQueryBuilder("a")
-            .leftJoinAndSelect("a.recipes", "recipes")
-            .leftJoinAndSelect("a.emails", "emails")
-            .getMany();
+        return this.repository.find({
+            relations: {
+                recipes: { ingredients: true },
+                emails: true,
+            },
+        });
     }
+
     async findAuthorByName(name: string): Promise<Author> {
-        return this.repository
-            .createQueryBuilder("a")
-            .leftJoinAndSelect("a.recipes", "recipes")
-            .leftJoinAndSelect("a.emails", "emails")
-            .where("a.name = :name", { name })
-            .getOne();
+        return this.repository.findOne({
+            where: { name },
+            relations: {
+                recipes: { ingredients: true },
+                emails: true,
+            },
+        });
     }
     async deleteAuthorByName(name: string): Promise<void> {
         await this.repository
