@@ -12,7 +12,7 @@ export interface IRecipeRepository {
 
     updateTimeById(id: string, time: number): Promise<Recipe>;
 
-    deleteRecipeById(id: string): Promise<void>;
+    deleteById(id: string): Promise<void>;
 
     // //=====Recipes-Ingredients======//
     listRecipesByIngredientName(name: string): Promise<Recipe[]>;
