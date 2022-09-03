@@ -12,15 +12,12 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
-    async updateE_mailByE_mail(
-        oldE_mail: string,
-        newE_mail: string
-    ): Promise<Email> {
+    async updateEmailById(id: string, newE_mail: string): Promise<Email> {
         await this.repository
             .createQueryBuilder()
             .update()
             .set({ e_mail: newE_mail })
-            .where("e_mail = :e_mail", { e_mail: oldE_mail })
+            .where("id = :id", { id })
             .execute();
 
         return this.repository.findOneBy({ e_mail: newE_mail });
