@@ -17,9 +17,7 @@ export class CreateAuthorUseCase {
 
     async execute({ id, name, whatsapp }: ICreateAuthorDTO): Promise<Author> {
         // buscando name de autor
-        const authorValidator = await this.authorRepository.findAuthorByName(
-            name
-        );
+        const authorValidator = await this.authorRepository.findByName(name);
 
         // validando se author existe
         if (authorValidator) {
