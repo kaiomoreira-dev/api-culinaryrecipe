@@ -25,9 +25,7 @@ export class CreateEmailUseCase {
             throw new AppError("Author not found", 404);
         }
 
-        const emailValidator = await this.emailRepository.findEmailByE_mail(
-            e_mail
-        );
+        const emailValidator = await this.emailRepository.findByEmail(e_mail);
 
         if (emailValidator) {
             throw new AppError("Email is already exists.", 401);
