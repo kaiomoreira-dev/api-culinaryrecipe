@@ -40,7 +40,7 @@ describe("Create e-mail UseCase", () => {
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const e_mail = await createEmailUseCase.execute(email);
@@ -60,13 +60,13 @@ describe("Create e-mail UseCase", () => {
         const email1: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "test@test.com.br",
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const email2: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "test@test.com.br",
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const e_mail1 = await createEmailUseCase.execute(email1);
@@ -80,7 +80,7 @@ describe("Create e-mail UseCase", () => {
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "test@test.com.br",
-            author_name: faker.name.fullName(),
+            author_id: faker.datatype.uuid(),
         };
 
         await expect(createEmailUseCase.execute(email)).rejects.toEqual(
