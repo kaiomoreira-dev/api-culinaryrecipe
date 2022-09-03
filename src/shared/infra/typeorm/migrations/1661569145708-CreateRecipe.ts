@@ -73,7 +73,6 @@ export class CreateRecipe1661569145708 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("recipes_ingredients");
     await queryRunner.dropTable("recipes");
   }
 }
