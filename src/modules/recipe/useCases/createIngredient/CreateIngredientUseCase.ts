@@ -18,21 +18,21 @@ export class CreateIngredientUseCase {
 
     async execute({
         id,
-        produto_name,
+        produto_id,
         description,
         unity,
         weight,
     }: ICreateIngredientDTO): Promise<Ingredient> {
-        const produtoValidator = await this.produtoRepository.findProdutoByName(
-            produto_name
+        const produtoValidator = await this.produtoRepository.findProdutoById(
+            produto_id
         );
 
         if (!produtoValidator) {
             throw new AppError("Produto not found.", 401);
         }
         const ingredientValidator =
-            await this.ingredientRepository.findIngredientByProdutoNameWeightUnity(
-                produtoValidator.name,
+            await this.ingredientRepository.findIngredientByProdutoIdWeightUnity(
+                produtoValidator.id,
                 weight,
                 unity
             );
@@ -42,7 +42,7 @@ export class CreateIngredientUseCase {
 
         const ingredient = await this.ingredientRepository.create({
             id,
-            produto_name,
+            produto_id,
             description,
             unity,
             weight,
