@@ -32,13 +32,13 @@ export class EmailRepositoryInMemory implements IEmailRepository {
         this.emailsRepository.splice(emailIndex, 1);
     }
 
-    async create({ id, e_mail, author_name }: ICreateEmailDTO): Promise<Email> {
+    async create({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
         const email = new Email();
 
         Object.assign(email, {
             id,
             e_mail,
-            author_name,
+            author_id,
         });
 
         this.emailsRepository.push(email);
