@@ -4,7 +4,6 @@ import { Recipe } from "../infra/typeorm/entities/Recipe";
 export interface IRecipeRepository {
     create(data: ICreateRecipeDTO): Promise<Recipe>;
     list(): Promise<Recipe[]>;
-    listAllRecipeByIngredientProdutoId(produto_id: string): Promise<Recipe[]>;
 
     findRecipeById(id: string): Promise<Recipe>;
     findRecipesByDifficulty(difficulty: string): Promise<Recipe[]>;
@@ -14,4 +13,7 @@ export interface IRecipeRepository {
     updateTimeByRecipeId(id: string, time: number): Promise<Recipe>;
 
     deleteRecipeById(id: string): Promise<void>;
+
+    // //=====Recipes-Ingredients======//
+    listRecipesByIngredientName(name: string): Promise<Recipe[]>;
 }
