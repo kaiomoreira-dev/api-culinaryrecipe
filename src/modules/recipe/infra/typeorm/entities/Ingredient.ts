@@ -22,7 +22,7 @@ export class Ingredient {
     // relacionamento de many-to-one apontando para produto qual
     // ingrediente deve pertencer a produto
     @ManyToOne(() => Produto, (produto) => produto.ingredients)
-    @JoinColumn({ name: "author_id" })
+    @JoinColumn({ name: "produto_id" })
     produto?: Produto;
 
     @Column()
