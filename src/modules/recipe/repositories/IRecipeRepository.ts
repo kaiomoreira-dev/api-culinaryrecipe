@@ -10,7 +10,7 @@ export interface IRecipeRepository {
     findByAuthorId(author_id: string): Promise<Recipe>;
     findByName(name: string): Promise<Recipe>;
 
-    updateTimeByRecipeId(id: string, time: number): Promise<Recipe>;
+    updateTimeById(id: string, time: number): Promise<Recipe>;
 
     deleteRecipeById(id: string): Promise<void>;
 
