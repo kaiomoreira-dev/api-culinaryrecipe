@@ -45,7 +45,7 @@ export class EmailRepositoryInMemory implements IEmailRepository {
     async list(): Promise<Email[]> {
         return this.emailsRepository;
     }
-    async findEmailByE_mail(email: string): Promise<Email> {
+    async findByEmail(email: string): Promise<Email> {
         return this.emailsRepository.find((eMail) => eMail.e_mail === email);
     }
 }
