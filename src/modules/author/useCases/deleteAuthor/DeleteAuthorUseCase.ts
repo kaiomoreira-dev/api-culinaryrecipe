@@ -17,7 +17,7 @@ export class DeleteAuthorUseCase {
             throw new AppError("Author not found", 404);
         }
 
-        await this.authorRepository.deleteAuthorByName(name);
+        await this.authorRepository.deleteById(authorValidator.id);
 
         return null;
     }
