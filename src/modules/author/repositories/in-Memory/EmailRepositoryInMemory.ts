@@ -21,9 +21,9 @@ export class EmailRepositoryInMemory implements IEmailRepository {
         return emailUpdated;
     }
 
-    async deleteEmailByE_mail(e_mail: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         const emailIndex = this.emailsRepository.findIndex(
-            (email) => email.e_mail === e_mail
+            (email) => email.id === id
         );
 
         this.emailsRepository.splice(emailIndex, 1);
