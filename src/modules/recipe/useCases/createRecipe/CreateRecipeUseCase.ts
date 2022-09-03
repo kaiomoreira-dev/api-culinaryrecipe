@@ -47,9 +47,7 @@ export class CreateRecipeUseCase {
         }
 
         // buscando name de autor
-        const authorValidator = await this.authorRepository.findAuthorById(
-            author_id
-        );
+        const authorValidator = await this.authorRepository.findById(author_id);
 
         // validando se author existe
         if (!authorValidator) {
