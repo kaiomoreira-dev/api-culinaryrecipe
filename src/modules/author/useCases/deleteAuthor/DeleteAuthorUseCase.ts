@@ -11,9 +11,7 @@ export class DeleteAuthorUseCase {
     ) {}
 
     async execute(name: string): Promise<null> {
-        const authorValidator = await this.authorRepository.findAuthorByName(
-            name
-        );
+        const authorValidator = await this.authorRepository.findByName(name);
 
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
