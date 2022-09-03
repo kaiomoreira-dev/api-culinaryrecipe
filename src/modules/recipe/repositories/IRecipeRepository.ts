@@ -6,6 +6,7 @@ export interface IRecipeRepository {
     list(): Promise<Recipe[]>;
     listAllRecipeByIngredientProdutoId(produto_id: string): Promise<Recipe[]>;
 
+    findRecipeById(id: string): Promise<Recipe>;
     findRecipesByDifficulty(difficulty: string): Promise<Recipe[]>;
     findRecipeByAuthor(author_id: string): Promise<Recipe>;
     findRecipeByName(name: string): Promise<Recipe>;
