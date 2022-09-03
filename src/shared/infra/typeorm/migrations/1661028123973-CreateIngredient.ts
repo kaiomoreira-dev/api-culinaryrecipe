@@ -12,8 +12,8 @@ export class CreateIngredient1661028123973 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: "produto_name",
-            type: "varchar",
+            name: "produto_id",
+            type: "uuid",
           },
           {
             name: "description",
@@ -39,16 +39,6 @@ export class CreateIngredient1661028123973 implements MigrationInterface {
             default: "now()",
           },
         ],
-        // foreignKeys: [
-        //   {
-        //     name: "FKProdutoIngredient",
-        //     referencedTableName: "produtos",
-        //     referencedColumnNames: ["name"],
-        //     columnNames: ["produto_name"],
-        //     onDelete: "CASCADE",
-        //     onUpdate: "CASCADE",
-        //   },
-        // ],
       })
     );
   }
