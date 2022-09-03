@@ -55,9 +55,9 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     async findrByName(name: string): Promise<Author> {
         return this.authorRepository.find((author) => author.name === name);
     }
-    async deleteAuthorByName(name: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         const findAuthorIndex = this.authorRepository.findIndex(
-            (author) => author.name === name
+            (author) => author.id === id
         );
 
         this.authorRepository.splice(findAuthorIndex, 1);
