@@ -46,6 +46,7 @@ export class IngredientRepository implements IIngredientRepository {
 
     async create({
         id,
+        name,
         description,
         produto_id,
         unity,
@@ -53,6 +54,7 @@ export class IngredientRepository implements IIngredientRepository {
     }: ICreateIngredientDTO): Promise<Ingredient> {
         const ingredient = this.repository.create({
             id,
+            name,
             description,
             produto_id,
             unity,

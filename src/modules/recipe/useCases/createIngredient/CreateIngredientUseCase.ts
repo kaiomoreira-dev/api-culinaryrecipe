@@ -18,6 +18,7 @@ export class CreateIngredientUseCase {
 
     async execute({
         id,
+        name,
         produto_id,
         description,
         unity,
@@ -42,6 +43,7 @@ export class CreateIngredientUseCase {
 
         const ingredient = await this.ingredientRepository.create({
             id,
+            name,
             produto_id,
             description,
             unity,
