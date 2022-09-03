@@ -5,7 +5,7 @@ export interface IAuthorRepository {
     create(data: ICreateAuthorDTO): Promise<Author>;
     list(): Promise<Author[]>;
 
-    findAuthorByName(name: string): Promise<Author>;
+    findAuthorById(id: string): Promise<Author>;
     findAuthorByWhatsapp(whatsapp: string): Promise<Author>;
 
     updateNameAndWhatsappByName(
