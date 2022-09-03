@@ -34,7 +34,7 @@ export class CreateRecipeUseCase {
             additional_features,
             time,
             total_guests,
-            author_name,
+            author_id,
         }: ICreateRecipeDTO,
         ingredients: string[]
     ): Promise<Recipe> {
@@ -47,8 +47,8 @@ export class CreateRecipeUseCase {
         }
 
         // buscando name de autor
-        const authorValidator = await this.authorRepository.findAuthorByName(
-            author_name
+        const authorValidator = await this.authorRepository.findAuthorById(
+            author_id
         );
 
         // validando se author existe
@@ -61,12 +61,11 @@ export class CreateRecipeUseCase {
 
         // enviando Ingredient para o array addIngredients
         // sem utilizar async!!
-        for (const name of ingredients) {
+        for (const id of ingredients) {
             // busca ingredient pelo nome
+            console.log(id);
             const foundIngredient =
-                await this.ingredientRepository.findIngredientByProdutoName(
-                    name
-                );
+                await this.ingredientRepository.findIngredientById(id);
 
             if (!foundIngredient) {
                 throw new AppError("Ingredient not found", 404);
@@ -92,7 +91,7 @@ export class CreateRecipeUseCase {
             time,
             total_guests,
             ingredients: addIngredients,
-            author_name,
+            author_id,
         });
 
         return recipe;
