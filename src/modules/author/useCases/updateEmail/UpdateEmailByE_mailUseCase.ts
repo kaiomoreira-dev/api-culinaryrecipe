@@ -12,7 +12,7 @@ export class UpdateE_mailByE_mailUseCase {
     ) {}
 
     async execute(oldE_mail: string, newE_mail: string): Promise<Email> {
-        const emailValidator = await this.emailRepository.findEmailByE_mail(
+        const emailValidator = await this.emailRepository.findByEmail(
             oldE_mail
         );
 
@@ -20,7 +20,7 @@ export class UpdateE_mailByE_mailUseCase {
             throw new AppError("Email not found", 404);
         }
 
-        const newEmailValidator = await this.emailRepository.findEmailByE_mail(
+        const newEmailValidator = await this.emailRepository.findByEmail(
             newE_mail
         );
 
