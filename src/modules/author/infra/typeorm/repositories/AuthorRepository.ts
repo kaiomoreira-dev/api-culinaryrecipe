@@ -60,7 +60,15 @@ export class AuthorRepository implements IAuthorRepository {
             },
         });
     }
-
+    async findAuthorById(id: string): Promise<Author> {
+        return this.repository.findOne({
+            where: { id },
+            relations: {
+                recipes: { ingredients: true },
+                emails: true,
+            },
+        });
+    }
     async findAuthorByName(name: string): Promise<Author> {
         return this.repository.findOne({
             where: { name },
