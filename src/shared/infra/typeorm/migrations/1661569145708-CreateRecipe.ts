@@ -16,8 +16,8 @@ export class CreateRecipe1661569145708 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "author_name",
-            type: "varchar",
+            name: "author_id",
+            type: "uuid",
           },
 
           {
@@ -62,8 +62,8 @@ export class CreateRecipe1661569145708 implements MigrationInterface {
           {
             name: "FKAuthorRecipe",
             referencedTableName: "authors",
-            referencedColumnNames: ["name"],
-            columnNames: ["author_name"],
+            referencedColumnNames: ["id"],
+            columnNames: ["author_id"],
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
           },
