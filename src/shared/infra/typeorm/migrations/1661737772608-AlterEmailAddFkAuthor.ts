@@ -7,8 +7,8 @@ export class AlterEmailAddFkAuthor1661737772608 implements MigrationInterface {
       new TableForeignKey({
         name: "FKAuthorEmail",
         referencedTableName: "authors",
-        referencedColumnNames: ["name"],
-        columnNames: ["author_name"],
+        referencedColumnNames: ["id"],
+        columnNames: ["author_id"],
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       })
