@@ -6,9 +6,9 @@ export interface IEmailRepository {
     create(data: ICreateEmailDTO): Promise<Email>;
     list(): Promise<Email[]>;
 
-    findEmailByE_mail(e_mail: string): Promise<Email>;
+    findEmailById(id: string): Promise<Email>;
 
-    updateE_mailByE_mail(oldE_mail: string, newE_mail: string): Promise<Email>;
+    updateE_mailById(id: string, newE_mail: string): Promise<Email>;
 
-    deleteEmailByE_mail(e_mail: string): Promise<void>;
+    deleteEmailById(id: string): Promise<void>;
 }
