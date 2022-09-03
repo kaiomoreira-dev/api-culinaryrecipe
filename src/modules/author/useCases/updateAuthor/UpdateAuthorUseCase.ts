@@ -30,8 +30,9 @@ export class UpdateAuthorUseCase {
             throw new AppError("Author name already exists", 401);
         }
 
-        const whatsappValidator =
-            await this.authorRepository.findAuthorByWhatsapp(whatsapp);
+        const whatsappValidator = await this.authorRepository.findByWhatsapp(
+            whatsapp
+        );
 
         if (whatsappValidator) {
             throw new AppError("Author whatsapp already exists", 401);
