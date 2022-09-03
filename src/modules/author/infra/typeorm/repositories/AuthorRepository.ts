@@ -18,7 +18,7 @@ export class AuthorRepository implements IAuthorRepository {
             .where("whatsapp = :whatsapp", { whatsapp })
             .getOne();
     }
-    async updateNameAndWhatsappById(
+    async updateById(
         id: string,
         new_name?: string,
         whatsapp?: string
