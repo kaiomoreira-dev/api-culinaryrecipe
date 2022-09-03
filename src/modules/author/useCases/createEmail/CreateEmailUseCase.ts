@@ -16,13 +16,9 @@ export class CreateEmailUseCase {
         private authorRepository: IAuthorRepository
     ) {}
 
-    async execute({
-        id,
-        e_mail,
-        author_name,
-    }: ICreateEmailDTO): Promise<Email> {
+    async execute({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
         const authorValidator = await this.authorRepository.findAuthorByName(
-            author_name
+            author_id
         );
 
         if (!authorValidator) {
@@ -39,7 +35,7 @@ export class CreateEmailUseCase {
         const email = await this.emailRepository.create({
             id,
             e_mail,
-            author_name,
+            author_id,
         });
 
         return email;
