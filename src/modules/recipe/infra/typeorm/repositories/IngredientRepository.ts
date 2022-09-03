@@ -12,32 +12,32 @@ export class IngredientRepository implements IIngredientRepository {
     constructor() {
         this.repository = dataSource.getRepository(Ingredient);
     }
-    async findIngredientByProdutoNameWeightUnity(
-        produto_name: string,
+    async findIngredientByProdutoIdWeightUnity(
+        produto_id: string,
         weight: number,
         unity: number
     ): Promise<Ingredient> {
-        return this.repository.findOneBy({ weight, unity, produto_name });
+        return this.repository.findOneBy({ weight, unity, produto_id });
     }
     async findAllIngredientByProdutoName(
-        produto_name: string
+        produto_id: string
     ): Promise<Ingredient[]> {
         return this.repository
             .createQueryBuilder()
-            .where("produto_name = :produto_name", { produto_name })
+            .where("produto_id = :produto_id", { produto_id })
             .getMany();
     }
 
     async updateIngredientById(
         id: string,
-        produto_name?: string,
+        produto_id?: string,
         weight?: number,
         unity?: number
     ): Promise<Ingredient> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ produto_name, weight, unity })
+            .set({ produto_id, weight, unity })
             .where("id = :id", { id })
             .execute();
 
@@ -47,14 +47,14 @@ export class IngredientRepository implements IIngredientRepository {
     async create({
         id,
         description,
-        produto_name,
+        produto_id,
         unity,
         weight,
     }: ICreateIngredientDTO): Promise<Ingredient> {
         const ingredient = this.repository.create({
             id,
             description,
-            produto_name,
+            produto_id,
             unity,
             weight,
         });
@@ -67,10 +67,8 @@ export class IngredientRepository implements IIngredientRepository {
         return this.repository.find();
     }
 
-    async findIngredientByProdutoName(
-        produto_name: string
-    ): Promise<Ingredient> {
-        return this.repository.findOneBy({ produto_name });
+    async findIngredientById(id: string): Promise<Ingredient> {
+        return this.repository.findOneBy({ id });
     }
 
     async deleteIngredientById(id: string): Promise<void> {
