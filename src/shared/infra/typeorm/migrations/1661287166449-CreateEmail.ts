@@ -14,6 +14,7 @@ export class CreateEmail1661287166449 implements MigrationInterface {
           {
             name: "e_mail",
             type: "varchar",
+            isUnique: true,
           },
           {
             name: "author_id",
