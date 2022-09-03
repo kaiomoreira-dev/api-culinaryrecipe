@@ -15,5 +15,5 @@ export interface IAuthorRepository {
         whatsapp?: string
     ): Promise<Author>;
 
-    deleteAuthorById(id: string): Promise<void>;
+    deleteById(id: string): Promise<void>;
 }
