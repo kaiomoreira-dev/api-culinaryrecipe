@@ -20,7 +20,7 @@ export class Email {
     e_mail: string;
 
     @ManyToOne(() => Author)
-    @JoinColumn({ name: "author_id" })
+    @JoinColumn({ name: "id" })
     author?: Author;
 
     @Column()
