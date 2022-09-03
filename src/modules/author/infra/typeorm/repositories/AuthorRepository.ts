@@ -18,8 +18,8 @@ export class AuthorRepository implements IAuthorRepository {
             .where("whatsapp = :whatsapp", { whatsapp })
             .getOne();
     }
-    async updateNameAndWhatsappByName(
-        name: string,
+    async updateNameAndWhatsappById(
+        id: string,
         new_name?: string,
         whatsapp?: string
     ): Promise<Author> {
@@ -27,7 +27,7 @@ export class AuthorRepository implements IAuthorRepository {
             .createQueryBuilder()
             .update()
             .set({ name: new_name, whatsapp })
-            .where("name = :name", { name })
+            .where("id = :id", { id })
             .execute();
 
         return this.repository.findOneBy({ name: new_name });
@@ -78,12 +78,12 @@ export class AuthorRepository implements IAuthorRepository {
             },
         });
     }
-    async deleteAuthorByName(name: string): Promise<void> {
+    async deleteAuthorById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
             .from(Author)
-            .where("name = :name", { name })
+            .where("id = :id", { id })
             .execute();
     }
 }
