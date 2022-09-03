@@ -22,11 +22,11 @@ export class EmailRepository implements IEmailRepository {
 
         return this.repository.findOneBy({ e_mail: newE_mail });
     }
-    async deleteEmailByE_mail(e_mail: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
-            .where("e_mail = :e_mail", { e_mail })
+            .where("id = :id", { id })
             .execute();
     }
 
