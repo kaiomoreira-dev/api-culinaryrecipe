@@ -52,7 +52,7 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     async list(): Promise<Author[]> {
         return this.authorRepository;
     }
-    async findrByName(name: string): Promise<Author> {
+    async findByName(name: string): Promise<Author> {
         return this.authorRepository.find((author) => author.name === name);
     }
     async deleteById(id: string): Promise<void> {
