@@ -12,14 +12,14 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
-    async listAllRecipeByIngredientProdutoName(
-        produto_name: string
+    async listAllRecipeByIngredientProdutoId(
+        produto_id: string
     ): Promise<Recipe[]> {
         // encontra os ids das recipes que contem o ingrediente buscado
         const recipeIds = await this.repository
             .createQueryBuilder("r")
             .leftJoin("r.ingredients", "i")
-            .where("i.produto_name = :produto_name", { produto_name })
+            .where("i.produto_id = :produto_id", { produto_id })
             .select(["r.id"])
             .getMany();
 
@@ -32,25 +32,12 @@ export class RecipeRepository implements IRecipeRepository {
             .getMany();
         return recipes;
     }
-    async updateAuthorNameByRecipeId(
-        id: string,
-        author_name: string
-    ): Promise<Recipe> {
-        await this.repository
-            .createQueryBuilder()
-            .update()
-            .set({ author_name })
-            .where("id = :id", { id })
-            .execute();
-
-        return this.repository.findOneBy({ id });
-    }
 
     async findRecipeByName(name: string): Promise<Recipe> {
         return this.repository.findOneBy({ name });
     }
-    async findRecipeByAuthor(author_name: string): Promise<Recipe> {
-        return this.repository.findOneBy({ author_name });
+    async findRecipeByAuthor(author_id: string): Promise<Recipe> {
+        return this.repository.findOneBy({ author_id });
     }
 
     async create({
@@ -63,7 +50,7 @@ export class RecipeRepository implements IRecipeRepository {
         ingredients,
         time,
         total_guests,
-        author_name,
+        author_id,
     }: ICreateRecipeDTO): Promise<Recipe> {
         const recipe = this.repository.create({
             id,
@@ -75,7 +62,7 @@ export class RecipeRepository implements IRecipeRepository {
             ingredients,
             time,
             total_guests,
-            author_name,
+            author_id,
         });
 
         await this.repository.save(recipe);
