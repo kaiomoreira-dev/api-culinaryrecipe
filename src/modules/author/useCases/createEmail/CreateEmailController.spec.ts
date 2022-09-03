@@ -34,7 +34,7 @@ describe("Create e-mail Controller", () => {
         const response = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: author.name,
+            author_id: author.id,
         });
 
         expect(response.status).toEqual(200);
@@ -52,13 +52,13 @@ describe("Create e-mail Controller", () => {
         await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
-            author_name: author.name,
+            author_id: author.id,
         });
 
         const response = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
-            author_name: author.name,
+            author_i: author.id,
         });
 
         expect(response.status).toBe(401);
@@ -68,7 +68,7 @@ describe("Create e-mail Controller", () => {
         const response = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
-            author_name: faker.name.fullName(),
+            author_name: faker.datatype.uuid(),
         });
 
         expect(response.status).toBe(404);
