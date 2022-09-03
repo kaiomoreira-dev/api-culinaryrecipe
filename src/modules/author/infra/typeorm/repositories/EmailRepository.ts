@@ -30,7 +30,7 @@ export class EmailRepository implements IEmailRepository {
             .execute();
     }
 
-    async findEmailByE_mail(e_mail: string): Promise<Email> {
+    async findByEmail(e_mail: string): Promise<Email> {
         return this.repository
             .createQueryBuilder()
             .where("e_mail = :e_mail", { e_mail })
