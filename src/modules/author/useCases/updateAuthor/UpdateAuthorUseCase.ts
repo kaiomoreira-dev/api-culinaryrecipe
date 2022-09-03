@@ -16,15 +16,13 @@ export class UpdateAuthorUseCase {
         newName?: string,
         whatsapp?: string
     ): Promise<Author> {
-        const authorValidator = await this.authorRepository.findAuthorByName(
-            name
-        );
+        const authorValidator = await this.authorRepository.findByName(name);
 
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
         }
 
-        const newNameValidator = await this.authorRepository.findAuthorByName(
+        const newNameValidator = await this.authorRepository.findByName(
             newName
         );
 
