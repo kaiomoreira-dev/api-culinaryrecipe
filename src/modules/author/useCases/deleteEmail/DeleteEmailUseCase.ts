@@ -11,9 +11,7 @@ export class DeleteEmailUseCase {
     ) {}
 
     async execute(e_mail: string): Promise<null> {
-        const emailValidator = await this.emailRepository.findEmailByE_mail(
-            e_mail
-        );
+        const emailValidator = await this.emailRepository.findByEmail(e_mail);
 
         if (!emailValidator) {
             throw new AppError("Email not found", 404);
