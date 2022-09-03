@@ -9,8 +9,8 @@ export class AlterIngredientAddFkRecipe1661737240869
       new TableForeignKey({
         name: "FKProdutoIngredient",
         referencedTableName: "produtos",
-        referencedColumnNames: ["name"],
-        columnNames: ["produto_name"],
+        referencedColumnNames: ["id"],
+        columnNames: ["produto_id"],
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       })
