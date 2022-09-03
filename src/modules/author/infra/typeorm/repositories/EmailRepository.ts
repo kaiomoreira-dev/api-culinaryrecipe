@@ -30,10 +30,10 @@ export class EmailRepository implements IEmailRepository {
             .execute();
     }
 
-    async findEmailId(e_mail: string): Promise<Email> {
+    async findEmailId(id: string): Promise<Email> {
         return this.repository
             .createQueryBuilder()
-            .where("e_mail = :e_mail", { e_mail })
+            .where("id = :id", { id })
             .getOne();
     }
     async create({ id, e_mail, author_name }: ICreateEmailDTO): Promise<Email> {
