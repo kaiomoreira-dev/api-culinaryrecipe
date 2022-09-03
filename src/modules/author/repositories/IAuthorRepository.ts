@@ -7,7 +7,7 @@ export interface IAuthorRepository {
 
     findById(id: string): Promise<Author>;
     findByName(name: string): Promise<Author>;
-    findAuthorByWhatsapp(whatsapp: string): Promise<Author>;
+    findByWhatsapp(whatsapp: string): Promise<Author>;
 
     updateNameAndWhatsappById(
         id: string,
