@@ -38,12 +38,11 @@ export class UpdateAuthorUseCase {
             throw new AppError("Author whatsapp already exists", 401);
         }
 
-        const updateAuthor =
-            await this.authorRepository.updateNameAndWhatsappByName(
-                authorValidator.name,
-                newName,
-                whatsapp
-            );
+        const updateAuthor = await this.authorRepository.updateById(
+            authorValidator.id,
+            newName,
+            whatsapp
+        );
 
         return updateAuthor;
     }
