@@ -28,10 +28,8 @@ export class UpdateE_mailByE_mailUseCase {
             throw new AppError("Email already exists", 401);
         }
 
-        const oldE_mailFormat = emailValidator.e_mail;
-
-        const email = await this.emailRepository.updateE_mailByE_mail(
-            oldE_mailFormat,
+        const email = await this.emailRepository.updateById(
+            emailValidator.id,
             newE_mail
         );
 
