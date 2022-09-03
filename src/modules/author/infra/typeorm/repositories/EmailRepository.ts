@@ -12,7 +12,7 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
-    async updateE_mailId(id: string, newE_mail: string): Promise<Email> {
+    async updateE_mailById(id: string, newE_mail: string): Promise<Email> {
         await this.repository
             .createQueryBuilder()
             .update()
@@ -22,7 +22,7 @@ export class EmailRepository implements IEmailRepository {
 
         return this.repository.findOneBy({ e_mail: newE_mail });
     }
-    async deleteEmailId(id: string): Promise<void> {
+    async deleteEmailById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
@@ -30,14 +30,14 @@ export class EmailRepository implements IEmailRepository {
             .execute();
     }
 
-    async findEmailId(id: string): Promise<Email> {
+    async findEmailById(id: string): Promise<Email> {
         return this.repository
             .createQueryBuilder()
             .where("id = :id", { id })
             .getOne();
     }
-    async create({ id, e_mail, author_name }: ICreateEmailDTO): Promise<Email> {
-        const email = this.repository.create({ id, e_mail, author_name });
+    async create({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
+        const email = this.repository.create({ id, e_mail, author_id });
 
         await this.repository.save(email);
 
