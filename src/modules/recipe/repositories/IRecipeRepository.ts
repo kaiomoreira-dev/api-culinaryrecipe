@@ -4,16 +4,15 @@ import { Recipe } from "../infra/typeorm/entities/Recipe";
 export interface IRecipeRepository {
     create(data: ICreateRecipeDTO): Promise<Recipe>;
     list(): Promise<Recipe[]>;
+    listByDifficulty(difficulty: string): Promise<Recipe[]>;
+    // //=====Recipes-Ingredients======//
+    listRecipesByIngredientName(name: string): Promise<Recipe[]>;
 
     findById(id: string): Promise<Recipe>;
-    findByDifficulty(difficulty: string): Promise<Recipe[]>;
     findByAuthorId(author_id: string): Promise<Recipe>;
     findByName(name: string): Promise<Recipe>;
 
     updateTimeById(id: string, time: number): Promise<Recipe>;
 
     deleteById(id: string): Promise<void>;
-
-    // //=====Recipes-Ingredients======//
-    listRecipesByIngredientName(name: string): Promise<Recipe[]>;
 }
