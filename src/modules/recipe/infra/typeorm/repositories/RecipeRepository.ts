@@ -93,7 +93,7 @@ export class RecipeRepository implements IRecipeRepository {
 
         return recipe;
     }
-    async deleteRecipeById(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await this.repository.delete({ id });
     }
 }
