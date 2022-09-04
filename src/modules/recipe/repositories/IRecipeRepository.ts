@@ -3,6 +3,7 @@ import { Recipe } from "../infra/typeorm/entities/Recipe";
 
 export interface IRecipeRepository {
     create(data: ICreateRecipeDTO): Promise<Recipe>;
+
     list(): Promise<Recipe[]>;
     listByDifficulty(difficulty: string): Promise<Recipe[]>;
     // //=====Recipes-Ingredients======//

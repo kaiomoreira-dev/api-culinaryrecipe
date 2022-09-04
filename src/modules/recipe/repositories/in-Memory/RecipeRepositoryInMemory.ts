@@ -79,7 +79,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
     async findByName(name: string): Promise<Recipe> {
         return this.reciperepository.find((recipe) => recipe.name === name);
     }
-    async updateTimeByRecipeId(id: string, time: number): Promise<Recipe> {
+    async updateTimeById(id: string, time: number): Promise<Recipe> {
         const recipeIndex = this.reciperepository.findIndex(
             (recipe) => recipe.id === id
         );
@@ -88,18 +88,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
 
         return this.reciperepository[recipeIndex];
     }
-    async updateAuthorNameByRecipeId(
-        id: string,
-        author_name: string
-    ): Promise<Recipe> {
-        const recipeIndex = this.reciperepository.findIndex(
-            (recipe) => recipe.id === id
-        );
 
-        this.reciperepository[recipeIndex].author_name = author_name;
-
-        return this.reciperepository[recipeIndex];
-    }
     async deleteRecipeById(id: string): Promise<void> {
         const recipeIndex = this.reciperepository.findIndex(
             (recipe) => recipe.id === id
