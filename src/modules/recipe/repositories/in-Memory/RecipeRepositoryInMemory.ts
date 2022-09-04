@@ -57,7 +57,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         });
         return recipesByProdutoName;
     }
-    async findRecipeById(id: string): Promise<Recipe> {
+    async findById(id: string): Promise<Recipe> {
         return this.reciperepository.find((recipe) => recipe.id === id);
     }
     async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
