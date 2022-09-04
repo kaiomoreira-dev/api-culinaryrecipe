@@ -31,7 +31,7 @@ export class RecipeRepository implements IRecipeRepository {
         return recipes;
     }
 
-    async findRecipeByName(name: string): Promise<Recipe> {
+    async findByName(name: string): Promise<Recipe> {
         return this.repository.findOneBy({ name });
     }
     async findRecipeByAuthor(author_id: string): Promise<Recipe> {
