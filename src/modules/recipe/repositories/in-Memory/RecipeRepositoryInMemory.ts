@@ -12,7 +12,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         name,
         description,
         ingredients,
-        author_name,
+        author_id,
         time,
         difficulty,
         dish_type,
