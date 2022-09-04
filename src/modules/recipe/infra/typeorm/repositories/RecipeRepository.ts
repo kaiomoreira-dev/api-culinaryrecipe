@@ -73,7 +73,7 @@ export class RecipeRepository implements IRecipeRepository {
     async findById(id: string): Promise<Recipe> {
         return this.repository.findOneBy({ id });
     }
-    async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
+    async findByDifficulty(difficulty: string): Promise<Recipe[]> {
         const recipes = await this.repository
             .createQueryBuilder()
             .where("difficulty = :difficulty", { difficulty })
