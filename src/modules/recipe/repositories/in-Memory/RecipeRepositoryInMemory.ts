@@ -41,14 +41,14 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
     async list(): Promise<Recipe[]> {
         return this.reciperepository;
     }
-    async listRecipeByIngredientName(produto_id: string): Promise<Recipe[]> {
+    async listRecipesByIngredientName(name: string): Promise<Recipe[]> {
         let recipesByProdutoName: Recipe[] = [];
 
         this.reciperepository.map((recipe) => {
             const { ingredients } = recipe;
 
             ingredients.map((ingredient) => {
-                if (ingredient.produto_id === produto_id) {
+                if (ingredient.name === name) {
                     recipesByProdutoName.push(recipe);
                 }
                 return true;
