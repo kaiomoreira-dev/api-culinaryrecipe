@@ -12,14 +12,12 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
-    async listAllRecipeByIngredientProdutoId(
-        produto_id: string
-    ): Promise<Recipe[]> {
+    async listRecipesByIngredientName(name: string): Promise<Recipe[]> {
         // encontra os ids das recipes que contem o ingrediente buscado
         const recipeIds = await this.repository
             .createQueryBuilder("r")
             .leftJoin("r.ingredients", "i")
-            .where("i.produto_id = :produto_id", { produto_id })
+            .where("i.name = :name", { name })
             .select(["r.id"])
             .getMany();
 
