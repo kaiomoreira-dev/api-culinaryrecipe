@@ -89,7 +89,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         return this.reciperepository[recipeIndex];
     }
 
-    async deleteRecipeById(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         const recipeIndex = this.reciperepository.findIndex(
             (recipe) => recipe.id === id
         );
