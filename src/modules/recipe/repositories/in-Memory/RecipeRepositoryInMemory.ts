@@ -60,7 +60,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
     async findById(id: string): Promise<Recipe> {
         return this.reciperepository.find((recipe) => recipe.id === id);
     }
-    async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
+    async listByDifficulty(difficulty: string): Promise<Recipe[]> {
         let recipesByDifficulty: Recipe[] = [];
         this.reciperepository.map((recipe) => {
             if (recipe.difficulty === difficulty) {
