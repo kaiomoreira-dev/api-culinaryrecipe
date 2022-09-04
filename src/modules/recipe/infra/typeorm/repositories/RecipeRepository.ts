@@ -70,7 +70,7 @@ export class RecipeRepository implements IRecipeRepository {
     async list(): Promise<Recipe[]> {
         return this.repository.find();
     }
-    async findRecipeById(id: string): Promise<Recipe> {
+    async findById(id: string): Promise<Recipe> {
         return this.repository.findOneBy({ id });
     }
     async findRecipesByDifficulty(difficulty: string): Promise<Recipe[]> {
