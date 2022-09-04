@@ -81,7 +81,7 @@ export class RecipeRepository implements IRecipeRepository {
 
         return recipes;
     }
-    async updateTimeByRecipeId(id: string, time: number): Promise<Recipe> {
+    async updateTimeById(id: string, time: number): Promise<Recipe> {
         await this.repository
             .createQueryBuilder()
             .update()
