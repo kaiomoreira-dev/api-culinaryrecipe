@@ -25,7 +25,6 @@ export class IngredientRepository implements IIngredientRepository {
             .where("produto_id = :produto_id", { produto_id })
             .getMany();
     }
-
     async updateById(
         id: string,
         produto_id?: string,
