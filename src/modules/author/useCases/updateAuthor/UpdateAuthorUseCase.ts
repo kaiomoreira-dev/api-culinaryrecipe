@@ -17,7 +17,6 @@ export class UpdateAuthorUseCase {
         whatsapp?: string
     ): Promise<Author> {
         const authorValidator = await this.authorRepository.findById(id);
-
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
         }
