@@ -22,17 +22,17 @@ describe("List author Controller", () => {
     });
 
     it("should to list authors", async () => {
-        const responseAuthor = await request(app)
+        await request(app)
             .post("/author")
             .send({
-                id: faker.datatype.uuid(),
+                id: "86a5a72d-308a-41d2-a166-89966c738804",
                 name: "Kaio Moreira",
                 whatsapp: faker.phone.number(),
                 emails: [
                     {
                         id: faker.datatype.uuid(),
                         e_mail: faker.internet.email(),
-                        author_name: "Kaio Moreira",
+                        author_id: "86a5a72d-308a-41d2-a166-89966c738804",
                         created_at: faker.datatype.datetime(),
                         updated_at: faker.datatype.datetime(),
                     },
@@ -42,7 +42,7 @@ describe("List author Controller", () => {
                         id: faker.datatype.uuid(),
                         name: "Receita test 1",
                         description: faker.lorem.paragraphs(),
-                        author_name: "Kaio Moreira",
+                        author_id: "86a5a72d-308a-41d2-a166-89966c738804",
                         difficulty: "medium",
                         dish_type: "appetizer",
                         time: 5,
@@ -52,7 +52,9 @@ describe("List author Controller", () => {
                             {
                                 id: faker.datatype.uuid(),
                                 description: faker.lorem.paragraphs(),
-                                produto_name: "Alho roxo",
+                                name: "alho roxo",
+                                produto_id:
+                                    "0458f9a7-e132-487e-ac1c-e072bfa1422d",
                                 unity: 1,
                                 weight: 100,
                                 created_at: String(faker.datatype.datetime()),
