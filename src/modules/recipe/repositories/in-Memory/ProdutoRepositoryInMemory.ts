@@ -6,6 +6,9 @@ import { IProdutoRepository } from "../IProdutoRepository";
 export class ProdutoRepositoryInMemory implements IProdutoRepository {
     repository: Produto[] = [];
 
+    async findById(id: string): Promise<Produto> {
+        return this.repository.find((produto) => produto.id === id);
+    }
     async create({
         id,
         name,
