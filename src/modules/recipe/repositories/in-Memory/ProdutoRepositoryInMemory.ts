@@ -31,13 +31,13 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
     async findByName(name: string): Promise<Produto> {
         return this.repository.find((produto) => produto.name === name);
     }
-    async updateNameDescriptionByName(
-        name: string,
+    async updateNameDescriptionById(
+        id: string,
         new_name: string,
         new_description: string
     ): Promise<Produto> {
         const produtoIndex = this.repository.findIndex(
-            (produto) => produto.name === name
+            (produto) => produto.id === id
         );
 
         this.repository[produtoIndex].name = new_name;
