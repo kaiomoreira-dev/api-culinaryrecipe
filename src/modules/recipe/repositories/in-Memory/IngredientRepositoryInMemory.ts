@@ -57,9 +57,9 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
                 ingredient.unity === unity
         );
     }
-    async updateIngredientById(
+    async updateById(
         id: string,
-        produto_name?: string,
+        produto_id?: string,
         weight?: number,
         unity?: number
     ): Promise<Ingredient> {
@@ -67,7 +67,7 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
             (ingredient) => ingredient.id === id
         );
 
-        this.repository[ingredientIndex].produto_name = produto_name;
+        this.repository[ingredientIndex].produto_id = produto_id;
         this.repository[ingredientIndex].weight = weight;
         this.repository[ingredientIndex].unity = unity;
 
