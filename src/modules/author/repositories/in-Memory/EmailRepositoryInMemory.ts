@@ -9,13 +9,13 @@ export class EmailRepositoryInMemory implements IEmailRepository {
 
     async updateById(id: string, newE_mail: string): Promise<Email> {
         const emailIndex = this.emailsRepository.findIndex(
-            (email) => email.e_mail === id
+            (email) => email.id === id
         );
 
         this.emailsRepository[emailIndex].e_mail = newE_mail;
 
         const emailUpdated = this.emailsRepository.find(
-            (email) => email.e_mail === newE_mail
+            (email) => email.id === id
         );
 
         return emailUpdated;
