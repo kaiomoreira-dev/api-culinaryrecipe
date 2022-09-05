@@ -12,7 +12,7 @@ export class IngredientRepository implements IIngredientRepository {
     constructor() {
         this.repository = dataSource.getRepository(Ingredient);
     }
-    async findIngredientByProdutoIdWeightUnity(
+    async findByProdutoIdWeightUnity(
         produto_id: string,
         weight: number,
         unity: number
