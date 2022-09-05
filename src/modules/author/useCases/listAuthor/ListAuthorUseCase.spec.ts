@@ -49,14 +49,14 @@ describe("List authors UseCase", () => {
     });
     it("should be able to list authors", async () => {
         const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
+            id: "ad539d66-e576-4913-8237-e5a6baff3ba4",
             name: "Kaio Moreira",
             whatsapp: faker.phone.number(),
             emails: [
                 {
                     id: faker.datatype.uuid(),
                     e_mail: faker.internet.email(),
-                    author_name: "Kaio Moreira",
+                    author_id: "ad539d66-e576-4913-8237-e5a6baff3ba4",
                     created_at: faker.datatype.datetime(),
                     updated_at: faker.datatype.datetime(),
                 },
@@ -66,7 +66,7 @@ describe("List authors UseCase", () => {
                     id: faker.datatype.uuid(),
                     name: "Receita test 1",
                     description: faker.lorem.paragraphs(),
-                    author_name: "Kaio Moreira",
+                    author_id: "ad539d66-e576-4913-8237-e5a6baff3ba4",
                     difficulty: "medium",
                     dish_type: "appetizer",
                     time: 5,
@@ -76,7 +76,8 @@ describe("List authors UseCase", () => {
                         {
                             id: faker.datatype.uuid(),
                             description: faker.lorem.paragraphs(),
-                            produto_name: "Alho roxo",
+                            name: "Receita test 2",
+                            produto_id: "86a5a72d-308a-41d2-a166-89966c738804",
                             unity: 1,
                             weight: 100,
                             created_at: String(faker.datatype.datetime()),
