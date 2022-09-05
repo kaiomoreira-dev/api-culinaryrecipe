@@ -38,7 +38,7 @@ export class ProdutoRepository implements IProdutoRepository {
             .getMany();
     }
 
-    async findProdutoByName(name: string): Promise<Produto> {
+    async findByName(name: string): Promise<Produto> {
         return this.repository.findOneBy({ name });
     }
     async findProdutoById(id: string): Promise<Produto> {
