@@ -5,11 +5,11 @@ import { FindAuthorByNameUseCase } from "./FindAuthorByNameUseCase";
 
 export class FindAuthorByNameController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { author_name } = request.body;
+        const { author_id } = request.body;
 
         const findAuthorByName = container.resolve(FindAuthorByNameUseCase);
 
-        const author = await findAuthorByName.execute(author_name);
+        const author = await findAuthorByName.execute(author_id);
 
         return response.status(200).json(author);
     }
