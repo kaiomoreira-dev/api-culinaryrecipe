@@ -73,7 +73,7 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
 
         return this.repository.find((ingredient) => ingredient.id === id);
     }
-    async deleteIngredientById(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         const ingredientIndex = this.repository.findIndex(
             (ingredient) => ingredient.id === id
         );
