@@ -20,5 +20,5 @@ export interface IIngredientRepository {
         unity?: number
     ): Promise<Ingredient>;
 
-    deleteIngredientById(id: string): Promise<void>;
+    deleteById(id: string): Promise<void>;
 }
