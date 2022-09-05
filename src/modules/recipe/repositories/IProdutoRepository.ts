@@ -5,7 +5,7 @@ export interface IProdutoRepository {
     create(data: ICreateProdutoDTO): Promise<Produto>;
     list(): Promise<Produto[]>;
 
-    findProdutoByName(name: string): Promise<Produto>;
+    findByName(name: string): Promise<Produto>;
 
     findById(id: string): Promise<Produto>;
 
