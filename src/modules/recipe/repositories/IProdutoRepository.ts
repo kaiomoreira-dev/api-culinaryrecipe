@@ -7,7 +7,7 @@ export interface IProdutoRepository {
 
     findProdutoByName(name: string): Promise<Produto>;
 
-    findProdutoById(id: string): Promise<Produto>;
+    findById(id: string): Promise<Produto>;
 
     updateNameDescriptionById(
         id: string,
