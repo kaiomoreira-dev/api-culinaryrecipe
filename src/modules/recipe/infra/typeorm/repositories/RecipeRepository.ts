@@ -12,7 +12,7 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
-    async listRecipesByIngredientName(name: string): Promise<Recipe[]> {
+    async listRecipesByIngredientId(name: string): Promise<Recipe[]> {
         // encontra os ids das recipes que contem o ingrediente buscado
         const recipeIds = await this.repository
             .createQueryBuilder("r")
