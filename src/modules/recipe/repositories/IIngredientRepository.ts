@@ -7,7 +7,7 @@ export interface IIngredientRepository {
     listByProdutoName(produto_id: string): Promise<Ingredient[]>;
 
     findById(id: string): Promise<Ingredient>;
-    findIngredientByProdutoIdWeightUnity(
+    findByProdutoIdWeightUnity(
         produto_id: string,
         weight: number,
         unity: number
