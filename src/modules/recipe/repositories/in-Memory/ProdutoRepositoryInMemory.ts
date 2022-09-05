@@ -49,7 +49,7 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
 
         return prdoutoUpdated;
     }
-    async deleteByname(name: string): Promise<void> {
+    async deleteById(name: string): Promise<void> {
         const produtoIndex = this.repository.findIndex(
             (produto) => produto.name === name
         );
