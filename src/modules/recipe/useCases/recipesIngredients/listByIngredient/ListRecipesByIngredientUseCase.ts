@@ -14,10 +14,10 @@ export class ListRecipesByIngredientUseCase {
         private ingredientRepository: IIngredientRepository
     ) {}
 
-    async execute(produto_name: string): Promise<any> {
+    async execute(produto_id: string): Promise<any> {
         const produtoValidator =
             await this.ingredientRepository.findAllIngredientByProdutoName(
-                produto_name
+                produto_id
             );
 
         if (!produtoValidator) {
@@ -26,7 +26,7 @@ export class ListRecipesByIngredientUseCase {
 
         const recipes =
             await this.recipeRepository.listAllRecipeByIngredientProdutoName(
-                produto_name
+                produto_id
             );
 
         return recipes;
