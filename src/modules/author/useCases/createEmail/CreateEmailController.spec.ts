@@ -58,17 +58,17 @@ describe("Create e-mail Controller", () => {
         const response = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
-            author_i: author.id,
+            author_id: author.id,
         });
 
         expect(response.status).toBe(401);
     });
 
-    it("should not be able to create a new email with author name not found", async () => {
+    it("should not be able to create a new email with author_id not found", async () => {
         const response = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
-            author_name: faker.datatype.uuid(),
+            author_id: faker.datatype.uuid(),
         });
 
         expect(response.status).toBe(404);
