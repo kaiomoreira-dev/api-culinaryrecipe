@@ -41,7 +41,7 @@ export class ProdutoRepository implements IProdutoRepository {
     async findByName(name: string): Promise<Produto> {
         return this.repository.findOneBy({ name });
     }
-    async findProdutoById(id: string): Promise<Produto> {
+    async findById(id: string): Promise<Produto> {
         return this.repository.findOneBy({ id });
     }
     async updateNameDescriptionById(
