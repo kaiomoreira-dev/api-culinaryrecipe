@@ -58,13 +58,11 @@ describe("Update author UseCase", () => {
 
         const authorCreated = await createAuthorUseCase.execute(author);
 
-        const { name } = authorCreated;
-
         const newName = "Kaio dos Santos Moreira";
         const whatsapp = "14998554799";
 
         const updateAuthor = await updateAuthorUseCase.execute(
-            name,
+            authorCreated.id,
             newName,
             whatsapp
         );
@@ -73,12 +71,12 @@ describe("Update author UseCase", () => {
     });
 
     it("should not be able to update author using name invalid", async () => {
-        const name = "fake-name";
+        const id = "fake-id";
         const newName = "Kaio dos Santos Moreira";
         const whatsapp = "14998554799";
 
         await expect(
-            updateAuthorUseCase.execute(name, newName, whatsapp)
+            updateAuthorUseCase.execute(id, newName, whatsapp)
         ).rejects.toEqual(new AppError("Author not found", 404));
     });
 
@@ -97,7 +95,7 @@ describe("Update author UseCase", () => {
         const whatsapp = "14998554799";
 
         await expect(
-            updateAuthorUseCase.execute(name, newName, whatsapp)
+            updateAuthorUseCase.execute(authorCreated.id, newName, whatsapp)
         ).rejects.toEqual(new AppError("Author name already exists", 401));
     });
 
@@ -110,13 +108,11 @@ describe("Update author UseCase", () => {
 
         const authorCreated = await createAuthorUseCase.execute(author);
 
-        const { name } = authorCreated;
-
         const newName = "Kaio dos Santos Moreira";
         const whatsapp = "3333336666";
 
         await expect(
-            updateAuthorUseCase.execute(name, newName, whatsapp)
+            updateAuthorUseCase.execute(authorCreated.id, newName, whatsapp)
         ).rejects.toEqual(new AppError("Author whatsapp already exists", 401));
     });
 });
