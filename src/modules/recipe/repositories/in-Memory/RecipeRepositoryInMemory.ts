@@ -41,7 +41,7 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
     async list(): Promise<Recipe[]> {
         return this.reciperepository;
     }
-    async listRecipesByIngredientName(name: string): Promise<Recipe[]> {
+    async listRecipesByIngredientId(name: string): Promise<Recipe[]> {
         let recipesByProdutoName: Recipe[] = [];
 
         this.reciperepository.map((recipe) => {
