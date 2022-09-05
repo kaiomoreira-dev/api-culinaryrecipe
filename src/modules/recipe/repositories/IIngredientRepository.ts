@@ -1,12 +1,11 @@
 import { ICreateIngredientDTO } from "../dtos/ICreateIngredientDTO";
 import { Ingredient } from "../infra/typeorm/entities/Ingredient";
-import { Produto } from "../infra/typeorm/entities/Produto";
 
 export interface IIngredientRepository {
     create(data: ICreateIngredientDTO): Promise<Ingredient>;
     list(): Promise<Ingredient[]>;
 
-    findIngredientById(id: string): Promise<Ingredient>;
+    findById(id: string): Promise<Ingredient>;
     findAllIngredientByProdutoName(produto_id: string): Promise<Ingredient[]>;
     findIngredientByProdutoIdWeightUnity(
         produto_id: string,
