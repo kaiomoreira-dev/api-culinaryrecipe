@@ -49,7 +49,7 @@ describe("Find author UseCase", () => {
         findAuthorIdUseCase = new FindAuthorIdUseCase(authorRepositoryInMemory);
     });
 
-    it("should be able to find author using name", async () => {
+    it("should be able to find author using id", async () => {
         const author: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
             name: faker.name.fullName(),
@@ -63,7 +63,7 @@ describe("Find author UseCase", () => {
         expect(findAuthor).toHaveProperty("id");
     });
 
-    it("should not be able to find author using name invalid", async () => {
+    it("should not be able to find author using id invalid", async () => {
         const author_id = "fake id";
 
         await expect(findAuthorIdUseCase.execute(author_id)).rejects.toEqual(
