@@ -30,23 +30,25 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
     async list(): Promise<Ingredient[]> {
         return this.repository;
     }
-    async findByProdutoName(produto_name: string): Promise<Ingredient> {
-        return this.repository.find(
-            (ingredient) => ingredient.produto_name === produto_name
-        );
-    }
-    async findAllIngredientByProdutoName(
-        produto_name: string
-    ): Promise<Ingredient[]> {
+
+    async listByProdutoId(produto_id: string): Promise<Ingredient[]> {
         const ingredientByProdutoName: Ingredient[] = [];
         this.repository.map((ingredient) => {
-            if (ingredient.produto_name === produto_name) {
+            if (ingredient.produto_id === produto_id) {
                 ingredientByProdutoName.push(ingredient);
             }
             return true;
         });
         return ingredientByProdutoName;
     }
+    async findIngredientByProdutoName(
+        produto_name: string
+    ): Promise<Ingredient> {
+        return this.repository.find(
+            (ingredient) => ingredient.produto_name === produto_name
+        );
+    }
+
     async findIngredientByProdutoNameWeightUnity(
         produto_name: string,
         weight: number,
