@@ -8,7 +8,7 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
 
     async create({
         id,
-        produto_name,
+        produto_id,
         description,
         unity,
         weight,
@@ -17,7 +17,7 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
 
         Object.assign(ingredient, {
             id,
-            produto_name,
+            produto_id,
             description,
             unity,
             weight,
