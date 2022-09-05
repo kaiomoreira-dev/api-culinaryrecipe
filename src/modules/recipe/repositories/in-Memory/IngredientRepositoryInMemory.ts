@@ -30,9 +30,7 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
     async list(): Promise<Ingredient[]> {
         return this.repository;
     }
-    async findIngredientByProdutoName(
-        produto_name: string
-    ): Promise<Ingredient> {
+    async findByProdutoName(produto_name: string): Promise<Ingredient> {
         return this.repository.find(
             (ingredient) => ingredient.produto_name === produto_name
         );
