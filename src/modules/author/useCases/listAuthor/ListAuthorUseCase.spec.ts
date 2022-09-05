@@ -76,7 +76,7 @@ describe("List authors UseCase", () => {
                         {
                             id: faker.datatype.uuid(),
                             description: faker.lorem.paragraphs(),
-                            name: "Receita test 2",
+                            name: "alho roxo",
                             produto_id: "86a5a72d-308a-41d2-a166-89966c738804",
                             unity: 1,
                             weight: 100,
