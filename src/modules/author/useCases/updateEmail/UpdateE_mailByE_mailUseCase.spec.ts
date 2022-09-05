@@ -44,7 +44,7 @@ describe("Update e-mail UseCase", () => {
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "old-email@email.com",
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const { e_mail } = await createEmailUseCase.execute(email);
@@ -84,13 +84,13 @@ describe("Update e-mail UseCase", () => {
         const email1: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "old1-email@email.com",
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const email2: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "old2-email@email.com",
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const { e_mail } = await createEmailUseCase.execute(email1);
