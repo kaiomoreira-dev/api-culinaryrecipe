@@ -11,10 +11,8 @@ export class FindAuthorByNameUseCase {
         private authorRepository: IAuthorRepository
     ) {}
 
-    async execute(author_name: string): Promise<Author> {
-        const authorValidator = await this.authorRepository.findByName(
-            author_name
-        );
+    async execute(author_id: string): Promise<Author> {
+        const authorValidator = await this.authorRepository.findById(author_id);
 
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
