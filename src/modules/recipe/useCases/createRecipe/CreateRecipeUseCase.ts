@@ -62,8 +62,9 @@ export class CreateRecipeUseCase {
         for (const id of ingredients) {
             // busca ingredient pelo nome
             console.log(id);
-            const foundIngredient =
-                await this.ingredientRepository.findIngredientById(id);
+            const foundIngredient = await this.ingredientRepository.findById(
+                id
+            );
 
             if (!foundIngredient) {
                 throw new AppError("Ingredient not found", 404);
