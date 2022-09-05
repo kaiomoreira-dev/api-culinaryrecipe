@@ -12,7 +12,7 @@ import { AppError } from "@shared/errors/AppError";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
-import { FindAuthorByNameUseCase } from "./FindAuthorByNameUseCase";
+import { FindAuthorIdUseCase } from "./FindAuthorIdUseCase";
 
 let produtoRepositoryInMemory: ProdutoRepositoryInMemory;
 let ingredientRepositoryInMemory: IngredientRepositoryInMemory;
@@ -23,7 +23,7 @@ let createAuthorUseCase: CreateAuthorUseCase;
 let createEmailUseCase: CreateEmailUseCase;
 let createRecipeUseCase: CreateRecipeUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
-let findAuthorByNameUseCase: FindAuthorByNameUseCase;
+let findAuthorIdUseCase: FindAuthorIdUseCase;
 
 describe("Find author UseCase", () => {
     beforeEach(() => {
@@ -46,9 +46,7 @@ describe("Find author UseCase", () => {
             ingredientRepositoryInMemory,
             authorRepositoryInMemory
         );
-        findAuthorByNameUseCase = new FindAuthorByNameUseCase(
-            authorRepositoryInMemory
-        );
+        findAuthorIdUseCase = new FindAuthorIdUseCase(authorRepositoryInMemory);
     });
 
     it("should be able to find author using name", async () => {
@@ -60,7 +58,7 @@ describe("Find author UseCase", () => {
 
         const authorCreated = await createAuthorUseCase.execute(author);
 
-        const findAuthor = await findAuthorByNameUseCase.execute(
+        const findAuthor = await findAuthorIdUseCase.execute(
             authorCreated.name
         );
 
@@ -70,8 +68,8 @@ describe("Find author UseCase", () => {
     it("should not be able to find author using name invalid", async () => {
         const author_name = "fake-author@fake.com";
 
-        await expect(
-            findAuthorByNameUseCase.execute(author_name)
-        ).rejects.toEqual(new AppError("Author not found", 404));
+        await expect(findAuthorIdUseCase.execute(author_name)).rejects.toEqual(
+            new AppError("Author not found", 404)
+        );
     });
 });
