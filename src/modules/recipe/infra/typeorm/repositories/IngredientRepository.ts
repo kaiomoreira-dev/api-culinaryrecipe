@@ -26,7 +26,7 @@ export class IngredientRepository implements IIngredientRepository {
             .getMany();
     }
 
-    async updateIngredientById(
+    async updateById(
         id: string,
         produto_id?: string,
         weight?: number,
