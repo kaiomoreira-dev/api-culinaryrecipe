@@ -41,7 +41,7 @@ describe("Find e-mail UseCase", () => {
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "test@test.com.br",
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         await createEmailUseCase.execute(email);
