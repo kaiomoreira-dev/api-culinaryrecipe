@@ -58,17 +58,15 @@ describe("Find author UseCase", () => {
 
         const authorCreated = await createAuthorUseCase.execute(author);
 
-        const findAuthor = await findAuthorIdUseCase.execute(
-            authorCreated.name
-        );
+        const findAuthor = await findAuthorIdUseCase.execute(authorCreated.id);
 
         expect(findAuthor).toHaveProperty("id");
     });
 
     it("should not be able to find author using name invalid", async () => {
-        const author_name = "fake-author@fake.com";
+        const author_id = "fake id";
 
-        await expect(findAuthorIdUseCase.execute(author_name)).rejects.toEqual(
+        await expect(findAuthorIdUseCase.execute(author_id)).rejects.toEqual(
             new AppError("Author not found", 404)
         );
     });
