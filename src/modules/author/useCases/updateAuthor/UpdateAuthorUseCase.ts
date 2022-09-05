@@ -12,11 +12,11 @@ export class UpdateAuthorUseCase {
     ) {}
 
     async execute(
-        name: string,
+        id: string,
         newName?: string,
         whatsapp?: string
     ): Promise<Author> {
-        const authorValidator = await this.authorRepository.findByName(name);
+        const authorValidator = await this.authorRepository.findById(id);
 
         if (!authorValidator) {
             throw new AppError("Author not found", 404);
