@@ -19,7 +19,7 @@ export class IngredientRepository implements IIngredientRepository {
     ): Promise<Ingredient> {
         return this.repository.findOneBy({ weight, unity, produto_id });
     }
-    async listByProdutoName(produto_id: string): Promise<Ingredient[]> {
+    async listByProdutoId(produto_id: string): Promise<Ingredient[]> {
         return this.repository
             .createQueryBuilder()
             .where("produto_id = :produto_id", { produto_id })
