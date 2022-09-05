@@ -58,7 +58,7 @@ export class ProdutoRepository implements IProdutoRepository {
 
         return this.repository.findOneBy({ name: new_name });
     }
-    async deleteProdutoById(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
