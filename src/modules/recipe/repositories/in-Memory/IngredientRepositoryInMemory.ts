@@ -41,12 +41,8 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
         });
         return ingredientByProdutoName;
     }
-    async findIngredientByProdutoName(
-        produto_name: string
-    ): Promise<Ingredient> {
-        return this.repository.find(
-            (ingredient) => ingredient.produto_name === produto_name
-        );
+    async findById(id: string): Promise<Ingredient> {
+        return this.repository.find((ingredient) => ingredient.id === id);
     }
 
     async findIngredientByProdutoNameWeightUnity(
