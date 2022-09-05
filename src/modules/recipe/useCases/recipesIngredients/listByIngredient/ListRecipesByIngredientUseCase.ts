@@ -23,10 +23,9 @@ export class ListRecipesByIngredientUseCase {
             throw new AppError("Ingredient not found", 404);
         }
 
-        const recipes =
-            await this.recipeRepository.listAllRecipeByIngredientProdutoName(
-                produto_id
-            );
+        const recipes = await this.recipeRepository.listRecipesByIngredientId(
+            ingredient_id
+        );
 
         return recipes;
     }
