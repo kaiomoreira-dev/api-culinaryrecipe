@@ -15,5 +15,5 @@ export interface IProdutoRepository {
         new_description: string
     ): Promise<Produto>;
 
-    deleteProdutoById(id: string): Promise<void>;
+    deleteById(id: string): Promise<void>;
 }
