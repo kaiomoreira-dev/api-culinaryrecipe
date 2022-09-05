@@ -67,7 +67,7 @@ export class IngredientRepository implements IIngredientRepository {
         return this.repository.find();
     }
 
-    async findIngredientById(id: string): Promise<Ingredient> {
+    async findById(id: string): Promise<Ingredient> {
         return this.repository.findOneBy({ id });
     }
 
