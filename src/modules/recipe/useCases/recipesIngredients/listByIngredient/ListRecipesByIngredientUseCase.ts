@@ -15,13 +15,13 @@ export class ListRecipesByIngredientUseCase {
     ) {}
 
     async execute(ingredient_id: string): Promise<any> {
-        const ingredientValidator = await this.ingredientRepository.findById(
-            ingredient_id
-        );
+        // const ingredientValidator = await this.ingredientRepository.findById(
+        //     ingredient_id
+        // );
 
-        if (!ingredientValidator) {
-            throw new AppError("Ingredient not found", 404);
-        }
+        // if (!ingredientValidator) {
+        //     throw new AppError("Ingredient not found", 404);
+        // }
 
         const recipes = await this.recipeRepository.listRecipesByIngredientId(
             ingredient_id
