@@ -71,7 +71,7 @@ export class IngredientRepository implements IIngredientRepository {
         return this.repository.findOneBy({ id });
     }
 
-    async deleteIngredientById(id: string): Promise<void> {
+    async deleteById(id: string): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .delete()
