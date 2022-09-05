@@ -36,7 +36,7 @@ describe("Create e-mail UseCase", () => {
         };
 
         const authorCreated = await createAuthorUseCase.execute(author);
-        console.log(authorCreated);
+
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
