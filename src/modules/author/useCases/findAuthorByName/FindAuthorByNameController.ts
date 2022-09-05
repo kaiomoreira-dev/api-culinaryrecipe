@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-import { FindAuthorByNameUseCase } from "./FindAuthorByNameUseCase";
+import { FindAuthorIdUseCase } from "./FindAuthorIdUseCase";
 
 export class FindAuthorByNameController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { author_id } = request.body;
 
-        const findAuthorByName = container.resolve(FindAuthorByNameUseCase);
+        const findAuthorByName = container.resolve(FindAuthorIdUseCase);
 
         const author = await findAuthorByName.execute(author_id);
 
