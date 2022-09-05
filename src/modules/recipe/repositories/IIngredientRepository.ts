@@ -13,7 +13,7 @@ export interface IIngredientRepository {
         unity: number
     ): Promise<Ingredient>;
 
-    updateIngredientById(
+    updateById(
         id: string,
         produto_id?: string,
         weight?: number,
