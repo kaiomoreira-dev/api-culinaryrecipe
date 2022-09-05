@@ -24,7 +24,7 @@ export class CreateIngredientUseCase {
         unity,
         weight,
     }: ICreateIngredientDTO): Promise<Ingredient> {
-        const produtoValidator = await this.produtoRepository.findProdutoById(
+        const produtoValidator = await this.produtoRepository.findById(
             produto_id
         );
 
