@@ -42,8 +42,7 @@ export class DeleteAuthorUseCase {
         });
 
         for (const recipe of recipes) {
-            await this.recipeRepository.deleteIngredientsById(recipe.id, ids);
-            await this.recipeRepository.deleteById(recipe.id);
+            await this.recipeRepository.deleteRecipe(recipe.id, ids);
         }
 
         await this.authorRepository.deleteById(authorValidator.id);
