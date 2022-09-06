@@ -64,7 +64,8 @@ describe("Create recipe UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto1.name,
+            name: "Alho",
+            produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
         };
@@ -72,7 +73,8 @@ describe("Create recipe UseCase", () => {
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto2.name,
+            name: "Cebola",
+            produto_id: createProduto2.id,
             unity: 1,
             weight: 100,
         };
@@ -100,14 +102,14 @@ describe("Create recipe UseCase", () => {
             additional_features: "cheap dish",
             difficulty: "easy",
             dish_type: "appetizer",
-            author_name: createAuthor.name,
+            author_id: createAuthor.id,
             time: 20,
             total_guests: 5,
         };
 
         const ingredients: string[] = [
-            createIngredient1.produto_name,
-            createIngredient2.produto_name,
+            createIngredient1.id,
+            createIngredient2.id,
         ];
 
         const createRecipe = await createRecipeUseCase.execute(
@@ -137,7 +139,8 @@ describe("Create recipe UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto1.name,
+            name: "Alho",
+            produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
         };
@@ -145,7 +148,8 @@ describe("Create recipe UseCase", () => {
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto2.name,
+            name: "Cebola",
+            produto_id: createProduto2.id,
             unity: 1,
             weight: 100,
         };
@@ -173,14 +177,14 @@ describe("Create recipe UseCase", () => {
             additional_features: "cheap dish",
             difficulty: "fake-difficulty",
             dish_type: "appetizer",
-            author_name: createAuthor.name,
+            author_id: createAuthor.id,
             time: 20,
             total_guests: 5,
         };
 
         const ingredients: string[] = [
-            createIngredient1.produto_name,
-            createIngredient2.produto_name,
+            createIngredient1.id,
+            createIngredient2.id,
         ];
 
         await expect(
@@ -207,7 +211,8 @@ describe("Create recipe UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto1.name,
+            name: "Alho",
+            produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
         };
@@ -215,7 +220,8 @@ describe("Create recipe UseCase", () => {
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto2.name,
+            name: "Cebola",
+            produto_id: createProduto2.id,
             unity: 1,
             weight: 100,
         };
@@ -243,14 +249,14 @@ describe("Create recipe UseCase", () => {
             additional_features: "cheap dish",
             difficulty: "easy",
             dish_type: "fake-dish_type",
-            author_name: createAuthor.name,
+            author_id: createAuthor.id,
             time: 20,
             total_guests: 5,
         };
 
         const ingredients: string[] = [
-            createIngredient1.produto_name,
-            createIngredient2.produto_name,
+            createIngredient1.id,
+            createIngredient2.id,
         ];
 
         await expect(
@@ -258,7 +264,7 @@ describe("Create recipe UseCase", () => {
         ).rejects.toEqual(new AppError("dish_type incorrect!", 401));
     });
 
-    it("should not be able to create a recipe with author_name incorrect", async () => {
+    it("should not be able to create a recipe with author_id incorrect", async () => {
         const produto1: ICreateProdutoDTO = {
             id: faker.datatype.uuid(),
             name: "Alho",
@@ -277,7 +283,8 @@ describe("Create recipe UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto1.name,
+            name: "Alho",
+            produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
         };
@@ -285,7 +292,8 @@ describe("Create recipe UseCase", () => {
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto2.name,
+            name: "Cebola",
+            produto_id: createProduto2.id,
             unity: 1,
             weight: 100,
         };
@@ -305,14 +313,14 @@ describe("Create recipe UseCase", () => {
             additional_features: "cheap dish",
             difficulty: "easy",
             dish_type: "appetizer",
-            author_name: "fake-author",
+            author_id: "e67941c2-2ade-46e8-af92-49e9e4f1ad6a",
             time: 20,
             total_guests: 5,
         };
 
         const ingredients: string[] = [
-            createIngredient1.produto_name,
-            createIngredient2.produto_name,
+            createIngredient1.id,
+            createIngredient2.id,
         ];
 
         await expect(
@@ -339,7 +347,8 @@ describe("Create recipe UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto1.name,
+            name: "Alho",
+            produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
         };
@@ -347,7 +356,8 @@ describe("Create recipe UseCase", () => {
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto2.name,
+            name: "Cebola",
+            produto_id: createProduto2.id,
             unity: 1,
             weight: 100,
         };
@@ -375,14 +385,14 @@ describe("Create recipe UseCase", () => {
             additional_features: "cheap dish",
             difficulty: "easy",
             dish_type: "appetizer",
-            author_name: createAuthor.name,
+            author_id: createAuthor.id,
             time: 20,
             total_guests: 5,
         };
 
         const ingredients: string[] = [
-            createIngredient1.produto_name,
-            createIngredient2.produto_name,
+            createIngredient1.id,
+            createIngredient2.id,
             "fake-ingredient",
         ];
 
@@ -403,7 +413,8 @@ describe("Create recipe UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            produto_name: createProduto1.name,
+            name: "Alho",
+            produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
         };
@@ -427,12 +438,12 @@ describe("Create recipe UseCase", () => {
             additional_features: "cheap dish",
             difficulty: "easy",
             dish_type: "appetizer",
-            author_name: createAuthor.name,
+            author_id: createAuthor.id,
             time: 20,
             total_guests: 5,
         };
 
-        const ingredients: string[] = [createIngredient1.produto_name];
+        const ingredients: string[] = [createIngredient1.id];
 
         await expect(
             createRecipeUseCase.execute(recipe, ingredients)
