@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { faker } from "@faker-js/faker";
+import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
 import { Produto } from "@modules/recipe/infra/typeorm/entities/Produto";
 import request from "supertest";
@@ -24,15 +25,15 @@ describe("Create recipe Controller", () => {
     });
 
     it("should be able to create a recipe", async () => {
-        await request(app)
+        const produto1 = await request(app)
             .post("/produto")
             .send({
                 id: faker.datatype.uuid(),
                 name: "Alho",
                 description: faker.lorem.words(20),
             });
-
-        await request(app)
+        const { id: prodId1 } = produto1.body as Produto;
+        const produto2 = await request(app)
             .post("/produto")
             .send({
                 id: faker.datatype.uuid(),
@@ -40,30 +41,40 @@ describe("Create recipe Controller", () => {
                 description: faker.lorem.words(20),
             });
 
-        await request(app)
+        const { id: prodId2 } = produto2.body as Produto;
+
+        const ingredient1 = await request(app)
             .post("/ingredient")
             .send({
                 id: faker.datatype.uuid(),
-                produto_name: "Alho",
-                description: faker.lorem.words(20),
-                unity: 1,
-                weight: 100,
-            });
-        await request(app)
-            .post("/ingredient")
-            .send({
-                id: faker.datatype.uuid(),
-                produto_name: "Coentro",
+                produto_id: prodId1,
+                name: "Alho",
                 description: faker.lorem.words(20),
                 unity: 1,
                 weight: 100,
             });
 
-        await request(app).post("/author").send({
+        const { id: ingredient1Id } = ingredient1.body as Ingredient;
+
+        const ingredient2 = await request(app)
+            .post("/ingredient")
+            .send({
+                id: faker.datatype.uuid(),
+                produto_id: prodId2,
+                name: "Cebola",
+                description: faker.lorem.words(20),
+                unity: 1,
+                weight: 100,
+            });
+        const { id: ingredient2Id } = ingredient2.body as Ingredient;
+
+        const author = await request(app).post("/author").send({
             id: faker.datatype.uuid(),
             name: "Kaio Moreira",
             whatsapp: faker.phone.number(),
         });
+
+        const { id: authorId } = author.body as Author;
 
         const responseCreateRecipe = await request(app)
             .post("/recipe")
@@ -76,8 +87,8 @@ describe("Create recipe Controller", () => {
                 dish_type: "appetizer",
                 additional_features: "cheap dish",
                 total_guests: 5,
-                ingredients: ["Alho", "Coentro"],
-                author_name: "Kaio Moreira",
+                ingredients: [ingredient2Id, ingredient1Id],
+                author_id: authorId,
             });
 
         expect(responseCreateRecipe.status).toBe(200);
