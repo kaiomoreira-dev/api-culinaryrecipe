@@ -40,7 +40,6 @@ export class DeleteAuthorUseCase {
 
             return ids;
         });
-
         for (const recipe of recipes) {
             await this.recipeRepository.deleteRecipe(recipe.id, ids);
         }
