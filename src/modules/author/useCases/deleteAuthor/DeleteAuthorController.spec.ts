@@ -40,7 +40,7 @@ describe("Delete author Controller", () => {
         expect(responsAuthorDelete.status).toBe(200);
     });
 
-    it("should not be able to delete author using name invalid", async () => {
+    it("should not be able to delete author using id invalid", async () => {
         const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responsAuthorDelete = await request(app)
