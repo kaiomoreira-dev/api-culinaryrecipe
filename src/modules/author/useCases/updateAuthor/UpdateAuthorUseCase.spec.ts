@@ -49,7 +49,7 @@ describe("Update author UseCase", () => {
         updateAuthorUseCase = new UpdateAuthorUseCase(authorRepositoryInMemory);
     });
 
-    it("should be able to update author using name", async () => {
+    it("should be able to update author using id", async () => {
         const author: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
             name: "Kaio Moreira",
