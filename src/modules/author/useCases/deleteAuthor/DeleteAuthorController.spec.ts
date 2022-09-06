@@ -22,7 +22,7 @@ describe("Delete author Controller", () => {
         await connection.destroy();
     });
 
-    it("should be able to delete author using name", async () => {
+    it("should be able to delete author using id", async () => {
         const responseAuthor = await request(app).post("/author").send({
             id: faker.datatype.uuid(),
             name: "Kaio Moreira",
