@@ -22,7 +22,7 @@ describe("Find author Controller", () => {
         await connection.destroy();
     });
 
-    it("should be able to find author using name", async () => {
+    it("should be able to find author using id", async () => {
         const responseAuthor = await request(app).post("/author").send({
             id: faker.datatype.uuid(),
             name: "Kaio Moreira",
@@ -38,7 +38,7 @@ describe("Find author Controller", () => {
         expect(responseFindAuthor.status).toBe(200);
     });
 
-    it("should not be able to find author using name invalid", async () => {
+    it("should not be able to find author using id invalid", async () => {
         const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responseFindAuthor = await request(app).get("/author/find").send({
