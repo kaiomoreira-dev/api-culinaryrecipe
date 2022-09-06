@@ -39,7 +39,7 @@ describe("Find author Controller", () => {
     });
 
     it("should not be able to find author using name invalid", async () => {
-        const id = "fake-id";
+        const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responseFindAuthor = await request(app).get("/author/find").send({
             author_id: id,
