@@ -70,7 +70,7 @@ describe("Update author UseCase", () => {
         expect(updateAuthor).toHaveProperty("id");
     });
 
-    it("should not be able to update author using name invalid", async () => {
+    it("should not be able to update author using id invalid", async () => {
         const id = "fake-id";
         const newName = "Kaio dos Santos Moreira";
         const whatsapp = "14998554799";
