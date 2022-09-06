@@ -49,7 +49,7 @@ describe("Delete e-mail Controller", () => {
         expect(responseDeleteEmail.statusCode).toBe(200);
     });
 
-    it("should not be to delete email with invalid email", async () => {
+    it("should not be to delete email with invalid id", async () => {
         const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responseDeleteEmail = await request(app)
