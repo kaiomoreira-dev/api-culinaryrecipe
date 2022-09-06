@@ -12,6 +12,17 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
+    async deleteIngredientsById(
+        id: string,
+        ingredient_ids: string[]
+    ): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .relation(Recipe, "ingredients")
+            .of(id)
+            .remove(ingredient_ids);
+    }
+
     async listRecipesByIngredientId(id: string): Promise<Recipe[]> {
         // encontra os ids das recipes que contem o ingrediente buscado
         const recipeIds = await this.repository
