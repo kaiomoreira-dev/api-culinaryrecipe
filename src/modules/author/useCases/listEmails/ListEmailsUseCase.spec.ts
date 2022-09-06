@@ -40,17 +40,17 @@ describe("List e-mails UseCase", () => {
         const email1: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
         const email2: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
         const email3: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         await createEmailUseCase.execute(email1);
