@@ -59,16 +59,16 @@ describe("Delete author UseCase", () => {
         const authorCreated = await createAuthorUseCase.execute(author);
 
         const deleteAuthor = await deleteAuthorUseCase.execute(
-            authorCreated.name
+            authorCreated.id
         );
 
         expect(deleteAuthor).toBe(null);
     });
 
-    it("should not be able to delete author using name invalid", async () => {
-        const name = "fake-name";
+    it("should not be able to delete author using id invalid", async () => {
+        const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
-        await expect(deleteAuthorUseCase.execute(name)).rejects.toEqual(
+        await expect(deleteAuthorUseCase.execute(id)).rejects.toEqual(
             new AppError("Author not found", 404)
         );
     });

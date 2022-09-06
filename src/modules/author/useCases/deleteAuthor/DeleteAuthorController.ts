@@ -5,11 +5,11 @@ import { DeleteAuthorUseCase } from "./DeleteAuthorUseCase";
 
 export class DeleteAuthorController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { name } = request.body;
+        const { id } = request.body;
 
         const deleteAuthorUseCase = container.resolve(DeleteAuthorUseCase);
 
-        await deleteAuthorUseCase.execute(name);
+        await deleteAuthorUseCase.execute(id);
 
         return response
             .status(200)
