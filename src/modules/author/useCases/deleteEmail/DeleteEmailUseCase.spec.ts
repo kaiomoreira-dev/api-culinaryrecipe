@@ -44,17 +44,17 @@ describe("Delete e-mail UseCase", () => {
             author_id: authorCreated.id,
         };
 
-        const { e_mail } = await createEmailUseCase.execute(email);
+        const { id } = await createEmailUseCase.execute(email);
 
-        const deleteEmail = await deleteEmailUseCase.execute(e_mail);
+        const deleteEmail = await deleteEmailUseCase.execute(id);
 
         expect(deleteEmail).toEqual(null);
     });
 
     it("should not be able to delete e-mail with invalid email", async () => {
-        const e_mail = "fake-email@fake.com";
+        const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
-        await expect(deleteEmailUseCase.execute(e_mail)).rejects.toEqual(
+        await expect(deleteEmailUseCase.execute(id)).rejects.toEqual(
             new AppError("Email not found", 404)
         );
     });

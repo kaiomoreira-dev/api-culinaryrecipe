@@ -38,24 +38,24 @@ describe("Delete e-mail Controller", () => {
             author_id: author.id,
         });
 
-        const { e_mail } = responseCreateEmail.body as Email;
+        const { id } = responseCreateEmail.body as Email;
 
         const responseDeleteEmail = await request(app)
             .delete("/email/delete")
             .send({
-                e_mail,
+                id,
             });
 
         expect(responseDeleteEmail.statusCode).toBe(200);
     });
 
     it("should not be to delete email with invalid email", async () => {
-        const e_mail = "fake-email@fake.com";
+        const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responseDeleteEmail = await request(app)
             .delete("/email/delete")
             .send({
-                e_mail,
+                id,
             });
 
         expect(responseDeleteEmail.statusCode).toBe(404);
