@@ -31,7 +31,7 @@ describe("Create author Controller", () => {
         expect(responseAuthor.status).toBe(200);
     });
 
-    it("should not be able to create author with name already exists", async () => {
+    it("should not be able to create author already exists", async () => {
         await request(app).post("/author").send({
             id: faker.datatype.uuid(),
             name: "Kaio Moreira",
