@@ -79,11 +79,6 @@ export class AuthorRepository implements IAuthorRepository {
         });
     }
     async deleteById(id: string): Promise<void> {
-        await this.repository
-            .createQueryBuilder()
-            .delete()
-            .from(Author)
-            .where("id = :id", { id })
-            .execute();
+        await this.repository.delete({ id });
     }
 }
