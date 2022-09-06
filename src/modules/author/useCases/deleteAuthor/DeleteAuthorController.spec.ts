@@ -29,24 +29,24 @@ describe("Delete author Controller", () => {
             whatsapp: faker.phone.number(),
         });
 
-        const { name } = responseAuthor.body as Author;
+        const { id } = responseAuthor.body as Author;
 
         const responsAuthorDelete = await request(app)
             .delete("/author/delete")
             .send({
-                name,
+                id,
             });
 
         expect(responsAuthorDelete.status).toBe(200);
     });
 
     it("should not be able to delete author using name invalid", async () => {
-        const name = "fake-name";
+        const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responsAuthorDelete = await request(app)
             .delete("/author/delete")
             .send({
-                name,
+                id,
             });
 
         expect(responsAuthorDelete.status).toBe(404);
