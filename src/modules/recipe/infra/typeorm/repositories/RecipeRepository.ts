@@ -12,15 +12,14 @@ export class RecipeRepository implements IRecipeRepository {
     constructor() {
         this.repository = dataSource.getRepository(Recipe);
     }
-    async deleteIngredientsById(
-        id: string,
-        ingredient_ids: string[]
-    ): Promise<void> {
+    async deleteRecipe(id: string, ingredient_ids: string[]): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .relation(Recipe, "ingredients")
             .of(id)
             .remove(ingredient_ids);
+
+        await this.repository.delete({ id });
     }
 
     async listRecipesByIngredientId(id: string): Promise<Recipe[]> {
@@ -103,8 +102,5 @@ export class RecipeRepository implements IRecipeRepository {
         const recipe = await this.repository.findOneBy({ id });
 
         return recipe;
-    }
-    async deleteById(id: string): Promise<void> {
-        await this.repository.delete({ id });
     }
 }
