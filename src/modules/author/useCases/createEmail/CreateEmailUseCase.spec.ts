@@ -76,7 +76,7 @@ describe("Create e-mail UseCase", () => {
         );
     });
 
-    it("should not be able to create a new e-mail with author not found", async () => {
+    it("should not be able to create a new e-mail with author_id not found", async () => {
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: "test@test.com.br",
