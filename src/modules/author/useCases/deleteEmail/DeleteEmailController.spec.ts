@@ -35,7 +35,7 @@ describe("Delete e-mail Controller", () => {
         const responseCreateEmail = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: author.name,
+            author_id: author.id,
         });
 
         const { e_mail } = responseCreateEmail.body as Email;
