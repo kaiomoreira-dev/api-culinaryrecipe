@@ -35,7 +35,7 @@ describe("Update e-mail Controller", () => {
         const responseCreateEmail = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "old-email@email.com",
-            author_name: author.name,
+            author_id: author.id,
         });
 
         const { e_mail } = responseCreateEmail.body as Email;
@@ -73,13 +73,13 @@ describe("Update e-mail Controller", () => {
         const responseCreateEmail1 = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "old1-email@email.com",
-            author_name: author.name,
+            author_id: author.id,
         });
 
         await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "old2-email@email.com",
-            author_name: author.name,
+            author_id: author.id,
         });
 
         const { e_mail } = responseCreateEmail1.body as Email;
