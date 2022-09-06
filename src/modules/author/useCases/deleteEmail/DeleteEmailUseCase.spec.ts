@@ -41,7 +41,7 @@ describe("Delete e-mail UseCase", () => {
         const email: ICreateEmailDTO = {
             id: faker.datatype.uuid(),
             e_mail: faker.internet.email(),
-            author_name: authorCreated.name,
+            author_id: authorCreated.id,
         };
 
         const { e_mail } = await createEmailUseCase.execute(email);
