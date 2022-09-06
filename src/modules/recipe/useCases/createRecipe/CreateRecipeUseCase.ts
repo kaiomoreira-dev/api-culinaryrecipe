@@ -61,7 +61,6 @@ export class CreateRecipeUseCase {
         // sem utilizar async!!
         for (const id of ingredients) {
             // busca ingredient pelo nome
-            console.log(id);
             const foundIngredient = await this.ingredientRepository.findById(
                 id
             );
