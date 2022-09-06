@@ -29,20 +29,20 @@ describe("Find author Controller", () => {
             whatsapp: faker.phone.number(),
         });
 
-        const { name } = responseAuthor.body as Author;
+        const { id } = responseAuthor.body as Author;
 
         const responseFindAuthor = await request(app).get("/author/find").send({
-            author_name: name,
+            author_id: id,
         });
 
         expect(responseFindAuthor.status).toBe(200);
     });
 
     it("should not be able to find author using name invalid", async () => {
-        const name = "fake-name";
+        const id = "fake-id";
 
         const responseFindAuthor = await request(app).get("/author/find").send({
-            author_name: name,
+            author_id: id,
         });
 
         expect(responseFindAuthor.status).toBe(404);
