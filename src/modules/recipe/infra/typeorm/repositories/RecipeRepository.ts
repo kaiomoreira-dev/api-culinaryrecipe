@@ -26,7 +26,10 @@ export class RecipeRepository implements IRecipeRepository {
         });
     }
 
-    async deleteRecipe(id: string, ingredient_ids: string[]): Promise<void> {
+    async deleteRecipeById(
+        id: string,
+        ingredient_ids: string[]
+    ): Promise<void> {
         await this.repository
             .createQueryBuilder()
             .relation(Recipe, "ingredients")
