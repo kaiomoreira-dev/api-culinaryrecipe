@@ -23,10 +23,10 @@ export class Author {
     whatsapp: string;
 
     @OneToMany(() => Recipe, (recipe) => recipe.author)
-    recipes?: Recipe[];
+    recipes: Recipe[];
 
     @OneToMany(() => Email, (email) => email.author)
-    emails?: Email[];
+    emails: Email[];
 
     @CreateDateColumn()
     created_at: Date;
