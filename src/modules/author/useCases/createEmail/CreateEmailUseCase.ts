@@ -1,6 +1,5 @@
 import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { Email } from "@modules/author/infra/typeorm/entities/Email";
-import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
 import { IEmailRepository } from "@modules/author/repositories/IEmailRepository";
 import { inject, injectable } from "tsyringe";
 
@@ -10,19 +9,10 @@ import { AppError } from "@shared/errors/AppError";
 export class CreateEmailUseCase {
     constructor(
         @inject("EmailRepository")
-        private emailRepository: IEmailRepository,
-
-        @inject("AuthorRepository")
-        private authorRepository: IAuthorRepository
+        private emailRepository: IEmailRepository
     ) {}
 
-    async execute({ id, e_mail, author_id }: ICreateEmailDTO): Promise<Email> {
-        const authorValidator = await this.authorRepository.findById(author_id);
-
-        if (!authorValidator) {
-            throw new AppError("Author not found", 404);
-        }
-
+    async execute({ id, e_mail }: ICreateEmailDTO): Promise<Email> {
         const emailValidator = await this.emailRepository.findByEmail(e_mail);
 
         if (emailValidator) {
@@ -31,7 +21,6 @@ export class CreateEmailUseCase {
         const email = await this.emailRepository.create({
             id,
             e_mail,
-            author_id,
         });
 
         return email;
