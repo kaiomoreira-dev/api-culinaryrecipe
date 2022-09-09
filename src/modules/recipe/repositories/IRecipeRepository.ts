@@ -16,5 +16,5 @@ export interface IRecipeRepository {
     updateTimeById(id: string, time: number): Promise<Recipe>;
     updateAuthorIdById(id: string, author_id: string): Promise<Recipe>;
 
-    deleteRecipe(id: string, ingredient_ids: string[]): Promise<void>;
+    deleteRecipeById(id: string, ingredient_ids: string[]): Promise<void>;
 }
