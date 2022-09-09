@@ -7,6 +7,19 @@ import { IEmailRepository } from "../IEmailRepository";
 export class EmailRepositoryInMemory implements IEmailRepository {
     private emailsRepository: Email[] = [];
 
+    async updateAuthorIdById(
+        email_id: string,
+        author_id: string
+    ): Promise<Email> {
+        const emailIndex = this.emailsRepository.findIndex(
+            (email) => email.id === email_id
+        );
+
+        this.emailsRepository[emailIndex].author_id = author_id;
+
+        return this.emailsRepository.find((email) => email.id === email_id);
+    }
+
     async findById(id: string): Promise<Email> {
         return this.emailsRepository.find((email) => email.id === id);
     }
