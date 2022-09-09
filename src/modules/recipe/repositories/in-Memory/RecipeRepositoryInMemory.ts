@@ -1,12 +1,37 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
 import { ICreateRecipeDTO } from "@modules/recipe/dtos/ICreateRecipeDTO";
 import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
+import { inject, injectable } from "tsyringe";
 
+import { IIngredientRepository } from "../IIngredientRepository";
 import { IRecipeRepository } from "../IRecipeRepository";
 
+@injectable()
 export class RecipeRepositoryInMemory implements IRecipeRepository {
     reciperepository: Recipe[] = [];
 
+    constructor(
+        @inject("IngredientRepositoryInMemory")
+        private ingredientRepositoryInMemory: IIngredientRepository
+    ) {}
+
+    async deleteRecipeById(
+        id: string,
+        ingredient_ids: string[]
+    ): Promise<void> {
+        for (const ingredient_id of ingredient_ids) {
+            await this.ingredientRepositoryInMemory.deleteById(ingredient_id);
+        }
+
+        const recipeIndex = this.reciperepository.findIndex(
+            (recipe) => recipe.id === id
+        );
+
+        this.reciperepository.splice(recipeIndex, 1);
+    }
     async create({
         id,
         name,
@@ -87,13 +112,5 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         this.reciperepository[recipeIndex].time = time;
 
         return this.reciperepository[recipeIndex];
-    }
-
-    async deleteById(id: string): Promise<void> {
-        const recipeIndex = this.reciperepository.findIndex(
-            (recipe) => recipe.id === id
-        );
-
-        this.reciperepository.splice(recipeIndex, 1);
     }
 }
