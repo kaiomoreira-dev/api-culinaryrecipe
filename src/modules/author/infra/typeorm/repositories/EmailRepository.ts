@@ -12,6 +12,21 @@ export class EmailRepository implements IEmailRepository {
     constructor() {
         this.repository = dataSource.getRepository(Email);
     }
+    async updateAuthorId(email_id: string, author_id: string): Promise<Email> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ author_id })
+            .where("id = :id", { id: email_id })
+            .execute();
+
+        const x = this.repository.findOneBy({ id: email_id });
+
+        console.log(x);
+
+        return x;
+    }
+
     async findById(id: string): Promise<Email> {
         return this.repository.findOneBy({ id });
     }
