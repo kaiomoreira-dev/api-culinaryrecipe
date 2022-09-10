@@ -90,10 +90,8 @@ export class CreateAuthorUseCase {
                 throw new AppError("Recipe is not exists.", 404);
             }
 
-            const recipeUpdated = await this.recipeRepository.updateAuthorId(
-                id,
-                author.id
-            );
+            const recipeUpdated =
+                await this.recipeRepository.updateAuthorIdById(id, author.id);
 
             console.log(recipeUpdated);
 
