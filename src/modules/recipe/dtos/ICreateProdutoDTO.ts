@@ -5,7 +5,7 @@ export interface ICreateProdutoDTO {
 
     name: string;
 
-    ingredients?: Ingredient[];
-
     description: string;
+
+    ingredients?: Ingredient[];
 }
