@@ -18,7 +18,6 @@ export class CreateRecipe1661569145708 implements MigrationInterface {
           {
             name: "author_id",
             type: "uuid",
-            isNullable: true,
           },
 
           {
