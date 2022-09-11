@@ -19,7 +19,6 @@ export class CreateEmail1661287166449 implements MigrationInterface {
           {
             name: "author_id",
             type: "uuid",
-            isNullable: true,
           },
 
           {
