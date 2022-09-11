@@ -88,4 +88,16 @@ describe("Create e-mail UseCase", () => {
             new AppError("Email is already exists.", 401)
         );
     });
+
+    it("should not be able to create a new e-mail with author_id invalid", async () => {
+        const email: ICreateEmailDTO = {
+            id: faker.datatype.uuid(),
+            e_mail: faker.internet.email(),
+            author_id: "faker-author_id",
+        };
+
+        await expect(createEmailUseCase.execute(email)).rejects.toEqual(
+            new AppError("Author not found.", 404)
+        );
+    });
 });
