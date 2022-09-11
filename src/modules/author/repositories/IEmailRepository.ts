@@ -7,10 +7,10 @@ export interface IEmailRepository {
     list(): Promise<Email[]>;
 
     findById(id: string): Promise<Email>;
+    findByAuthorId(author_id: string): Promise<Email>;
     findByEmail(e_mail: string): Promise<Email>;
 
     updateById(id: string, newE_mail: string): Promise<Email>;
-    updateAuthorIdById(email_id: string, author_id: string): Promise<Email>;
 
     deleteById(id: string): Promise<void>;
 }
