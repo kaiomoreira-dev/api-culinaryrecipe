@@ -18,6 +18,10 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
     authorRepository: Author[] = [];
 
     constructor(
+        // author tem fk de emails e recipes
+        // instanciamos os repositorios para fazermos
+        // a busca das listas relacionado pelo author_id em emails e recipe
+        // assim conseguimos fazer o leftjoin de formar local ou em memoria
         @inject("EmailRepositoryInMemory")
         private emailRepositoryInMemory: IEmailRepository,
 
