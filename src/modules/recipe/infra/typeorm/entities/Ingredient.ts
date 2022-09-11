@@ -23,7 +23,9 @@ export class Ingredient {
     description: string;
 
     // relacionamento de many-to-one apontando para produto qual
-    // ingrediente deve pertencer a produto
+    // ingrediente deve pertencer a produto, mas não queremos
+    // relacionar um produto com uma lista de ingredients que eles
+    // podem pertecer
     @ManyToOne(() => Produto, (produto) => produto.ingredients)
     @JoinColumn({ name: "produto_id" })
     produto?: Produto;
@@ -38,10 +40,10 @@ export class Ingredient {
     unity: number;
 
     @CreateDateColumn()
-    created_at: string;
+    created_at: Date;
 
     @UpdateDateColumn()
-    updated_at: string;
+    updated_at: Date;
 
     constructor() {
         if (!this.id) {
