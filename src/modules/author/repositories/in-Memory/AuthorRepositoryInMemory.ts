@@ -1,11 +1,29 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
+import { Email } from "@modules/author/infra/typeorm/entities/Email";
+import { Recipe } from "@modules/recipe/infra/typeorm/entities/Recipe";
+import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
+import { inject, injectable } from "tsyringe";
 
 import { IAuthorRepository } from "../IAuthorRepository";
+import { IEmailRepository } from "../IEmailRepository";
 
+@injectable()
 export class AuthorRepositoryInMemory implements IAuthorRepository {
     authorRepository: Author[] = [];
+
+    constructor(
+        @inject("EmailRepositoryInMemory")
+        private emailRepositoryInMemory: IEmailRepository,
+
+        @inject("RecipeRepositoryInMemory")
+        private recipeRepositoryInMemory: IRecipeRepository
+    ) {}
 
     async findById(id: string): Promise<Author> {
         return this.authorRepository.find((author) => author.id === id);
@@ -54,6 +72,34 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
         return author;
     }
     async list(): Promise<Author[]> {
+        // for (const author of this.authorRepository) {
+        //     let arrEmails: Email[] = [];
+        //     let arrRecipes: Recipe[] = [];
+
+        //     const email = await this.emailRepositoryInMemory.findByAuthorId(
+        //         author.id
+        //     );
+        //     // validar email
+
+        //     // adicionar email encontrado na lista de emails
+        //     arrEmails.push(email);
+
+        //     // atualizar lista de emails em author
+        //     author.emails = arrEmails;
+
+        //     const recipe = await this.recipeRepositoryInMemory.findByAuthorId(
+        //         author.id
+        //     );
+
+        //     // validar recipe
+
+        //     // adicionar recipe encontrada na lista de recipes
+        //     arrRecipes.push(recipe);
+
+        //     // atualizar lista de recipes em author
+        //     author.recipes = arrRecipes;
+        // }
+
         return this.authorRepository;
     }
     async findByName(name: string): Promise<Author> {
