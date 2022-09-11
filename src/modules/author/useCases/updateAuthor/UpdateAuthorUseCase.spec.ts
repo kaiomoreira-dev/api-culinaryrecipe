@@ -30,7 +30,9 @@ describe("Update author UseCase", () => {
         produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
         ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+            ingredientRepositoryInMemory
+        );
         authorRepositoryInMemory = new AuthorRepositoryInMemory();
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
