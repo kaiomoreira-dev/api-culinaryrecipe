@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { faker } from "@faker-js/faker";
+import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import request from "supertest";
 import { DataSource } from "typeorm";
 
@@ -22,25 +23,52 @@ describe("Create e-mail Controller", () => {
     });
 
     it("should be able to create a new email", async () => {
-        const response = await request(app).post("/email").send({
+        const responseCreateAuthor = await request(app).post("/author").send({
             id: faker.datatype.uuid(),
-            e_mail: faker.internet.email(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
         });
 
-        expect(response.status).toEqual(200);
+        const { id } = responseCreateAuthor.body as Author;
+
+        const responseCreateEmail = await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: faker.internet.email(),
+            author_id: id,
+        });
+
+        expect(responseCreateEmail.status).toEqual(200);
     });
 
     it("should not be able to create a new email with same", async () => {
+        const responseCreateAuthor1 = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        });
+
+        const { id: authorId1 } = responseCreateAuthor1.body as Author;
+
+        const responseCreateAuthor2 = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        });
+
+        const { id: authorId2 } = responseCreateAuthor2.body as Author;
+
         await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
+            author_id: authorId1,
         });
 
-        const response = await request(app).post("/email").send({
+        const responseCreateEmail = await request(app).post("/email").send({
             id: faker.datatype.uuid(),
             e_mail: "test@test.com",
+            author_id: authorId2,
         });
 
-        expect(response.status).toBe(401);
+        expect(responseCreateEmail.status).toBe(401);
     });
 });
