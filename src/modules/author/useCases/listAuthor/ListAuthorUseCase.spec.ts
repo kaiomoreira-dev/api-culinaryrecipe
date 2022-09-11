@@ -3,10 +3,14 @@ import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
+import { ICreateIngredientDTO } from "@modules/recipe/dtos/ICreateIngredientDTO";
+import { ICreateProdutoDTO } from "@modules/recipe/dtos/ICreateProdutoDTO";
+import { ICreateRecipeDTO } from "@modules/recipe/dtos/ICreateRecipeDTO";
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredient/CreateIngredientUseCase";
+import { CreateProdutoUseCase } from "@modules/recipe/useCases/createProduto/CreateProdutoUseCase";
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
@@ -23,14 +27,20 @@ let createEmailUseCase: CreateEmailUseCase;
 let createRecipeUseCase: CreateRecipeUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 let listAuthorUseCase: ListAuthorUseCase;
+let createProdutoUseCase: CreateProdutoUseCase;
 
 describe("List authors UseCase", () => {
     beforeEach(() => {
         produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
         ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+            ingredientRepositoryInMemory
+        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory(
+            emailRepositoryInMemory,
+            recipeRepositoryInMemory
+        );
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,
@@ -45,6 +55,9 @@ describe("List authors UseCase", () => {
             ingredientRepositoryInMemory,
             authorRepositoryInMemory
         );
+        createProdutoUseCase = new CreateProdutoUseCase(
+            produtoRepositoryInMemory
+        );
         listAuthorUseCase = new ListAuthorUseCase(authorRepositoryInMemory);
     });
     it("should be able to list authors", async () => {
@@ -52,49 +65,81 @@ describe("List authors UseCase", () => {
             id: "ad539d66-e576-4913-8237-e5a6baff3ba4",
             name: "Kaio Moreira",
             whatsapp: faker.phone.number(),
-            emails: [
-                {
-                    id: faker.datatype.uuid(),
-                    e_mail: faker.internet.email(),
-                    author_id: "ad539d66-e576-4913-8237-e5a6baff3ba4",
-                    created_at: faker.datatype.datetime(),
-                    updated_at: faker.datatype.datetime(),
-                },
-            ],
-            recipes: [
-                {
-                    id: faker.datatype.uuid(),
-                    name: "Receita test 1",
-                    description: faker.lorem.paragraphs(),
-                    author_id: "ad539d66-e576-4913-8237-e5a6baff3ba4",
-                    difficulty: "medium",
-                    dish_type: "appetizer",
-                    time: 5,
-                    total_guests: 5,
-                    additional_features: "low custom",
-                    ingredients: [
-                        {
-                            id: faker.datatype.uuid(),
-                            description: faker.lorem.paragraphs(),
-                            name: "alho roxo",
-                            produto_id: "86a5a72d-308a-41d2-a166-89966c738804",
-                            unity: 1,
-                            weight: 100,
-                            created_at: String(faker.datatype.datetime()),
-                            updated_at: String(faker.datatype.datetime()),
-                        },
-                    ],
-                    created_at: faker.datatype.datetime(),
-                    updated_at: faker.datatype.datetime(),
-                },
-            ],
         };
 
-        await createAuthorUseCase.execute(author);
+        const createAuthor1 = await createAuthorUseCase.execute(author);
+
+        const email1: ICreateEmailDTO = {
+            id: faker.datatype.uuid(),
+            e_mail: faker.internet.email(),
+            author_id: createAuthor1.id,
+        };
+
+        await createEmailUseCase.execute(email1);
+
+        const produto1: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Alho",
+            description: faker.lorem.paragraphs(),
+        };
+        const produto2: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Cebola",
+            description: faker.lorem.paragraphs(),
+        };
+
+        const createProduto1 = await createProdutoUseCase.execute(produto1);
+
+        const createProduto2 = await createProdutoUseCase.execute(produto2);
+
+        const ingredient1: ICreateIngredientDTO = {
+            id: faker.datatype.uuid(),
+            description: faker.lorem.words(20),
+            name: "Alho",
+            produto_id: createProduto1.id,
+            unity: 1,
+            weight: 100,
+        };
+
+        const ingredient2: ICreateIngredientDTO = {
+            id: faker.datatype.uuid(),
+            description: faker.lorem.words(20),
+            name: "Cebola",
+            produto_id: createProduto2.id,
+            unity: 1,
+            weight: 100,
+        };
+
+        const createIngredient1 = await createIngredientUseCase.execute(
+            ingredient1
+        );
+
+        const createIngredient2 = await createIngredientUseCase.execute(
+            ingredient2
+        );
+
+        const recipe1: ICreateRecipeDTO = {
+            id: faker.datatype.uuid(),
+            additional_features: "cheap dish",
+            author_id: createAuthor1.id,
+            description: faker.lorem.words(20),
+            difficulty: "easy",
+            dish_type: "appetizer",
+            name: "Recipe Test 1",
+            time: 20,
+            total_guests: 5,
+        };
+
+        const ingredients: string[] = [
+            createIngredient1.id,
+            createIngredient2.id,
+        ];
+
+        await createRecipeUseCase.execute(recipe1, ingredients);
 
         const listAuthors = await listAuthorUseCase.execute();
 
-        // console.log(JSON.stringify(listAuthors, null, 2));
+        console.log(JSON.stringify(listAuthors, null, 2));
 
         expect(listAuthors[0]).toHaveProperty("id");
         expect(listAuthors[0]).toHaveProperty("emails");
