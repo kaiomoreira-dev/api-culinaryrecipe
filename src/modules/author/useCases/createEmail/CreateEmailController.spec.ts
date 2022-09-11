@@ -71,4 +71,15 @@ describe("Create e-mail Controller", () => {
 
         expect(responseCreateEmail.status).toBe(401);
     });
+
+    it("should not be able to create a new email with author_id invalid", async () => {
+        const fakerAuthorId = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
+
+        const responseCreateEmail = await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_mail: faker.internet.email(),
+            author_id: fakerAuthorId,
+        });
+        expect(responseCreateEmail.status).toBe(404);
+    });
 });
