@@ -72,33 +72,33 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
         return author;
     }
     async list(): Promise<Author[]> {
-        // for (const author of this.authorRepository) {
-        //     let arrEmails: Email[] = [];
-        //     let arrRecipes: Recipe[] = [];
+        for (const author of this.authorRepository) {
+            let arrEmails: Email[] = [];
+            let arrRecipes: Recipe[] = [];
 
-        //     const email = await this.emailRepositoryInMemory.findByAuthorId(
-        //         author.id
-        //     );
-        //     // validar email
+            const email = await this.emailRepositoryInMemory.findByAuthorId(
+                author.id
+            );
+            // validar email
 
-        //     // adicionar email encontrado na lista de emails
-        //     arrEmails.push(email);
+            // adicionar email encontrado na lista de emails
+            arrEmails.push(email);
 
-        //     // atualizar lista de emails em author
-        //     author.emails = arrEmails;
+            // atualizar lista de emails em author
+            author.emails = arrEmails;
 
-        //     const recipe = await this.recipeRepositoryInMemory.findByAuthorId(
-        //         author.id
-        //     );
+            const recipe = await this.recipeRepositoryInMemory.findByAuthorId(
+                author.id
+            );
 
-        //     // validar recipe
+            // validar recipe
 
-        //     // adicionar recipe encontrada na lista de recipes
-        //     arrRecipes.push(recipe);
+            // adicionar recipe encontrada na lista de recipes
+            arrRecipes.push(recipe);
 
-        //     // atualizar lista de recipes em author
-        //     author.recipes = arrRecipes;
-        // }
+            // atualizar lista de recipes em author
+            author.recipes = arrRecipes;
+        }
 
         return this.authorRepository;
     }
