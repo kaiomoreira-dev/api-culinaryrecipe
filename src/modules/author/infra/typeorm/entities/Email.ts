@@ -24,7 +24,7 @@ export class Email {
     author?: Author;
 
     @Column()
-    author_id?: string;
+    author_id: string;
 
     @CreateDateColumn()
     created_at: Date;
