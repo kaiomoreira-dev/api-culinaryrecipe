@@ -1,16 +1,28 @@
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
 import { IAuthorRepository } from "@modules/author/repositories/IAuthorRepository";
+import { IEmailRepository } from "@modules/author/repositories/IEmailRepository";
+import { IRecipeRepository } from "@modules/recipe/repositories/IRecipeRepository";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
 export class ListAuthorUseCase {
     constructor(
         // author tem fk de emails e recipes
-        // mas nao instanciamos seu repositorio para inserir,
-        // pois automaticamento com o releacionamento
-        // entre eles a lista são incrementada, ao criar.
+        // instanciamos os repositorios, mas nao fazemos
+        // nenhuma operação, apenas para quando
+        // formos criar os test conseguirmos fazermos o leftjoin
+        // em emails e recipes, buscando cada email e recipe
+        // pelo author_id e atualizamos a lista de emails e recipes em author
+        // me memoria para retornar todos os relacionandos
+
         @inject("AuthorRepository")
-        private authorRepository: IAuthorRepository
+        private authorRepository: IAuthorRepository,
+
+        @inject("EmailRepository")
+        private emailRepository: IEmailRepository,
+
+        @inject("RecipeRepository")
+        private recipeRepository: IRecipeRepository
     ) {}
 
     async execute(): Promise<Author[]> {
