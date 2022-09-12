@@ -7,6 +7,19 @@ import { IEmailRepository } from "../IEmailRepository";
 export class EmailRepositoryInMemory implements IEmailRepository {
     private emailsRepository: Email[] = [];
 
+    async listByAuthorId(author_id: string): Promise<Email[]> {
+        const emails = this.emailsRepository.map((email) => {
+            if (email.author_id === author_id) {
+                return email;
+            }
+            return false;
+        });
+
+        const formatEmails = emails as unknown as Email[];
+
+        return formatEmails;
+    }
+
     async findByAuthorId(author_id: string): Promise<Email> {
         return this.emailsRepository.find(
             (email) => email.author_id === author_id
