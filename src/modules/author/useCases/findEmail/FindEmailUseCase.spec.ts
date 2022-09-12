@@ -3,6 +3,8 @@ import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
+import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
+import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
 import { AppError } from "@shared/errors/AppError";
@@ -11,6 +13,8 @@ import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { FindEmailUseCase } from "./FindEmailUseCase";
 
+let ingredientRepositoryInMemory: IngredientRepositoryInMemory;
+let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let authorRepositoryInMemory: AuthorRepositoryInMemory;
 let createAuthorUseCase: CreateAuthorUseCase;
@@ -19,8 +23,15 @@ let findEmailUseCase: FindEmailUseCase;
 
 describe("Find e-mail UseCase", () => {
     beforeEach(() => {
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+            ingredientRepositoryInMemory
+        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory(
+            emailRepositoryInMemory,
+            recipeRepositoryInMemory
+        );
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,
