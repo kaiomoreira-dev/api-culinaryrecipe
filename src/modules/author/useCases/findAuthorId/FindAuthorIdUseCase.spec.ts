@@ -30,8 +30,13 @@ describe("Find author UseCase", () => {
         produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
         ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
         emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+            ingredientRepositoryInMemory
+        );
+        authorRepositoryInMemory = new AuthorRepositoryInMemory(
+            emailRepositoryInMemory,
+            recipeRepositoryInMemory
+        );
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
             emailRepositoryInMemory,
