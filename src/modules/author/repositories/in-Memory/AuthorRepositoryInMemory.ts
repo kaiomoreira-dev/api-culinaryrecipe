@@ -32,6 +32,10 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
             async (author) => author.id === id
         );
 
+        if (authorIndex === -1) {
+            return null;
+        }
+
         const emails = await this.emailRepositoryInMemory.listByAuthorId(id);
 
         const recipes = await this.recipeRepositoryInMemory.listByAuthorId(id);
