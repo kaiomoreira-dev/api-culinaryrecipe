@@ -160,8 +160,6 @@ describe("List authors UseCase", () => {
 
         const listAuthors = await listAuthorUseCase.execute();
 
-        // console.log(JSON.stringify(listAuthors, null, 2));
-
         expect(listAuthors[0]).toHaveProperty("id");
         expect(listAuthors[0]).toHaveProperty("emails");
         expect(listAuthors[0]).toHaveProperty("recipes");
