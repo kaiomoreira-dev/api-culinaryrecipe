@@ -36,6 +36,16 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
             return null;
         }
 
+        const findAuthor = this.authorRepository.find(
+            (author) => author.id === id
+        );
+
+        if (!findAuthor.emails && !findAuthor.recipes) {
+            this.authorRepository[authorIndex].emails = [];
+            this.authorRepository[authorIndex].recipes = [];
+            return this.authorRepository.find((author) => author.id === id);
+        }
+
         const emails = await this.emailRepositoryInMemory.listByAuthorId(id);
 
         const recipes = await this.recipeRepositoryInMemory.listByAuthorId(id);
