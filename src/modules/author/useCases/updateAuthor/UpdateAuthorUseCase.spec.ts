@@ -71,7 +71,6 @@ describe("Update author UseCase", () => {
             newName,
             whatsapp
         );
-
         expect(updateAuthor).toHaveProperty("id");
     });
 
