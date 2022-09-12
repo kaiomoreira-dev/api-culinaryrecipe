@@ -75,7 +75,15 @@ describe("List authors UseCase", () => {
             author_id: createAuthor1.id,
         };
 
+        const email2: ICreateEmailDTO = {
+            id: faker.datatype.uuid(),
+            e_mail: faker.internet.email(),
+            author_id: createAuthor1.id,
+        };
+
         await createEmailUseCase.execute(email1);
+
+        await createEmailUseCase.execute(email2);
 
         const produto1: ICreateProdutoDTO = {
             id: faker.datatype.uuid(),
@@ -130,16 +138,29 @@ describe("List authors UseCase", () => {
             total_guests: 5,
         };
 
+        const recipe2: ICreateRecipeDTO = {
+            id: faker.datatype.uuid(),
+            additional_features: "cheap dish",
+            author_id: createAuthor1.id,
+            description: faker.lorem.words(20),
+            difficulty: "easy",
+            dish_type: "appetizer",
+            name: "Recipe Test 2",
+            time: 20,
+            total_guests: 5,
+        };
+
         const ingredients: string[] = [
             createIngredient1.id,
             createIngredient2.id,
         ];
 
         await createRecipeUseCase.execute(recipe1, ingredients);
+        await createRecipeUseCase.execute(recipe2, ingredients);
 
         const listAuthors = await listAuthorUseCase.execute();
 
-        console.log(JSON.stringify(listAuthors, null, 2));
+        // console.log(JSON.stringify(listAuthors, null, 2));
 
         expect(listAuthors[0]).toHaveProperty("id");
         expect(listAuthors[0]).toHaveProperty("emails");
