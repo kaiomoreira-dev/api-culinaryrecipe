@@ -3,12 +3,15 @@ import { ICreateAuthorDTO } from "@modules/author/dtos/ICreateAuthorDTO";
 import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
+import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { ListEmailsUseCase } from "./ListEmailsUseCase";
 
+let ingredientRepositoryInMemory: IngredientRepositoryInMemory;
+let recipeRepositoryInMemory: RecipeRepositoryInMemory;
 let emailRepositoryInMemory: EmailRepositoryInMemory;
 let createEmailUseCase: CreateEmailUseCase;
 let listEmailsUseCase: ListEmailsUseCase;
@@ -17,9 +20,16 @@ let createAuthorUseCase: CreateAuthorUseCase;
 
 describe("List e-mails UseCase", () => {
     beforeEach(() => {
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+            ingredientRepositoryInMemory
+        );
         emailRepositoryInMemory = new EmailRepositoryInMemory();
 
-        authorRepositoryInMemory = new AuthorRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory(
+            emailRepositoryInMemory,
+            recipeRepositoryInMemory
+        );
         createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
         listEmailsUseCase = new ListEmailsUseCase(emailRepositoryInMemory);
         createEmailUseCase = new CreateEmailUseCase(
