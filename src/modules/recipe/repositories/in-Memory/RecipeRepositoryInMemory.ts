@@ -18,6 +18,19 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
         private ingredientRepositoryInMemory: IIngredientRepository
     ) {}
 
+    async listByAuthorId(author_id: string): Promise<Recipe[]> {
+        const recipes = this.reciperepository.map((recipe) => {
+            if (recipe.author_id === author_id) {
+                return recipe;
+            }
+            return false;
+        });
+
+        const formatRecipes = recipes as unknown as Recipe[];
+
+        return formatRecipes;
+    }
+
     async updateAuthorIdById(id: string, author_id: string): Promise<Recipe> {
         const recipeIndex = this.reciperepository.findIndex(
             (recipe) => recipe.id === id
