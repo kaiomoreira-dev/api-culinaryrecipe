@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { faker } from "@faker-js/faker";
 import { Author } from "@modules/author/infra/typeorm/entities/Author";
+import { Ingredient } from "@modules/recipe/infra/typeorm/entities/Ingredient";
+import { Produto } from "@modules/recipe/infra/typeorm/entities/Produto";
 import request from "supertest";
 import { DataSource } from "typeorm";
 
@@ -30,6 +32,82 @@ describe("Delete author Controller", () => {
         });
 
         const { id } = responseAuthor.body as Author;
+
+        // criar recipes[produto,ingredient] e emails p/ author!!
+
+        // Emails
+        await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_email: faker.internet.email(),
+            author_id: id,
+        });
+        await request(app).post("/email").send({
+            id: faker.datatype.uuid(),
+            e_email: faker.internet.email(),
+            author_id: id,
+        });
+
+        // Produtos
+        const prod1 = await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Alho",
+                description: faker.lorem.words(10),
+            });
+
+        const prod2 = await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Cebola",
+                description: faker.lorem.words(10),
+            });
+
+        const { id: prodId1 } = prod1.body as Produto;
+        const { id: prodId2 } = prod2.body as Produto;
+
+        // Ingredients
+        const ingredient1 = await request(app)
+            .post("/ingredient")
+            .send({
+                id: faker.datatype.uuid(),
+                produto_id: prodId1,
+                name: "Alho",
+                description: faker.lorem.words(10),
+                unity: 1,
+                weight: 100,
+            });
+        const ingredient2 = await request(app)
+            .post("/ingredient")
+            .send({
+                id: faker.datatype.uuid(),
+                produto_id: prodId2,
+                name: "Cebola",
+                description: faker.lorem.words(10),
+                unity: 1,
+                weight: 100,
+            });
+        const { id: ingredientId1 } = ingredient1.body as Ingredient;
+        const { id: ingredientId2 } = ingredient2.body as Ingredient;
+
+        const ingredients: string[] = [ingredientId1, ingredientId2];
+
+        // Recipes
+        await request(app)
+            .post("/recipe")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Recipe Test 1",
+                description: faker.lorem.words(10),
+                time: 30,
+                difficulty: "easy",
+                dish_type: "appetizer",
+                additional_features: "cheap dish",
+                total_guests: 3,
+                author_id: id,
+                ingredients,
+            });
 
         const responsAuthorDelete = await request(app)
             .delete("/author/delete")
