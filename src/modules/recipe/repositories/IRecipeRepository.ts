@@ -5,8 +5,8 @@ export interface IRecipeRepository {
     create(data: ICreateRecipeDTO): Promise<Recipe>;
 
     list(): Promise<Recipe[]>;
-
     listByDifficulty(difficulty: string): Promise<Recipe[]>;
+    listByAuthorId(author_id: string): Promise<Recipe[]>;
 
     // //=====Recipes-Ingredients======//
     listRecipesByIngredientId(id: string): Promise<Recipe[]>;
