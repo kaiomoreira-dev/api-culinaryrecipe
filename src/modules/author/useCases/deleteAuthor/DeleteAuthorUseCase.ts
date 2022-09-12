@@ -32,7 +32,6 @@ export class DeleteAuthorUseCase {
         for (const email of emails) {
             await this.emailRepository.deleteById(email.id);
         }
-
         const [ids] = recipes.map((recipe) => {
             const ids = recipe.ingredients.map((ingredient) => {
                 return ingredient.id;
