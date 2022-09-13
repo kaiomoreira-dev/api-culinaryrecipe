@@ -8,3 +8,5 @@ let produtoRepositoryInMemory: ProdutoRepositoryInMemory;
 let ingredientRepositoryInMemory: IngredientRepositoryInMemory;
 let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
+
+describe("Create ingredient UseCase", () => {});
