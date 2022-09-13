@@ -11,4 +11,10 @@ import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
 
-describe("Create ingredient Controller", () => {});
+describe("Create ingredient Controller", () => {
+    beforeAll(async () => {
+        connection = await createConnection("localhost");
+
+        await connection.runMigrations();
+    });
+});
