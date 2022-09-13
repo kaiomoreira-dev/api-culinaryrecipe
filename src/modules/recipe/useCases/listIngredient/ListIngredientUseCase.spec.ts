@@ -11,4 +11,18 @@ let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
 let listProdutoUseCase: ListProdutosUseCase;
 
-describe("List ingredients UseCase", () => {});
+describe("List ingredients UseCase", () => {
+    beforeEach(() => {
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+
+        createIngredientUseCase = new CreateIngredientUseCase(
+            ingredientRepositoryInMemory,
+            produtoRepositoryInMemory
+        );
+        createProdutoUseCase = new CreateProdutoUseCase(
+            produtoRepositoryInMemory
+        );
+        listProdutoUseCase = new ListProdutosUseCase(produtoRepositoryInMemory);
+    });
+});
