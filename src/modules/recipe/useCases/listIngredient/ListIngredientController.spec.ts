@@ -23,4 +23,50 @@ describe("List ingredients Controller", () => {
 
         await connection.destroy();
     });
+
+    it("should be able to list ingredients", async () => {
+        const produto1 = await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Alho",
+                description: faker.lorem.words(20),
+            });
+        const { id: prodId1 } = produto1.body as Produto;
+        const produto2 = await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Coentro",
+                description: faker.lorem.words(20),
+            });
+
+        const { id: prodId2 } = produto2.body as Produto;
+
+        await request(app)
+            .post("/ingredient")
+            .send({
+                id: faker.datatype.uuid(),
+                produto_id: prodId1,
+                name: "Alho",
+                description: faker.lorem.words(20),
+                unity: 1,
+                weight: 100,
+            });
+
+        await request(app)
+            .post("/ingredient")
+            .send({
+                id: faker.datatype.uuid(),
+                produto_id: prodId2,
+                name: "Cebola",
+                description: faker.lorem.words(20),
+                unity: 1,
+                weight: 100,
+            });
+
+        const listIngredients = await request(app).get("/ingredient").send({});
+
+        expect(listIngredients.status).toBe(200);
+    });
 });
