@@ -69,4 +69,29 @@ describe("Create ingredient UseCase", () => {
             createIngredientUseCase.execute(ingredient1)
         ).rejects.toEqual(new AppError("Produto not found.", 401));
     });
+
+    it("should not be able to create ingredient with ingredient already exists", async () => {
+        const produto1: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Alho",
+            description: faker.lorem.paragraphs(),
+        };
+
+        const createProduto1 = await createProdutoUseCase.execute(produto1);
+
+        const ingredient1: ICreateIngredientDTO = {
+            id: faker.datatype.uuid(),
+            description: faker.lorem.words(20),
+            name: "Alho",
+            produto_id: createProduto1.id,
+            unity: 1,
+            weight: 100,
+        };
+
+        await createIngredientUseCase.execute(ingredient1);
+
+        await expect(
+            createIngredientUseCase.execute(ingredient1)
+        ).rejects.toEqual(new AppError("Ingredient already exists.", 401));
+    });
 });
