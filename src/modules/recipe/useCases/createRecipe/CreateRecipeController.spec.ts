@@ -294,54 +294,54 @@ describe("Create recipe Controller", () => {
 
         expect(responseCreateRecipe.status).toBe(404);
     });
-    // it("should not be able to create recipe with less than two ingredients", async () => {
-    //     const produto1 = await request(app)
-    //         .post("/produto")
-    //         .send({
-    //             id: faker.datatype.uuid(),
-    //             name: "Alho",
-    //             description: faker.lorem.words(20),
-    //         });
-    //     const { id: prodId1 } = produto1.body as Produto;
+    it("should not be able to create recipe with less than two ingredients", async () => {
+        const produto1 = await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Alho",
+                description: faker.lorem.words(20),
+            });
+        const { id: prodId1 } = produto1.body as Produto;
 
-    //     const ingredient1 = await request(app)
-    //         .post("/ingredient")
-    //         .send({
-    //             id: faker.datatype.uuid(),
-    //             produto_id: prodId1,
-    //             name: "Alho",
-    //             description: faker.lorem.words(20),
-    //             unity: 1,
-    //             weight: 100,
-    //         });
+        const ingredient1 = await request(app)
+            .post("/ingredient")
+            .send({
+                id: faker.datatype.uuid(),
+                produto_id: prodId1,
+                name: "Alho",
+                description: faker.lorem.words(20),
+                unity: 1,
+                weight: 100,
+            });
 
-    //     const { id: ingredient1Id } = ingredient1.body as Ingredient;
+        const { id: ingredient1Id } = ingredient1.body as Ingredient;
 
-    //     const author = await request(app).post("/author").send({
-    //         id: faker.datatype.uuid(),
-    //         name: "Kaio Moreira",
-    //         whatsapp: faker.phone.number(),
-    //     });
+        const author = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: faker.phone.number(),
+        });
 
-    //     const { id: authorId } = author.body as Author;
+        const { id: authorId } = author.body as Author;
 
-    //     const responseCreateRecipe = await request(app)
-    //         .post("/recipe")
-    //         .send({
-    //             id: faker.datatype.uuid(),
-    //             name: "Receita 1",
-    //             description: faker.lorem.words(20),
-    //             time: 20,
-    //             difficulty: "easy",
-    //             dish_type: "appetizer",
-    //             additional_features: "cheap dish",
-    //             total_guests: 5,
-    //             ingredients: [ingredient1Id],
-    //             author_id: authorId,
-    //         });
+        const responseCreateRecipe = await request(app)
+            .post("/recipe")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Receita 1",
+                description: faker.lorem.words(20),
+                time: 20,
+                difficulty: "easy",
+                dish_type: "appetizer",
+                additional_features: "cheap dish",
+                total_guests: 5,
+                ingredients: [ingredient1Id],
+                author_id: authorId,
+            });
 
-    //     expect(responseCreateRecipe.status).toBe(401);
-    // });
+        expect(responseCreateRecipe.status).toBe(401);
+    });
     // it("should not be able to create recipe with ingredients invalid", async () => {
     //     const author = await request(app).post("/author").send({
     //         id: faker.datatype.uuid(),
