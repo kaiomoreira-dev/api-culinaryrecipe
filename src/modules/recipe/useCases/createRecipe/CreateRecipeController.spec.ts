@@ -342,34 +342,34 @@ describe("Create recipe Controller", () => {
 
         expect(responseCreateRecipe.status).toBe(401);
     });
-    // it("should not be able to create recipe with ingredients invalid", async () => {
-    //     const author = await request(app).post("/author").send({
-    //         id: faker.datatype.uuid(),
-    //         name: "Kaio Moreira",
-    //         whatsapp: faker.phone.number(),
-    //     });
+    it("should not be able to create recipe with ingredients invalid", async () => {
+        const author = await request(app).post("/author").send({
+            id: faker.datatype.uuid(),
+            name: "Kaio Moreira",
+            whatsapp: faker.phone.number(),
+        });
 
-    //     const { id: authorId } = author.body as Author;
+        const { id: authorId } = author.body as Author;
 
-    //     const fakeIngredientId1 = "e33a9e63-2634-42ef-90dd-f9137a2a7b9b";
-    //     const fakeIngredientId2 = "4d8e19fe-fec1-431e-96d2-4dce6fd3ae9f";
-    //     const ingredients: string[] = [fakeIngredientId1, fakeIngredientId2];
+        const fakeIngredientId1 = "e33a9e63-2634-42ef-90dd-f9137a2a7b9b";
+        const fakeIngredientId2 = "4d8e19fe-fec1-431e-96d2-4dce6fd3ae9f";
+        const ingredients: string[] = [fakeIngredientId1, fakeIngredientId2];
 
-    //     const responseCreateRecipe = await request(app)
-    //         .post("/recipe")
-    //         .send({
-    //             id: faker.datatype.uuid(),
-    //             name: "Receita 1",
-    //             description: faker.lorem.words(20),
-    //             time: 20,
-    //             difficulty: "easy",
-    //             dish_type: "appetizer",
-    //             additional_features: "cheap dish",
-    //             total_guests: 5,
-    //             ingredients,
-    //             author_id: authorId,
-    //         });
+        const responseCreateRecipe = await request(app)
+            .post("/recipe")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Receita 1",
+                description: faker.lorem.words(20),
+                time: 20,
+                difficulty: "easy",
+                dish_type: "appetizer",
+                additional_features: "cheap dish",
+                total_guests: 5,
+                ingredients,
+                author_id: authorId,
+            });
 
-    //     expect(responseCreateRecipe.status).toBe(404);
-    // });
+        expect(responseCreateRecipe.status).toBe(404);
+    });
 });
