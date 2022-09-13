@@ -10,3 +10,5 @@ let ingredientRepositoryInMemory: IngredientRepositoryInMemory;
 let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
 let listProdutoUseCase: ListProdutosUseCase;
+
+describe("List ingredients UseCase", () => {});
