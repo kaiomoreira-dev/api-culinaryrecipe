@@ -351,7 +351,7 @@ describe("Create recipe UseCase", () => {
         ).rejects.toEqual(new AppError("Ingredient not found", 404));
     });
 
-    it("should not be able to create a recipe with less than two ingredients", async () => {
+    it("should not be able to create a recipe with ingredients invalid", async () => {
         const produto1: ICreateProdutoDTO = {
             id: faker.datatype.uuid(),
             name: "Alho",
@@ -398,5 +398,34 @@ describe("Create recipe UseCase", () => {
         await expect(
             createRecipeUseCase.execute(recipe, ingredients)
         ).rejects.toEqual(new AppError("Ingredients insufficient!", 401));
+    });
+    it("should not be able to create a recipe with less than two ingredients", async () => {
+        const author: ICreateAuthorDTO = {
+            id: faker.datatype.uuid(),
+            name: faker.name.fullName(),
+            whatsapp: faker.phone.number(),
+        };
+
+        const authorCreated = await createAuthorUseCase.execute(author);
+
+        const fakeIngredientId1 = "e33a9e63-2634-42ef-90dd-f9137a2a7b9b";
+        const fakeIngredientId2 = "4d8e19fe-fec1-431e-96d2-4dce6fd3ae9f";
+        const ingredients: string[] = [fakeIngredientId1, fakeIngredientId2];
+
+        const recipe: ICreateRecipeDTO = {
+            id: faker.datatype.uuid(),
+            name: "Receita 1",
+            description: faker.lorem.words(20),
+            additional_features: "cheap dish",
+            difficulty: "easy",
+            dish_type: "appetizer",
+            time: 20,
+            total_guests: 5,
+            author_id: authorCreated.id,
+        };
+
+        await expect(
+            createRecipeUseCase.execute(recipe, ingredients)
+        ).rejects.toEqual(new AppError("Ingredient not found", 404));
     });
 });
