@@ -4,6 +4,8 @@ import { ICreateProdutoDTO } from "@modules/recipe/dtos/ICreateProdutoDTO";
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 
+import { AppError } from "@shared/errors/AppError";
+
 import { CreateProdutoUseCase } from "../createProduto/CreateProdutoUseCase";
 import { CreateIngredientUseCase } from "./CreateIngredientUseCase";
 
@@ -49,5 +51,22 @@ describe("Create ingredient UseCase", () => {
         );
 
         expect(createIngredient1).toHaveProperty("id");
+    });
+
+    it("should not be able to create ingredient with produto_id invalid", async () => {
+        const produtoIdFake = "643a172e-54d1-49ad-8877-9687632da171";
+
+        const ingredient1: ICreateIngredientDTO = {
+            id: faker.datatype.uuid(),
+            description: faker.lorem.words(20),
+            name: "Alho",
+            produto_id: produtoIdFake,
+            unity: 1,
+            weight: 100,
+        };
+
+        await expect(
+            createIngredientUseCase.execute(ingredient1)
+        ).rejects.toEqual(new AppError("Produto not found.", 401));
     });
 });
