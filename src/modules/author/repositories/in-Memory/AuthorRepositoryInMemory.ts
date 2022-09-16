@@ -39,6 +39,10 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
         const findAuthor = this.authorRepository.find(
             (author) => author.id === id
         );
+
+        // remove bloco de codigo mais pra frente
+        // podemos criar um author com emails:[] e recipes:[]
+        // do tipo array vazio em vez de undefined pra alterar aqui
         if (!findAuthor.emails && !findAuthor.recipes) {
             this.authorRepository[authorIndex].emails = [];
             this.authorRepository[authorIndex].recipes = [];
