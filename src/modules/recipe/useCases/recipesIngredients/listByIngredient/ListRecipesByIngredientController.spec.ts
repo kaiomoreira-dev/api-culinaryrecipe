@@ -8,4 +8,10 @@ import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
 
-describe("List recipes by ingredient Controller", () => {});
+describe("List recipes by ingredient Controller", () => {
+    beforeAll(async () => {
+        connection = await createConnection("localhost");
+
+        await connection.runMigrations();
+    });
+});
