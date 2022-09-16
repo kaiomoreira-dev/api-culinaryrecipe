@@ -34,7 +34,7 @@ describe("Create produto Controller", () => {
         expect(produto1.status).toBe(200);
     });
 
-    it("should be able to create produto already exists", async () => {
+    it("should not be able to create produto already exists", async () => {
         await request(app)
             .post("/produto")
             .send({
