@@ -8,4 +8,10 @@ import { createConnection } from "@shared/infra/typeorm";
 
 let connection: DataSource;
 
-describe("List produtos Controller", () => {});
+describe("List produtos Controller", () => {
+    beforeAll(async () => {
+        connection = await createConnection("localhost");
+
+        await connection.runMigrations();
+    });
+});
