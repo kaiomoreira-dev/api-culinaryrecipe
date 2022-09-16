@@ -14,7 +14,6 @@ export class EmailRepositoryInMemory implements IEmailRepository {
             }
             return false;
         });
-
         const formatEmails = emails as unknown as Email[];
 
         return formatEmails;
