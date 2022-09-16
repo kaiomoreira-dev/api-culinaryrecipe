@@ -107,7 +107,7 @@ describe("List author Controller", () => {
 
         const responseListAuthors = await request(app).get("/author").send({});
 
-        console.log(JSON.stringify(responseListAuthors.body, null, 2));
+        // console.log(JSON.stringify(responseListAuthors.body, null, 2));
 
         expect(responseListAuthors.status).toBe(200);
     });
