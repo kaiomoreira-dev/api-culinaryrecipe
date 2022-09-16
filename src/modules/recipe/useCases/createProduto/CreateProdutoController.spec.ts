@@ -5,3 +5,5 @@ import request from "supertest";
 import { DataSource } from "typeorm";
 
 let connection: DataSource;
+
+describe("Create produto Controller", () => {});
