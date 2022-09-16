@@ -19,4 +19,30 @@ let createAuthorUseCase: CreateAuthorUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
 
-describe("List recipes by ingredient UseCase", () => {});
+describe("List recipes by ingredient UseCase", () => {
+    beforeEach(() => {
+        emailRepositoryInMemory = new EmailRepositoryInMemory();
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+        authorRepositoryInMemory = new AuthorRepositoryInMemory(
+            emailRepositoryInMemory,
+            recipeRepositoryInMemory
+        );
+        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+            ingredientRepositoryInMemory
+        );
+        createRecipeUseCase = new CreateRecipeUseCase(
+            recipeRepositoryInMemory,
+            ingredientRepositoryInMemory,
+            authorRepositoryInMemory
+        );
+        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+        createIngredientUseCase = new CreateIngredientUseCase(
+            ingredientRepositoryInMemory,
+            produtoRepositoryInMemory
+        );
+        createProdutoUseCase = new CreateProdutoUseCase(
+            produtoRepositoryInMemory
+        );
+    });
+});
