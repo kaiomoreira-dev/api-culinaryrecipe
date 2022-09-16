@@ -23,4 +23,25 @@ describe("List produto UseCase", () => {
             produtoRepositoryInMemory
         );
     });
+
+    it("should be able to list produtos", async () => {
+        const produto1: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Alho",
+            description: faker.lorem.paragraphs(),
+        };
+        const produto2: ICreateProdutoDTO = {
+            id: faker.datatype.uuid(),
+            name: "Cebola",
+            description: faker.lorem.paragraphs(),
+        };
+
+        await createProdutoUseCase.execute(produto1);
+
+        await createProdutoUseCase.execute(produto2);
+
+        const listProdutos = await listProdutosUseCase.execute();
+
+        expect(listProdutos[0]).toHaveProperty("id");
+    });
 });
