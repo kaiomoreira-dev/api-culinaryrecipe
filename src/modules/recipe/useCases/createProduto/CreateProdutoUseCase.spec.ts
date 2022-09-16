@@ -4,3 +4,5 @@ import { CreateProdutoUseCase } from "./CreateProdutoUseCase";
 
 let produtoRepositoryInMemory: ProdutoRepositoryInMemory;
 let createProdutoUseCase: CreateProdutoUseCase;
+
+describe("Create produto UseCase", () => {});
