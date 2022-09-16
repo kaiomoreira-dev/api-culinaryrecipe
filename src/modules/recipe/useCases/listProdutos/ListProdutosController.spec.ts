@@ -14,4 +14,10 @@ describe("List produtos Controller", () => {
 
         await connection.runMigrations();
     });
+
+    afterAll(async () => {
+        await connection.dropDatabase();
+
+        await connection.destroy();
+    });
 });
