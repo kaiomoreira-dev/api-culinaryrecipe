@@ -118,7 +118,7 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
 
             return author;
         });
-        console.log(JSON.stringify(this.authorRepository, null, 2));
+        // console.log(JSON.stringify(this.authorRepository, null, 2));
         return this.authorRepository;
     }
     async findByName(name: string): Promise<Author> {
