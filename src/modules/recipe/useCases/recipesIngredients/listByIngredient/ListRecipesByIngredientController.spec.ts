@@ -14,4 +14,10 @@ describe("List recipes by ingredient Controller", () => {
 
         await connection.runMigrations();
     });
+
+    afterAll(async () => {
+        await connection.dropDatabase();
+
+        await connection.destroy();
+    });
 });
