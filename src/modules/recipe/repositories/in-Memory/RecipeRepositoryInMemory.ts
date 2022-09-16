@@ -26,7 +26,6 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
             }
             return false;
         });
-        console.log(recipes);
         const formatRecipes = recipes as unknown as Recipe[];
 
         return formatRecipes;
