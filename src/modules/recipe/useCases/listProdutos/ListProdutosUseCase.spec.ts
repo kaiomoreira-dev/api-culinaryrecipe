@@ -10,3 +10,5 @@ import { ListProdutosUseCase } from "./ListProdutosUseCase";
 let produtoRepositoryInMemory: ProdutoRepositoryInMemory;
 let createProdutoUseCase: CreateProdutoUseCase;
 let listProdutosUseCase: ListProdutosUseCase;
+
+describe("List produto UseCase", () => {});
