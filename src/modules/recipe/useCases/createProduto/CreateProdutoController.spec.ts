@@ -16,6 +16,7 @@ describe("Create produto Controller", () => {
     });
 
     afterAll(async () => {
+        // dropbase
         await connection.dropDatabase();
 
         await connection.destroy();
