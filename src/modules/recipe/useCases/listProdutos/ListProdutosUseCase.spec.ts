@@ -11,4 +11,16 @@ let produtoRepositoryInMemory: ProdutoRepositoryInMemory;
 let createProdutoUseCase: CreateProdutoUseCase;
 let listProdutosUseCase: ListProdutosUseCase;
 
-describe("List produto UseCase", () => {});
+describe("List produto UseCase", () => {
+    beforeEach(() => {
+        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+
+        createProdutoUseCase = new CreateProdutoUseCase(
+            produtoRepositoryInMemory
+        );
+
+        listProdutosUseCase = new ListProdutosUseCase(
+            produtoRepositoryInMemory
+        );
+    });
+});
