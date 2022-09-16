@@ -158,7 +158,7 @@ describe("List recipes by ingredient Controller", () => {
         const recipes = await request(app).get("/recipe/ingredient").send({
             ingredient_id: ingredient1Id,
         });
-        console.log(JSON.stringify(recipes.body, null, 2));
+        // console.log(JSON.stringify(recipes.body, null, 2));
         expect(recipes.status).toBe(200);
     });
 });
