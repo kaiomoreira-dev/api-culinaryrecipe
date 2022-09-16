@@ -9,7 +9,7 @@ export interface IProdutoRepository {
 
     findById(id: string): Promise<Produto>;
 
-    updateNameDescriptionById(
+    updateById(
         id: string,
         new_name: string,
         new_description: string

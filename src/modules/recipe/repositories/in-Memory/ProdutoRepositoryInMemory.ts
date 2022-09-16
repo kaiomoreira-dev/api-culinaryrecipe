@@ -34,7 +34,7 @@ export class ProdutoRepositoryInMemory implements IProdutoRepository {
     async findByName(name: string): Promise<Produto> {
         return this.repository.find((produto) => produto.name === name);
     }
-    async updateNameDescriptionById(
+    async updateById(
         id: string,
         new_name: string,
         new_description: string
