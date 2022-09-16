@@ -26,7 +26,6 @@ let createRecipeUseCase: CreateRecipeUseCase;
 let createAuthorUseCase: CreateAuthorUseCase;
 let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
-let createEmailUseCase: CreateEmailUseCase;
 
 describe("Create recipe UseCase", () => {
     beforeEach(() => {
@@ -52,11 +51,6 @@ describe("Create recipe UseCase", () => {
         );
         createProdutoUseCase = new CreateProdutoUseCase(
             produtoRepositoryInMemory
-        );
-
-        createEmailUseCase = new CreateEmailUseCase(
-            emailRepositoryInMemory,
-            authorRepositoryInMemory
         );
     });
 
