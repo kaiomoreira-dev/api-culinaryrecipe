@@ -19,7 +19,6 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
     ) {}
 
     async listByAuthorId(author_id: string): Promise<Recipe[]> {
-        console.log("Chegou em Recipe!!");
         const recipes = this.reciperepository.map((recipe) => {
             if (recipe.author_id === author_id) {
                 return recipe;
