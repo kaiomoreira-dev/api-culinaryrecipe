@@ -12,7 +12,4 @@ const listRecipesByIngredientController =
 recipeRoutes.post("/", createRecipeController.handle);
 
 //= =============Recipes-Ingredients========================
-recipeRoutes.get(
-  "/ingredient/produtoname",
-  listRecipesByIngredientController.handle
-);
+recipeRoutes.get("/ingredient", listRecipesByIngredientController.handle);
