@@ -34,4 +34,24 @@ describe("Create produto Controller", () => {
 
         expect(produto1.status).toBe(200);
     });
+
+    it("should be able to create produto already exists", async () => {
+        await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Alho",
+                description: faker.lorem.words(20),
+            });
+
+        const produto2 = await request(app)
+            .post("/produto")
+            .send({
+                id: faker.datatype.uuid(),
+                name: "Alho",
+                description: faker.lorem.words(20),
+            });
+
+        expect(produto2.status).toBe(401);
+    });
 });
