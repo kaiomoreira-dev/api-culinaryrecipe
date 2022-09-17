@@ -95,6 +95,78 @@
                         }
                     }
                 }
+            },
+            "put": {
+                "tags": ["Author"],
+                "summary": "Update a Author",
+                "description": "Update a Author by id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "oldE_mail": {
+                                        "type": "string"
+                                    },
+                                    "newE_mail": {
+                                        "type": "string"
+                                    }
+                                   
+                                   
+                                },
+                                "example": {
+                                    "oldE_mail": "teste1@test.com",
+                                    "newE_mail": "teste@test.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Author updated successfully"
+                    },
+                    "404": {
+                        "description": "Author not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Author"],
+                "summary": "Delete a Author",
+                "description": "Delete a Author by id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "id": "643a172e-54d1-49ad-8877-9687632da171"                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Author deleted successfully."
+                    },
+                    "404": {
+                        "description": "Author not found!"
+                    }
+                }
             }
         },
         "/author/find/{id}":{
