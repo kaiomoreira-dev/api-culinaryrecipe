@@ -35,10 +35,9 @@ describe("Update author Controller", () => {
         const whatsapp = "1234567890";
 
         const responseAuthorUpdated = await request(app)
-            .put("/author/update")
+            .put(`/author/${id}`)
             .send({
-                id,
-                newName,
+                name: newName,
                 whatsapp,
             });
 
@@ -47,14 +46,13 @@ describe("Update author Controller", () => {
 
     it("should not be able to update author using id invalid", async () => {
         const id = "0458f9a7-e132-487e-ac1c-e072bfa1422d";
-        const newName = "Name test";
+        const name = "Name test";
         const whatsapp = "whatsapp test";
 
         const responseAuthorUpdated = await request(app)
-            .put("/author/update")
+            .put(`/author/${id}`)
             .send({
-                id,
-                newName,
+                name,
                 whatsapp,
             });
         expect(responseAuthorUpdated.status).toBe(404);
@@ -69,14 +67,12 @@ describe("Update author Controller", () => {
 
         const { id, name } = responseAuthor.body as Author;
 
-        const newName = name;
         const whatsapp = "1234567890";
 
         const responseAuthorUpdated = await request(app)
-            .put("/author/update")
+            .put(`/author/${id}`)
             .send({
-                id,
-                newName,
+                name,
                 whatsapp,
             });
 
@@ -96,9 +92,8 @@ describe("Update author Controller", () => {
         const whatsapp = whatsapp_exist;
 
         const responseAuthorUpdated = await request(app)
-            .put("/author/update")
+            .put(`/author/${id}`)
             .send({
-                id,
                 newName,
                 whatsapp,
             });
