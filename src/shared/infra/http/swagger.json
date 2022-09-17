@@ -94,6 +94,36 @@
                 }
             }
         },
+        "/author/find/{id}":{
+            "get":{
+                "tags": ["Author"],
+                "summary":"Find Author by id",
+                "description": "Find a specific author by id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Author id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "description": "Author find success."
+                    },
+                    "404": {
+                        "description": "Author not found!"
+                    }
+                }
+            }
+        },
         "/email":{
             "post": {
                 "tags": ["Email"],
