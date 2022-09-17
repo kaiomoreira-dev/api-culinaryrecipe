@@ -50,6 +50,9 @@
                 "tags": ["Author"],
                 "summary": "List Authors",
                 "description": "List all authors exists",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",
