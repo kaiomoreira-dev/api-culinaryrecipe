@@ -98,7 +98,34 @@
             }
         },
         "/author/{id}": {
-            
+            "put": {
+                "tags": ["Author"],
+                "summary": "Update a Author",
+                "description": "Update a Author by id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Author id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Author updated successfully"
+                    },
+                    "404": {
+                        "description": "Author not found"
+                    }
+                }
+            },
             "delete": {
                 "tags": ["Author"],
                 "summary": "Delete a Author",
