@@ -10,6 +10,16 @@ import { inject, injectable } from "tsyringe";
 
 import { AppError } from "@shared/errors/AppError";
 
+interface IInfoAUthor {
+    id: string;
+    name: string;
+    whatsapp: string;
+    emails: [];
+    recipes: [];
+    created_at: Date;
+    updated_at: Date;
+}
+
 @injectable()
 export class CreateAuthorUseCase {
     constructor(
@@ -17,7 +27,11 @@ export class CreateAuthorUseCase {
         private authorRepository: IAuthorRepository
     ) {}
 
-    async execute({ id, name, whatsapp }: ICreateAuthorDTO): Promise<Author> {
+    async execute({
+        id,
+        name,
+        whatsapp,
+    }: ICreateAuthorDTO): Promise<IInfoAUthor> {
         // buscando name de autor
         const authorValidator = await this.authorRepository.findByName(name);
 
@@ -41,6 +55,16 @@ export class CreateAuthorUseCase {
             whatsapp,
         });
 
-        return author;
+        const authorInfo: IInfoAUthor = {
+            id: author.id,
+            name,
+            whatsapp,
+            emails: [],
+            recipes: [],
+            created_at: author.created_at,
+            updated_at: author.updated_at,
+        };
+
+        return authorInfo;
     }
 }
