@@ -1,0 +1,89 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+    "title": "Culinary Recipe Documentation",
+    "description": "This is a demo API",
+    "version": "1.0.0",
+    "contact":{
+            "email": "kaio-dev@outlook.com"
+        }
+    },
+    "paths": {
+        "/author":{
+            "post": {
+                "tags": ["Author"],
+                "summary": "Create a Author",
+                "description": "Create a new Author",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "whatsapp": "string"
+                                   
+                                },
+                                "example": {
+                                    "name": "Mary Elizabeth Smith",
+                                    "whatsapp": "##-####-####"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Author already exists"
+                    }
+                }
+            }
+        },
+        "/email":{
+            "post": {
+                "tags": ["Email"],
+                "summary": "Create a Email",
+                "description": "Create a new Email for Author",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "e_mail": {
+                                        "type": "string"
+                                    },
+                                    "author_id": "string"
+                                   
+                                },
+                                "example": {
+                                    "e_mail": "teste@test.com",
+                                    "author_id": "53cd5011-a659-4ca8-b04a-01e33abde707"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Email already exists"
+                    }
+                }
+            }
+        }
+    }
+}
