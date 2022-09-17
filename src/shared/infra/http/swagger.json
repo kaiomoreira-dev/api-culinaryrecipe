@@ -98,10 +98,38 @@
             }
         },
         "/author/{id}": {
+            "get":{
+                "tags": ["Author"],
+                "summary":"Find author by id",
+                "description": "Find a specific author by id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Author id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "description": "Author find success."
+                    },
+                    "404": {
+                        "description": "Author not found!"
+                    }
+                }
+            },
             "put": {
                 "tags": ["Author"],
-                "summary": "Update a Author",
-                "description": "Update a Author by id",
+                "summary": "Update author by id",
+                "description": "Update a Author",
                 "security": [
                     { "bearerAuth": [] }
                 ],
@@ -128,8 +156,8 @@
             },
             "delete": {
                 "tags": ["Author"],
-                "summary": "Delete a Author",
-                "description": "Delete a Author by id",
+                "summary": "Delete author by id",
+                "description": "Delete a Author",
                 "security": [
                     { "bearerAuth": [] }
                 ],
@@ -148,36 +176,6 @@
                 "responses": {
                     "200": {
                         "description": "Author deleted successfully."
-                    },
-                    "404": {
-                        "description": "Author not found!"
-                    }
-                }
-            }
-        },
-        "/author/find/{id}":{
-            "get":{
-                "tags": ["Author"],
-                "summary":"Find Author by id",
-                "description": "Find a specific author by id",
-                "security": [
-                    { "bearerAuth": [] }
-                ],
-                "parameters": [
-                    {
-                    "name": "id",
-                    "in": "path",
-                    "description": "Author id",
-                    "required": true,
-                        "schema": {
-                         "type": "string",
-                         "format": "uuid"
-                        }
-                    }
-                ],
-                "responses":{
-                    "200": {
-                        "description": "Author find success."
                     },
                     "404": {
                         "description": "Author not found!"
@@ -297,7 +295,7 @@
             },
             "patch": {
                 "tags": ["Email"],
-                "summary": "Update a Email",
+                "summary": "Update email by id",
                 "description": "Update a email for author",
                 "security": [
                     { "bearerAuth": [] }
@@ -325,7 +323,7 @@
             },
             "delete": {
                 "tags": ["Email"],
-                "summary": "Delete a Email",
+                "summary": "Delete email by id",
                 "description": "Delete a email for author",
                 "security": [
                     { "bearerAuth": [] }
