@@ -125,6 +125,36 @@
                 }
             }
         },
+        "/email/find/{id}":{
+            "get":{
+                "tags": ["Email"],
+                "summary":"Find email by id",
+                "description": "Find a specific email by id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Email id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200": {
+                        "description": "Email find success."
+                    },
+                    "404": {
+                        "description": "Email not found!"
+                    }
+                }
+            }
+        },
         "/email/update": {
             "patch": {
                 "tags": ["Email"],
