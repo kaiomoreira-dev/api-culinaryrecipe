@@ -41,19 +41,15 @@ describe("Find e-mail Controller", () => {
 
         const { id } = responseCreateEmail.body as Email;
 
-        const responseFindEmail = await request(app)
-            .get(`/email/find/${id}`)
-            .send();
+        const responseFindEmail = await request(app).get(`/email/${id}`).send();
 
         expect(responseFindEmail.status).toBe(200);
     });
 
     it("should not be able to find email not valid", async () => {
-        const e_mail = "fake-email@faker.com";
+        const id = faker.datatype.uuid();
 
-        const responseFindEmail = await request(app).get("/email/find").send({
-            e_mail,
-        });
+        const responseFindEmail = await request(app).get(`/email/${id}`).send();
 
         expect(responseFindEmail.status).toBe(404);
     });

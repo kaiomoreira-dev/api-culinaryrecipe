@@ -32,7 +32,7 @@ describe("Find author Controller", () => {
         const { id } = responseAuthor.body as Author;
 
         const responseFindAuthor = await request(app)
-            .get(`/author/find/${id}`)
+            .get(`/author/${id}`)
             .send();
         expect(responseFindAuthor.status).toBe(200);
     });
@@ -41,7 +41,7 @@ describe("Find author Controller", () => {
         const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responseFindAuthor = await request(app)
-            .get(`/author/find/${id}`)
+            .get(`/author/${id}`)
             .send();
 
         expect(responseFindAuthor.status).toBe(404);
