@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
     "title": "Culinary Recipe Documentation",
-    "description": "This is a demo API",
+    "description": "This is an application to demonstrate the operations of CRUD in a cooking recipe system.",
     "version": "1.0.0",
     "contact":{
             "email": "kaio-dev@outlook.com"
@@ -51,7 +51,7 @@
             "post": {
                 "tags": ["Email"],
                 "summary": "Create a Email",
-                "description": "Create a new Email for Author",
+                "description": "Create a new email for author",
                 "security": [
                     { "bearerAuth": [] }
                 ],
@@ -83,7 +83,48 @@
                         "description": "Email already exists"
                     }
                 }
+            },
+            "get": {
+                "tags": ["Email"],
+                "summary": "List Emails",
+                "description": "List all emails exists",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "e_mail": {
+                                                "type":"string"
+                                            },
+                                            "author_id": {
+                                                "type":"string"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+        
     }
 }
