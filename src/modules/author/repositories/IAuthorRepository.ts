@@ -9,11 +9,7 @@ export interface IAuthorRepository {
     findByName(name: string): Promise<Author>;
     findByWhatsapp(whatsapp: string): Promise<Author>;
 
-    updateById(
-        id: string,
-        new_name?: string,
-        whatsapp?: string
-    ): Promise<Author>;
+    updateById(id: string, name?: string, whatsapp?: string): Promise<Author>;
 
     deleteById(id: string): Promise<void>;
 }

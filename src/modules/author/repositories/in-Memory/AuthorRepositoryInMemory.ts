@@ -67,14 +67,14 @@ export class AuthorRepositoryInMemory implements IAuthorRepository {
 
     async updateById(
         id: string,
-        new_name: string,
+        name: string,
         whatsapp: string
     ): Promise<Author> {
         const authorIndex = this.authorRepository.findIndex(
             (author) => author.id === id
         );
 
-        this.authorRepository[authorIndex].name = new_name;
+        this.authorRepository[authorIndex].name = name;
         this.authorRepository[authorIndex].whatsapp = whatsapp;
 
         return this.authorRepository.find((author) => author.id === id);

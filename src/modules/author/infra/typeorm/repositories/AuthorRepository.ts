@@ -20,17 +20,17 @@ export class AuthorRepository implements IAuthorRepository {
     }
     async updateById(
         id: string,
-        new_name?: string,
+        name?: string,
         whatsapp?: string
     ): Promise<Author> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ name: new_name, whatsapp })
+            .set({ name, whatsapp })
             .where("id = :id", { id })
             .execute();
 
-        return this.repository.findOneBy({ name: new_name });
+        return this.repository.findOneBy({ name });
     }
 
     async create({

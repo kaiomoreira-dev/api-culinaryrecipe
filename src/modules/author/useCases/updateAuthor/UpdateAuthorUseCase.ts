@@ -13,7 +13,7 @@ export class UpdateAuthorUseCase {
 
     async execute(
         id: string,
-        newName?: string,
+        name?: string,
         whatsapp?: string
     ): Promise<Author> {
         const authorValidator = await this.authorRepository.findById(id);
@@ -21,11 +21,9 @@ export class UpdateAuthorUseCase {
             throw new AppError("Author not found", 404);
         }
 
-        const newNameValidator = await this.authorRepository.findByName(
-            newName
-        );
+        const nameValidator = await this.authorRepository.findByName(name);
 
-        if (newNameValidator) {
+        if (nameValidator) {
             throw new AppError("Author name already exists", 401);
         }
 
@@ -39,7 +37,7 @@ export class UpdateAuthorUseCase {
 
         const updateAuthor = await this.authorRepository.updateById(
             authorValidator.id,
-            newName,
+            name,
             whatsapp
         );
 
