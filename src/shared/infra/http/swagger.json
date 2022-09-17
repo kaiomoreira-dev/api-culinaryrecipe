@@ -45,6 +45,53 @@
                         "description": "Author already exists"
                     }
                 }
+            },
+            "get": {
+                "tags": ["Author"],
+                "summary": "List Authors",
+                "description": "List all authors exists",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type":"string",
+                                                "format": "uuid"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "emails": {
+                                                "type": "string",
+                                                "format": "array"
+                                            },
+                                            "recipes": {
+                                                "type":"string",
+                                                "format": "array"
+
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/email":{
