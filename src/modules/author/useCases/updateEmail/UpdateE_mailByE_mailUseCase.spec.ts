@@ -42,7 +42,7 @@ describe("Update e-mail UseCase", () => {
         );
     });
 
-    it("should be able to update e_mail by e_mail", async () => {
+    it("should be able to update e_mail by id", async () => {
         const author: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
             name: faker.name.fullName(),
@@ -57,14 +57,12 @@ describe("Update e-mail UseCase", () => {
             author_id: authorCreated.id,
         };
 
-        const { e_mail } = await createEmailUseCase.execute(email);
-
-        const oldE_mail = e_mail;
+        const { id } = await createEmailUseCase.execute(email);
 
         const newE_mail = "new-email@email.com";
 
         const updateE_mail = await updateE_mailByE_mailUseCase.execute(
-            oldE_mail,
+            id,
             newE_mail
         );
 
@@ -72,13 +70,13 @@ describe("Update e-mail UseCase", () => {
         expect(updateE_mail).toHaveProperty("e_mail");
     });
 
-    it("should not be able to update e_mail whit oldE_mail invalid", async () => {
-        const oldE_mail = "fake-old-email@email.com";
+    it("should not be able to update e_mail whit id invalid", async () => {
+        const fakeId = "643a172e-54d1-49ad-8877-9687632da171";
 
         const newE_mail = "new-email@email.com";
 
         await expect(
-            updateE_mailByE_mailUseCase.execute(oldE_mail, newE_mail)
+            updateE_mailByE_mailUseCase.execute(fakeId, newE_mail)
         ).rejects.toEqual(new AppError("Email not found", 404));
     });
 
@@ -103,15 +101,13 @@ describe("Update e-mail UseCase", () => {
             author_id: authorCreated.id,
         };
 
-        const { e_mail } = await createEmailUseCase.execute(email1);
+        const { id } = await createEmailUseCase.execute(email1);
         await createEmailUseCase.execute(email2);
-
-        const oldE_mail = e_mail;
 
         const newE_mail = "old2-email@email.com";
 
         await expect(
-            updateE_mailByE_mailUseCase.execute(oldE_mail, newE_mail)
+            updateE_mailByE_mailUseCase.execute(id, newE_mail)
         ).rejects.toEqual(new AppError("Email already exists", 401));
     });
 });
