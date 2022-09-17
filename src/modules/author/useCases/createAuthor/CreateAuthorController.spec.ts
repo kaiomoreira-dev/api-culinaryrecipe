@@ -28,7 +28,7 @@ describe("Create author Controller", () => {
             whatsapp: faker.phone.number(),
         });
 
-        expect(responseAuthor.status).toBe(200);
+        expect(responseAuthor.status).toBe(201);
     });
 
     it("should not be able to create author already exists", async () => {

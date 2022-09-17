@@ -14,6 +14,6 @@ export class CreateAuthorController {
             whatsapp,
         });
 
-        return response.status(200).json(author);
+        return response.status(201).json(author);
     }
 }
