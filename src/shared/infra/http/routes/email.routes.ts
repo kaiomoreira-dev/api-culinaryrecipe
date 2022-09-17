@@ -21,7 +21,7 @@ emailRoutes.post("/", createEmailController.handle);
 
 emailRoutes.get("/", listEmailsController.handle);
 
-emailRoutes.get("/find/:id", findEmailController.handle);
+emailRoutes.get("/:id", findEmailController.handle);
 
 emailRoutes.delete("/:id", deleteEmailController.handle);
 

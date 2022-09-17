@@ -21,7 +21,7 @@ authorRoutes.post("/", createAuthorController.handle);
 
 authorRoutes.get("/", listAuthorController.handle);
 
-authorRoutes.get("/find/:id", findAuthorIdController.handle);
+authorRoutes.get("/:id", findAuthorIdController.handle);
 
 authorRoutes.put("/:id", updateAuthorController.handle);
 
