@@ -39,7 +39,7 @@ describe("Delete e-mail UseCase", () => {
         deleteEmailUseCase = new DeleteEmailUseCase(emailRepositoryInMemory);
     });
 
-    it("should be able to delete e-mail", async () => {
+    it("should be able to delete e-mail by id", async () => {
         const author: ICreateAuthorDTO = {
             id: faker.datatype.uuid(),
             name: faker.name.fullName(),

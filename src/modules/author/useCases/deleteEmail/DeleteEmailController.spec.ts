@@ -23,7 +23,7 @@ describe("Delete e-mail Controller", () => {
         await connection.destroy();
     });
 
-    it("should be able to delete an e-mail", async () => {
+    it("should be able to delete a e-mail by id", async () => {
         const responseAuthor = await request(app).post("/author").send({
             id: faker.datatype.uuid(),
             name: faker.name.fullName(),
@@ -41,10 +41,8 @@ describe("Delete e-mail Controller", () => {
         const { id } = responseCreateEmail.body as Email;
 
         const responseDeleteEmail = await request(app)
-            .delete("/email/delete")
-            .send({
-                id,
-            });
+            .delete(`/email/${id}`)
+            .send();
 
         expect(responseDeleteEmail.statusCode).toBe(200);
     });
@@ -53,10 +51,8 @@ describe("Delete e-mail Controller", () => {
         const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responseDeleteEmail = await request(app)
-            .delete("/email/delete")
-            .send({
-                id,
-            });
+            .delete(`/email/${id}`)
+            .send();
 
         expect(responseDeleteEmail.statusCode).toBe(404);
     });
