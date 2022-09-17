@@ -57,16 +57,16 @@ describe("Find e-mail UseCase", () => {
 
         await createEmailUseCase.execute(email);
 
-        const foundEmail = await findEmailUseCase.execute(email.e_mail);
+        const foundEmail = await findEmailUseCase.execute(email.id);
 
         expect(foundEmail).toHaveProperty("id");
         expect(foundEmail).toHaveProperty("e_mail");
     });
 
     it("should not be able to find email not valid", async () => {
-        const fakeEmail = "email-fake@fake.com";
+        const fakeId = "dfeaa87f-cd3a-4797-a3ae-1f1501d341ee";
 
-        await expect(findEmailUseCase.execute(fakeEmail)).rejects.toEqual(
+        await expect(findEmailUseCase.execute(fakeId)).rejects.toEqual(
             new AppError("Email not found", 404)
         );
     });
