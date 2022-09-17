@@ -9,12 +9,18 @@ import "express-async-errors";
 
 import "@shared/container";
 
+import swaggerUI from "swagger-ui-express";
+
 import { AppError } from "@shared/errors/AppError";
 import { routes } from "@shared/infra/http/routes";
+
+import swaggerFile from "./swagger.json";
 
 export const app = express();
 
 app.use(express.json());
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use(routes);
 app.use(
