@@ -5,7 +5,8 @@ import { UpdateAuthorUseCase } from "./UpdateAuthorUseCase";
 
 export class UpdateAuthorController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id, name, whatsapp } = request.body;
+        const { id } = request.params;
+        const { name, whatsapp } = request.body;
 
         const updateAuthorUseCase = container.resolve(UpdateAuthorUseCase);
 
