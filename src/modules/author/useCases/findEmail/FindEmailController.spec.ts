@@ -39,11 +39,11 @@ describe("Find e-mail Controller", () => {
             author_id: author.id,
         });
 
-        const { e_mail } = responseCreateEmail.body as Email;
+        const { id } = responseCreateEmail.body as Email;
 
-        const responseFindEmail = await request(app).get("/email/find").send({
-            e_mail,
-        });
+        const responseFindEmail = await request(app)
+            .get(`/email/find/${id}`)
+            .send();
 
         expect(responseFindEmail.status).toBe(200);
     });
