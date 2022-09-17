@@ -110,10 +110,8 @@ describe("Delete author Controller", () => {
             });
 
         const responsAuthorDelete = await request(app)
-            .delete("/author/delete")
-            .send({
-                id,
-            });
+            .delete(`/author/${id}`)
+            .send();
 
         expect(responsAuthorDelete.status).toBe(200);
     });
@@ -122,10 +120,8 @@ describe("Delete author Controller", () => {
         const id = "f060c7bc-4539-4bd8-a3ac-f4b7d98f54d6";
 
         const responsAuthorDelete = await request(app)
-            .delete("/author/delete")
-            .send({
-                id,
-            });
+            .delete(`/author/${id}`)
+            .send();
 
         expect(responsAuthorDelete.status).toBe(404);
     });
