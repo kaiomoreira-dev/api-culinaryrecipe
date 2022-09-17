@@ -37,7 +37,7 @@ describe("Create e-mail Controller", () => {
             author_id: id,
         });
 
-        expect(responseCreateEmail.status).toEqual(200);
+        expect(responseCreateEmail.status).toEqual(201);
     });
 
     it("should not be able to create a new email with same", async () => {

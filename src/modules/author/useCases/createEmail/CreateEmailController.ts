@@ -11,6 +11,6 @@ export class CreateEmailController {
 
         const email = await createEmailUseCase.execute({ e_mail, author_id });
 
-        return response.status(200).json(email);
+        return response.status(201).json(email);
     }
 }
