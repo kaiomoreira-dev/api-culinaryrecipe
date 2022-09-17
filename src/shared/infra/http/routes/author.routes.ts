@@ -23,6 +23,6 @@ authorRoutes.get("/", listAuthorController.handle);
 
 authorRoutes.get("/find/:id", findAuthorIdController.handle);
 
-authorRoutes.put("/", updateAuthorController.handle);
+authorRoutes.put("/:id", updateAuthorController.handle);
 
 authorRoutes.delete("/", deleteAuthorController.handle);
