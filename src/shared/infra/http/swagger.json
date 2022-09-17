@@ -95,46 +95,10 @@
                         }
                     }
                 }
-            },
-            "put": {
-                "tags": ["Author"],
-                "summary": "Update a Author",
-                "description": "Update a Author by id",
-                "security": [
-                    { "bearerAuth": [] }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "oldE_mail": {
-                                        "type": "string"
-                                    },
-                                    "newE_mail": {
-                                        "type": "string"
-                                    }
-                                   
-                                   
-                                },
-                                "example": {
-                                    "oldE_mail": "teste1@test.com",
-                                    "newE_mail": "teste@test.com"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Author updated successfully"
-                    },
-                    "404": {
-                        "description": "Author not found"
-                    }
-                }
-            },
+            }
+        },
+        "/author/{id}": {
+            
             "delete": {
                 "tags": ["Author"],
                 "summary": "Delete a Author",
@@ -142,23 +106,18 @@
                 "security": [
                     { "bearerAuth": [] }
                 ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "id": "643a172e-54d1-49ad-8877-9687632da171"                                    
-                                }
-                            }
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Author id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Author deleted successfully."
@@ -199,7 +158,6 @@
                 }
             }
         },
-
         "/email":{
             "post": {
                 "tags": ["Email"],
@@ -279,7 +237,9 @@
                         }
                     }
                 }
-            },
+            }
+        },
+        "/email/{id}": {
             "patch": {
                 "tags": ["Email"],
                 "summary": "Update a Email",
@@ -287,29 +247,18 @@
                 "security": [
                     { "bearerAuth": [] }
                 ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "oldE_mail": {
-                                        "type": "string"
-                                    },
-                                    "newE_mail": {
-                                        "type": "string"
-                                    }
-                                   
-                                   
-                                },
-                                "example": {
-                                    "oldE_mail": "teste1@test.com",
-                                    "newE_mail": "teste@test.com"
-                                }
-                            }
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Email id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -326,23 +275,18 @@
                 "security": [
                     { "bearerAuth": [] }
                 ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "id": "643a172e-54d1-49ad-8877-9687632da171"                                    
-                                }
-                            }
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Email id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Email deleted successfully."
