@@ -12,8 +12,8 @@ export class FindEmailUseCase {
         private emailRepository: IEmailRepository
     ) {}
 
-    async execute(e_mail: string): Promise<Email> {
-        const emailValidator = await this.emailRepository.findByEmail(e_mail);
+    async execute(id: string): Promise<Email> {
+        const emailValidator = await this.emailRepository.findById(id);
         if (!emailValidator) {
             throw new AppError("Email not found", 404);
         }
