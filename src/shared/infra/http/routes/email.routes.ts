@@ -23,6 +23,6 @@ emailRoutes.get("/", listEmailsController.handle);
 
 emailRoutes.get("/find/:id", findEmailController.handle);
 
-emailRoutes.delete("/", deleteEmailController.handle);
+emailRoutes.delete("/:id", deleteEmailController.handle);
 
-emailRoutes.patch("/", updateE_mailByE_mailController.handle);
+emailRoutes.patch("/:id", updateE_mailByE_mailController.handle);
