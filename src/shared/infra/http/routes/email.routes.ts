@@ -1,6 +1,6 @@
 import { CreateEmailController } from "@modules/author/useCases/createEmail/CreateEmailController";
 import { DeleteEmailController } from "@modules/author/useCases/deleteEmail/DeleteEmailController";
-import { FindEmailController } from "@modules/author/useCases/findEmail/FindEmailController";
+import { FindEmailController } from "@modules/author/useCases/findEmailById/FindEmailController";
 import { ListEmailsController } from "@modules/author/useCases/listEmails/ListEmailsController";
 import { UpdateE_mailByE_mailController } from "@modules/author/useCases/updateEmail/UpdateE_mailByE_mailController";
 import { Router } from "express";
