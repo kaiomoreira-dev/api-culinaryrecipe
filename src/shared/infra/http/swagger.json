@@ -124,6 +124,47 @@
                     }
                 }
             }
+        },
+        "/email/update": {
+            "patch": {
+                "tags": ["Email"],
+                "summary": "Update a Email",
+                "description": "Update a email for author",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "oldE_mail": {
+                                        "type": "string"
+                                    },
+                                    "newE_mail": {
+                                        "type": "string"
+                                    }
+                                   
+                                   
+                                },
+                                "example": {
+                                    "oldE_mail": "teste1@test.com",
+                                    "newE_mail": "teste@test.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Email not found"
+                    }
+                }
+            }
         }
         
     }
