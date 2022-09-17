@@ -5,11 +5,11 @@ import { DeleteEmailUseCase } from "./DeleteEmailUseCase";
 
 export class DeleteEmailController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { e_mail } = request.body;
+        const { id } = request.params;
 
         const deleteEmailUseCase = container.resolve(DeleteEmailUseCase);
 
-        await deleteEmailUseCase.execute(e_mail);
+        await deleteEmailUseCase.execute(id);
 
         return response
             .status(200)
