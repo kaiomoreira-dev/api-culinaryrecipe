@@ -165,6 +165,41 @@
                     }
                 }
             }
+        },
+        "/email/delete": {
+            "delete": {
+                "tags": ["Email"],
+                "summary": "Delete a Email",
+                "description": "Delete a email for author",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "id": "643a172e-54d1-49ad-8877-9687632da171"                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Email deleted successfully."
+                    },
+                    "404": {
+                        "description": "Email not found!"
+                    }
+                }
+            }
         }
         
     }
