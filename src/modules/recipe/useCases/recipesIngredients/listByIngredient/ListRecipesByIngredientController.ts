@@ -5,16 +5,14 @@ import { ListRecipesByIngredientUseCase } from "./ListRecipesByIngredientUseCase
 
 export class ListRecipesByIngredientController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { ingredient_id } = request.body;
+        const { id } = request.params;
 
         const listAllRecipesByImgredientProdutoNameUseCase = container.resolve(
             ListRecipesByIngredientUseCase
         );
 
         const recipes =
-            await listAllRecipesByImgredientProdutoNameUseCase.execute(
-                ingredient_id
-            );
+            await listAllRecipesByImgredientProdutoNameUseCase.execute(id);
 
         return response.status(200).json(recipes);
     }
