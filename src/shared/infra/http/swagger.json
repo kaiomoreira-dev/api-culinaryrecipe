@@ -468,6 +468,59 @@
                     }
                 }
             }
-        }
+        },
+        "/ingredient":{
+            "post": {
+                "tags": ["Ingredient"],
+                "summary": "Create a Ingredient",
+                "description": "Create a new ingredient",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "produto_id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "unity": {
+                                        "type": "intenger"
+                                    },
+                                    "weight": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }                                     
+                                },
+                                "example": {
+                                    "produto_id":"dfeaa87f-cd3a-4797-a3ae-1f1501d341ee",
+                                    "name": "Produto name",
+                                    "description": "Write description here about produto",
+                                    "unity": "ex: 1",
+                                    "weight": "ex: 0.500"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created successfully"
+                    },
+                    "401": {
+                        "description": "Produto already exists"
+                    }
+                }
+            }
+        }  
     }
 }
