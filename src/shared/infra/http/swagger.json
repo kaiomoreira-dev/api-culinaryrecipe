@@ -394,13 +394,12 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
-                                "properties": {
                                     "name": {
                                         "type": "string"
                                     },
                                     "description": {
                                         "type": "string"
-                                    }                                   
+                                    }                              
                                 },
                                 "example": {
                                     "name": "Produto name",
@@ -408,11 +407,10 @@
                                 }
                             }
                         }
-                    }
-                },
+                    },
                 "responses": {
                     "201": {
-                        "description": "Product created successfully"
+                        "description": "Produto created successfully"
                     },
                     "401": {
                         "description": "Produto already exists"
@@ -514,10 +512,10 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Product created successfully"
+                        "description": "Ingredient created successfully"
                     },
                     "401": {
-                        "description": "Produto already exists"
+                        "description": "Ingredient already exists"
                     }
                 }
             },
@@ -577,6 +575,79 @@
                     }
                 }
             }
-        }  
+        },
+        "/recipe":{
+            "post": {
+                "tags": ["Recipe"],
+                "summary": "Create a Recipe",
+                "description": "Create a new recipe",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                   
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "integer"
+                                    }, 
+                                    "difficulty": {
+                                        "type": "string"
+                                    },
+                                    "dish_type": {
+                                        "type": "string"
+                                    },
+                                    "additional_features": {
+                                        "type": "string"
+                                    },
+                                    "total_guests": {
+                                        "type": "integer"
+                                    },
+                                    "author_id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "ingredients": {
+                                        "type": "string",
+                                        "format": "array"
+                                    }                  
+                                },
+                                "example": {
+                                    "name": "Recipe name",
+                                    "description": "Write description here about produto",
+                                    "time": "ex: 4",
+                                    "difficulty": "ex: easy",
+                                    "dish_type": "ex: appetizer",
+                                    "additional_features": "ex: low carbo",
+                                    "total_guests": "ex: 4",
+                                    "author_id": "53cd5011-a659-4ca8-b04a-01e33abde707",
+                                    "ingredients": "ex:['45cd5011-a659-4ca8-b04a-01e33abde707', '012cd5011-a659-4ca8-b04a-01e33abde707']"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Recipe created successfully"
+                    },
+                    "401": {
+                        "description": "difficulty incorrect! / dish_type incorrect! / Ingredients insufficient! /"
+                    },
+                    "404": {
+                        "description": "Author not found / Ingredient not found"
+                    }
+                }
+            }
+        }
     }
 }
