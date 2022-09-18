@@ -648,6 +648,75 @@
                     }
                 }
             }
+        },
+        "/recipe/ingredient/{id}":{
+            "get": {
+                "tags": ["Recipe"],
+                "summary": "List Recipes with Ingredient",
+                "description": "List all recipes exists by ingredient id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Ingredient id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List Recipes successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                   
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "time": {
+                                                "type": "integer"
+                                            }, 
+                                            "difficulty": {
+                                                "type": "string"
+                                            },
+                                            "dish_type": {
+                                                "type": "string"
+                                            },
+                                            "additional_features": {
+                                                "type": "string"
+                                            },
+                                            "total_guests": {
+                                                "type": "integer"
+                                            },
+                                            "author_id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                            },
+                                            "ingredients": {
+                                                "type": "string",
+                                                "format": "array"
+                                            }                  
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
