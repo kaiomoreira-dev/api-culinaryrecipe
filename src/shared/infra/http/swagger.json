@@ -522,15 +522,15 @@
                 }
             },
             "get": {
-                "tags": ["Produto"],
-                "summary": "List Produtos",
-                "description": "List all produtos exists",
+                "tags": ["Ingredient"],
+                "summary": "List Ingredients",
+                "description": "List all ingredients exists",
                 "security": [
                     { "bearerAuth": [] }
                 ],
                 "responses": {
                     "200": {
-                        "description": "List produtos successfully",
+                        "description": "List ingredients successfully",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -545,14 +545,21 @@
                                             "name": {
                                                 "type":"string"
                                             },
-                                            "author_id": {
+                                            "produto_id": {
                                                 "type":"string",
                                                 "format": "uuid"
                                             },
-                                            "ingredients": {
-                                                "type":"string",
-                                                "format": "array"
+                                            "description": {
+                                                "type":"string"
                                             },
+                                            "unity": {
+                                                "type":"integer"
+                                            },
+                                            "weight": {
+                                                "type":"integer",
+                                                "format": "float"
+                                            },
+        
                                             "created_at": {
                                                 "type": "string",
                                                 "format": "date-time"
