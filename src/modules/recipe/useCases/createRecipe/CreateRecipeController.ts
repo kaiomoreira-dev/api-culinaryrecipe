@@ -33,6 +33,6 @@ export class CreateRecipeController {
             ingredients
         );
 
-        return response.status(200).json(recipe);
+        return response.status(201).json(recipe);
     }
 }

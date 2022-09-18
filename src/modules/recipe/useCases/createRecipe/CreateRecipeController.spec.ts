@@ -91,7 +91,7 @@ describe("Create recipe Controller", () => {
                 author_id: authorId,
             });
 
-        expect(responseCreateRecipe.status).toBe(200);
+        expect(responseCreateRecipe.status).toBe(201);
     });
     it("should not be able to create recipe with difficulty incorrect", async () => {
         const produto1 = await request(app)
