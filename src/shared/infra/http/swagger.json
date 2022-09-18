@@ -26,7 +26,9 @@
                                     "name": {
                                         "type": "string"
                                     },
-                                    "whatsapp": "string"
+                                    "whatsapp": {
+                                        "type": "string"
+                                    }
                                    
                                 },
                                 "example": {
@@ -145,9 +147,34 @@
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "whatsapp": {
+                                       "type": "string"
+                                    }
+                                   
+                                },
+                                "example": {
+                                    "name": "Zack Saver",
+                                    "whatsapp": "53cd5011-a659-4ca8-b04a-01e33abde707"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Author updated successfully"
+                    },
+                    "401":{
+                        "description": "Name already exists / Whatsapp already exists"
                     },
                     "404": {
                         "description": "Author not found"
@@ -200,7 +227,11 @@
                                     "e_mail": {
                                         "type": "string"
                                     },
-                                    "author_id": "string"
+                                    "author_id": {
+                                       "type": "string",
+                                        "format":"uuid",
+                                        "required": true
+                                    }
                                    
                                 },
                                 "example": {
@@ -349,6 +380,45 @@
                     }
                 }
             }
-        }     
+        },
+        "/produto":{
+            "post": {
+                "tags": ["Produto"],
+                "summary": "Create a Produto",
+                "description": "Create a new produto",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }                                   
+                                },
+                                "example": {
+                                    "name": "Produto name",
+                                    "description": "Write description here about produto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created successfully"
+                    },
+                    "401": {
+                        "description": "Produto already exists"
+                    }
+                }
+            }
+        } 
     }
 }
