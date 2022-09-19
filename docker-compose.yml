@@ -6,10 +6,10 @@ services:
       container_name: database-culinary-recipes
       restart: always
       ports: 
-        - 5432:5432
+        - 1954:5432
       environment:
         - POSTGRES_USER=docker
-        - POSTGRES_PASSWORD=receitasecreta
+        - POSTGRES_PASSWORD=UMONME68xjZdfzv6ZyoTPWDORjx3P8JLd+GnFNRKbDQ=
         - POSTGRES_DB=culinary_recipes
       volumes:
         - pgdata:/data/postgres
