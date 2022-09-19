@@ -16,9 +16,9 @@ import { AlterEmailAddFkAuthor1661737772608 } from "./migrations/1661737772608-A
 
 const dataSource = new DataSource({
   type: "postgres",
-  port: 5432,
+  port: 1954,
   username: "docker",
-  password: "receitasecreta",
+  password: "UMONME68xjZdfzv6ZyoTPWDORjx3P8JLd+GnFNRKbDQ=",
   database:
     process.env.NODE_ENV === "test"
       ? "culinary_recipes_test"
