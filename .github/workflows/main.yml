@@ -24,6 +24,9 @@ jobs:
       - name: Run Migrations
         run: yarn migration
 
+      - name: Up Memory Nodejs 4GB
+        run: yarn upmemory
+
       - name: Run Tests
         run: yarn test
               
