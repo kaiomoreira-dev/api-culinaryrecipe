@@ -37,4 +37,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: "., !node_modules"
-          target: "~/app/culinary_recipe"
+          target: "~/app/culinary-recipe"
