@@ -44,6 +44,6 @@ $ yarn test ou npm run test
 
 # O servidor inciará na porta:3333 - acesse <http://localhost:3333>
 
-# O banco de dados do postgres fica no docker que sai na porta 5432:5432
+# O banco de dados do postgres fica no docker na porta 5432:5432
 
 ```
