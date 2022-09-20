@@ -24,9 +24,6 @@ jobs:
       - name: Run Migrations
         run: yarn migration
 
-      - name: Up Memory Nodejs
-        run: yarn upmemory
-
       - name: Run Tests
         run: yarn test
               
