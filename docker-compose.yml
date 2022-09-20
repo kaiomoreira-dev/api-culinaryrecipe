@@ -13,6 +13,8 @@ services:
         - POSTGRES_DB=culinary_recipes
       volumes:
         - pgdata:/data/postgres
+
+        - ./src/shared/infra/typeorm/sql/create_base_test.sql:/docker-entrypoint-initdb.d/create_tables.sql
     
 volumes:
   pgdata:
