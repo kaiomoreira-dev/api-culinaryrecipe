@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+    "migration":"ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli migration:run -d src/shared/infra/typeorm/index.ts",
     "test": "NODE_ENV=test jest --runInBand --verbose --useStderr --forceExit",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files"
   },
