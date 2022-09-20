@@ -22,9 +22,6 @@ $ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
 # Acesse a pasta do projeto no terminal/cmd
 $ cd culinary-recipes
 
-# Vá para a pasta src
-$ cd src
-
 # Instale as dependências
 $ yarn ou npm install
 
