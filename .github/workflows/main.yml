@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: yarn build
     
-      - name: Run Docker Container Postgres
+      - name: Run Docker Container Postgres/Redis
         run: docker-compose up -d
 
       - name: Run Migrations
