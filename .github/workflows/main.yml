@@ -35,3 +35,19 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "., !node_modules"
           target: "~/app/culinary-recipe"
+
+      - name: Update all package
+        uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USER }}
+            port: ${{ secrets.SSH_PORT }}
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+              cd ~/app/culinary-recipe
+              yarn
+              docker-compose down
+              docker-compose up -d
+              yarn migration
+              pm2 restart rentx
+
