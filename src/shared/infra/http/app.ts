@@ -14,9 +14,12 @@ import swaggerUI from "swagger-ui-express";
 import { AppError } from "@shared/errors/AppError";
 import { routes } from "@shared/infra/http/routes";
 
+import rateLimiter from "./middlewares/rateLimiterRedis";
 import swaggerFile from "./swagger.json";
 
 export const app = express();
+
+app.use(rateLimiter);
 
 app.use(express.json());
 
