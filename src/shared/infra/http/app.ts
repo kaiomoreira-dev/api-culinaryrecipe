@@ -21,13 +21,13 @@ import swaggerFile from "./swagger.json";
 
 export const app = express();
 
-app.use(cors());
-
 app.use(rateLimiter);
 
 app.use(express.json());
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
+
+app.use(cors());
 
 app.use(routes);
 app.use(
