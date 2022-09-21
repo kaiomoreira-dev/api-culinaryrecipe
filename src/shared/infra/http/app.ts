@@ -23,8 +23,6 @@ app.use(rateLimiter);
 
 app.use(express.json());
 
-app.use(cors());
-
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use(routes);
