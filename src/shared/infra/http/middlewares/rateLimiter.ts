@@ -4,9 +4,10 @@ import { createClient } from "redis";
 
 import { AppError } from "@shared/errors/AppError";
 
-const redisClient = createClient({
-  host: process.env.REDIS_HOST,
+export const redisClient = createClient({
+  host: process.env.NODE_ENV === "test" ? "localhost" : process.env.REDIS_HOST,
   port: Number(process.env.REDIS_PORT),
+  password: process.env.REDIS_PASS || undefined,
 });
 
 redisClient.on("error", (err) => console.log("Redis Client Error", err));
@@ -24,7 +25,9 @@ export default async function rateLimiter(
   next: NextFunction
 ): Promise<void> {
   try {
-    await limiter.consume(request.ip);
+    if (process.env.NODE_ENV !== "test") {
+      await limiter.consume(request.ip);
+    }
 
     return next();
   } catch (err) {
