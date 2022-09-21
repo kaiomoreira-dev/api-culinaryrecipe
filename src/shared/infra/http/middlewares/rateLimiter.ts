@@ -25,6 +25,8 @@ export default async function rateLimiter(
   next: NextFunction
 ): Promise<void> {
   try {
+    // validação p/ verificar se a variavel
+    // de ambiente é localhost e nao test
     if (process.env.NODE_ENV !== "test") {
       await limiter.consume(request.ip);
     }
