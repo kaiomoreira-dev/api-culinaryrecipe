@@ -3,6 +3,7 @@ import { ICreateProdutoDTO } from "@modules/recipe/dtos/ICreateProdutoDTO";
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateProdutoUseCase } from "./CreateProdutoUseCase";
 
@@ -16,6 +17,10 @@ describe("Create produto UseCase", () => {
         createProdutoUseCase = new CreateProdutoUseCase(
             produtoRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to create produto", async () => {

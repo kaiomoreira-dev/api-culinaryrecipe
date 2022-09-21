@@ -10,6 +10,8 @@ import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Me
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
+
 import { CreateIngredientUseCase } from "../../createIngredient/CreateIngredientUseCase";
 import { CreateProdutoUseCase } from "../../createProduto/CreateProdutoUseCase";
 import { CreateRecipeUseCase } from "../../createRecipe/CreateRecipeUseCase";
@@ -55,6 +57,10 @@ describe("List recipes by ingredient UseCase", () => {
             recipeRepositoryInMemory,
             ingredientRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be avle to list recipes by ingredient", async () => {

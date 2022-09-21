@@ -7,6 +7,7 @@ import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Me
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
@@ -40,6 +41,10 @@ describe("Update e-mail UseCase", () => {
         updateE_mailByE_mailUseCase = new UpdateE_mailByE_mailUseCase(
             emailRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to update e_mail by id", async () => {

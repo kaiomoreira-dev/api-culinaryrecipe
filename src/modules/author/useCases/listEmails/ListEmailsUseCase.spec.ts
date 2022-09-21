@@ -6,6 +6,8 @@ import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
+
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { ListEmailsUseCase } from "./ListEmailsUseCase";
@@ -36,6 +38,10 @@ describe("List e-mails UseCase", () => {
             emailRepositoryInMemory,
             authorRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to list e-mails", async () => {

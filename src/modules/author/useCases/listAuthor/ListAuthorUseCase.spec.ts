@@ -13,6 +13,8 @@ import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredie
 import { CreateProdutoUseCase } from "@modules/recipe/useCases/createProduto/CreateProdutoUseCase";
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
+
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { ListAuthorUseCase } from "./ListAuthorUseCase";
@@ -60,6 +62,11 @@ describe("List authors UseCase", () => {
         );
         listAuthorUseCase = new ListAuthorUseCase(authorRepositoryInMemory);
     });
+
+    afterAll(() => {
+        redisClient.quit();
+    });
+
     it("should be able to list authors", async () => {
         const author: ICreateAuthorDTO = {
             id: "ad539d66-e576-4913-8237-e5a6baff3ba4",

@@ -5,6 +5,7 @@ import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Me
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateProdutoUseCase } from "../createProduto/CreateProdutoUseCase";
 import { CreateIngredientUseCase } from "./CreateIngredientUseCase";
@@ -26,6 +27,10 @@ describe("Create ingredient UseCase", () => {
         createProdutoUseCase = new CreateProdutoUseCase(
             produtoRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to create ingredient", async () => {

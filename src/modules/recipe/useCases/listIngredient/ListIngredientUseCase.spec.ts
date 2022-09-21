@@ -4,6 +4,8 @@ import { ICreateProdutoDTO } from "@modules/recipe/dtos/ICreateProdutoDTO";
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
+
 import { CreateIngredientUseCase } from "../createIngredient/CreateIngredientUseCase";
 import { CreateProdutoUseCase } from "../createProduto/CreateProdutoUseCase";
 import { ListProdutosUseCase } from "../listProdutos/ListProdutosUseCase";
@@ -30,6 +32,10 @@ describe("List ingredients UseCase", () => {
         listIngredientUseCase = new ListIngredientUseCase(
             ingredientRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to list ingredients", async () => {

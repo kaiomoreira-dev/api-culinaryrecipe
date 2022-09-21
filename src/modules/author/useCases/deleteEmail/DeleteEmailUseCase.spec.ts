@@ -7,6 +7,7 @@ import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Me
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
@@ -37,6 +38,10 @@ describe("Delete e-mail UseCase", () => {
             authorRepositoryInMemory
         );
         deleteEmailUseCase = new DeleteEmailUseCase(emailRepositoryInMemory);
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to delete e-mail by id", async () => {

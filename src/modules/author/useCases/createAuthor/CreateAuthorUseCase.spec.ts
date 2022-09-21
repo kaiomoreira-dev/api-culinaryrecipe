@@ -10,6 +10,7 @@ import { CreateProdutoUseCase } from "@modules/recipe/useCases/createProduto/Cre
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
 import { CreateAuthorUseCase } from "./CreateAuthorUseCase";
@@ -54,6 +55,10 @@ describe("Create author UseCase", () => {
         createProdutoUseCase = new CreateProdutoUseCase(
             produtoRepositoryInMemory
         );
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to create author", async () => {

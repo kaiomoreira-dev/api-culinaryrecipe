@@ -4,10 +4,10 @@ import { ICreateEmailDTO } from "@modules/author/dtos/ICreateEmailDTO";
 import { AuthorRepositoryInMemory } from "@modules/author/repositories/in-Memory/AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "@modules/author/repositories/in-Memory/EmailRepositoryInMemory";
 import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/IngredientRepositoryInMemory";
-import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
@@ -38,6 +38,10 @@ describe("Find e-mail UseCase", () => {
             authorRepositoryInMemory
         );
         findEmailUseCase = new FindEmailUseCase(emailRepositoryInMemory);
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to find email", async () => {

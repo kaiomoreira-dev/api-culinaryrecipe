@@ -9,6 +9,7 @@ import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredie
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
@@ -66,6 +67,10 @@ describe("Find author UseCase", () => {
         const findAuthor = await findAuthorIdUseCase.execute(authorCreated.id);
 
         expect(findAuthor).toHaveProperty("id");
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should not be able to find author using id invalid", async () => {

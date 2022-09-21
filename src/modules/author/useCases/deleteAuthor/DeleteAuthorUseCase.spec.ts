@@ -14,6 +14,7 @@ import { CreateProdutoUseCase } from "@modules/recipe/useCases/createProduto/Cre
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
@@ -68,6 +69,10 @@ describe("Delete author UseCase", () => {
             produtoRepositoryInMemory
         );
         listAuthorUseCase = new ListAuthorUseCase(authorRepositoryInMemory);
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should be able to delete author using id", async () => {

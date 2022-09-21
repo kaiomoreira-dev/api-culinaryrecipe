@@ -9,6 +9,7 @@ import { CreateIngredientUseCase } from "@modules/recipe/useCases/createIngredie
 import { CreateRecipeUseCase } from "@modules/recipe/useCases/createRecipe/CreateRecipeUseCase";
 
 import { AppError } from "@shared/errors/AppError";
+import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateAuthorUseCase } from "../createAuthor/CreateAuthorUseCase";
 import { CreateEmailUseCase } from "../createEmail/CreateEmailUseCase";
@@ -72,6 +73,10 @@ describe("Update author UseCase", () => {
             whatsapp
         );
         expect(updateAuthor).toHaveProperty("id");
+    });
+
+    afterAll(() => {
+        redisClient.quit();
     });
 
     it("should not be able to update author using id invalid", async () => {
