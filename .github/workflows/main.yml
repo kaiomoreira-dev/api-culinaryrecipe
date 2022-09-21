@@ -46,6 +46,8 @@ jobs:
             script: |
               cd ~/app/culinary-recipe
               yarn
+              docker-compose down
+              docker-compose up -d
               yarn migration
-              pm2 restart rentx
+              pm2 restart culinary-recipe
 
