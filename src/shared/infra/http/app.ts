@@ -5,6 +5,8 @@ import "dotenv/config";
 
 import "reflect-metadata";
 
+import cors from "cors";
+
 import "express-async-errors";
 
 import "@shared/container";
@@ -22,6 +24,8 @@ export const app = express();
 // app.use(rateLimiter);
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
