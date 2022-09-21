@@ -16,7 +16,7 @@ services:
 
         - ./src/shared/infra/typeorm/sql/create_base_test.sql:/docker-entrypoint-initdb.d/create_tables.sql
   
-      redis:
+    redis:
         image: redis:alpine
         ports: 
             - 6379:6379
