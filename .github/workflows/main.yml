@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: yarn build
     
-      - name: Run Docker Container Postgres/Redis
+      - name: Run Docker Container Postgres/
         run: docker-compose up -d
 
       - name: Run Migrations
@@ -46,8 +46,6 @@ jobs:
             script: |
               cd ~/app/culinary-recipe
               yarn
-              docker-compose down
-              docker-compose up -d
               yarn migration
               pm2 restart culinary-recipe
 
