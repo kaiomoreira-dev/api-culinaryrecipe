@@ -51,6 +51,7 @@ app.use(Sentry.Handlers.tracingHandler());
 
 app.use(routes);
 
+// capture erros
 app.use(Sentry.Handlers.errorHandler());
 
 app.use(
