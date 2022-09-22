@@ -13,8 +13,8 @@ E instalar o docker-compose pra subir o container.
 [Docker-Compose](https://docs.docker.com/compose/install/).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
-## Diagrama De Classe UML
-![alt text]([http://url/to/img.png)](https://github.com/[kaiomoreira-dev]/[culinary-recipe]/blob/[main]/diagram-culinary-recipe.png?raw=true))
+## Diagrama de Classe UML
+![alt text](diagram-culinary-recipe.png)
 
 ### 🎲 Rodando o Back End (servidor)
 
@@ -31,11 +31,7 @@ $ yarn ou npm install
 # Exutar apenas o container do postgres
 $ docker-compose up -d
 
-## criar database de test fin_api_test dentro do postgress
-$ create database culinary_recipes_test
-
 ## Iniciar aplicação
-
 // desenvolvimento
 $ yarn dev ou npm run dev
 
