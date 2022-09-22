@@ -46,17 +46,17 @@ export class ProdutoRepository implements IProdutoRepository {
     }
     async updateById(
         id: string,
-        new_name: string,
-        new_description: string
+        name: string,
+        description: string
     ): Promise<Produto> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({ name: new_name, description: new_description })
+            .set({ name, description })
             .where("id = :id", { id })
             .execute();
 
-        return this.repository.findOneBy({ name: new_name });
+        return this.repository.findOneBy({ id });
     }
     async deleteById(id: string): Promise<void> {
         await this.repository
