@@ -13,6 +13,9 @@ E instalar o docker-compose pra subir o container.
 [Docker-Compose](https://docs.docker.com/compose/install/).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
+## Diagrama De Classe UML
+![alt text]([http://url/to/img.png)](https://github.com/[kaiomoreira-dev]/[culinary-recipe]/blob/[main]/diagram-culinary-recipe.png?raw=true))
+
 ### 🎲 Rodando o Back End (servidor)
 
 ```bash
