@@ -1,9 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import express, { NextFunction, Request, Response } from "express";
 
 import "dotenv/config";
-
-import cors from "cors";
 
 import "reflect-metadata";
 
@@ -11,6 +8,10 @@ import "express-async-errors";
 
 import "@shared/container";
 
+import * as Sentry from "@sentry/node";
+import * as Tracing from "@sentry/tracing";
+import cors from "cors";
+import express, { NextFunction, Request, Response } from "express";
 import swaggerUI from "swagger-ui-express";
 
 import { AppError } from "@shared/errors/AppError";
@@ -29,7 +30,41 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use(cors());
 
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  integrations: [
+    // enable HTTP calls tracing
+    new Sentry.Integrations.Http({ tracing: true }),
+    // enable Express.js middleware tracing
+    new Tracing.Integrations.Express({ app }),
+  ],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
+
+// The request handler must be the first middleware on the app
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
+
 app.use(routes);
+
+app.use(Sentry.Handlers.errorHandler());
+
+app.use(
+  Sentry.Handlers.errorHandler({
+    shouldHandleError(error) {
+      // Capture all 404 and 500 errors
+      if (error.status === 429 || error.status === 500) {
+        return true;
+      }
+      return false;
+    },
+  })
+);
+
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof AppError) {
