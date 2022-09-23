@@ -73,7 +73,6 @@ describe("Delete author Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: prodId1,
-                name: "Alho",
                 description: faker.lorem.words(10),
                 unity: 1,
                 weight: 100,
@@ -83,7 +82,6 @@ describe("Delete author Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: prodId2,
-                name: "Cebola",
                 description: faker.lorem.words(10),
                 unity: 1,
                 weight: 100,

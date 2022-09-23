@@ -102,7 +102,6 @@ describe("Delete author UseCase", () => {
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            name: "Alho",
             produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
@@ -111,7 +110,6 @@ describe("Delete author UseCase", () => {
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
             description: faker.lorem.words(20),
-            name: "Cebola",
             produto_id: createProduto2.id,
             unity: 1,
             weight: 100,

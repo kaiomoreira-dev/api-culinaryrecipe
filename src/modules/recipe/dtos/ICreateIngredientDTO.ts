@@ -1,8 +1,7 @@
 export interface ICreateIngredientDTO {
-    id?: string;
-    description: string;
-    name: string;
-    produto_id: string;
-    weight: number;
-    unity: number;
+  id?: string;
+  description: string;
+  produto_id: string;
+  weight: number;
+  unity: number;
 }

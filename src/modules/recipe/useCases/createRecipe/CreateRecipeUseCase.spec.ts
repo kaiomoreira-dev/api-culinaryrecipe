@@ -29,402 +29,379 @@ let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
 
 describe("Create recipe UseCase", () => {
-    beforeEach(() => {
-        emailRepositoryInMemory = new EmailRepositoryInMemory();
-        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
-        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
-            ingredientRepositoryInMemory
-        );
-        createRecipeUseCase = new CreateRecipeUseCase(
-            recipeRepositoryInMemory,
-            ingredientRepositoryInMemory,
-            authorRepositoryInMemory
-        );
-        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
-        createIngredientUseCase = new CreateIngredientUseCase(
-            ingredientRepositoryInMemory,
-            produtoRepositoryInMemory
-        );
-        createProdutoUseCase = new CreateProdutoUseCase(
-            produtoRepositoryInMemory
-        );
-    });
+  beforeEach(() => {
+    emailRepositoryInMemory = new EmailRepositoryInMemory();
+    produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+    ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+    authorRepositoryInMemory = new AuthorRepositoryInMemory(
+      emailRepositoryInMemory,
+      recipeRepositoryInMemory
+    );
+    recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+      ingredientRepositoryInMemory
+    );
+    createRecipeUseCase = new CreateRecipeUseCase(
+      recipeRepositoryInMemory,
+      ingredientRepositoryInMemory,
+      authorRepositoryInMemory
+    );
+    createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+    createIngredientUseCase = new CreateIngredientUseCase(
+      ingredientRepositoryInMemory,
+      produtoRepositoryInMemory
+    );
+    createProdutoUseCase = new CreateProdutoUseCase(produtoRepositoryInMemory);
+  });
 
-    afterAll(() => {
-        redisClient.quit();
-    });
+  afterAll(() => {
+    redisClient.quit();
+  });
 
-    it("should be able to create a recipe", async () => {
-        const produto1: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Alho",
-            description: faker.lorem.paragraphs(),
-        };
-        const produto2: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Cebola",
-            description: faker.lorem.paragraphs(),
-        };
+  it("should be able to create a recipe", async () => {
+    const produto1: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Alho",
+      description: faker.lorem.paragraphs(),
+    };
+    const produto2: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Cebola",
+      description: faker.lorem.paragraphs(),
+    };
 
-        const createProduto1 = await createProdutoUseCase.execute(produto1);
+    const createProduto1 = await createProdutoUseCase.execute(produto1);
 
-        const createProduto2 = await createProdutoUseCase.execute(produto2);
+    const createProduto2 = await createProdutoUseCase.execute(produto2);
 
-        const ingredient1: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Alho",
-            produto_id: createProduto1.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient1: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto1.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const ingredient2: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Cebola",
-            produto_id: createProduto2.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient2: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto2.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const createIngredient1 = await createIngredientUseCase.execute(
-            ingredient1
-        );
+    const createIngredient1 = await createIngredientUseCase.execute(
+      ingredient1
+    );
 
-        const createIngredient2 = await createIngredientUseCase.execute(
-            ingredient2
-        );
+    const createIngredient2 = await createIngredientUseCase.execute(
+      ingredient2
+    );
 
-        const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+    const author: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author);
+    const authorCreated = await createAuthorUseCase.execute(author);
 
-        const recipe: ICreateRecipeDTO = {
-            id: faker.datatype.uuid(),
-            name: "Receita 1",
-            description: faker.lorem.words(20),
-            additional_features: "cheap dish",
-            difficulty: "easy",
-            dish_type: "appetizer",
-            time: 20,
-            total_guests: 5,
-            author_id: authorCreated.id,
-        };
+    const recipe: ICreateRecipeDTO = {
+      id: faker.datatype.uuid(),
+      name: "Receita 1",
+      description: faker.lorem.words(20),
+      additional_features: "cheap dish",
+      difficulty: "easy",
+      dish_type: "appetizer",
+      time: 20,
+      total_guests: 5,
+      author_id: authorCreated.id,
+    };
 
-        const ingredients: string[] = [
-            createIngredient1.id,
-            createIngredient2.id,
-        ];
+    const ingredients: string[] = [createIngredient1.id, createIngredient2.id];
 
-        const createRecipe = await createRecipeUseCase.execute(
-            recipe,
-            ingredients
-        );
+    const createRecipe = await createRecipeUseCase.execute(recipe, ingredients);
 
-        expect(createRecipe).toHaveProperty("id");
-    });
+    expect(createRecipe).toHaveProperty("id");
+  });
 
-    it("should not be able to create recipe with difficulty incorrect", async () => {
-        const produto1: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Alho",
-            description: faker.lorem.paragraphs(),
-        };
-        const produto2: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Cebola",
-            description: faker.lorem.paragraphs(),
-        };
+  it("should not be able to create recipe with difficulty incorrect", async () => {
+    const produto1: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Alho",
+      description: faker.lorem.paragraphs(),
+    };
+    const produto2: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Cebola",
+      description: faker.lorem.paragraphs(),
+    };
 
-        const createProduto1 = await createProdutoUseCase.execute(produto1);
+    const createProduto1 = await createProdutoUseCase.execute(produto1);
 
-        const createProduto2 = await createProdutoUseCase.execute(produto2);
+    const createProduto2 = await createProdutoUseCase.execute(produto2);
 
-        const ingredient1: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Alho",
-            produto_id: createProduto1.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient1: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto1.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const ingredient2: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Cebola",
-            produto_id: createProduto2.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient2: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto2.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const createIngredient1 = await createIngredientUseCase.execute(
-            ingredient1
-        );
+    const createIngredient1 = await createIngredientUseCase.execute(
+      ingredient1
+    );
 
-        const createIngredient2 = await createIngredientUseCase.execute(
-            ingredient2
-        );
+    const createIngredient2 = await createIngredientUseCase.execute(
+      ingredient2
+    );
 
-        const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+    const author: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author);
+    const authorCreated = await createAuthorUseCase.execute(author);
 
-        const recipe: ICreateRecipeDTO = {
-            id: faker.datatype.uuid(),
-            name: "Receita 1",
-            description: faker.lorem.words(20),
-            additional_features: "cheap dish",
-            difficulty: "fake-difficulty",
-            dish_type: "appetizer",
-            time: 20,
-            total_guests: 5,
-            author_id: authorCreated.id,
-        };
+    const recipe: ICreateRecipeDTO = {
+      id: faker.datatype.uuid(),
+      name: "Receita 1",
+      description: faker.lorem.words(20),
+      additional_features: "cheap dish",
+      difficulty: "fake-difficulty",
+      dish_type: "appetizer",
+      time: 20,
+      total_guests: 5,
+      author_id: authorCreated.id,
+    };
 
-        const ingredients: string[] = [
-            createIngredient1.id,
-            createIngredient2.id,
-        ];
+    const ingredients: string[] = [createIngredient1.id, createIngredient2.id];
 
-        await expect(
-            createRecipeUseCase.execute(recipe, ingredients)
-        ).rejects.toEqual(new AppError("difficulty incorrect!", 401));
-    });
+    await expect(
+      createRecipeUseCase.execute(recipe, ingredients)
+    ).rejects.toEqual(new AppError("difficulty incorrect!", 401));
+  });
 
-    it("should not be able to create recipe with dish_type incorrect", async () => {
-        const produto1: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Alho",
-            description: faker.lorem.paragraphs(),
-        };
-        const produto2: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Cebola",
-            description: faker.lorem.paragraphs(),
-        };
+  it("should not be able to create recipe with dish_type incorrect", async () => {
+    const produto1: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Alho",
+      description: faker.lorem.paragraphs(),
+    };
+    const produto2: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Cebola",
+      description: faker.lorem.paragraphs(),
+    };
 
-        const createProduto1 = await createProdutoUseCase.execute(produto1);
+    const createProduto1 = await createProdutoUseCase.execute(produto1);
 
-        const createProduto2 = await createProdutoUseCase.execute(produto2);
+    const createProduto2 = await createProdutoUseCase.execute(produto2);
 
-        const ingredient1: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Alho",
-            produto_id: createProduto1.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient1: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto1.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const ingredient2: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Cebola",
-            produto_id: createProduto2.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient2: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto2.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const createIngredient1 = await createIngredientUseCase.execute(
-            ingredient1
-        );
+    const createIngredient1 = await createIngredientUseCase.execute(
+      ingredient1
+    );
 
-        const createIngredient2 = await createIngredientUseCase.execute(
-            ingredient2
-        );
+    const createIngredient2 = await createIngredientUseCase.execute(
+      ingredient2
+    );
 
-        const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+    const author: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author);
+    const authorCreated = await createAuthorUseCase.execute(author);
 
-        const recipe: ICreateRecipeDTO = {
-            id: faker.datatype.uuid(),
-            name: "Receita 1",
-            description: faker.lorem.words(20),
-            additional_features: "cheap dish",
-            difficulty: "easy",
-            dish_type: "fake-dish_type",
-            time: 20,
-            total_guests: 5,
-            author_id: authorCreated.id,
-        };
+    const recipe: ICreateRecipeDTO = {
+      id: faker.datatype.uuid(),
+      name: "Receita 1",
+      description: faker.lorem.words(20),
+      additional_features: "cheap dish",
+      difficulty: "easy",
+      dish_type: "fake-dish_type",
+      time: 20,
+      total_guests: 5,
+      author_id: authorCreated.id,
+    };
 
-        const ingredients: string[] = [
-            createIngredient1.id,
-            createIngredient2.id,
-        ];
+    const ingredients: string[] = [createIngredient1.id, createIngredient2.id];
 
-        await expect(
-            createRecipeUseCase.execute(recipe, ingredients)
-        ).rejects.toEqual(new AppError("dish_type incorrect!", 401));
-    });
+    await expect(
+      createRecipeUseCase.execute(recipe, ingredients)
+    ).rejects.toEqual(new AppError("dish_type incorrect!", 401));
+  });
 
-    it("should not be able to create recipe with ingredient not exists", async () => {
-        const produto1: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Alho",
-            description: faker.lorem.paragraphs(),
-        };
-        const produto2: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Cebola",
-            description: faker.lorem.paragraphs(),
-        };
+  it("should not be able to create recipe with ingredient not exists", async () => {
+    const produto1: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Alho",
+      description: faker.lorem.paragraphs(),
+    };
+    const produto2: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Cebola",
+      description: faker.lorem.paragraphs(),
+    };
 
-        const createProduto1 = await createProdutoUseCase.execute(produto1);
+    const createProduto1 = await createProdutoUseCase.execute(produto1);
 
-        const createProduto2 = await createProdutoUseCase.execute(produto2);
+    const createProduto2 = await createProdutoUseCase.execute(produto2);
 
-        const ingredient1: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Alho",
-            produto_id: createProduto1.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient1: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto1.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const ingredient2: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Cebola",
-            produto_id: createProduto2.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient2: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto2.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const createIngredient1 = await createIngredientUseCase.execute(
-            ingredient1
-        );
+    const createIngredient1 = await createIngredientUseCase.execute(
+      ingredient1
+    );
 
-        const createIngredient2 = await createIngredientUseCase.execute(
-            ingredient2
-        );
-        const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+    const createIngredient2 = await createIngredientUseCase.execute(
+      ingredient2
+    );
+    const author: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author);
+    const authorCreated = await createAuthorUseCase.execute(author);
 
-        const recipe: ICreateRecipeDTO = {
-            id: faker.datatype.uuid(),
-            name: "Receita 1",
-            description: faker.lorem.words(20),
-            additional_features: "cheap dish",
-            difficulty: "easy",
-            dish_type: "appetizer",
-            time: 20,
-            total_guests: 5,
-            author_id: authorCreated.id,
-        };
+    const recipe: ICreateRecipeDTO = {
+      id: faker.datatype.uuid(),
+      name: "Receita 1",
+      description: faker.lorem.words(20),
+      additional_features: "cheap dish",
+      difficulty: "easy",
+      dish_type: "appetizer",
+      time: 20,
+      total_guests: 5,
+      author_id: authorCreated.id,
+    };
 
-        const ingredients: string[] = [
-            createIngredient1.id,
-            createIngredient2.id,
-            "fake-ingredient",
-        ];
+    const ingredients: string[] = [
+      createIngredient1.id,
+      createIngredient2.id,
+      "fake-ingredient",
+    ];
 
-        await expect(
-            createRecipeUseCase.execute(recipe, ingredients)
-        ).rejects.toEqual(new AppError("Ingredient not found", 404));
-    });
+    await expect(
+      createRecipeUseCase.execute(recipe, ingredients)
+    ).rejects.toEqual(new AppError("Ingredient not found", 404));
+  });
 
-    it("should not be able to create a recipe with ingredients invalid", async () => {
-        const produto1: ICreateProdutoDTO = {
-            id: faker.datatype.uuid(),
-            name: "Alho",
-            description: faker.lorem.paragraphs(),
-        };
+  it("should not be able to create a recipe with ingredients invalid", async () => {
+    const produto1: ICreateProdutoDTO = {
+      id: faker.datatype.uuid(),
+      name: "Alho",
+      description: faker.lorem.paragraphs(),
+    };
 
-        const createProduto1 = await createProdutoUseCase.execute(produto1);
+    const createProduto1 = await createProdutoUseCase.execute(produto1);
 
-        const ingredient1: ICreateIngredientDTO = {
-            id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
-            name: "Alho",
-            produto_id: createProduto1.id,
-            unity: 1,
-            weight: 100,
-        };
+    const ingredient1: ICreateIngredientDTO = {
+      id: faker.datatype.uuid(),
+      description: faker.lorem.words(20),
+      produto_id: createProduto1.id,
+      unity: 1,
+      weight: 100,
+    };
 
-        const createIngredient1 = await createIngredientUseCase.execute(
-            ingredient1
-        );
+    const createIngredient1 = await createIngredientUseCase.execute(
+      ingredient1
+    );
 
-        const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+    const author: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author);
+    const authorCreated = await createAuthorUseCase.execute(author);
 
-        const recipe: ICreateRecipeDTO = {
-            id: faker.datatype.uuid(),
-            name: "Receita 1",
-            description: faker.lorem.words(20),
-            additional_features: "cheap dish",
-            difficulty: "easy",
-            dish_type: "appetizer",
-            time: 20,
-            total_guests: 5,
-            author_id: authorCreated.id,
-        };
+    const recipe: ICreateRecipeDTO = {
+      id: faker.datatype.uuid(),
+      name: "Receita 1",
+      description: faker.lorem.words(20),
+      additional_features: "cheap dish",
+      difficulty: "easy",
+      dish_type: "appetizer",
+      time: 20,
+      total_guests: 5,
+      author_id: authorCreated.id,
+    };
 
-        const ingredients: string[] = [createIngredient1.id];
+    const ingredients: string[] = [createIngredient1.id];
 
-        await expect(
-            createRecipeUseCase.execute(recipe, ingredients)
-        ).rejects.toEqual(new AppError("Ingredients insufficient!", 401));
-    });
-    it("should not be able to create a recipe with less than two ingredients", async () => {
-        const author: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+    await expect(
+      createRecipeUseCase.execute(recipe, ingredients)
+    ).rejects.toEqual(new AppError("Ingredients insufficient!", 401));
+  });
+  it("should not be able to create a recipe with less than two ingredients", async () => {
+    const author: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author);
+    const authorCreated = await createAuthorUseCase.execute(author);
 
-        const fakeIngredientId1 = "e33a9e63-2634-42ef-90dd-f9137a2a7b9b";
-        const fakeIngredientId2 = "4d8e19fe-fec1-431e-96d2-4dce6fd3ae9f";
-        const ingredients: string[] = [fakeIngredientId1, fakeIngredientId2];
+    const fakeIngredientId1 = "e33a9e63-2634-42ef-90dd-f9137a2a7b9b";
+    const fakeIngredientId2 = "4d8e19fe-fec1-431e-96d2-4dce6fd3ae9f";
+    const ingredients: string[] = [fakeIngredientId1, fakeIngredientId2];
 
-        const recipe: ICreateRecipeDTO = {
-            id: faker.datatype.uuid(),
-            name: "Receita 1",
-            description: faker.lorem.words(20),
-            additional_features: "cheap dish",
-            difficulty: "easy",
-            dish_type: "appetizer",
-            time: 20,
-            total_guests: 5,
-            author_id: authorCreated.id,
-        };
+    const recipe: ICreateRecipeDTO = {
+      id: faker.datatype.uuid(),
+      name: "Receita 1",
+      description: faker.lorem.words(20),
+      additional_features: "cheap dish",
+      difficulty: "easy",
+      dish_type: "appetizer",
+      time: 20,
+      total_guests: 5,
+      author_id: authorCreated.id,
+    };
 
-        await expect(
-            createRecipeUseCase.execute(recipe, ingredients)
-        ).rejects.toEqual(new AppError("Ingredient not found", 404));
-    });
+    await expect(
+      createRecipeUseCase.execute(recipe, ingredients)
+    ).rejects.toEqual(new AppError("Ingredient not found", 404));
+  });
 });

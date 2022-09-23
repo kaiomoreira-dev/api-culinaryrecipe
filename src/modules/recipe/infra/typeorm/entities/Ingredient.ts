@@ -17,9 +17,6 @@ export class Ingredient {
     id?: string;
 
     @Column()
-    name: string;
-
-    @Column()
     description: string;
 
     // relacionamento de many-to-one apontando para produto qual

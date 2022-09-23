@@ -67,7 +67,6 @@ describe("List author Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: produto_id1,
-                name: "Alho",
                 description: faker.lorem.paragraphs(),
                 unity: 1,
                 weight: 100,
@@ -78,7 +77,6 @@ describe("List author Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: produto_id2,
-                name: "Cebola",
                 description: faker.lorem.paragraphs(),
                 unity: 1,
                 weight: 100,

@@ -68,7 +68,6 @@ describe("List recipes by ingredient Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: prodId1,
-                name: "Alho",
                 description: faker.lorem.words(20),
                 unity: 1,
                 weight: 100,
@@ -81,7 +80,6 @@ describe("List recipes by ingredient Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: prodId2,
-                name: "Cebola",
                 description: faker.lorem.words(20),
                 unity: 1,
                 weight: 100,
@@ -93,7 +91,6 @@ describe("List recipes by ingredient Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: prodId3,
-                name: "Folha de Louro",
                 description: faker.lorem.words(20),
                 unity: 1,
                 weight: 100,
@@ -105,7 +102,6 @@ describe("List recipes by ingredient Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: prodId4,
-                name: "Pimenta",
                 description: faker.lorem.words(20),
                 unity: 1,
                 weight: 100,
