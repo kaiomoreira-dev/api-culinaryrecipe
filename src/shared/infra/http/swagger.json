@@ -620,6 +620,63 @@
                 }
             }
         },
+        "/ingredient/produto/{id}":{
+            "get": {
+                "tags": ["Ingredient"],
+                "summary": "List Ingredients with Produto",
+                "description": "List all Ingredients exists by produto_id",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Produto id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List Produto successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                   
+                                            "produto_id": {
+                                                "type": "string"
+                                            },
+                                            "unity": {
+                                                "type": "integer"
+                                            },
+                                            "weight": {
+                                                "type": "integer"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date"
+                                            }                                                              
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/recipe":{
             "post": {
                 "tags": ["Recipe"],
