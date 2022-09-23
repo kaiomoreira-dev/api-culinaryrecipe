@@ -32,18 +32,27 @@ describe("Update produto UseCase", () => {
       description: faker.lorem.paragraphs(),
     };
 
+    const name = "Cebola";
+    const description = faker.lorem.word(5);
+
     const createProduto = await createProdutoUseCase.execute(produto);
 
-    const updateProduto = await updateProdutoUseCase.execute(createProduto.id);
+    const updateProduto = await updateProdutoUseCase.execute(
+      createProduto.id,
+      name,
+      description
+    );
 
     expect(updateProduto).toHaveProperty("id");
   });
 
   it("should not be able to update produto not exists", async () => {
     const produtoIdFake = faker.datatype.uuid();
+    const name = "Cebola";
+    const description = faker.lorem.word(5);
 
-    await expect(updateProdutoUseCase.execute(produtoIdFake)).rejects.toEqual(
-      new AppError("Produto not found", 404)
-    );
+    await expect(
+      updateProdutoUseCase.execute(produtoIdFake, name, description)
+    ).rejects.toEqual(new AppError("Produto not found", 404));
   });
 });
