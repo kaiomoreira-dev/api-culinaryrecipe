@@ -547,7 +547,6 @@
                                 },
                                 "example": {
                                     "produto_id":"dfeaa87f-cd3a-4797-a3ae-1f1501d341ee",
-                                    "description": "Write description here about produto",
                                     "unity": "ex: 1",
                                     "weight": "ex: 0.500"
                                 }
