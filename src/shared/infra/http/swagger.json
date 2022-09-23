@@ -467,6 +467,58 @@
                 }
             }
         },
+        "/produto/{id}":{
+            "put": {
+                "tags": ["Produto"],
+                "summary": "Update produto by id",
+                "description": "Update a Produto",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Produto id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                       "type": "string"
+                                    }
+                                   
+                                },
+                                "example": {
+                                    "name": "Produto name",
+                                    "description": "Write description here about produto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto updated successfully"
+                    },
+                    "404": {
+                        "description": "Produto not found"
+                    }
+                }
+            }
+        },
         "/ingredient":{
             "post": {
                 "tags": ["Ingredient"],
