@@ -43,4 +43,17 @@ describe("Create produto Controller", () => {
 
     expect(responseUpdateProduto.status).toBe(200);
   });
+
+  it("should not be able to create produto with id invalid", async () => {
+    const produIdFake = faker.datatype.uuid();
+
+    const responseUpdateProduto = await request(app)
+      .put(`/produto/${produIdFake}`)
+      .send({
+        name: "Cebola",
+        description: faker.lorem.words(5),
+      });
+
+    expect(responseUpdateProduto.status).toBe(404);
+  });
 });
