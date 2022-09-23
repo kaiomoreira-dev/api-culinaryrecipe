@@ -12,61 +12,53 @@ import { createConnection } from "@shared/infra/typeorm";
 let connection: DataSource;
 
 describe("List ingredients Controller", () => {
-    beforeAll(async () => {
-        connection = await createConnection("localhost");
+  beforeAll(async () => {
+    connection = await createConnection("localhost");
 
-        await connection.runMigrations();
+    await connection.runMigrations();
+  });
+
+  afterAll(async () => {
+    await connection.dropDatabase();
+
+    await connection.destroy();
+  });
+
+  it("should be able to list ingredients", async () => {
+    const produto1 = await request(app)
+      .post("/produto")
+      .send({
+        id: faker.datatype.uuid(),
+        name: "Alho",
+        description: faker.lorem.words(20),
+      });
+    const { id: prodId1 } = produto1.body as Produto;
+    const produto2 = await request(app)
+      .post("/produto")
+      .send({
+        id: faker.datatype.uuid(),
+        name: "Coentro",
+        description: faker.lorem.words(20),
+      });
+
+    const { id: prodId2 } = produto2.body as Produto;
+
+    await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
     });
 
-    afterAll(async () => {
-        await connection.dropDatabase();
-
-        await connection.destroy();
+    await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId2,
+      unity: 1,
+      weight: 100,
     });
 
-    it("should be able to list ingredients", async () => {
-        const produto1 = await request(app)
-            .post("/produto")
-            .send({
-                id: faker.datatype.uuid(),
-                name: "Alho",
-                description: faker.lorem.words(20),
-            });
-        const { id: prodId1 } = produto1.body as Produto;
-        const produto2 = await request(app)
-            .post("/produto")
-            .send({
-                id: faker.datatype.uuid(),
-                name: "Coentro",
-                description: faker.lorem.words(20),
-            });
+    const listIngredients = await request(app).get("/ingredient").send({});
 
-        const { id: prodId2 } = produto2.body as Produto;
-
-        await request(app)
-            .post("/ingredient")
-            .send({
-                id: faker.datatype.uuid(),
-                produto_id: prodId1,
-                name: "Alho",
-                description: faker.lorem.words(20),
-                unity: 1,
-                weight: 100,
-            });
-
-        await request(app)
-            .post("/ingredient")
-            .send({
-                id: faker.datatype.uuid(),
-                produto_id: prodId2,
-                name: "Cebola",
-                description: faker.lorem.words(20),
-                unity: 1,
-                weight: 100,
-            });
-
-        const listIngredients = await request(app).get("/ingredient").send({});
-
-        expect(listIngredients.status).toBe(200);
-    });
+    expect(listIngredients.status).toBe(200);
+  });
 });

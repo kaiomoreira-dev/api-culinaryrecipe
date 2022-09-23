@@ -9,7 +9,6 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
   async create({
     id,
     produto_id,
-    description,
     unity,
     weight,
   }: ICreateIngredientDTO): Promise<Ingredient> {
@@ -18,7 +17,6 @@ export class IngredientRepositoryInMemory implements IIngredientRepository {
     Object.assign(ingredient, {
       id,
       produto_id,
-      description,
       unity,
       weight,
     });

@@ -92,7 +92,6 @@ describe("List recipes by ingredient UseCase", () => {
 
         const ingredient1: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
             produto_id: createProduto1.id,
             unity: 1,
             weight: 100,
@@ -100,14 +99,12 @@ describe("List recipes by ingredient UseCase", () => {
 
         const ingredient2: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
             produto_id: createProduto2.id,
             unity: 1,
             weight: 100,
         };
         const ingredient3: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
             produto_id: createProduto3.id,
             unity: 1,
             weight: 100,
@@ -115,7 +112,6 @@ describe("List recipes by ingredient UseCase", () => {
 
         const ingredient4: ICreateIngredientDTO = {
             id: faker.datatype.uuid(),
-            description: faker.lorem.words(20),
             produto_id: createProduto4.id,
             unity: 1,
             weight: 100,

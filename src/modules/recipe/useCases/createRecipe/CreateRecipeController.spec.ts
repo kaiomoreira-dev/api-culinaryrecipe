@@ -43,27 +43,21 @@ describe("Create recipe Controller", () => {
 
     const { id: prodId2 } = produto2.body as Produto;
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     const { id: ingredient1Id } = ingredient1.body as Ingredient;
 
-    const ingredient2 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId2,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient2 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId2,
+      unity: 1,
+      weight: 100,
+    });
     const { id: ingredient2Id } = ingredient2.body as Ingredient;
 
     const author = await request(app).post("/author").send({
@@ -110,27 +104,21 @@ describe("Create recipe Controller", () => {
 
     const { id: prodId2 } = produto2.body as Produto;
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     const { id: ingredient1Id } = ingredient1.body as Ingredient;
 
-    const ingredient2 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId2,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient2 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId2,
+      unity: 1,
+      weight: 100,
+    });
     const { id: ingredient2Id } = ingredient2.body as Ingredient;
 
     const author = await request(app).post("/author").send({
@@ -177,27 +165,21 @@ describe("Create recipe Controller", () => {
 
     const { id: prodId2 } = produto2.body as Produto;
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     const { id: ingredient1Id } = ingredient1.body as Ingredient;
 
-    const ingredient2 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId2,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient2 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId2,
+      unity: 1,
+      weight: 100,
+    });
     const { id: ingredient2Id } = ingredient2.body as Ingredient;
 
     const author = await request(app).post("/author").send({
@@ -244,27 +226,21 @@ describe("Create recipe Controller", () => {
 
     const { id: prodId2 } = produto2.body as Produto;
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     const { id: ingredient1Id } = ingredient1.body as Ingredient;
 
-    const ingredient2 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId2,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient2 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId2,
+      unity: 1,
+      weight: 100,
+    });
     const { id: ingredient2Id } = ingredient2.body as Ingredient;
 
     const fakeAuthor = "cfa55f56-8703-4ebc-a95e-f32c032c9484";
@@ -296,15 +272,12 @@ describe("Create recipe Controller", () => {
       });
     const { id: prodId1 } = produto1.body as Produto;
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     const { id: ingredient1Id } = ingredient1.body as Ingredient;
 

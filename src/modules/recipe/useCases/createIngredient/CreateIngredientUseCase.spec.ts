@@ -42,7 +42,6 @@ describe("Create ingredient UseCase", () => {
 
     const ingredient1: ICreateIngredientDTO = {
       id: faker.datatype.uuid(),
-      description: faker.lorem.words(20),
       produto_id: createProduto1.id,
       unity: 1,
       weight: 100,
@@ -60,7 +59,6 @@ describe("Create ingredient UseCase", () => {
 
     const ingredient1: ICreateIngredientDTO = {
       id: faker.datatype.uuid(),
-      description: faker.lorem.words(20),
       produto_id: produtoIdFake,
       unity: 1,
       weight: 100,
@@ -82,7 +80,6 @@ describe("Create ingredient UseCase", () => {
 
     const ingredient1: ICreateIngredientDTO = {
       id: faker.datatype.uuid(),
-      description: faker.lorem.words(20),
       produto_id: createProduto1.id,
       unity: 1,
       weight: 100,

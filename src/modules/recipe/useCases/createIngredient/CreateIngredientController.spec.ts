@@ -33,30 +33,24 @@ describe("Create ingredient Controller", () => {
 
     const { id: prodId1 } = produto1.body as Produto;
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     expect(ingredient1.status).toBe(200);
   });
   it("should not be able to create ingredient with produto_id invalid", async () => {
     const produtoIdFake = faker.datatype.uuid();
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: produtoIdFake,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: produtoIdFake,
+      unity: 1,
+      weight: 100,
+    });
 
     expect(ingredient1.status).toBe(401);
   });
@@ -71,25 +65,19 @@ describe("Create ingredient Controller", () => {
 
     const { id: prodId1 } = produto1.body as Produto;
 
-    await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
-    const ingredient1 = await request(app)
-      .post("/ingredient")
-      .send({
-        id: faker.datatype.uuid(),
-        produto_id: prodId1,
-        description: faker.lorem.words(20),
-        unity: 1,
-        weight: 100,
-      });
+    const ingredient1 = await request(app).post("/ingredient").send({
+      id: faker.datatype.uuid(),
+      produto_id: prodId1,
+      unity: 1,
+      weight: 100,
+    });
 
     expect(ingredient1.status).toBe(401);
   });

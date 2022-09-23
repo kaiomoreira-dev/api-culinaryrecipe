@@ -67,7 +67,6 @@ describe("List author Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: produto_id1,
-                description: faker.lorem.paragraphs(),
                 unity: 1,
                 weight: 100,
             });
@@ -77,7 +76,6 @@ describe("List author Controller", () => {
             .send({
                 id: faker.datatype.uuid(),
                 produto_id: produto_id2,
-                description: faker.lorem.paragraphs(),
                 unity: 1,
                 weight: 100,
             });
@@ -89,7 +87,7 @@ describe("List author Controller", () => {
 
         const ingredients: string[] = [ingredient_id1, ingredient_id2];
 
-        const x = await request(app)
+        await request(app)
             .post("/recipe")
             .send({
                 id: faker.datatype.uuid(),

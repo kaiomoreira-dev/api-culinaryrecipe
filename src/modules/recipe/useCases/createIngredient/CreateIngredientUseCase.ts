@@ -19,7 +19,6 @@ export class CreateIngredientUseCase {
   async execute({
     id,
     produto_id,
-    description,
     unity,
     weight,
   }: ICreateIngredientDTO): Promise<Ingredient> {
@@ -41,7 +40,6 @@ export class CreateIngredientUseCase {
     const ingredient = await this.ingredientRepository.create({
       id,
       produto_id,
-      description,
       unity,
       weight,
     });

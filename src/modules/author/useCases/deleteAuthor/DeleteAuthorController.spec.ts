@@ -68,24 +68,18 @@ describe("Delete author Controller", () => {
         const { id: prodId2 } = prod2.body as Produto;
 
         // Ingredients
-        const ingredient1 = await request(app)
-            .post("/ingredient")
-            .send({
-                id: faker.datatype.uuid(),
-                produto_id: prodId1,
-                description: faker.lorem.words(10),
-                unity: 1,
-                weight: 100,
-            });
-        const ingredient2 = await request(app)
-            .post("/ingredient")
-            .send({
-                id: faker.datatype.uuid(),
-                produto_id: prodId2,
-                description: faker.lorem.words(10),
-                unity: 1,
-                weight: 100,
-            });
+        const ingredient1 = await request(app).post("/ingredient").send({
+            id: faker.datatype.uuid(),
+            produto_id: prodId1,
+            unity: 1,
+            weight: 100,
+        });
+        const ingredient2 = await request(app).post("/ingredient").send({
+            id: faker.datatype.uuid(),
+            produto_id: prodId2,
+            unity: 1,
+            weight: 100,
+        });
         const { id: ingredientId1 } = ingredient1.body as Ingredient;
         const { id: ingredientId2 } = ingredient2.body as Ingredient;
 

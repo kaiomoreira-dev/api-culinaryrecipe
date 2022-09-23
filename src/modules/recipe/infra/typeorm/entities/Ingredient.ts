@@ -16,9 +16,6 @@ export class Ingredient {
     @PrimaryColumn()
     id?: string;
 
-    @Column()
-    description: string;
-
     // relacionamento de many-to-one apontando para produto qual
     // ingrediente deve pertencer a produto, mas não queremos
     // relacionar um produto com uma lista de ingredients que eles

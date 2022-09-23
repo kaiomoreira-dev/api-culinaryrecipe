@@ -15,10 +15,7 @@ export class CreateIngredient1661028123973 implements MigrationInterface {
             name: "produto_id",
             type: "uuid",
           },
-          {
-            name: "description",
-            type: "varchar",
-          },
+
           {
             name: "weight",
             type: "numeric",
