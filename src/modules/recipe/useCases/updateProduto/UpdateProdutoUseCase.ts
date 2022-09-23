@@ -11,7 +11,11 @@ export class UpdateProdutoUseCase {
     private produtoRepository: IProdutoRepository
   ) {}
 
-  async execute(id: string): Promise<Produto> {
+  async execute(
+    id: string,
+    name: string,
+    description: string
+  ): Promise<Produto> {
     const findProduto = await this.produtoRepository.findById(id);
 
     if (!findProduto) {
@@ -19,7 +23,9 @@ export class UpdateProdutoUseCase {
     }
 
     const updateProduto = await this.produtoRepository.updateById(
-      findProduto.id
+      findProduto.id,
+      name,
+      description
     );
 
     return updateProduto;
