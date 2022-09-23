@@ -537,9 +537,6 @@
                                         "type": "string",
                                         "format": "uuid"
                                     },
-                                    "name": {
-                                        "type": "string"
-                                    },
                                     "description": {
                                         "type": "string"
                                     },
@@ -553,7 +550,6 @@
                                 },
                                 "example": {
                                     "produto_id":"dfeaa87f-cd3a-4797-a3ae-1f1501d341ee",
-                                    "name": "Produto name",
                                     "description": "Write description here about produto",
                                     "unity": "ex: 1",
                                     "weight": "ex: 0.500"
