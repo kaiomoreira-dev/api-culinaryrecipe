@@ -68,4 +68,12 @@ describe("List ingredients by produto Controller", () => {
 
     expect(ingredients.status).toBe(200);
   });
+  it("should not be able to list ingredients by produto_id invalid", async () => {
+    const produtoIdFake = faker.datatype.uuid();
+    const ingredients = await request(app)
+      .get(`/ingredient/produto/${produtoIdFake}`)
+      .send();
+
+    expect(ingredients.status).toBe(404);
+  });
 });
