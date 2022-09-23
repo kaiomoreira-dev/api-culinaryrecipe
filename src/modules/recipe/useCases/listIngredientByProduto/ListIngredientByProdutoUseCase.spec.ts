@@ -87,4 +87,11 @@ describe("List ingredient by produto UseCase", () => {
 
     expect(ingredients[0]).toHaveProperty("id");
   });
+
+  it("should not be able to list all ingredient by produto with produti_id invalid", async () => {
+    const produtoIdFake = faker.datatype.uuid();
+    await expect(
+      listIngredientByProdutoUseCase.execute(produtoIdFake)
+    ).rejects.toEqual(new AppError("Produto not found", 404));
+  });
 });
