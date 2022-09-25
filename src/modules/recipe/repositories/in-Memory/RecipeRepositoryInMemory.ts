@@ -78,7 +78,6 @@ export class RecipeRepositoryInMemory implements IRecipeRepository {
       additional_features,
       total_guests,
     });
-
     this.reciperepository.push(recipe);
 
     return recipe;
