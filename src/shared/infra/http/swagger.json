@@ -854,6 +854,36 @@
                 }
             }
         },
+        "/recipe/{id}":{
+            "delete": {
+                "tags": ["Recipe"],
+                "summary": "Delete Recipe by id",
+                "description": "Delete a recipe for author",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                    "name": "id",
+                    "in": "path",
+                    "description": "Recipe id",
+                    "required": true,
+                        "schema": {
+                         "type": "string",
+                         "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Recipe successfully deleted ."
+                    },
+                    "404": {
+                        "description": "Recipe not found!"
+                    }
+                }
+            }
+        },
         "/recipe/ingredient/{id}":{
             "get": {
                 "tags": ["Recipe"],
