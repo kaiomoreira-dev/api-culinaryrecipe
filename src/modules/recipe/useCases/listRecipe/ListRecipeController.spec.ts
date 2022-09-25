@@ -139,8 +139,6 @@ describe("List recipes Controller", () => {
 
     const recipes = await request(app).get("/recipe").send();
 
-    console.log(JSON.stringify(recipes.body, null, 2));
-
     expect(recipes.status).toBe(200);
   });
 });
