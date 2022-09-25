@@ -10,6 +10,7 @@ import { IngredientRepositoryInMemory } from "@modules/recipe/repositories/in-Me
 import { ProdutoRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/ProdutoRepositoryInMemory";
 import { RecipeRepositoryInMemory } from "@modules/recipe/repositories/in-Memory/RecipeRepositoryInMemory";
 
+import { AppError } from "@shared/errors/AppError";
 import { redisClient } from "@shared/infra/http/middlewares/rateLimiter";
 
 import { CreateIngredientUseCase } from "../createIngredient/CreateIngredientUseCase";
@@ -195,5 +196,13 @@ describe("Delete recipe UseCase", () => {
     const deleteRecipe = await deleteRecipeUseCase.execute(createRecipe1.id);
 
     expect(deleteRecipe).toBe(null);
+  });
+
+  it("should not be able to delete a recipe with invalid recipe_id", async () => {
+    const recipeIdFake = faker.datatype.uuid();
+
+    await expect(deleteRecipeUseCase.execute(recipeIdFake)).rejects.toEqual(
+      new AppError("Recipe not found", 404)
+    );
   });
 });
