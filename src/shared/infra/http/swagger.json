@@ -121,7 +121,44 @@
                 ],
                 "responses":{
                     "200": {
-                        "description": "Author find success."
+                        "description": "Author find success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type":"string",
+                                                "format": "uuid"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "emails": {
+                                                "type": "string",
+                                                "format": "array"
+                                            },
+                                            "recipes": {
+                                                "type":"string",
+                                                "format": "array"
+
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
                         "description": "Author not found!"
