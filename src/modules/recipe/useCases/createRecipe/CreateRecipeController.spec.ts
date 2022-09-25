@@ -83,6 +83,8 @@ describe("Create recipe Controller", () => {
         author_id: authorId,
       });
 
+    console.log(JSON.stringify(responseCreateRecipe.body, null, 2));
+
     expect(responseCreateRecipe.status).toBe(201);
   });
   it("should not be able to create recipe with difficulty incorrect", async () => {
