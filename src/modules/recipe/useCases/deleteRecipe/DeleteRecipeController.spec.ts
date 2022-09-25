@@ -147,4 +147,16 @@ describe("Delete recipe Controller", () => {
 
     expect(recipes.status).toBe(200);
   });
+
+  it("should not be able to delete a recipe with invalid id", async () => {
+    const recipeIdFake = faker.datatype.uuid();
+
+    const deleteRecipe = await request(app)
+      .delete(`/recipe/${recipeIdFake}`)
+      .send();
+
+    const recipes = await request(app).get("/recipe").send();
+
+    expect(deleteRecipe.status).toBe(404);
+  });
 });
