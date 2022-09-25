@@ -108,7 +108,10 @@ export class RecipeRepository implements IRecipeRepository {
         });
     }
     async findById(id: string): Promise<Recipe> {
-        return this.repository.findOneBy({ id });
+        return this.repository.findOne({
+            where: { id },
+            relations: { ingredients: true },
+        });
     }
     async listByDifficulty(difficulty: string): Promise<Recipe[]> {
         const recipes = await this.repository
