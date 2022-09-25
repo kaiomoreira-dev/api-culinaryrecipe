@@ -103,7 +103,9 @@ export class RecipeRepository implements IRecipeRepository {
         return recipe;
     }
     async list(): Promise<Recipe[]> {
-        return this.repository.find();
+        return this.repository.find({
+            relations: { ingredients: true },
+        });
     }
     async findById(id: string): Promise<Recipe> {
         return this.repository.findOneBy({ id });
