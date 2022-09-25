@@ -748,6 +748,73 @@
                         "description": "Author not found / Ingredient not found"
                     }
                 }
+            },
+            "get": {
+                "tags": ["Recipe"],
+                "summary": "List Recipes",
+                "description": "List all recipes exists with ingredeints",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id":{
+                                                "type":"string",
+                                                "format": "uuid"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "time": {
+                                                "type": "integer"
+                                            }, 
+                                            "difficulty": {
+                                                "type": "string"
+                                            },
+                                            "dish_type": {
+                                                "type": "string"
+                                            },
+                                            "additional_features": {
+                                                "type": "string"
+                                            },
+                                            "total_guests": {
+                                                "type": "integer"
+                                            },
+                                            "author_id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                            },
+                                            "ingredients": {
+                                                "type": "string",
+                                                "format": "array"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/recipe/ingredient/{id}":{
@@ -809,6 +876,14 @@
                                             "ingredients": {
                                                 "type": "string",
                                                 "format": "array"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time"
                                             }                  
                                         }
                                     }
