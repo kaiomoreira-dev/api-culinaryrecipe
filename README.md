@@ -16,26 +16,15 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ## Diagrama de Classe UML
 ![alt text](diagram-culinary-recipe.png)
 
-## Engenharia de Software
-
-**RF**
-* Requisito Funcional
-
-**RNF**
-* Requisito não Funcional
-
-**RN**
-* Regra de negócio
-
 ## Email
-**RF**
+**Requisito Funcional**
 * Deve ser possivel cadastrar um email.  
 * Deve ser possivel buscar todos emails.
 * Deve ser possivel buscar email por id.
-* Deve ser possivel atualizar por id email.
+* Deve ser possivel atualizar email por id.
 * Deve ser possivel deletar email por id.  
 
-**RN**
+**Regra de negócio**
 * Nao deve ser possivel cadastrar um email com mesmo email.
 * Não deve ser possivel cadastrar email com author invalido.
 * Não deve ser possivel buscar email com id invalido.
