@@ -194,7 +194,7 @@ $ yarn test ou npm run test
 # O banco de dados do postgres fica no docker na porta 5432:5432
 ```
 ## Next Releases
-* Adicionar novas rotas com funcionalidades CRUD ao restante das Entidade.
+* Adicionar novas rotas com funcionalidades CRUD ao restante das Entidades.
 * Funcionalidade para inserir imagens da Recipe.
 * Modelegem de UML Pessoa/Users
 * Sistema de authenticação de Users com JSON web token.
