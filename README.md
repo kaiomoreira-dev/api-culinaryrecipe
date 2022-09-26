@@ -31,6 +31,21 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Não deve ser possivel atualizar email com id invalido
 * Não deve ser possivel deletar email com id invalido.
 
+## Author
+**Requisito Funcional**
+* Deve ser possivel cadastrar um author.
+* Deve ser possivel buscar todos authors.
+* Deve ser possivel buscar author por id.
+* Deve ser possivel atualizar author por id.
+* Deve ser possivel deletar author por id.
+
+**Regra de negócio**
+* Não deve ser possivel criar um author com o mesmo nome. 
+* Não deve ser possivel criar um author com o mesmo whatsapp.
+* Não deve ser possivel buscar um author com id invalido.
+* Não deve ser possivel atualizar um author com id invalido.
+* Não deve ser possivel deletar um author com id invalido.
+
 ### 🎲 Rodando o Back End (servidor)
 
 ```bash
