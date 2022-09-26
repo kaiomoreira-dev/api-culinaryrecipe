@@ -5,8 +5,7 @@
 ![Badge version v1.0](https://img.shields.io/badge/version-v1.0-blue)
 ![Badge coverage 100%](https://img.shields.io/badge/coverage-100%25-green)
 
-## Indice
-- [Indice](#indice)
+## Summary
 - [Intro](#intro)
 - [Description](#description)
 - [Pré-requisitos](#pré-requisitos)
