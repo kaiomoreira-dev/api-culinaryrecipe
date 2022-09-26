@@ -1,4 +1,4 @@
-![logo culinary-recipe](readme-img/coverage-jest.png)
+![logo culinary-recipe](readme-img/cullinary-recipe-img.png)
 
 ![Badge version v1.0](https://img.shields.io/badge/version-v1.0-blue)
 ![Badge coverage 100%](https://img.shields.io/badge/coverage-100%25-green)
