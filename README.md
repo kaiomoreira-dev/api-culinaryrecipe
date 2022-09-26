@@ -1,7 +1,10 @@
 <h1 align="center"> Culinary Recipe API </h1>
 
 ## Indice
-* [intro](#descrição)
+* [Intro](#descrição)
+
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
 
 ## Intro
 * Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. Aqui foram expressas habilidades como TDD, Modelagem de dados, Princípios SOLID, Clean Code, Modelagem UML, Git, Github, CI/CD, API REST design, Design Pattern, Docker, devOps, AWS, e outras.
