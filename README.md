@@ -169,6 +169,12 @@ $ cd culinary-recipes
 # Instale as dependências
 $ yarn ou npm install
 
+# Build do projeto
+$ yarn build
+
+# Rodar as mirgations do banco
+$ yarn migrations
+
 # Exutar apenas o container do postgres
 $ docker-compose up -d
 
