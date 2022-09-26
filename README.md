@@ -1,5 +1,5 @@
 ## Intro
-* Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. Aqui foram expressas habilidades como TDD, Modelagem de dados, Princípios SOLID, Clean Code, Modelagem UML, Git, Github, CI/CD, API REST design, Design Pattern, Docker, devOps, AWS e outras.
+* Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. Aqui foram expressas habilidades como TDD, Modelagem de dados, Princípios SOLID, Clean Code, Modelagem UML, Git, Github, CI/CD, API REST design, Design Pattern, Docker, devOps, AWS, e outras.
 
 ## Descrição
 * Essa é uma REST API que tem como objetivo realizar um CRUD de Receitas culinárias. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que contém diversos e-mais de contato.
@@ -91,7 +91,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * EC2 - Instancia criada na AWS com uma maquina virtual contendo Ubuntu 20.04 LTS
 SSD volume types 64bits x86. Com uma chave .pem configurada usamos para conectar na instancia.
 Para uma conexão mais segura com a instancia criamos grupo de usuarios com permissoes de admin.
-Um arquivo authorized_keys na pasta .ssg com a chave ssh-keygen conectando a maquina local e a instancia através da chaves. Com a instancia configurada usaremos o ip<publico> da instancia para conectar. Em seguida instalar todos os programas como docker, docker-compose, nodejse e yarn para
+Um arquivo authorized_keys na pasta .ssh com a chave ssh-keygen conectando a maquina local e a instancia através da chaves. Com a instancia configurada usaremos o ip<publico> da instancia para conectar. Em seguida instalar todos os programas como docker, docker-compose, nodejse e yarn para
 funcionamento da api.
 
 * Babel - Configurar o babel na api local instalando libs para compilar API em typescript para javascript de forma mais perfomática e rápida.
