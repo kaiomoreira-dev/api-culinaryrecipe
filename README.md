@@ -4,6 +4,7 @@
 
 ![Badge version v1.0](https://img.shields.io/badge/version-v1.0-blue)
 ![Badge coverage 100%](https://img.shields.io/badge/coverage-100%25-green)
+![Badge swager document](https://img.shields.io/badge/swagger-document-green)
 
 ## Summary
 - [Intro](#intro)
@@ -210,6 +211,7 @@ $ yarn test ou npm run test
 * ![Docker](https://img.shields.io/badge/-Docker-%234F4F4F)
 * ![DevOps](https://img.shields.io/badge/-devOps-%234F4F4F)
 * ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
+* ![SWagger](https://img.shields.io/badge/-Swagger-%09%234F4F4F)
 
 # Owner
 [<img src="https://avatars.githubusercontent.com/u/56137536?s=400&u=a74073f1d0f605815a4f343436c791ab7b7dc184&v=4" width=115><br><sub>Kaio Moreira</sub>](https://github.com/kaiomoreira-dev)
