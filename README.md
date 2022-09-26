@@ -65,6 +65,17 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Não deve ser possivel buscar uma recipe com ingredient_id invalido.
 * Não deve ser possivel deletar uma recipe com id invalido.
 
+## Ingredient
+**Requisito Funcional**
+* Deve deve ser possivel cadastrar um ingredient.
+* Deve ser possivel buscar todos os ingredients existentes.
+* Deve ser possivel buscar um ingredient por produto_id.
+
+**Regra de Negócio**
+Não deve ser possive criar um ingredient com produto_id invalido.
+Não deve ser possivel criar o mesmo ingredient com unity e weight existentes.
+
+
 ### 🎲 Rodando o Back End (servidor)
 
 ```bash
