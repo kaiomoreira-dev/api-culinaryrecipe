@@ -5,28 +5,29 @@
 ## Indice
 - [Indice](#indice)
 - [Intro](#intro)
-- [Descrição](#descrição)
-  - [Pré-requisitos](#pré-requisitos)
+- [Description](#description)
+- [Pré-requisitos](#pré-requisitos)
 - [Diagrama de Classe UML](#diagrama-de-classe-uml)
 - [Coverage Jest](#coverage-jest)
-- [Funcionalidades do Projeto](#funcionalidades-do-projeto)
+- [Project Features](#project-features)
 - [Email](#email)
 - [Author](#author)
 - [Recipe](#recipe)
 - [Ingredient](#ingredient)
-- [Produto](#produto)
-- [Configuração de produção da API](#configuração-de-produção-da-api)
-- [Acesso ao projeto](#acesso-ao-projeto)
-- [Abrir e rodar](#abrir-e-rodar)
-- [Técnicas e Tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
+- [Product](#product)
+- [API production configuration](#api-production-configuration)
+- [Acesso ao projeto](#project-access)
+- [Open and Run](#open-and-run)
+- [Techniques && Technologies](#techniques--technologies)
+- [Owner](#owner)
 
 ## Intro
 * Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe.
 
-## Descrição
+## Description
 * Essa é uma REST API que tem como objetivo realizar operações CRUD no sistema de Receita Culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsável que contém diversos e-mails de contato.
 
-### Pré-requisitos
+## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Node.js](https://nodejs.org/en/). 
 E o banco de dados Postgres:
@@ -44,7 +45,7 @@ Além disto é bom ter um editor para trabalhar com o código como
 ## Coverage Jest
 ![coverage-jest](coverage-jest.png)
 
-## Funcionalidades do Projeto
+## Project Features
 
 ## Email
 **Requisito Funcional**
@@ -102,7 +103,7 @@ Além disto é bom ter um editor para trabalhar com o código como
 * Não deve ser possive criar um ingredient com produto_id invalido.
 * Não deve ser possivel criar o mesmo ingredient com unity e weight existentes.
 
-## Produto
+## Product
 **Requisito Funcional**
 * Deve ser possivel cadastrar um produto.
 * Deve ser possivel listar todos os produtos existentes.
@@ -112,7 +113,7 @@ Além disto é bom ter um editor para trabalhar com o código como
 * Não deve ser possivel cadastrar um produto com o mesmo nome.
 * Não deve ser possivel atualizar um produto com id invalido.
 
-## Configuração de produção da API
+## API production configuration
 * EC2 - Instancia criada na AWS com uma maquina virtual contendo Ubuntu 20.04 LTS
 SSD volume types 64bits x86. Com uma chave .pem configurada usamos para conectar na instancia.
 Para uma conexão mais segura com a instancia criamos grupo de usuarios com permissoes de admin.
@@ -154,9 +155,9 @@ funcionamento da api.
 ![sentry-issues](sentry-details.png)
 
 
-## Acesso ao projeto
+## Project access
 
-## Abrir e rodar
+## Open and Run
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
@@ -183,7 +184,7 @@ $ yarn test ou npm run test
 # O banco de dados do postgres fica no docker na porta 5432:5432
 ```
 
-## Técnicas e Tecnologias utilizadas
+## Techniques && Technologies
 
 * ![Typescript](https://img.shields.io/badge/-Typescript-%234F4F4F)
 * ![TypeORM](https://img.shields.io/badge/-TypeORM-%234F4F4F)
@@ -201,3 +202,6 @@ $ yarn test ou npm run test
 * ![Docker](https://img.shields.io/badge/-Docker-%234F4F4F)
 * ![DevOps](https://img.shields.io/badge/-devOps-%234F4F4F)
 * ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
+
+# Owner
+[<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Kaio dos Santos Moreira</sub>](https://github.com/kaiomoreira-dev)
