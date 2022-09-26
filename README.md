@@ -196,7 +196,7 @@ $ yarn test ou npm run test
 ## Next Releases
 * Rota update Recipes por id.
 * Funcionalidade para inserir imagens da Recipe.
-* MAdicionar Modelegem de UML adicionarndo Pessoa/Users
+* Modelegem de UML Pessoa/Users
 * Sistema de authenticação de Users com JSON web token.
 * Criação de middleware para segurança das rotas
 * Implementar serviço S3 da AWS para salvar imagens da Recipe.
