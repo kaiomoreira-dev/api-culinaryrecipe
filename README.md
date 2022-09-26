@@ -199,5 +199,5 @@ $ yarn test ou npm run test
 * ![API REST design](https://img.shields.io/badge/-API%20REST%20design-%234F4F4F)
 * ![Design Pattern](https://img.shields.io/badge/-Design%20Pattern-%234F4F4F)
 * ![Docker](https://img.shields.io/badge/-Docker-%234F4F4F)
-* ![DevOps]](https://img.shields.io/badge/-devOps-%234F4F4F)
+* ![DevOps](https://img.shields.io/badge/-devOps-%234F4F4F)
 * ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
