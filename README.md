@@ -157,7 +157,7 @@ funcionamento da api.
 
 ## Project access
 
-## Open and Run
+### Open and Run
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
