@@ -185,23 +185,20 @@ $ yarn test ou npm run test
 
 ## Técnicas e Tecnologias utilizadas
 
-* https://img.shields.io/badge/-Node.js-%234F4F4F
-* https://img.shields.io/badge/-Typescript-%234F4F4F
-* https://img.shields.io/badge/-TypeORM-%234F4F4F
-* https://img.shields.io/badge/-Express-%234F4F4F
-* https://img.shields.io/badge/-TDD-%234F4F4F
-* https://img.shields.io/badge/-Modelagem%20de%20dados-%234F4F4F
-* https://img.shields.io/badge/-Princ%C3%ADpios%20SOLID-%234F4F4F
-* https://img.shields.io/badge/-Clean%20Code-%234F4F4F
-* https://img.shields.io/badge/-Modelagem%20UML-%234F4F4F
-* https://img.shields.io/badge/-CI%2FCD-%234F4F4F
-* https://img.shields.io/badge/-Git-%234F4F4F
-* https://img.shields.io/badge/-Github-%234F4F4F
-* https://img.shields.io/badge/-API%20REST%20design-%234F4F4F
-* https://img.shields.io/badge/-Design%20Pattern-%234F4F4F
-* https://img.shields.io/badge/-Docker-%234F4F4F
-* https://img.shields.io/badge/-devOps-%234F4F4F
-* https://img.shields.io/badge/-AWS-%234F4F4F
-
-
-Aqui foram expressas habilidades como , , Git, , , , , , devOps, AWS, e outras.
+https://img.shields.io/badge/-Typescript-%234F4F4F
+https://img.shields.io/badge/-TypeORM-%234F4F4F
+https://img.shields.io/badge/-Node.js-%234F4F4F
+https://img.shields.io/badge/-Express-%234F4F4F
+https://img.shields.io/badge/-TDD-%234F4F4F
+https://img.shields.io/badge/-Modelagem%20de%20dados-%234F4F4F
+https://img.shields.io/badge/-Princ%C3%ADpios%20SOLID-%234F4F4F
+https://img.shields.io/badge/-Clean%20Code-%234F4F4F
+https://img.shields.io/badge/-Modelagem%20UML-%234F4F4F
+https://img.shields.io/badge/-CI%2FCD-%234F4F4F
+https://img.shields.io/badge/-Git-%234F4F4F
+https://img.shields.io/badge/-Github-%234F4F4F
+https://img.shields.io/badge/-API%20REST%20design-%234F4F4F
+https://img.shields.io/badge/-Design%20Pattern-%234F4F4F
+https://img.shields.io/badge/-Docker-%234F4F4F
+https://img.shields.io/badge/-devOps-%234F4F4F
+https://img.shields.io/badge/-AWS-%234F4F4F
