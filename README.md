@@ -2,7 +2,7 @@
 * Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. Aqui foram expressas habilidades como TDD, Modelagem de dados, Princípios SOLID, Clean Code, Modelagem UML, Git, Github, CI/CD, API REST design, Design Pattern, Docker, devOps, AWS, e outras.
 
 ## Descrição
-* Essa é uma REST API que tem como objetivo realizar um CRUD de Receitas culinárias. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que contém diversos e-mais de contato.
+* Essa é uma REST API que tem como objetivo realizar operações CRUD no sistema de Receita Culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que contém diversos e-mails de contato.
 
 ### Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
