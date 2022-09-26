@@ -17,7 +17,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ![mer-culinary-recipe](diagram-culinary-recipe.png)
 
 ## Coverage Jest
-![coverage-jest](coverage-jest)
+![coverage-jest](coverage-jest.png)
 
 ## Email
 **Requisito Funcional**
@@ -27,7 +27,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Deve ser possivel atualizar email por id.
 * Deve ser possivel deletar email por id.  
 
-**Regra de negócio**
+**Regra de Negócio**
 * Nao deve ser possivel cadastrar um email com mesmo email.
 * Não deve ser possivel cadastrar email com author invalido.
 * Não deve ser possivel buscar email com id invalido.
@@ -42,12 +42,28 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Deve ser possivel atualizar author por id.
 * Deve ser possivel deletar author por id.
 
-**Regra de negócio**
+**Regra de Negócio**
 * Não deve ser possivel criar um author com o mesmo nome. 
 * Não deve ser possivel criar um author com o mesmo whatsapp.
 * Não deve ser possivel buscar um author com id invalido.
 * Não deve ser possivel atualizar um author com id invalido.
 * Não deve ser possivel deletar um author com id invalido.
+
+## Recipe
+**Requisito Funcional**
+* Deve ser possivel cadastrar uma recipe.
+* Deve ser possivel buscar todas as recipes existentes.
+* Deve ser possivel buscar todas as recipes pelo ingredient_id.
+* Deve ser possivel deletar uma recipe por id.
+
+**Regra de Negócio**
+* Não deve ser possivel criar uma recipe com difficulty diferente de easy, medium e hard.
+* Não deve ser possivel criar uma recipe com dish_type diferente de appetizer, main course e dessert.
+* Não deve ser possivel criar uma recipe com author_id invalido.
+* Não deve ser possivel criar uma recipe com ingredient_id invalido.
+* Não deve ser possivel criar uma recipe com menos de 2 ingredients.
+* Não deve ser possivel buscar uma recipe com ingredient_id invalido.
+* Não deve ser possivel deletar uma recipe com id invalido.
 
 ### 🎲 Rodando o Back End (servidor)
 
