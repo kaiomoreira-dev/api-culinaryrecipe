@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="460" height="300" src="https://raw.githubusercontent.com/kaiomoreira-dev/culinary-recipe/main/readme-img/cullinary-recipe-img.png">
+  <img width="200" height="200" src="https://raw.githubusercontent.com/kaiomoreira-dev/culinary-recipe/main/readme-img/cullinary-recipe-img.png">
 </p>
 
 ![Badge version v1.0](https://img.shields.io/badge/version-v1.0-blue)
