@@ -1,4 +1,4 @@
-<h1 align="center"> Culinary Recipe API </h1>
+![logo culinary-recipe](readme-img/coverage-jest.png)
 
 ![Badge version v1.0](https://img.shields.io/badge/version-v1.0-blue)
 ![Badge coverage 100%](https://img.shields.io/badge/coverage-100%25-green)
