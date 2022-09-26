@@ -84,7 +84,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Não deve ser possivel cadastrar um produto com o mesmo nome.
 * Não deve ser possivel atualizar um produto com id invalido.
 
-## Config API Production
+## API Production Config
 * EC2 - Instancia criada na AWS com uma maquina virtual contendo Ubuntu 20.04 LTS
 SSD volume types 64bits x86. Com uma chave .pem configurada usamos para conectar na instancia.
 Para uma conexão mais segura com a instancia criamos grupo de usuarios com permissoes de admin.
