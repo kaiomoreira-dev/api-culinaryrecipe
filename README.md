@@ -41,10 +41,10 @@ Além disto é bom ter um editor para trabalhar com o código como
 [VSCode](https://code.visualstudio.com/).
 
 ## Diagrama de Classe UML
-![mer-culinary-recipe](diagram-culinary-recipe.png)
+![mer-culinary-recipe](readme-img/diagram-culinary-recipe.png)
 
 ## Coverage Jest
-![coverage-jest](coverage-jest.png)
+![coverage-jest](readme-img/coverage-jest.png)
 
 ## Project Features
 
@@ -122,7 +122,7 @@ Um arquivo authorized_keys na pasta .ssh com a chave ssh-keygen conectando a maq
 funcionamento da api.
 
 * Babel - Configurar o babel na api local instalando libs para compilar API em typescript para javascript de forma mais perfomática e rápida.
-![babel-config-img](babel-config.png)
+![babel-config-img](readme-img/babel-config.png)
 
 
 * Git/Github - Através do git init criamos um repo local e salvamos toda nossa aplicação gitando cada parte. Em seguida criamos um repositorio no github para salvarmos nossa api, com o intuito de criar o processo de CI/CD da api. Então criamos um chave ssh-key.pub local no github para commitarmos e visitar api de forma mais acessível e segura. Também vamos criar uma chave ssh key para a instancia EC2 da api. 
@@ -132,28 +132,28 @@ funcionamento da api.
 * Container Postgress - Alteramos a configurações do serviço do docker-compose container do banco de dados do Postgres criptografando a senha e removendo a porta padrão de conexão 5432:5432.
 
 * GitActions CI/CD - Para configurarmos o processo de CI/CD criaremos uma chave ssh-key.pub local com o nome de gitactions. Pegaremos a chave e colocaremos no arquivo authorized_keys dentro da instancia EC2. Em seguida vamos em nossa api no culinary-recipe no github e criaremos os secrets da api. Criaremos o secres SSH_HOST com ip publico da instancia EC2, SSH_KEY com chave ssh-privada de gitachtions, SSH_USER com o nome user criado na instancia EC2 'app' e SSH_PORT com a port da instancia EC2. Em seguida criaremos e configuruaremos nossa git actions. Para rodar na ultima versão do ubuntu, instalar nodejs, criar os push na main, instalar todas as dependencias da API, criar o build, subir os container dos bancos, rodar todas as mirgations, rodar os tests, configurar host,key,user e port com os secrets. E por fim atualizar novamente todos os pacotes, rodar as migrations mais uma vez e rodar a api com o pm2.
-![gitaction-img](gitaction.png)
+![gitaction-img](readme-img/gitaction.png)
 
 * Proxy Reverso - Primeiro vamos instanlar o servidor HTTP nginx para o proxy reverso. Em seguida vamos até a instancia adicionar regras de entrada no grupo de segurança da instancia. Adicionamos as regras HTTP/HTTPS com ips personalizados 0.0.0.0/0. Por fim na instancia vamos até a pasta do nginx em site-available criaremos um arquivo culinary-recipe com as configurações do server e location. Por fim criaremos um link simbolico em da pasta site-enable para pasta site-available dentro do nginx.
-![nginx-img](nginx.png)
+![nginx-img](readme-img/nginx.png)
 
   
 * Gerenciado de processo - Instalamos o pm2 para gerenciar os processo do runtine da aplicação. Assim podemos iniciar, restart, parar, monitorar o status, memoria e CPU em produção da API.
-![pm2-img](pm2.png)
+![pm2-img](readme-img/pm2.png)
 
 * Domínio SSL - Através de um dominio existente entraremos na AWS Route53 e criaremos um nome com o dominio existente. E enviaremos para o dominio o ip publico da instancia para validar o nome do subdominio criado para api. Em whatsmydns.com procuramos pelo o subdominio criado em Route53 para ve se propagou. Em seguida vamos até o site do cerbot nos orientar como instalar o cerbot utilizando nginx. Depois de criado conseguimos acessar a aplicação com um dominio com certificado SSL seguro.
-![route53-img](route53.png) 
+![route53-img](readme-img/route53.png) 
 
 * Segurança - Na segurança da API configuramos o rate-limiting com o redis para previnir a aplicação de ataques DDoS.
 
-![rate-limiting](rate-limiting.png)
+![rate-limiting](readme-img/rate-limiting.png)
 
   
 * Monitoramento - No monitoramento da aplicação utilizamos o Sentry para capturar toda as atividades feitas nas rotas da aplicação. E também qualquer tipo de error gerado nas rotas ou em qualquer parte da api.
 
-![sentry-issues](sentry-issues.png)
-![sentry-issues](sentry-routes.png)
-![sentry-issues](sentry-details.png)
+![sentry-issues](readme-img/sentry-issues.png)
+![sentry-routes](readme-img/sentry-routes.png)
+![sentry-details](readme-img/sentry-details.png)
 
 
 ## Project access
