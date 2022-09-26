@@ -14,7 +14,10 @@ E instalar o docker-compose pra subir o container.
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
 ## Diagrama de Classe UML
-![alt text](diagram-culinary-recipe.png)
+![mer-culinary-recipe](diagram-culinary-recipe.png)
+
+## Coverage Jest
+![coverage-jest](coverage-jest)
 
 ## Email
 **Requisito Funcional**
