@@ -21,6 +21,7 @@
 - [API production configuration](#api-production-configuration)
 - [Acesso ao projeto](#project-access)
 - [Open && Run](#open-and-run)
+- [Future Updates](#future-updates)
 - [Techniques && Technologies](#techniques--technologies)
 - [Owner](#owner)
 
@@ -192,6 +193,14 @@ $ yarn test ou npm run test
 
 # O banco de dados do postgres fica no docker na porta 5432:5432
 ```
+## Future Updates
+* Rota update Recipes por id.
+* Funcionalidade para inserir imagens da Recipe.
+* MAdicionar Modelegem de UML adicionarndo Pessoa/Users
+* Sistema de authenticação de Users com JSON web token.
+* Criação de middleware para segurança das rotas
+* Implementar serviço S3 da AWS para salvar imagens da Recipe.
+* ...e mais.
 
 ## Techniques && Technologies
 
