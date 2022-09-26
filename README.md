@@ -1,8 +1,7 @@
 ## Descrição
-* Essa aplicação tem como objetivo realizar um CRUD de Receitas culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que poderá ter diversos e-mais especificos para contato.
+* Essa é uma REST API que tem como objetivo realizar um CRUD de Receitas culinárias. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que contém diversos e-mais de contato.
 
 ### Pré-requisitos
-
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Node.js](https://nodejs.org/en/). 
 E o banco de dados Postgres:
@@ -86,9 +85,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Não deve ser possivel atualizar um produto com id invalido.
 
 
-
 ### 🎲 Rodando o Back End (servidor)
-
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
@@ -113,5 +110,4 @@ $ yarn test ou npm run test
 # O servidor inciará na porta:3333 - acesse <http://localhost:3333>
 
 # O banco de dados do postgres fica no docker na porta 5432:5432
-
 ```
