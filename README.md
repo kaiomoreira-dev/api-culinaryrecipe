@@ -72,8 +72,19 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 * Deve ser possivel buscar um ingredient por produto_id.
 
 **Regra de Negócio**
-Não deve ser possive criar um ingredient com produto_id invalido.
-Não deve ser possivel criar o mesmo ingredient com unity e weight existentes.
+* Não deve ser possive criar um ingredient com produto_id invalido.
+* Não deve ser possivel criar o mesmo ingredient com unity e weight existentes.
+
+## Produto
+**Requisito Funcional**
+* Deve ser possivel cadastrar um produto.
+* Deve ser possivel listar todos os produtos existentes.
+* Deve ser possivel atualizar um produto por id.
+
+**Regra de Negócio**
+* Não deve ser possivel cadastrar um produto com o mesmo nome.
+* Não deve ser possivel atualizar um produto com id invalido.
+
 
 
 ### 🎲 Rodando o Back End (servidor)
