@@ -17,7 +17,7 @@
 - [Product](#product)
 - [API production configuration](#api-production-configuration)
 - [Acesso ao projeto](#project-access)
-- [Open and Run](#open-and-run)
+- [Open && Run](#open-and-run)
 - [Techniques && Technologies](#techniques--technologies)
 - [Owner](#owner)
 
@@ -157,7 +157,7 @@ funcionamento da api.
 
 ## Project access
 
-### Open and Run
+### Open && Run
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
