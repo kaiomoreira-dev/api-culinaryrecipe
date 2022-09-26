@@ -2,7 +2,7 @@
 * Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. Aqui foram expressas habilidades como TDD, Modelagem de dados, Princípios SOLID, Clean Code, Modelagem UML, Git, Github, CI/CD, API REST design, Design Pattern, Docker, devOps, AWS, e outras.
 
 ## Descrição
-* Essa é uma REST API que tem como objetivo realizar operações CRUD no sistema de Receita Culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsavel que contém diversos e-mails de contato.
+* Essa é uma REST API que tem como objetivo realizar operações CRUD no sistema de Receita Culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsável que contém diversos e-mails de contato.
 
 ### Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
@@ -13,7 +13,8 @@ E o docker para utilizar docker-compose para subir o container do Postgres
 [Docker](https://https://www.docker.com/).
 E instalar o docker-compose pra subir o container.
 [Docker-Compose](https://docs.docker.com/compose/install/).
-Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
+Além disto é bom ter um editor para trabalhar com o código como 
+[VSCode](https://code.visualstudio.com/).
 
 ## Diagrama de Classe UML
 ![mer-culinary-recipe](diagram-culinary-recipe.png)
