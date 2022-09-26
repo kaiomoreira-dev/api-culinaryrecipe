@@ -112,6 +112,10 @@ funcionamento da api.
   
 * Monitoramento - No monitoramento da aplicação utilizamos o Sentry para capturar toda as atividades feitas nas rotas da aplicação. E também qualquer tipo de error gerado nas rotas ou em qualquer parte da api.
 
+![sentry-issues](sentry-issues.png)
+![sentry-issues](sentry-sentry-routes.png)
+![sentry-issues](sentry-sentry-details.png)
+
   
 
 
