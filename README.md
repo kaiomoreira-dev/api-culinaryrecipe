@@ -204,4 +204,4 @@ $ yarn test ou npm run test
 * ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
 
 # Owner
-[<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Kaio dos Santos Moreira</sub>](https://github.com/kaiomoreira-dev)
+[<img src="https://avatars.githubusercontent.com/u/56137536?s=400&u=a74073f1d0f605815a4f343436c791ab7b7dc184&v=4" width=115><br><sub>Kaio dos Santos Moreira</sub>](https://github.com/kaiomoreira-dev)
