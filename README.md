@@ -185,20 +185,19 @@ $ yarn test ou npm run test
 
 ## Técnicas e Tecnologias utilizadas
 
-https://img.shields.io/badge/-Typescript-%234F4F4F
-https://img.shields.io/badge/-TypeORM-%234F4F4F
-https://img.shields.io/badge/-Node.js-%234F4F4F
-https://img.shields.io/badge/-Express-%234F4F4F
-https://img.shields.io/badge/-TDD-%234F4F4F
-https://img.shields.io/badge/-Modelagem%20de%20dados-%234F4F4F
-https://img.shields.io/badge/-Princ%C3%ADpios%20SOLID-%234F4F4F
-https://img.shields.io/badge/-Clean%20Code-%234F4F4F
-https://img.shields.io/badge/-Modelagem%20UML-%234F4F4F
-https://img.shields.io/badge/-CI%2FCD-%234F4F4F
-https://img.shields.io/badge/-Git-%234F4F4F
-https://img.shields.io/badge/-Github-%234F4F4F
-https://img.shields.io/badge/-API%20REST%20design-%234F4F4F
-https://img.shields.io/badge/-Design%20Pattern-%234F4F4F
-https://img.shields.io/badge/-Docker-%234F4F4F
-https://img.shields.io/badge/-devOps-%234F4F4F
-https://img.shields.io/badge/-AWS-%234F4F4F
+* ![Typescript](https://img.shields.io/badge/-Typescript-%234F4F4F)
+* ![TypeORM](https://img.shields.io/badge/-TypeORM-%234F4F4F)
+* ![Node.js](https://img.shields.io/badge/-Node.js-%234F4F4F)
+* ![Express](https://img.shields.io/badge/-Express-%234F4F4F)
+* ![TDD](https://img.shields.io/badge/-TDD-%234F4F4F)
+* ![Princípios SOLID](https://img.shields.io/badge/-Princ%C3%ADpios%20SOLID-%234F4F4F)
+* ![Clean Code](https://img.shields.io/badge/-Clean%20Code-%234F4F4F)
+* ![Modelagem UML](https://img.shields.io/badge/-Modelagem%20UML-%234F4F4F)
+* ![CI/CD](https://img.shields.io/badge/-CI%2FCD-%234F4F4F)
+* ![Git](https://img.shields.io/badge/-Git-%234F4F4F)
+* ![Github](https://img.shields.io/badge/-Github-%234F4F4F)
+* ![API REST design](https://img.shields.io/badge/-API%20REST%20design-%234F4F4F)
+* ![Design Pattern](https://img.shields.io/badge/-Design%20Pattern-%234F4F4F)
+* ![Docker](https://img.shields.io/badge/-Docker-%234F4F4F)
+* ![DevOps]](https://img.shields.io/badge/-devOps-%234F4F4F)
+* ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
