@@ -3,10 +3,25 @@
 ![Badge version v1.0](https://img.shields.io/badge/version-v1.0-blue)
 
 ## Indice
-* [Intro](#descrição)
+- [Indice](#indice)
+- [Intro](#intro)
+- [Descrição](#descrição)
+  - [Pré-requisitos](#pré-requisitos)
+- [Diagrama de Classe UML](#diagrama-de-classe-uml)
+- [Coverage Jest](#coverage-jest)
+- [Funcionalidades do Projeto](#funcionalidades-do-projeto)
+- [Email](#email)
+- [Author](#author)
+- [Recipe](#recipe)
+- [Ingredient](#ingredient)
+- [Produto](#produto)
+- [Configuração de produção da API](#configuração-de-produção-da-api)
+- [Acesso ao projeto](#acesso-ao-projeto)
+- [Abrir e rodar](#abrir-e-rodar)
+- [Técnicas e Tecnologias utilizadas](#técnicas-e-tecnologias-utilizadas)
 
 ## Intro
-* Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. Aqui foram expressas habilidades como TDD, Modelagem de dados, Princípios SOLID, Clean Code, Modelagem UML, Git, Github, CI/CD, API REST design, Design Pattern, Docker, devOps, AWS, e outras.
+* Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe.
 
 ## Descrição
 * Essa é uma REST API que tem como objetivo realizar operações CRUD no sistema de Receita Culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsável que contém diversos e-mails de contato.
@@ -28,6 +43,8 @@ Além disto é bom ter um editor para trabalhar com o código como
 
 ## Coverage Jest
 ![coverage-jest](coverage-jest.png)
+
+## Funcionalidades do Projeto
 
 ## Email
 **Requisito Funcional**
@@ -95,7 +112,7 @@ Além disto é bom ter um editor para trabalhar com o código como
 * Não deve ser possivel cadastrar um produto com o mesmo nome.
 * Não deve ser possivel atualizar um produto com id invalido.
 
-## API Production Config
+## Configuração de produção da API
 * EC2 - Instancia criada na AWS com uma maquina virtual contendo Ubuntu 20.04 LTS
 SSD volume types 64bits x86. Com uma chave .pem configurada usamos para conectar na instancia.
 Para uma conexão mais segura com a instancia criamos grupo de usuarios com permissoes de admin.
@@ -136,11 +153,10 @@ funcionamento da api.
 ![sentry-issues](sentry-routes.png)
 ![sentry-issues](sentry-details.png)
 
-  
 
+## Acesso ao projeto
 
-
-### 🎲 Rodando o Back End (servidor)
+## Abrir e rodar
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
@@ -166,3 +182,26 @@ $ yarn test ou npm run test
 
 # O banco de dados do postgres fica no docker na porta 5432:5432
 ```
+
+## Técnicas e Tecnologias utilizadas
+
+* https://img.shields.io/badge/-Node.js-%234F4F4F
+* https://img.shields.io/badge/-Typescript-%234F4F4F
+* https://img.shields.io/badge/-TypeORM-%234F4F4F
+* https://img.shields.io/badge/-Express-%234F4F4F
+* https://img.shields.io/badge/-TDD-%234F4F4F
+* https://img.shields.io/badge/-Modelagem%20de%20dados-%234F4F4F
+* https://img.shields.io/badge/-Princ%C3%ADpios%20SOLID-%234F4F4F
+* https://img.shields.io/badge/-Clean%20Code-%234F4F4F
+* https://img.shields.io/badge/-Modelagem%20UML-%234F4F4F
+* https://img.shields.io/badge/-CI%2FCD-%234F4F4F
+* https://img.shields.io/badge/-Git-%234F4F4F
+* https://img.shields.io/badge/-Github-%234F4F4F
+* https://img.shields.io/badge/-API%20REST%20design-%234F4F4F
+* https://img.shields.io/badge/-Design%20Pattern-%234F4F4F
+* https://img.shields.io/badge/-Docker-%234F4F4F
+* https://img.shields.io/badge/-devOps-%234F4F4F
+* https://img.shields.io/badge/-AWS-%234F4F4F
+
+
+Aqui foram expressas habilidades como , , Git, , , , , , devOps, AWS, e outras.
