@@ -221,6 +221,7 @@ $ yarn test ou npm run test
 * ![DevOps](https://img.shields.io/badge/-devOps-%234F4F4F)
 * ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
 * ![SWagger](https://img.shields.io/badge/-Swagger-%09%234F4F4F)
+* ![Jest](https://img.shields.io/badge/-jest-%234F4F4F)
 * ![Test unitário](https://img.shields.io/badge/-Test%20unit%C3%A1rio-%234F4F4F)
 * ![Test de integração](https://img.shields.io/badge/-Test%20de%20integra%C3%A7%C3%A3o-%234F4F4F)
 
