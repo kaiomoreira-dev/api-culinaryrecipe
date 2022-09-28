@@ -164,10 +164,10 @@ funcionamento da api.
 ### Open && Run
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/kaiomoreira-dev/culinary-recipe.git>
+$ git clone <https://github.com/kaiomoreira-dev/api-culinary-recipe.git>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd culinary-recipe
+$ cd api-culinary-recipe
 
 # Instale as dependências
 $ yarn ou npm install
