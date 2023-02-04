@@ -197,6 +197,7 @@ acesse: http://localhost:3333/api-docs/
 # O banco de dados do postgres fica no docker na porta 5432:5432
 ```
 ## Next Releases
+* Criar frontend em ReactJS.
 * Adicionar novas rotas com funcionalidades CRUD ao restante das Entidades.
 * Funcionalidade para inserir imagens da Recipe.
 * Modelegem de UML Pessoa/Users
