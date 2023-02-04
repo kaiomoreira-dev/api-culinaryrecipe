@@ -25,7 +25,7 @@
 - [Owner](#owner)
 
 ## Description
-* Culinary Recipe é uma REST API que tem como criar receitas culinarias utilizando operações CRUD. Cada  Receita poderá conter diversos Ingredients. E um Author como reponsável.
+* Culinary Recipe é uma REST API que tem como criar receitas culinarias. Cada  Receita poderá conter diversos Ingredients. E um Author como reponsável. O Author poderá criar, listar, editar e deletar uma receita.
 
 ## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
