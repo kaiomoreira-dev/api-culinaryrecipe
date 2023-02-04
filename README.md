@@ -189,7 +189,7 @@ $ yarn dev ou npm run dev
 // teste
 $ yarn test ou npm run test
 
-// routes
+// document routes
 acesse: http://localhost:3333/api-docs/
 
 # O servidor inciará na porta:3333 - acesse <http://localhost:3333>
