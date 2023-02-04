@@ -7,7 +7,6 @@
 ![Badge swager document](https://img.shields.io/badge/swagger-document-green)
 
 ## Summary
-- [Intro](#intro)
 - [Description](#description)
 - [Pré-requisitos](#pré-requisitos)
 - [Diagrama de Classe UML](#diagrama-de-classe-uml)
@@ -25,11 +24,8 @@
 - [Techniques && Technologies](#techniques--technologies)
 - [Owner](#owner)
 
-## Intro
-* Esse API tem como objetivo demonstrar habilidades acadêmicas e práticas desenvolvidas através do projeto pessoal culinary-recipe. As habilidades foram desenvolvida de forma totalmente independente, afim de gregar reconhecimento profissional e valores ao portifólio.
-
 ## Description
-* Essa é uma REST API que tem como objetivo realizar operações CRUD no sistema de Receita Culinária. A Receita poderá conter diversos Ingredients como partes que depende de um Produto. E um Author como reponsável que contém diversos e-mails de contato.
+* Culinary Recipe é uma REST API que tem como criar receitas culinarias utilizando operações CRUD. Cada  Receita poderá conter diversos Ingredients. E um Author como reponsável.
 
 ## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
