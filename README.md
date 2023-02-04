@@ -175,11 +175,11 @@ $ yarn ou npm install
 # Build do projeto
 $ yarn build
 
-# Rodar as mirgations do banco
-$ yarn migrations
-
 # Exutar apenas o container do postgres
 $ docker-compose up -d
+
+# Rodar as mirgations do banco
+$ yarn migrations
 
 ## Iniciar aplicação
 
@@ -188,6 +188,9 @@ $ yarn dev ou npm run dev
 
 // teste
 $ yarn test ou npm run test
+
+// routes
+acesse: [localhost:3333/](http://localhost:3333/api-docs/)
 
 # O servidor inciará na porta:3333 - acesse <http://localhost:3333>
 
