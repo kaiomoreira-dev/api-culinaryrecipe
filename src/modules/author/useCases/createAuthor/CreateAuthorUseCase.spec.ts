@@ -27,88 +27,86 @@ let createIngredientUseCase: CreateIngredientUseCase;
 let createProdutoUseCase: CreateProdutoUseCase;
 
 describe("Create author UseCase", () => {
-    beforeEach(() => {
-        produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
-        ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
-        emailRepositoryInMemory = new EmailRepositoryInMemory();
-        recipeRepositoryInMemory = new RecipeRepositoryInMemory(
-            ingredientRepositoryInMemory
-        );
-        authorRepositoryInMemory = new AuthorRepositoryInMemory(
-            emailRepositoryInMemory,
-            recipeRepositoryInMemory
-        );
-        createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
-        createEmailUseCase = new CreateEmailUseCase(
-            emailRepositoryInMemory,
-            authorRepositoryInMemory
-        );
-        createIngredientUseCase = new CreateIngredientUseCase(
-            ingredientRepositoryInMemory,
-            produtoRepositoryInMemory
-        );
-        createRecipeUseCase = new CreateRecipeUseCase(
-            recipeRepositoryInMemory,
-            ingredientRepositoryInMemory,
-            authorRepositoryInMemory
-        );
-        createProdutoUseCase = new CreateProdutoUseCase(
-            produtoRepositoryInMemory
-        );
-    });
+  beforeEach(() => {
+    produtoRepositoryInMemory = new ProdutoRepositoryInMemory();
+    ingredientRepositoryInMemory = new IngredientRepositoryInMemory();
+    emailRepositoryInMemory = new EmailRepositoryInMemory();
+    recipeRepositoryInMemory = new RecipeRepositoryInMemory(
+      ingredientRepositoryInMemory
+    );
+    authorRepositoryInMemory = new AuthorRepositoryInMemory(
+      emailRepositoryInMemory,
+      recipeRepositoryInMemory
+    );
+    createAuthorUseCase = new CreateAuthorUseCase(authorRepositoryInMemory);
+    createEmailUseCase = new CreateEmailUseCase(
+      emailRepositoryInMemory,
+      authorRepositoryInMemory
+    );
+    createIngredientUseCase = new CreateIngredientUseCase(
+      ingredientRepositoryInMemory,
+      produtoRepositoryInMemory
+    );
+    createRecipeUseCase = new CreateRecipeUseCase(
+      recipeRepositoryInMemory,
+      ingredientRepositoryInMemory,
+      authorRepositoryInMemory
+    );
+    createProdutoUseCase = new CreateProdutoUseCase(produtoRepositoryInMemory);
+  });
 
-    afterAll(() => {
-        redisClient.quit();
-    });
+  afterAll(() => {
+    redisClient.quit();
+  });
 
-    it("should be able to create author", async () => {
-        const author1: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: faker.phone.number(),
-        };
+  it("should be able to create author", async () => {
+    const author1: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: faker.phone.number(),
+    };
 
-        const authorCreated = await createAuthorUseCase.execute(author1);
+    const authorCreated = await createAuthorUseCase.execute(author1);
 
-        expect(authorCreated).toHaveProperty("id");
-    });
+    expect(authorCreated).toHaveProperty("id");
+  });
 
-    it("should not be able to create author already exists", async () => {
-        const author1: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: "Kaio Moreira",
-            whatsapp: faker.phone.number(),
-        };
-        await createAuthorUseCase.execute(author1);
+  it("should not be able to create author already exists", async () => {
+    const author1: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: "Kaio Moreira",
+      whatsapp: faker.phone.number(),
+    };
+    await createAuthorUseCase.execute(author1);
 
-        const author2: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: "Kaio Moreira",
-            whatsapp: faker.phone.number(),
-        };
+    const author2: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: "Kaio Moreira",
+      whatsapp: faker.phone.number(),
+    };
 
-        await expect(createAuthorUseCase.execute(author2)).rejects.toEqual(
-            new AppError("Author is already exists.", 401)
-        );
-    });
+    await expect(createAuthorUseCase.execute(author2)).rejects.toEqual(
+      new AppError("Author is already exists.", 401)
+    );
+  });
 
-    it("should not be able to create author with whatsapp is already exists", async () => {
-        const author1: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: "8888888888",
-        };
+  it("should not be able to create author with whatsapp is already exists", async () => {
+    const author1: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: "8888888888",
+    };
 
-        await createAuthorUseCase.execute(author1);
+    await createAuthorUseCase.execute(author1);
 
-        const author2: ICreateAuthorDTO = {
-            id: faker.datatype.uuid(),
-            name: faker.name.fullName(),
-            whatsapp: "8888888888",
-        };
+    const author2: ICreateAuthorDTO = {
+      id: faker.datatype.uuid(),
+      name: faker.name.fullName(),
+      whatsapp: "8888888888",
+    };
 
-        await expect(createAuthorUseCase.execute(author2)).rejects.toEqual(
-            new AppError("Whatsapp is already exists.", 401)
-        );
-    });
+    await expect(createAuthorUseCase.execute(author2)).rejects.toEqual(
+      new AppError("Whatsapp is already exists.", 401)
+    );
+  });
 });

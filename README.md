@@ -168,14 +168,14 @@ $ cd api-culinary-recipe
 # Instale as dependências
 $ yarn ou npm install
 
-# Build do projeto
-$ yarn build
-
 # Exutar apenas o container do postgres
 $ docker-compose up -d
 
 # Rodar as mirgations do banco
 $ yarn migrations
+
+# Build do projeto
+$ yarn build
 
 ## Iniciar aplicação
 

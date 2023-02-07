@@ -6,11 +6,11 @@ import { AuthorRepositoryInMemory } from "./AuthorRepositoryInMemory";
 import { EmailRepositoryInMemory } from "./EmailRepositoryInMemory";
 
 container.registerSingleton<IEmailRepository>(
-    "EmailRepositoryInMemory",
-    EmailRepositoryInMemory
+  "EmailRepositoryInMemory",
+  EmailRepositoryInMemory
 );
 
 container.registerSingleton<IAuthorRepository>(
-    "AuthorRepositoryInMemory",
-    AuthorRepositoryInMemory
+  "AuthorRepositoryInMemory",
+  AuthorRepositoryInMemory
 );
