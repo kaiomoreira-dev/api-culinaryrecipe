@@ -19,7 +19,7 @@
 - [Product](#product)
 - [API production configuration](#api-production-configuration)
 - [Acesso ao projeto](#project-access)
-- [Open && Run](#open-&&-run)
+- [Open && Run](#open-and-run)
 - [Next Releases](#next-releases)
 - [Techniques && Technologies](#techniques--technologies)
 - [Owner](#owner)
