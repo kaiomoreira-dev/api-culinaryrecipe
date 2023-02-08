@@ -2,12 +2,15 @@
 
 <p align="center">
   <img width="200" height="200" src="https://raw.githubusercontent.com/kaiomoreira-dev/culinary-recipe/main/readme-img/cullinary-recipe-img.png">
-  
+</p>
+
+<p align="center">
+
   ![Badge api-version v1.0](https://img.shields.io/badge/api--version-v1.0-blue)
   ![Badge coverage 100%](https://img.shields.io/badge/coverage-100%25-green)
   ![Badge swager document](https://img.shields.io/badge/swagger-document-green)
+  
 </p>
-
 
 
 ## Summary
