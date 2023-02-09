@@ -38,7 +38,7 @@ Desenvolvido como projeto pessoal tem o intuito de tornar-se uma aplicação web
 
 ## Description
 * Diante da API Culinary Recipes teve um desenvolvimento utilizando uma estrutura composta
-por acrónimos para responsabilidade única, substituição de serviço e uso de hierarquia,
+por acrônimos para responsabilidade única, substituição de serviço e uso de hierarquia,
 desacoplar módulos, testes de regra de negócios e fluxo I/O, modelagem de dados e
 relacionamento, protótipo de tela, casos de uso, automatização de atualizações,
 versionamento de base de dados, serviços para orquestrar containers, documentação,
