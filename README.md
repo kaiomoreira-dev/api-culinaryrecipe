@@ -33,17 +33,19 @@
 - [Owner](#owner)
 
 ## Intro
-* Culinary Recipes é uma API REST monolítica desenvolvida para criar receitas culinárias.
+* Culinary Recipes é uma API REST monolítico desenvolvida para criar receitas culinárias.
 Desenvolvido como projeto pessoal tem o intuito de tornar-se uma aplicação web.
 
 ## Description
 * Diante da API Culinary Recipes teve um desenvolvimento utilizando uma estrutura composta
-por princípios SOLID SRP, LSK e DIP, designer patterns injeção de dependência, teste de
-unidade e de integração, Modelagem de dados, prototípico de tela, casos de uso,
-automatização com Git Actions CI/CD, Git, CRUD mapeamento relacional com typeorm.
-Orquestrar serviços containers com o Docker. Documentação com Swagger. TypeScript com
-babel. Amazon service para criar instância EC2 e serviço route53. Arquitetura monolítica e
-REST. PostgresSQL devido sua alta economia e bom desempenho.
+por acrónimos para responsabilidade única, substituição de serviço e uso de hierarquia,
+desacoplar módulos, testes de regra de negócios e fluxo I/O, modelagem de dados e
+relacionamento, protótipo de tela, casos de uso, automatização de atualizações,
+versionamento de base de dados, serviços para orquestrar containers, documentação,
+converter código em JavaScript, colocar API em produção, configurar protocolo de rede,
+armazenamento de arquivos, banco de dados relacional. Com base nos fatos aprimorei o
+entendimento dos componentes que compõem a estrutura e as funcionalidades aplicação.
+Alcançando resultados como produtividade, clareza e experiência no desenvolvimento.
 
 ## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
@@ -227,19 +229,29 @@ acesse: http://localhost:3333/api-docs/
 * ![Node.js](https://img.shields.io/badge/-Node.js-%234F4F4F)
 * ![Express](https://img.shields.io/badge/-Express-%234F4F4F)
 * ![Princípios SOLID](https://img.shields.io/badge/-Princ%C3%ADpios%20SOLID-%234F4F4F)
-* ![Modelagem UML](https://img.shields.io/badge/-Modelagem%20UML-%234F4F4F)
-* ![CI/CD](https://img.shields.io/badge/-CI%2FCD-%234F4F4F)
+* ![UML](https://img.shields.io/badge/-UML-grey)
+* ![CI/CD](https://img.shields.io/badge/-CI%2FCD-grey)
 * ![Git](https://img.shields.io/badge/-Git-%234F4F4F)
 * ![Github](https://img.shields.io/badge/-Github-%234F4F4F)
-* ![API REST design](https://img.shields.io/badge/-API%20REST%20design-%234F4F4F)
+* ![Git Actions](https://img.shields.io/badge/-Git%20Actions-grey)
+* ![REST](https://img.shields.io/badge/-REST-grey)
 * ![Design Pattern](https://img.shields.io/badge/-Design%20Pattern-%234F4F4F)
 * ![Docker](https://img.shields.io/badge/-Docker-%234F4F4F)
-* ![DevOps](https://img.shields.io/badge/-devOps-%234F4F4F)
 * ![AWS](https://img.shields.io/badge/-AWS-%234F4F4F)
 * ![Swagger](https://img.shields.io/badge/-Swagger-%09%234F4F4F)
 * ![Jest](https://img.shields.io/badge/-Jest-%234F4F4F)
-* ![Test unitário](https://img.shields.io/badge/-Test%20unit%C3%A1rio-%234F4F4F)
-* ![Test de integração](https://img.shields.io/badge/-Test%20de%20integra%C3%A7%C3%A3o-%234F4F4F)
+* ![EC2](https://img.shields.io/badge/-EC2-grey)
+* ![Route53](https://img.shields.io/badge/-Route53-grey)
+* ![Padrão de Desenvolvimento de Software](https://img.shields.io/badge/-Padr%C3%A3o%20de%20Desenvolvimento%20de%20Software-grey)
+* ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-grey)
+* ![CLI](https://img.shields.io/badge/-CLI-grey)
+* ![Scripts](https://img.shields.io/badge/-Scripts-grey)
+* ![Migration](https://img.shields.io/badge/-Migration-grey)
+* ![UML](https://img.shields.io/badge/-UML-grey)
+* ![Babel](https://img.shields.io/badge/-Babel-grey)
+* ![Async-errors](https://img.shields.io/badge/-Async--errors-grey)
+* ![CRUD](https://img.shields.io/badge/-CRUD-grey)
+* ![Deploy](https://img.shields.io/badge/-Deploy-grey)
 
 # Owner
 [<img src="https://avatars.githubusercontent.com/u/56137536?s=400&u=a74073f1d0f605815a4f343436c791ab7b7dc184&v=4" width=115><br><sub>Kaio Moreira</sub>](https://github.com/kaiomoreira-dev)
