@@ -43,7 +43,7 @@ desacoplar módulos, testes de regra de negócios e fluxo I/O, modelagem de dado
 relacionamento, protótipo de tela, casos de uso, automatização de atualizações,
 versionamento de base de dados, serviços para orquestrar containers, documentação,
 converter código em JavaScript, colocar API em produção, configurar protocolo de rede,
-armazenamento de arquivos, banco de dados relacional. Com base nos fatos aprimorei o
+armazenamento de arquivos, banco de dados relacional. Com base nos fatos, aprimorei o
 entendimento dos componentes que compõem a estrutura e as funcionalidades aplicação.
 Alcançando resultados como produtividade, clareza e experiência no desenvolvimento.
 
