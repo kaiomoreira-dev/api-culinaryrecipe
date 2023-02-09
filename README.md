@@ -14,6 +14,7 @@
 
 
 ## Summary
+- [Intro](#intro)
 - [Description](#description)
 - [Pré-requisitos](#pré-requisitos)
 - [Diagrama de Classe UML](#diagrama-de-classe-uml)
@@ -31,8 +32,21 @@
 - [Techniques && Technologies](#techniques--technologies)
 - [Owner](#owner)
 
+## Intro
+* Culinary Recipes é uma API REST monolítica desenvolvida para criar receitas culinárias.
+Desenvolvido como projeto pessoal tem o intuito de tornar-se uma aplicação web.
+
 ## Description
-* Culinary Recipe é uma REST API que tem como criar receitas culinarias. Cada  Receita poderá conter diversos Ingredients. E um Author como reponsável. O Author poderá criar, listar, editar e deletar uma receita.
+* Diante da API Culinary Recipes teve um desenvolvimento utilizando uma estrutura composta
+por princípios SOLID SRP, LSK e DIP, designer patterns injeção de dependência, teste de
+unidade e de integração, Modelagem de dados, prototípico de tela, casos de uso,
+automatização com Git Actions CI/CD, Git, CRUD mapeamento relacional com typeorm.
+Orquestrar serviços containers com o Docker. Documentação com Swagger. TypeScript com
+babel. Amazon service para criar instância EC2 e serviço route53. Arquitetura monolítica e
+REST. PostgresSQL devido sua alta economia e bom desempenho. Diante dos fatos
+citamos adquiri uma visão maior sobre todos os componentes que compõem a estrutura e as
+funcionalidades aplicação. Tendo resultados como produtividade, clareza e experiência no
+desenvolvimento.
 
 ## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
