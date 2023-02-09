@@ -43,10 +43,7 @@ unidade e de integração, Modelagem de dados, prototípico de tela, casos de us
 automatização com Git Actions CI/CD, Git, CRUD mapeamento relacional com typeorm.
 Orquestrar serviços containers com o Docker. Documentação com Swagger. TypeScript com
 babel. Amazon service para criar instância EC2 e serviço route53. Arquitetura monolítica e
-REST. PostgresSQL devido sua alta economia e bom desempenho. Diante dos fatos
-citamos adquiri uma visão maior sobre todos os componentes que compõem a estrutura e as
-funcionalidades aplicação. Tendo resultados como produtividade, clareza e experiência no
-desenvolvimento.
+REST. PostgresSQL devido sua alta economia e bom desempenho.
 
 ## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
