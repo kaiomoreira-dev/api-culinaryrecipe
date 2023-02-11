@@ -37,15 +37,9 @@
 Desenvolvido como projeto pessoal tem o intuito de tornar-se uma aplicação web.
 
 ## Description
-* Diante da API Culinary Recipes teve um desenvolvimento utilizando uma estrutura composta
-por acrônimos para responsabilidade única, substituição de serviço e uso de hierarquia,
-desacoplar módulos, testes de regra de negócios e fluxo I/O, modelagem de dados e
-relacionamento, protótipo de tela, casos de uso, automatização de atualizações,
-versionamento de base de dados, serviços para orquestrar containers, documentação,
-converter código em JavaScript, colocar API em produção, configurar protocolo de rede,
-armazenamento de arquivos, banco de dados relacional. Com base nos fatos, aprimorei o
-entendimento dos componentes que compõem a estrutura e as funcionalidades aplicação.
-Alcançando resultados como produtividade, clareza e experiência no desenvolvimento.
+* Diante da API Culinary Recipes desenvolveu e utilizou uma aplicação compondo uma estrutura monolítica, acrônimos para responsabilidade única, substituição de serviço e uso de hierarquia,
+desacoplar módulos, testou de regra de negócios e fluxo I/O, modelou dados e relacionamento, criou protótipo de tela, modelou casos de uso, automatizou atualizações, criou versionamento de base de dados, criou serviços para orquestrar containers, documentou rotas, converteu código em JavaScript, colocou aplicação em produção, configurou protocolo de rede, criou armazenamento de arquivos e usou banco de dados relacional. Aprimorou o entendimento dos componentes que compõem a estrutura e as
+funcionalidades da aplicação. Alcançou resultados como produtividade, clareza e experiência no desenvolvimento.
 
 ## Pré-requisitos
 * Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
