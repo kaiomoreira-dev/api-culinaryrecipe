@@ -182,12 +182,12 @@ $ yarn ou npm install
 
 # Exutar apenas o container do postgres
 $ docker-compose up -d
+  
+# Build do projeto
+$ yarn build
 
 # Rodar as mirgations do banco
 $ yarn migrations
-
-# Build do projeto
-$ yarn build
 
 ## Iniciar aplicação
 
