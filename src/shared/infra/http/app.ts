@@ -28,7 +28,14 @@ app.use(express.json());
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
 
 if (process.env.NODE_ENV !== "test") {
   Sentry.init({
